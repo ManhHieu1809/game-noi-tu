@@ -3,22 +3,28 @@ export const CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 export const CODE_LENGTH = 5;
 
 const ICE_SERVERS = [
-  { urls: "stun:stun.l.google.com:19302" },
-  { urls: "stun:stun1.l.google.com:19302" },
   {
-    urls: "turn:openrelay.metered.ca:80",
-    username: "openrelayproject",
-    credential: "openrelayproject",
+    urls: "stun:stun.relay.metered.ca:80",
   },
   {
-    urls: "turn:openrelay.metered.ca:443",
-    username: "openrelayproject",
-    credential: "openrelayproject",
+    urls: "turn:standard.relay.metered.ca:80",
+    username: "55e82a2f98c700fac27a9338",
+    credential: "TpRPCUPUJJF/c+qK",
   },
   {
-    urls: "turns:openrelay.metered.ca:443?transport=tcp",
-    username: "openrelayproject",
-    credential: "openrelayproject",
+    urls: "turn:standard.relay.metered.ca:80?transport=tcp",
+    username: "55e82a2f98c700fac27a9338",
+    credential: "TpRPCUPUJJF/c+qK",
+  },
+  {
+    urls: "turn:standard.relay.metered.ca:443",
+    username: "55e82a2f98c700fac27a9338",
+    credential: "TpRPCUPUJJF/c+qK",
+  },
+  {
+    urls: "turns:standard.relay.metered.ca:443?transport=tcp",
+    username: "55e82a2f98c700fac27a9338",
+    credential: "TpRPCUPUJJF/c+qK",
   },
 ];
 
