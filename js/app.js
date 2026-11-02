@@ -100,6 +100,7 @@ const els = {
   roomList: $("roomList"),
   lobbyNote: $("lobbyNote"),
   howToBtn: $("howToBtn"),
+  roomRulesBtn: $("roomRulesBtn"),
   rulesDialog: $("rulesDialog"),
   closeRulesBtn: $("closeRulesBtn"),
   okRulesBtn: $("okRulesBtn"),
@@ -125,6 +126,7 @@ const app = {
   presenceTimer: null,
   directory: null,
   rooms: [],
+  lastToast: null,
 };
 
 const ESC_MAP = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
@@ -206,11 +208,23 @@ function setBusy(button, busy) {
 }
 
 function showToast(message, type = "info", duration = 3600) {
+  const now = Date.now();
+  const key = `${type}:${message}`;
+  if (app.lastToast?.key === key && now - app.lastToast.at < 1800) return;
+  app.lastToast = { key, at: now };
+
   const toast = document.createElement("div");
   toast.className = `toast toast--${type}`;
   const icon = type === "success" ? "✓" : type === "error" ? "!" : "i";
   toast.innerHTML = `<span class="toast__icon" aria-hidden="true">${icon}</span><span>${esc(message)}</span>`;
   els.toasts.appendChild(toast);
+
+  while (els.toasts.children.length > 3) {
+    const oldest = els.toasts.firstElementChild;
+    if (!oldest) break;
+    oldest.remove();
+  }
+
   setTimeout(() => {
     toast.classList.add("is-out");
     setTimeout(() => toast.remove(), 260);
@@ -266,7 +280,7 @@ function setOverlayDismissible(dismissible) {
 function showLoading(title, text) {
   setOverlayDismissible(false);
   els.overlayCard.innerHTML = `
-    <div class="overlay__card overlay__card--center">
+    <div class="overlay__card--center">
       <div class="spinner" aria-hidden="true"></div>
       <h2 class="overlay__title">${esc(title)}</h2>
       <p class="overlay__text" id="overlayText">${esc(text)}</p>
@@ -282,13 +296,11 @@ function updateLoadingText(text) {
 function showConfirm({ title, text, confirmLabel, cancelLabel = "Ở lại", danger = false, onConfirm }) {
   setOverlayDismissible(true);
   els.overlayCard.innerHTML = `
-    <div class="overlay__card">
-      <h2 class="overlay__title">${esc(title)}</h2>
-      <p class="overlay__text">${esc(text)}</p>
-      <div class="overlay__actions">
-        <button class="btn btn--ghost" type="button" id="overlayCancelBtn">${esc(cancelLabel)}</button>
-        <button class="btn ${danger ? "btn--danger" : "btn--primary"}" type="button" id="overlayConfirmBtn">${esc(confirmLabel)}</button>
-      </div>
+    <h2 class="overlay__title">${esc(title)}</h2>
+    <p class="overlay__text">${esc(text)}</p>
+    <div class="overlay__actions">
+      <button class="btn btn--ghost" type="button" id="overlayCancelBtn">${esc(cancelLabel)}</button>
+      <button class="btn ${danger ? "btn--danger" : "btn--primary"}" type="button" id="overlayConfirmBtn">${esc(confirmLabel)}</button>
     </div>`;
   els.overlay.classList.remove("hidden");
 
@@ -308,7 +320,7 @@ function hideOverlay() {
 function showFatalOverlay(title, text) {
   setOverlayDismissible(false);
   els.overlayCard.innerHTML = `
-    <div class="overlay__card overlay__card--center">
+    <div class="overlay__card--center">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="width:42px;height:42px;margin:0 auto 12px;color:var(--danger)" aria-hidden="true">
         <path d="M10 13a5 5 0 0 0 7.07 0l2.12-2.12a5 5 0 0 0-7.07-7.07L10.7 5.22"></path>
         <path d="M14 11a5 5 0 0 0-7.07 0L4.8 13.12a5 5 0 0 0 7.07 7.07l1.41-1.41"></path>
@@ -329,6 +341,8 @@ function showFatalOverlay(title, text) {
 }
 
 function enterRoom() {
+  document.body.classList.remove("is-home");
+  document.body.classList.add("in-room");
   els.screenHome.classList.add("hidden");
   els.screenRoom.classList.remove("hidden");
   els.netPill.hidden = false;
@@ -349,6 +363,8 @@ function enterRoom() {
 }
 
 function exitToHome() {
+  document.body.classList.remove("in-room");
+  document.body.classList.add("is-home");
   els.screenRoom.classList.add("hidden");
   els.screenHome.classList.remove("hidden");
   els.netPill.hidden = true;
@@ -722,7 +738,7 @@ function renderRoom() {
 
 function renderPlayers(state) {
   els.playersList.innerHTML = state.players
-    .map((player) => {
+    .map((player, index) => {
       const isCurrent = state.phase === "playing" && state.turnPlayerId === player.id;
       const sub = !player.online
         ? "Mất kết nối"
@@ -742,6 +758,7 @@ function renderPlayers(state) {
 
       return `
         <li class="${classes}">
+          <span class="player__seat" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span>
           <span class="avatar" style="--h:${hueOf(player.id)}" aria-hidden="true">${esc(initialsOf(player.name))}</span>
           <span class="player__body">
             <span class="player__name" title="${esc(player.name)}">
@@ -1362,35 +1379,38 @@ function renderLobbyRooms() {
   }
 
   els.roomList.innerHTML = rooms
-    .map((room) => {
+    .map((room, index) => {
       const statusLabel =
         room.phase === "playing" ? "Đang chơi" : room.phase === "ended" ? "Chờ ván mới" : "Đang chờ";
       const statusClass = room.phase === "playing" ? "is-playing" : "is-waiting";
       return `
         <article class="room-card">
-          <div class="room-card__top">
-            <span class="room-card__code">${esc(room.code)}</span>
-            <div class="room-card__tags">
-              <span class="room-card__mode ${room.gameMode === "letters" ? "is-letters" : ""}">${room.gameMode === "letters" ? "Đôi chữ cái" : "Nối từ"}</span>
-              <span class="room-card__status ${statusClass}">${statusLabel}</span>
-            </div>
-          </div>
-          <div class="room-card__meta">
-            <span class="room-card__host">
-              <span class="mini-avatar" style="--h:${hueOf(room.code + room.host)}" aria-hidden="true">${esc(initialsOf(room.host))}</span>
+          <span class="room-card__index" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span>
+          <span class="room-card__code">
+            <span class="room-card__code-value">${esc(room.code)}</span>
+            <span class="room-card__code-label">Mã bàn</span>
+          </span>
+          <span class="room-card__host">
+            <span class="mini-avatar" style="--h:${hueOf(room.code + room.host)}" aria-hidden="true">${esc(initialsOf(room.host))}</span>
+            <span class="room-card__host-copy">
+              <small>Chủ bàn</small>
               <strong title="${esc(room.host)}">${esc(room.host)}</strong>
             </span>
-            <span class="room-card__players">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-              ${room.players}/${room.max}
-            </span>
+          </span>
+          <div class="room-card__tags">
+            <span class="room-card__mode ${room.gameMode === "letters" ? "is-letters" : ""}">${room.gameMode === "letters" ? "Đôi chữ cái" : "Nối từ"}</span>
+            <span class="room-card__status ${statusClass}">${statusLabel}</span>
           </div>
+          <span class="room-card__players">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <strong>${room.players}</strong><span>/${room.max}</span>
+          </span>
           <button class="room-card__join" type="button" data-join-code="${esc(room.code)}">
-            Vào phòng
+            Vào bàn
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
           </button>
         </article>`;
@@ -1605,6 +1625,7 @@ function bindEvents() {
   els.lobbyInviteBtn.addEventListener("click", copyInvite);
 
   els.howToBtn.addEventListener("click", openRules);
+  els.roomRulesBtn.addEventListener("click", openRules);
   els.closeRulesBtn.addEventListener("click", closeRules);
   els.okRulesBtn.addEventListener("click", closeRules);
   els.rulesDialog.addEventListener("click", (event) => {
