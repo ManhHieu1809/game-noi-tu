@@ -1,0 +1,11 @@
+{
+  "name": "noi-tu",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Game nối từ tiếng Việt nhiều người chơi, chạy hoàn toàn trên trình duyệt.",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/game-core.test.js"
+  }
+}
