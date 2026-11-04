@@ -1014,7 +1014,7 @@ function renderImageQuiz(state) {
   // snap back to a blurred state on every state broadcast.
   const durationMs = Math.max(1, (state.turnSeconds || 40) * 1000);
   const remainingMs = Math.max(0, Math.min(durationMs, state.remainingMs ?? durationMs));
-  const initialReveal = quiz?.revealed || exhausted ? 1 : 1 - remainingMs / durationMs;
+  const initialReveal = quiz?.revealed || exhausted ? 1 : Math.min(1, (1 - remainingMs / durationMs) / 0.75);
   els.imageQuizPanel.style.setProperty("--quiz-reveal", String(initialReveal));
   const answered = quiz?.answeredIds?.includes(app.playerId);
   els.imageQuizReveal.textContent = exhausted
@@ -1327,7 +1327,9 @@ function updateTimer() {
   const left = Math.max(0, app.deadline - performance.now());
   const percent = Math.max(0, Math.min(100, (left / total) * 100));
   if (state.gameMode === "image" && state.imageQuizMode === "object") {
-    const reveal = state.imageQuiz?.revealed ? 1 : Math.max(0, Math.min(1, 1 - left / total));
+    // Fully uncover the original photograph after 75% of the question time.
+    // Remaining 25% gives all players a fair chance to view the whole image.
+    const reveal = state.imageQuiz?.revealed ? 1 : Math.max(0, Math.min(1, (1 - left / total) / 0.75));
     els.imageQuizPanel.style.setProperty("--quiz-reveal", String(reveal));
   }
   els.timerRing.style.setProperty("--p", String(percent));
