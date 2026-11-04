@@ -847,7 +847,7 @@ function renderStageLobby(state) {
     : idiom ? "Sẵn sàng giải tranh troll?"
     : letters ? "Sẵn sàng thử thách đôi chữ?" : "Sẵn sàng nối từ?";
   els.lobbySub.textContent = object
-    ? "Ảnh rõ nét và hiện đầy đủ từ đầu. Có 40 giây để đoán, hết giờ mới công bố đáp án."
+    ? "Ảnh rõ từ đầu. Đáp án hiện ngay khi mọi người đoán đúng, hoặc khi hết 40 giây."
     : idiom
       ? "Ghép các chi tiết trong tranh để đoán ca dao, thành ngữ, tục ngữ. Không giới hạn tổng số vòng."
       : letters
@@ -987,7 +987,7 @@ function renderImageQuiz(state) {
   els.turnBadge.classList.add("is-me");
   els.turnSub.textContent = exhausted
     ? "Không lặp câu cũ. Chủ phòng có thể kết thúc và bổ sung câu hỏi."
-    : isObject ? quiz?.revealed ? "Hết giờ! Đáp án đã được công bố." : "Ảnh rõ từ đầu · Chờ hết giờ mới công bố đáp án"
+    : isObject ? quiz?.revealed ? "Đáp án đã được công bố!" : "Ảnh rõ từ đầu · Đoán đúng hết hoặc hết giờ sẽ hiện đáp án"
     : quiz?.revealed ? "Đáp án đã lộ! Sắp sang câu tiếp theo."
     : "Cùng đoán ý nghĩa ẩn trong tranh";
   els.imageQuizProgress.textContent = exhausted ? "Hết câu mới" : "Câu #" + quiz.round + " · Còn " + (quiz.remaining ?? 0) + " câu mới";
@@ -1011,7 +1011,7 @@ function renderImageQuiz(state) {
     ? "Đã hết các đáp án chưa từng chơi. Trò chơi sẽ KHÔNG tự dùng lại câu cũ."
     : quiz?.revealed ? "Đáp án: " + quiz.answer
     : answered ? "Bạn đã đoán đúng! Đợi mọi người..."
-    : isObject ? "Đoán vật thể trong ảnh! Đáp án chỉ hiện sau khi hết giờ."
+    : isObject ? "Đoán vật thể! Khi mọi người đoán đúng hoặc hết giờ sẽ hiện đáp án."
     : "Giải ý nghĩa chung của cả 3 khung tranh!";
   els.imageQuizPanel.classList.toggle("image-quiz--revealed", Boolean(quiz?.revealed));
   els.imageQuizAttribution.textContent = quiz?.attribution || "";
@@ -1022,7 +1022,7 @@ function renderImageQuiz(state) {
     els.imageQuizAttribution.hidden = true;
   }
   els.imageQuizHint.textContent = isObject
-    ? "Ảnh rõ từ giây đầu · Đếm ngược 40 giây · Đáp án chỉ công bố khi hết giờ."
+    ? "Ảnh rõ từ đầu · 40 giây trả lời · Công bố khi tất cả đoán đúng hoặc hết giờ."
     : "Giải ý nghĩa của ba khung tranh · Người đoán đúng sớm được thêm điểm.";
   els.timer.hidden = false;
 }
