@@ -8,6 +8,9 @@ import {
   sanitizeName,
 } from "./game-core.js";
 import { loadDictionary } from "./dictionary.js";
+import { loadImageQuizQuestions } from "./games/image-quiz/data.js";
+import { normalizeGuess } from "./games/image-quiz/image-quiz-core.js";
+import { renderRebusArt } from "./games/image-quiz/rebus-art.js";
 import { LobbyDirectory } from "./lobby-directory.js";
 import { cleanCode, CODE_LENGTH, createRoomPeer, connectToRoom } from "./net.js";
 
@@ -40,6 +43,9 @@ const els = {
   playersList: $("playersList"),
   hostSettings: $("hostSettings"),
   gameModeSelect: $("gameModeSelect"),
+  imageQuizModeField: $("imageQuizModeField"),
+  imageQuizModeSelect: $("imageQuizModeSelect"),
+  lobbySettingsHint: $("lobbySettingsHint"),
   pairModeField: $("pairModeField"),
   pairModeSelect: $("pairModeSelect"),
   modeSelect: $("modeSelect"),
@@ -71,6 +77,15 @@ const els = {
   answerBtn: $("answerBtn"),
   answerError: $("answerError"),
   pairControl: $("pairControl"),
+  imageQuizPanel: $("imageQuizPanel"),
+  imageQuizPicture: $("imageQuizPicture"),
+  imageQuizScene: $("imageQuizScene"),
+  imageQuizEndBtn: $("imageQuizEndBtn"),
+  imageQuizEmoji: $("imageQuizEmoji"),
+  imageQuizProgress: $("imageQuizProgress"),
+  imageQuizCategory: $("imageQuizCategory"),
+  imageQuizReveal: $("imageQuizReveal"),
+  imageQuizAttribution: $("imageQuizAttribution"),
   pairControlValue: $("pairControlValue"),
   pairForm: $("pairForm"),
   pairInput1: $("pairInput1"),
@@ -109,6 +124,7 @@ const els = {
 
 const app = {
   dictionary: null,
+  imageQuestions: [],
   role: null,
   playerId: null,
   roomCode: null,
@@ -427,7 +443,7 @@ async function createRoom() {
   showLoading("Đang tạo phòng…", "Đang nạp từ điển tiếng Việt…");
 
   try {
-    app.dictionary = await loadDictionary();
+    [app.dictionary, app.imageQuestions] = await Promise.all([loadDictionary(), loadImageQuizQuestions()]);
     updateLoadingText("Đang kết nối tới máy chủ ghép phòng…");
     const { code, peer } = await createRoomPeer();
     createHostSession(code, peer, name);
@@ -452,6 +468,9 @@ function createHostSession(code, peer, name) {
     hostName: name,
     hostPeerId: peer.id,
     dictionary: app.dictionary,
+    imageQuestions: app.imageQuestions,
+    imageSeenIds: { idiom: getSeenImageQuizIds("idiom"), object: getSeenImageQuizIds("object") },
+    onImageSeen: rememberImageQuizId,
     mode: "smart",
     onChange: handleHostGameChange,
   });
@@ -509,6 +528,7 @@ function handleHostConnection(conn) {
 
       try {
         const player = app.game.addPlayer({ name: message.name, peerId: conn.peer, isHost: false });
+        app.game.mergeImageSeenHistory(message.quizSeen);
         conn.playerId = player.id;
         app.conns.set(player.id, conn);
         conn.send({ t: "welcome", playerId: player.id, state: app.game.publicState() });
@@ -595,7 +615,12 @@ async function joinRoom(inputCode) {
   showLoading("Đang vào phòng…", `Đang tìm phòng ${code}…`);
 
   try {
-    const session = await connectToRoom(code, name);
+    // Only send normalized answer keys, not scores or usernames.
+    const quizSeen = {
+      idiom: getSeenImageQuizIds("idiom").slice(-1000),
+      object: getSeenImageQuizIds("object").slice(-1000),
+    };
+    const session = await connectToRoom(code, name, quizSeen);
     app.role = "guest";
     app.roomCode = code;
     app.peer = session.peer;
@@ -696,7 +721,7 @@ function consumeState(state, previous) {
 
   const myTurn = state.phase === "playing" && state.turnPlayerId === app.playerId;
   const pairReady = state.gameMode === "letters" && Boolean(state.pair) && !state.awaitingPair;
-  if (myTurn && (turnChanged || (pairReady && pairChanged))) {
+  if (state.gameMode !== "image" && myTurn && (turnChanged || (pairReady && pairChanged))) {
     if (state.gameMode === "letters" && state.awaitingPair) {
       showToast("Lượt của bạn! Đang chờ chủ phòng chọn cặp chữ cái.", "info", 3200);
     } else if (pairReady) {
@@ -720,11 +745,12 @@ function renderRoom() {
 
   els.roomCodeText.textContent = state.code;
   els.lobbyCode.textContent = state.code;
-  const modeLabel = state.gameMode === "letters" ? "Đôi chữ cái" : "Nối từ";
+  const modeLabel = state.gameMode === "letters" ? "Đôi chữ cái" : state.gameMode === "image" ? state.imageQuizMode === "object" ? "Đoán vật thể ảnh khó" : "Đố thành ngữ" : "Nối từ";
   const checkLabel = state.mode === "strict" ? "Khắt khe" : "Thông minh";
-  els.roomModePill.textContent = `${modeLabel} · ${checkLabel}`;
-  els.roomModePill.title = `${modeLabel}, kiểm tra ${checkLabel.toLowerCase()}`;
+  els.roomModePill.textContent = state.gameMode === "image" ? modeLabel : `${modeLabel} · ${checkLabel}`;
+  els.roomModePill.title = state.gameMode === "image" ? "Đoán ý tranh hài, không giới hạn số câu" : `${modeLabel}, kiểm tra ${checkLabel.toLowerCase()}`;
   els.gameModeSelect.value = state.gameMode || "chain";
+  els.imageQuizModeSelect.value = state.imageQuizMode || "idiom";
   els.pairModeSelect.value = state.pairMode || "random";
   els.modeSelect.value = state.mode;
   els.playerCount.textContent = `${state.players.length}/${MAX_PLAYERS}`;
@@ -780,14 +806,23 @@ function renderLobbyActions(state) {
   els.hostSettings.hidden = !(host && state.phase === "lobby");
   els.lobbyActions.hidden = !(host && state.phase === "lobby");
   els.gameActions.hidden = !(host && state.phase === "playing");
+  els.endBtn.textContent = state.gameMode === "image" ? "Kết thúc trò chơi" : "Kết thúc ván";
   els.pairModeField.hidden = state.gameMode !== "letters";
+  els.imageQuizModeField.hidden = state.gameMode !== "image";
+  els.lobbySettingsHint.textContent = state.gameMode === "image"
+    ? "Hai bộ câu hỏi độc lập. Không lặp lại đáp án đã chơi trên máy chủ phòng. Khi hết câu mới, game tạm dừng để bổ sung dữ liệu."
+    : "Thông minh ghép các âm tiết có nghĩa. Khắt khe yêu cầu nguyên cụm từ có trong từ điển.";
+  els.modeSelect.closest(".field").hidden = state.gameMode === "image";
 
   if (host && state.phase === "lobby") {
     const enough = online >= 2;
-    els.startBtn.disabled = !enough;
-    els.startHint.textContent = enough
-      ? `Sẵn sàng với ${online} người chơi.`
-      : "Cần ít nhất 2 người để bắt đầu.";
+    const empty = state.gameMode === "image" && state.imageQuizAvailable === 0;
+    els.startBtn.disabled = !enough || empty;
+    els.startHint.textContent = empty
+      ? "Đã hết câu hỏi chưa từng chơi của chế độ này. Hãy bổ sung dữ liệu mới."
+      : enough
+        ? state.gameMode === "image" ? "Có " + state.imageQuizAvailable + " câu mới. Chỉ chủ phòng kết thúc trò chơi." : "Sẵn sàng với " + online + " người chơi."
+        : "Cần ít nhất 2 người để bắt đầu.";
   }
 }
 
@@ -804,28 +839,44 @@ function renderStage(state) {
 
 function renderStageLobby(state) {
   const letters = state.gameMode === "letters";
+  const object = state.gameMode === "image" && state.imageQuizMode === "object";
+  const idiom = state.gameMode === "image" && !object;
   const online = state.players.filter((player) => player.online).length;
-
-  els.lobbyTitle.textContent = letters ? "Sẵn sàng thử thách đôi chữ?" : "Sẵn sàng nối từ?";
-  els.lobbySub.textContent = letters
-    ? "Chủ phòng chọn một cặp chữ cho cả ván và cũng trả lời như mọi người. Nhập đúng hai âm tiết bắt đầu tương ứng."
-    : "Gửi link mời để bạn bè vào nhanh. Khi đủ ít nhất 2 người, chủ phòng bấm bắt đầu.";
-
-  els.lobbyChain.innerHTML = letters
-    ? "<span>H · H</span><i>→</i><span>hoa hồng</span><i>→</i><span>hoàng hôn</span>"
+  els.lobbyTitle.textContent = object ? "Bạn nhận ra vật thể bí ẩn chứ?"
+    : idiom ? "Sẵn sàng giải tranh troll?"
+    : letters ? "Sẵn sàng thử thách đôi chữ?" : "Sẵn sàng nối từ?";
+  els.lobbySub.textContent = object
+    ? "Hình được phóng đại, che bớt, làm mờ và dần hiện rõ. Có hàng trăm vật thể để đoán, không tự lặp câu đã chơi."
+    : idiom
+      ? "Ghép các chi tiết trong tranh để đoán ca dao, thành ngữ, tục ngữ. Không giới hạn tổng số vòng."
+      : letters
+        ? "Chủ phòng chọn cặp chữ. Nhập đúng hai âm tiết bắt đầu tương ứng."
+        : "Gửi link mời để bạn bè vào nhanh. Khi đủ ít nhất 2 người, chủ phòng bấm bắt đầu.";
+  els.lobbyChain.innerHTML = object ? "<span>🔍</span><i>→</i><span>❓</span><i>→</i><span>💡</span>"
+    : idiom ? "<span>🤡</span><i>→</i><span>🧠</span><i>→</i><span>💡</span>"
+    : letters ? "<span>H · H</span><i>→</i><span>hoa hồng</span><i>→</i><span>hoàng hôn</span>"
     : "<span>bánh mì</span><i>→</i><span>mì gói</span><i>→</i><span>gói quà</span>";
-
   if (app.role === "host") {
     const missing = Math.max(0, 2 - online);
     els.lobbyWait.textContent = missing
-      ? `Cần thêm ${missing} người để bắt đầu.`
-      : "Đã đủ người. Bấm “Bắt đầu chơi” để mở màn.";
+      ? "Cần thêm " + missing + " người để bắt đầu."
+      : state.gameMode === "image" && state.imageQuizAvailable === 0
+        ? "Chưa còn câu đố mới. Hãy bổ sung ngân hàng câu hỏi."
+        : "Đã đủ người. Bấm Bắt đầu chơi để mở màn.";
   } else {
     els.lobbyWait.textContent = "Đang chờ chủ phòng bắt đầu…";
   }
 }
 
 function renderStageGame(state) {
+  if (state.gameMode === "image") {
+    renderImageQuiz(state);
+    return;
+  }
+  els.imageQuizPanel.hidden = true;
+  els.targetCard.hidden = false;
+  els.chainMini.closest(".chain-mini-wrap").hidden = false;
+  els.waitingTurn.hidden = false;
   const letters = state.gameMode === "letters";
   const awaitingPair = letters && Boolean(state.awaitingPair);
   const myTurn = state.turnPlayerId === app.playerId;
@@ -904,6 +955,105 @@ function renderStageGame(state) {
   renderPairControl(state);
 }
 
+function renderImageQuiz(state) {
+  const quiz = state.imageQuiz;
+  const isObject = state.imageQuizMode === "object";
+  const exhausted = Boolean(quiz?.exhausted);
+  // Guests remember revealed answers too, so their own device will avoid
+  // these questions should they host a later game.
+  if (app.role === "guest" && quiz?.id) {
+    // A seen image also counts, even if the player leaves before reveal.
+    rememberImageQuizId(state.imageQuizMode, quiz.id,
+      quiz?.revealed && quiz.answer ? "answer:" + normalizeGuess(quiz.answer) : null);
+  }
+  const changed = Boolean(quiz?.id && els.imageQuizPanel.dataset.questionId !== quiz.id);
+  if (changed) {
+    els.imageQuizPanel.dataset.questionId = quiz.id;
+    const tiles = els.imageQuizPanel.querySelector(".image-quiz__tiles");
+    tiles.style.animation = "none";
+    void tiles.offsetWidth;
+    tiles.style.animation = "";
+    els.imageQuizPicture.dataset.failed = "";
+    renderRebusArt(els.imageQuizScene, isObject ? [] : quiz?.scene, quiz.id);
+    let hash = 0;
+    for (const char of quiz.id) hash = (Math.imul(hash, 31) + char.charCodeAt(0)) >>> 0;
+    els.imageQuizPanel.style.setProperty("--focus-x", (30 + (hash % 41)) + "%");
+    els.imageQuizPanel.style.setProperty("--focus-y", (25 + ((hash >>> 6) % 51)) + "%");
+  }
+  els.imageQuizPanel.hidden = false;
+  els.imageQuizEndBtn.hidden = app.role !== "host";
+  els.targetCard.hidden = true;
+  els.pairControl.hidden = true;
+  els.chainMini.closest(".chain-mini-wrap").hidden = true;
+  els.waitingTurn.hidden = true;
+  els.turnBadge.textContent = exhausted ? "Đã hết câu đố mới" : "Câu " + quiz.round + " · Không giới hạn vòng";
+  els.turnBadge.classList.add("is-me");
+  els.turnSub.textContent = exhausted
+    ? "Không lặp câu cũ. Chủ phòng có thể kết thúc và bổ sung câu hỏi."
+    : isObject ? "Quan sát phần hình được hé lộ dần để đoán vật thể"
+    : quiz?.revealed ? "Đáp án đã lộ! Sắp sang câu tiếp theo."
+    : "Cùng đoán ý nghĩa ẩn trong tranh";
+  els.imageQuizProgress.textContent = exhausted ? "Hết câu mới" : "Câu #" + quiz.round + " · Còn " + (quiz.remaining ?? 0) + " câu mới";
+  els.imageQuizCategory.textContent = exhausted ? "Đã chơi hết ngân hàng" : quiz?.category || "Tổng hợp";
+  els.imageQuizEmoji.textContent = exhausted ? "🧩" : quiz?.emoji || "🤡";
+  const src = quiz?.imageUrl || "";
+  if (src && els.imageQuizPicture.dataset.src !== src) {
+    els.imageQuizPicture.dataset.src = src;
+    els.imageQuizPicture.src = src;
+  }
+  const photoReady = Boolean(src && els.imageQuizPicture.dataset.failed !== src);
+  const hasScene = !isObject && Array.isArray(quiz?.scene) && quiz.scene.length > 0;
+  els.imageQuizPicture.hidden = !photoReady;
+  els.imageQuizScene.hidden = !hasScene || photoReady;
+  els.imageQuizEmoji.hidden = photoReady || hasScene;
+  els.imageQuizPanel.classList.toggle("image-quiz--comic", hasScene && !photoReady);
+  els.imageQuizPanel.classList.toggle("image-quiz--object", isObject && !exhausted);
+  els.imageQuizPanel.classList.toggle("image-quiz--exhausted", exhausted);
+  els.imageQuizPanel.style.setProperty("--quiz-reveal", quiz?.revealed || exhausted ? "1" : "0");
+  const answered = quiz?.answeredIds?.includes(app.playerId);
+  els.imageQuizReveal.textContent = exhausted
+    ? "Đã hết các đáp án chưa từng chơi. Trò chơi sẽ KHÔNG tự dùng lại câu cũ."
+    : quiz?.revealed ? "Đáp án: " + quiz.answer
+    : answered ? "Bạn đã đoán đúng! Đợi mọi người..."
+    : isObject ? "Đoán vật gì đang ẩn trong ảnh? Hình sẽ rõ dần!"
+    : "Giải ý nghĩa chung của cả 3 khung tranh!";
+  els.imageQuizPanel.classList.toggle("image-quiz--revealed", Boolean(quiz?.revealed));
+  els.imageQuizAttribution.textContent = quiz?.attribution || "";
+  if (quiz?.sourceUrl) {
+    els.imageQuizAttribution.href = quiz.sourceUrl;
+    els.imageQuizAttribution.hidden = false;
+  } else {
+    els.imageQuizAttribution.hidden = true;
+  }
+  els.timer.hidden = false;
+}
+
+// Strict no-repeat history is saved on the host device, separately by mode.
+function imageSeenKey(mode) {
+  return "noitu.imageQuiz.seen.v2." + (mode === "object" ? "object" : "idiom");
+}
+function getSeenImageQuizIds(mode = "idiom") {
+  try {
+    const stored = JSON.parse(localStorage.getItem(imageSeenKey(mode)) || "null");
+    if (Array.isArray(stored)) return stored.filter((id) => typeof id === "string");
+    if (mode === "idiom") {
+      const legacy = JSON.parse(localStorage.getItem("noitu.imageQuiz.seen.v1") || "[]");
+      return Array.isArray(legacy) ? legacy.filter((id) => typeof id === "string") : [];
+    }
+    return [];
+  } catch { return []; }
+}
+function rememberImageQuizId(mode, id, answerKey) {
+  try {
+    const saved = getSeenImageQuizIds(mode);
+    if (saved.includes(id) && (!answerKey || saved.includes(answerKey))) return;
+    const recent = saved.filter((v) => v !== id && v !== answerKey);
+    recent.push(id);
+    if (answerKey) recent.push(answerKey);
+    localStorage.setItem(imageSeenKey(mode), JSON.stringify(recent));
+  } catch { /* private browsing / storage quota */ }
+}
+
 function renderPairControl(state) {
   const show =
     app.role === "host" &&
@@ -956,16 +1106,17 @@ function renderStageEnded(state) {
     .map((id) => state.players.find((player) => player.id === id))
     .filter(Boolean);
 
+  const progress = state.gameMode === "image" ? `${state.imageQuiz?.round || 0} câu đố đã chơi` : `${state.usedCount} từ đã nối`;
   if (winners.length === 0) {
     els.winnerTitle.textContent = "Ván đấu kết thúc";
-    els.winnerSub.textContent = `Chưa có ai ghi điểm · ${state.usedCount} từ đã nối.`;
+    els.winnerSub.textContent = `Chưa có ai ghi điểm · ${progress}.`;
   } else if (winners.length === 1) {
     els.winnerTitle.innerHTML = `Chiến thắng: <span class="grad">${esc(winners[0].name)}</span>`;
-    els.winnerSub.textContent = `${winners[0].score} điểm · ${state.usedCount} từ đã nối.`;
+    els.winnerSub.textContent = `${winners[0].score} điểm · ${progress}.`;
   } else {
     const names = winners.map((player) => esc(player.name)).join(", ");
     els.winnerTitle.innerHTML = `Đồng hạng: <span class="grad">${names}</span>`;
-    els.winnerSub.textContent = `${winners[0].score} điểm mỗi người · ${state.usedCount} từ đã nối.`;
+    els.winnerSub.textContent = `${winners[0].score} điểm mỗi người · ${progress}.`;
   }
 
   const winnerTitleIds = [
@@ -1069,7 +1220,7 @@ function renderHistory(state) {
   const isNew = latestN !== 0 && latestN !== app.lastHistoryN;
   app.lastHistoryN = latestN;
 
-  els.usedCount.textContent = `${state.usedCount} từ`;
+  els.usedCount.textContent = state.gameMode === "image" ? `${state.imageQuiz?.round || 0} câu đố` : `${state.usedCount} từ`;
   els.historyEmpty.classList.toggle("hidden", items.length > 0);
   els.historyList.classList.toggle("hidden", items.length === 0);
 
@@ -1077,7 +1228,7 @@ function renderHistory(state) {
     .map((item) => {
       const lastIndex = item.syllables.length - 1;
       const word =
-        state.gameMode === "letters"
+        (state.gameMode === "letters" || state.gameMode === "image")
           ? esc(item.phrase)
           : item.syllables
               .map((syllable, index) => {
@@ -1111,7 +1262,11 @@ function updateAnswerForm(state = app.state) {
   const letters = state?.gameMode === "letters";
   const awaitingPair = Boolean(playing && state.awaitingPair);
   const myTurn = playing && state.turnPlayerId === app.playerId;
-  const disabled = !myTurn || app.answerPending || awaitingPair;
+  const image = state?.gameMode === "image";
+  const alreadyCorrect = image && state?.imageQuiz?.answeredIds?.includes(app.playerId);
+  const disabled = image
+    ? !playing || app.answerPending || Boolean(state?.imageQuiz?.revealed) || Boolean(state?.imageQuiz?.exhausted) || alreadyCorrect
+    : !myTurn || app.answerPending || awaitingPair;
   const current = playing ? state.players.find((player) => player.id === state.turnPlayerId) : null;
 
   els.answerInput.disabled = disabled;
@@ -1119,6 +1274,8 @@ function updateAnswerForm(state = app.state) {
 
   if (!playing) {
     els.answerInput.placeholder = "Nhập từ của bạn…";
+  } else if (image) {
+    els.answerInput.placeholder = state?.imageQuiz?.exhausted ? "Chờ bổ sung câu mới" : alreadyCorrect ? "Bạn đã đoán đúng!" : state?.imageQuizMode === "object" ? "Đây là vật gì?" : "Nhập thành ngữ / câu nói bạn nghĩ tới...";
   } else if (awaitingPair) {
     els.answerInput.placeholder = "Đang chờ chủ phòng chọn cặp chữ…";
   } else if (app.answerPending) {
@@ -1140,6 +1297,18 @@ function updateTimer() {
   const state = app.state;
   if (!state || state.phase !== "playing") return;
 
+  if (state.gameMode === "image" && state.imageQuiz?.exhausted) {
+    els.timerRing.style.setProperty("--p", "0");
+    els.timerText.textContent = "—";
+    els.timerUnit.textContent = "hết đề";
+    return;
+  }
+  if (state.gameMode === "image" && state.imageQuiz?.revealed) {
+    els.timerRing.style.setProperty("--p", "0");
+    els.timerText.textContent = "✓";
+    els.timerUnit.textContent = "đúng";
+    return;
+  }
   if (state.awaitingPair) {
     els.timerRing.style.setProperty("--p", "0");
     els.timerText.textContent = "—";
@@ -1151,6 +1320,10 @@ function updateTimer() {
   const total = Math.max(1, (state.turnSeconds || TURN_SECONDS) * 1000);
   const left = Math.max(0, app.deadline - performance.now());
   const percent = Math.max(0, Math.min(100, (left / total) * 100));
+  if (state.gameMode === "image" && state.imageQuizMode === "object") {
+    const reveal = state.imageQuiz?.revealed ? 1 : Math.max(0, Math.min(1, 1 - left / total));
+    els.imageQuizPanel.style.setProperty("--quiz-reveal", String(reveal));
+  }
   els.timerRing.style.setProperty("--p", String(percent));
   els.timerText.textContent = String(Math.ceil(left / 1000));
   els.timerUnit.textContent = "giây";
@@ -1161,7 +1334,7 @@ function submitAnswer(event) {
   event?.preventDefault();
   const state = app.state;
   if (!state || state.phase !== "playing" || app.answerPending) return;
-  if (state.turnPlayerId !== app.playerId) return;
+  if (state.gameMode !== "image" && state.turnPlayerId !== app.playerId) return;
 
   const text = els.answerInput.value;
   if (!text.trim()) {
@@ -1398,7 +1571,7 @@ function renderLobbyRooms() {
             </span>
           </span>
           <div class="room-card__tags">
-            <span class="room-card__mode ${room.gameMode === "letters" ? "is-letters" : ""}">${room.gameMode === "letters" ? "Đôi chữ cái" : "Nối từ"}</span>
+            <span class="room-card__mode ${room.gameMode === "letters" ? "is-letters" : ""}">${room.gameMode === "letters" ? "Đôi chữ cái" : room.gameMode === "image" ? "Đố hình" : "Nối từ"}</span>
             <span class="room-card__status ${statusClass}">${statusLabel}</span>
           </div>
           <span class="room-card__players">
@@ -1536,11 +1709,12 @@ function bindEvents() {
     }
   });
 
-  els.endBtn.addEventListener("click", () => {
+  const requestEndGame = () => {
+    if (app.role !== "host" || app.state?.phase !== "playing") return;
     showConfirm({
-      title: "Kết thúc ván?",
-      text: "Bảng điểm sẽ được chốt lại. Bạn vẫn có thể chơi lại hoặc quay về phòng chờ.",
-      confirmLabel: "Kết thúc",
+      title: "Kết thúc trò chơi?",
+      text: "Chỉ khi chủ phòng xác nhận thì trò chơi mới kết thúc và chốt bảng điểm. Bạn có thể bắt đầu lại hoặc trở về sảnh.",
+      confirmLabel: "Kết thúc trò chơi",
       cancelLabel: "Tiếp tục chơi",
       danger: true,
       onConfirm: () => {
@@ -1551,6 +1725,13 @@ function bindEvents() {
         }
       },
     });
+  };
+  els.endBtn.addEventListener("click", requestEndGame);
+  els.imageQuizEndBtn.addEventListener("click", requestEndGame);
+
+  els.imageQuizModeSelect.addEventListener("change", () => {
+    try { app.game?.setImageQuizMode(els.imageQuizModeSelect.value); }
+    catch (error) { showToast(error.message, "error"); renderRoom(); }
   });
 
   els.gameModeSelect.addEventListener("change", () => {
@@ -1611,6 +1792,13 @@ function bindEvents() {
 
   els.answerForm.addEventListener("submit", submitAnswer);
   els.answerInput.addEventListener("input", clearAnswerError);
+  els.imageQuizPicture.addEventListener("error", () => {
+    els.imageQuizPicture.dataset.failed = els.imageQuizPicture.dataset.src || "";
+    els.imageQuizPicture.hidden = true;
+    els.imageQuizEmoji.hidden = els.imageQuizScene.children.length > 0;
+    els.imageQuizScene.hidden = els.imageQuizScene.children.length === 0;
+    els.imageQuizPanel.classList.toggle("image-quiz--comic", els.imageQuizScene.children.length > 0);
+  });
 
   els.leaveBtn.addEventListener("click", requestLeave);
   els.brandHome.addEventListener("click", () => {

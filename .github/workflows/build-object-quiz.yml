@@ -1,0 +1,39 @@
+name: Build Wikimedia object photo bank
+on:
+  push:
+    branches: [feature/image-quiz]
+    paths:
+      - "scripts/build-object-quiz.mjs"
+      - "js/games/image-quiz/objects.js"
+      - ".github/workflows/build-object-quiz.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build-licensed-photos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/image-quiz
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build photo metadata from Wikimedia Commons
+        run: node scripts/build-object-quiz.mjs
+      - name: Upload bank for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: object-image-bank-for-review
+          path: assets/image-quiz/object-questions.json
+      - name: Commit generated metadata only to feature branch
+        run: |
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add assets/image-quiz/object-questions.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(image-quiz): generate licensed Wikimedia photo metadata [skip ci]"
+            git push origin HEAD:feature/image-quiz
+          fi

@@ -102,7 +102,7 @@ export async function createRoomPeer() {
   throw new Error("Không kết nối được máy chủ ghép phòng. Kiểm tra mạng rồi thử lại.");
 }
 
-export function connectToRoom(code, name) {
+export function connectToRoom(code, name, quizSeen = {}) {
   return new Promise((resolve, reject) => {
     if (!window.Peer) {
       reject(new Error("Không tải được thư viện kết nối. Kiểm tra mạng rồi tải lại trang."));
@@ -183,7 +183,7 @@ export function connectToRoom(code, name) {
 
       conn.on("data", onData);
       conn.on("open", () => {
-        conn.send({ t: "hello", name });
+        conn.send({ t: "hello", name, quizSeen });
       });
       conn.on("close", () => {
         if (!settled) fail("Mất kết nối tới chủ phòng. Có thể phòng đã đóng.");
