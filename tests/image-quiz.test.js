@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { IMAGE_QUIZ_SEED } from "../js/games/image-quiz/seed.js";
+import { GameHost } from "../js/game-core.js";
 import { normalizeGuess, prepareQuestions, chooseQuestions, ImageQuizRound } from "../js/games/image-quiz/image-quiz-core.js";
 
 test("seed bank has diverse validated answers", () => {
@@ -47,4 +48,32 @@ test("prefer unseen and never repeat an answer within a match", () => {
 test("reject invalid URLs and malformed answers", () => {
   assert.equal(prepareQuestions([{ id: "unsafe", answer: "cat", imageUrl: "javascript:alert(1)" }]).length, 0);
   assert.equal(prepareQuestions([{ id: "valid", answer: "cat", imageUrl: "https://upload.wikimedia.org/a.jpg" }]).length, 1);
+});
+
+test("host coordinates simultaneous multiplayer guesses without leaking answers", () => {
+  const dictionary = { words: new Set(["con mèo"]), syllables: new Set(["con", "mèo"]) };
+  const game = new GameHost({
+    code: "ABCDE", hostName: "Host", dictionary,
+    imageQuestions: [{ id: "cat", answer: "con mèo", aliases: ["mèo"], emoji: "🐱" }],
+  });
+  const guest = game.addPlayer({ name: "Guest" });
+  game.setGameMode("image");
+  game.start(game.hostPlayerId);
+  assert.equal(game.publicState().imageQuiz.answer, null);
+  assert.equal(game.publicState().turnPlayerId, null);
+  assert.equal(game.submit(game.hostPlayerId, "con meo").ok, true);
+  assert.equal(game.submit(guest.id, "mèo").ok, true);
+  assert.equal(game.publicState().imageQuiz.revealed, true);
+  assert.equal(game.publicState().imageQuiz.answer, "con mèo");
+  assert.ok(game.publicState().players.every((p) => p.score > 0));
+  game.destroy();
+});
+
+test("already-seen answer is deprioritized even with a new photograph", () => {
+  const qs = prepareQuestions([
+    { id: "new-photo", answer: "mèo", emoji: "🐱" },
+    { id: "new-answer", answer: "chó", emoji: "🐶" }
+  ]);
+  const deck = chooseQuestions(qs, 1, ["answer:meo"], () => 0.25);
+  assert.equal(deck[0].answer, "chó");
 });
