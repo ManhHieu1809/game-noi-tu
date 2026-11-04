@@ -33,9 +33,13 @@ export async function loadImageQuizQuestions() {
     loadOptionalBank("assets/image-quiz/rebus-questions.json"),
     loadOptionalBank("assets/image-quiz/object-questions.json"),
   ]);
+  // When a substantial real-photo bank is present, use it exclusively.
+  // Unillustrated seed objects remain candidates for future Wikimedia imports
+  // but are intentionally not shown as obvious full emoji hints in this mode.
+  const photoBank = combine(objectExtra, []).filter((q) => Boolean(q.imageUrl));
   cache = {
     idiom: combine(rebusExtra, REBUS_QUESTIONS),
-    object: combine(objectExtra, OBJECT_QUESTIONS),
+    object: photoBank.length >= 40 ? photoBank : combine(objectExtra, OBJECT_QUESTIONS),
   };
   return cache;
 }
