@@ -299,3 +299,21 @@ test("bundled Wikimedia photo bank has 200+ distinct source photographs", () => 
   assert.equal(new Set(questions.map((q) => normalizeGuess(q.answer))).size, questions.length);
   assert.ok(questions.every((q) => q.imageUrl.startsWith("https://") && q.license && q.sourceUrl));
 });
+
+
+test("object image CSS inherits live reveal/crop variables from quiz panel", () => {
+  const css = readFileSync(new URL("../css/image-quiz.css", import.meta.url), "utf8");
+  const app = readFileSync(new URL("../js/app.js", import.meta.url), "utf8");
+  // CSS must NOT shadow custom properties set via imageQuizPanel.style.
+  const objectPanel = css.match(/\.image-quiz--object\s*\{([^}]+)\}/);
+  assert.ok(objectPanel, "Object panel needs default visibility variables");
+  assert.match(objectPanel[1], /--quiz-reveal:\s*0\s*;/);
+  assert.match(objectPanel[1], /--focus-x:\s*52%/);
+  const innerVisual = css.match(/\.image-quiz--object \.image-quiz__visual\s*\{([^}]+)\}/);
+  assert.ok(innerVisual);
+  assert.doesNotMatch(innerVisual[1], /--(?:quiz-reveal|focus-x|focus-y)\s*:/);
+  assert.match(app, /imageQuizPanel\.style\.setProperty\("--quiz-reveal", String\(initialReveal\)\)/);
+  assert.match(app, /imageQuizPanel\.style\.setProperty\("--quiz-reveal", String\(reveal\)\)/);
+  // Accessibility reduced-motion preferences must not bypass puzzle blur.
+  assert.doesNotMatch(css, /prefers-reduced-motion[\s\S]*?\.image-quiz--object[^}]+filter:\s*none/);
+});
