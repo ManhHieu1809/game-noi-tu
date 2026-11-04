@@ -1,4 +1,4 @@
-import { ImageQuizRound, IMAGE_QUIZ_SECONDS, IMAGE_QUIZ_REVEAL_MS, IMAGE_QUIZ_IDIOM, IMAGE_QUIZ_OBJECT } from "./games/image-quiz/image-quiz-core.js";
+import { ImageQuizRound, IMAGE_QUIZ_SECONDS, IMAGE_QUIZ_REVEAL_MS, IMAGE_QUIZ_IDIOM, IMAGE_QUIZ_OBJECT, normalizeGuess } from "./games/image-quiz/image-quiz-core.js";
 
 export const MIN_SYLLABLES = 2;
 export const MAX_SYLLABLES = 5;
@@ -507,6 +507,31 @@ export class GameHost {
         this.onImageSeen(mode, id, answerKey);
       },
     });
+  }
+
+  mergeImageSeenHistory(history) {
+    // A guest may contribute ONLY answers from this curated question bank.
+    // Unknown strings and oversized/untrusted history payloads are ignored.
+    if (this.phase !== "lobby" || !history || typeof history !== "object") return;
+    let changed = false;
+    for (const mode of [IMAGE_QUIZ_IDIOM, IMAGE_QUIZ_OBJECT]) {
+      if (!Array.isArray(history[mode])) continue;
+      const valid = new Set((this.imageQuestionPacks?.[mode] || [])
+        .map((q) => "answer:" + normalizeGuess(q.answer)));
+      if (!Array.isArray(this.imageSeenHistory?.[mode])) this.imageSeenHistory[mode] = [];
+      const local = new Set(this.imageSeenHistory[mode]);
+      for (const key of history[mode].slice(0, 1000)) {
+        if (typeof key !== "string" || !valid.has(key) || local.has(key)) continue;
+        local.add(key);
+        if (this.imageQuizMode === mode) this.imageQuiz.seenIds.add(key);
+        changed = true;
+      }
+      this.imageSeenHistory[mode] = [...local];
+    }
+    if (changed) {
+      this._event("history", "Đã đồng bộ danh sách câu hỏi từng gặp của nhóm.");
+      this.onChange();
+    }
   }
 
   setImageQuizMode(mode) {
