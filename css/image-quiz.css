@@ -107,6 +107,15 @@
   filter: blur(calc((1 - var(--quiz-reveal)) * 10px))
           saturate(calc(.08 + var(--quiz-reveal) * .92));
 }
+/* Once the image is revealed, remove the entire mask/zoom explicitly.
+   A fully visible image must not depend on clip-path interpolation quirks
+   between browsers or any remaining CSS custom-property value. */
+.image-quiz--object.image-quiz--revealed .image-quiz__visual img,
+.image-quiz--object.image-quiz--revealed .image-quiz__emoji {
+  transform: none;
+  clip-path: none;
+  filter: none;
+}
 .image-quiz--object .image-quiz__emoji[hidden],
 .image-quiz--object .image-quiz__visual img[hidden] { display: none !important; }
 .image-quiz--exhausted .image-quiz__visual {
