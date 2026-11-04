@@ -86,6 +86,7 @@ const els = {
   imageQuizCategory: $("imageQuizCategory"),
   imageQuizReveal: $("imageQuizReveal"),
   imageQuizAttribution: $("imageQuizAttribution"),
+  imageQuizHint: $("imageQuizHint"),
   pairControlValue: $("pairControlValue"),
   pairForm: $("pairForm"),
   pairInput1: $("pairInput1"),
@@ -846,7 +847,7 @@ function renderStageLobby(state) {
     : idiom ? "Sẵn sàng giải tranh troll?"
     : letters ? "Sẵn sàng thử thách đôi chữ?" : "Sẵn sàng nối từ?";
   els.lobbySub.textContent = object
-    ? "Hình được phóng đại, che bớt, làm mờ và dần hiện rõ. Có hàng trăm vật thể để đoán, không tự lặp câu đã chơi."
+    ? "Ảnh rõ nét và hiện đầy đủ từ đầu. Có 40 giây để đoán, hết giờ mới công bố đáp án."
     : idiom
       ? "Ghép các chi tiết trong tranh để đoán ca dao, thành ngữ, tục ngữ. Không giới hạn tổng số vòng."
       : letters
@@ -975,10 +976,6 @@ function renderImageQuiz(state) {
     tiles.style.animation = "";
     els.imageQuizPicture.dataset.failed = "";
     renderRebusArt(els.imageQuizScene, isObject ? [] : quiz?.scene, quiz.id);
-    let hash = 0;
-    for (const char of quiz.id) hash = (Math.imul(hash, 31) + char.charCodeAt(0)) >>> 0;
-    els.imageQuizPanel.style.setProperty("--focus-x", (30 + (hash % 41)) + "%");
-    els.imageQuizPanel.style.setProperty("--focus-y", (25 + ((hash >>> 6) % 51)) + "%");
   }
   els.imageQuizPanel.hidden = false;
   els.imageQuizEndBtn.hidden = app.role !== "host";
@@ -990,7 +987,7 @@ function renderImageQuiz(state) {
   els.turnBadge.classList.add("is-me");
   els.turnSub.textContent = exhausted
     ? "Không lặp câu cũ. Chủ phòng có thể kết thúc và bổ sung câu hỏi."
-    : isObject ? "Quan sát phần hình được hé lộ dần để đoán vật thể"
+    : isObject ? quiz?.revealed ? "Hết giờ! Đáp án đã được công bố." : "Ảnh rõ từ đầu · Chờ hết giờ mới công bố đáp án"
     : quiz?.revealed ? "Đáp án đã lộ! Sắp sang câu tiếp theo."
     : "Cùng đoán ý nghĩa ẩn trong tranh";
   els.imageQuizProgress.textContent = exhausted ? "Hết câu mới" : "Câu #" + quiz.round + " · Còn " + (quiz.remaining ?? 0) + " câu mới";
@@ -1009,19 +1006,12 @@ function renderImageQuiz(state) {
   els.imageQuizPanel.classList.toggle("image-quiz--comic", hasScene && !photoReady);
   els.imageQuizPanel.classList.toggle("image-quiz--object", isObject && !exhausted);
   els.imageQuizPanel.classList.toggle("image-quiz--exhausted", exhausted);
-  // Set the initial visibility from the host-authoritative remaining time,
-  // not zero: guests receiving mid-round updates must not see the image
-  // snap back to a blurred state on every state broadcast.
-  const durationMs = Math.max(1, (state.turnSeconds || 40) * 1000);
-  const remainingMs = Math.max(0, Math.min(durationMs, state.remainingMs ?? durationMs));
-  const initialReveal = quiz?.revealed || exhausted ? 1 : Math.min(1, (1 - remainingMs / durationMs) / 0.75);
-  els.imageQuizPanel.style.setProperty("--quiz-reveal", String(initialReveal));
   const answered = quiz?.answeredIds?.includes(app.playerId);
   els.imageQuizReveal.textContent = exhausted
     ? "Đã hết các đáp án chưa từng chơi. Trò chơi sẽ KHÔNG tự dùng lại câu cũ."
     : quiz?.revealed ? "Đáp án: " + quiz.answer
     : answered ? "Bạn đã đoán đúng! Đợi mọi người..."
-    : isObject ? "Đoán vật gì đang ẩn trong ảnh? Hình sẽ rõ dần!"
+    : isObject ? "Đoán vật thể trong ảnh! Đáp án chỉ hiện sau khi hết giờ."
     : "Giải ý nghĩa chung của cả 3 khung tranh!";
   els.imageQuizPanel.classList.toggle("image-quiz--revealed", Boolean(quiz?.revealed));
   els.imageQuizAttribution.textContent = quiz?.attribution || "";
@@ -1031,6 +1021,9 @@ function renderImageQuiz(state) {
   } else {
     els.imageQuizAttribution.hidden = true;
   }
+  els.imageQuizHint.textContent = isObject
+    ? "Ảnh rõ từ giây đầu · Đếm ngược 40 giây · Đáp án chỉ công bố khi hết giờ."
+    : "Giải ý nghĩa của ba khung tranh · Người đoán đúng sớm được thêm điểm.";
   els.timer.hidden = false;
 }
 
@@ -1326,12 +1319,6 @@ function updateTimer() {
   const total = Math.max(1, (state.turnSeconds || TURN_SECONDS) * 1000);
   const left = Math.max(0, app.deadline - performance.now());
   const percent = Math.max(0, Math.min(100, (left / total) * 100));
-  if (state.gameMode === "image" && state.imageQuizMode === "object") {
-    // Fully uncover the original photograph after 75% of the question time.
-    // Remaining 25% gives all players a fair chance to view the whole image.
-    const reveal = state.imageQuiz?.revealed ? 1 : Math.max(0, Math.min(1, (1 - left / total) / 0.75));
-    els.imageQuizPanel.style.setProperty("--quiz-reveal", String(reveal));
-  }
   els.timerRing.style.setProperty("--p", String(percent));
   els.timerText.textContent = String(Math.ceil(left / 1000));
   els.timerUnit.textContent = "giây";
