@@ -528,6 +528,7 @@ function handleHostConnection(conn) {
 
       try {
         const player = app.game.addPlayer({ name: message.name, peerId: conn.peer, isHost: false });
+        app.game.mergeImageSeenHistory(message.quizSeen);
         conn.playerId = player.id;
         app.conns.set(player.id, conn);
         conn.send({ t: "welcome", playerId: player.id, state: app.game.publicState() });
@@ -614,7 +615,12 @@ async function joinRoom(inputCode) {
   showLoading("Đang vào phòng…", `Đang tìm phòng ${code}…`);
 
   try {
-    const session = await connectToRoom(code, name);
+    // Only send normalized answer keys, not scores or usernames.
+    const quizSeen = {
+      idiom: getSeenImageQuizIds("idiom").filter((x) => x.startsWith("answer:")).slice(-1000),
+      object: getSeenImageQuizIds("object").filter((x) => x.startsWith("answer:")).slice(-1000),
+    };
+    const session = await connectToRoom(code, name, quizSeen);
     app.role = "guest";
     app.roomCode = code;
     app.peer = session.peer;
