@@ -52,10 +52,14 @@
 
 /* Object challenge: rather than naming a fully visible object, players get a
    tight crop / silhouette / blur which progressively reveals over 40 seconds. */
-.image-quiz--object .image-quiz__visual {
+.image-quiz--object {
+  /* JavaScript writes these properties to this element. Defining them on
+     a descendant overrides the inherited values and leaves images blurred. */
   --quiz-reveal: 0;
   --focus-x: 52%;
   --focus-y: 46%;
+}
+.image-quiz--object .image-quiz__visual {
   overflow: hidden;
   background:
     radial-gradient(circle at 15% 18%, #ffeab0 0 5%, transparent 6%),
@@ -108,7 +112,6 @@
 .image-quiz--exhausted .image-quiz__visual {
   background: repeating-linear-gradient(-45deg,#ffecd2 0 15px,#f4e0bf 15px 30px);
 }
-@media (prefers-reduced-motion: reduce) {
-  .image-quiz--object .image-quiz__visual img,
-  .image-quiz--object .image-quiz__emoji { filter: none; }
-}
+/* The reveal is an essential game rule, not decorative motion. Users with
+   reduced-motion enabled must see the SAME blur/crop difficulty. Transition
+   and animation are already disabled for the object puzzle. */
