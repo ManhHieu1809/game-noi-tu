@@ -940,10 +940,10 @@ function renderImageQuiz(state) {
   els.pairControl.hidden = true;
   els.chainMini.closest(".chain-mini-wrap").hidden = true;
   els.waitingTurn.hidden = true;
-  els.turnBadge.textContent = quiz ? \`Câu \${quiz.round} / \${quiz.rounds}\` : "Đoán ảnh";
+  els.turnBadge.textContent = quiz ? `Câu ${quiz.round} / ${quiz.rounds}` : "Đoán ảnh";
   els.turnBadge.classList.add("is-me");
   els.turnSub.textContent = quiz?.revealed ? "Cùng xem đáp án!" : "Tất cả cùng đoán · đúng càng sớm càng nhiều điểm";
-  els.imageQuizProgress.textContent = quiz ? \`\${quiz.round} / \${quiz.rounds}\` : "";
+  els.imageQuizProgress.textContent = quiz ? `${quiz.round} / ${quiz.rounds}` : "";
   els.imageQuizCategory.textContent = quiz?.category || "Tổng hợp";
   els.imageQuizEmoji.textContent = quiz?.emoji || "🖼️";
   const src = quiz?.imageUrl || "";
@@ -956,7 +956,7 @@ function renderImageQuiz(state) {
   els.imageQuizEmoji.hidden = photoReady;
   const answered = quiz?.answeredIds?.includes(app.playerId);
   els.imageQuizReveal.textContent = quiz?.revealed
-    ? \`Đáp án: \${quiz.answer}\`
+    ? `Đáp án: ${quiz.answer}`
     : answered ? "Bạn đã đoán đúng! Đợi mọi người..." : "Nhìn kỹ và nhập đáp án của bạn!";
   els.imageQuizPanel.classList.toggle("image-quiz--revealed", Boolean(quiz?.revealed));
   els.imageQuizAttribution.textContent = quiz?.attribution || "";
