@@ -548,7 +548,9 @@ export class GameHost {
         ? this.pairMode === PAIR_MODE_MANUAL
           ? "Ván mới bắt đầu! Chờ chủ phòng chọn cặp chữ cái cho cả ván."
           : "Ván mới bắt đầu! Cặp chữ cái đã được chọn cho cả ván."
-        : "Ván mới bắt đầu! Người đầu tiên có thể chọn từ bất kỳ."
+        : this.gameMode === GAME_MODE_IMAGE
+          ? "Đố hình bắt đầu! Cứ chơi liên tục cho đến khi chủ phòng kết thúc."
+          : "Ván mới bắt đầu! Người đầu tiên có thể chọn từ bất kỳ."
     );
     this.onChange();
   }
@@ -987,21 +989,26 @@ export class GameHost {
     this._clearTimer();
     this.imageQuiz.reveal();
     this.turnDeadline = 0;
+    const first = this.players.find((p) => p.id === this.imageQuiz.firstWinnerId);
+    this.history.push({
+      id: ++this.historySeq,
+      n: this.history.length + 1,
+      phrase: this.imageQuiz.current.answer,
+      syllables: [],
+      playerId: first?.id || null,
+      playerName: first ? first.name + " đoán nhanh nhất" : "Chưa ai đoán đúng",
+    });
     this._event("reveal", "Đáp án: " + this.imageQuiz.current.answer);
     this.onChange();
     this._clearQuizTransition();
     this.quizTransitionTimer = setTimeout(() => {
       this.quizTransitionTimer = null;
       if (this.phase !== "playing" || this.gameMode !== GAME_MODE_IMAGE) return;
-      if (!this.imageQuiz.next()) {
-        this.phase = "ended";
-        this.turnDeadline = 0;
-        this._event("end", "Đã hoàn thành tất cả câu đố!");
-      } else {
-        this.turnSeq += 1;
-        this._startTimer();
-        this._event("next", "Câu hỏi tiếp theo đã bắt đầu!");
-      }
+      // Never end because of question count: exhausted decks are reshuffled.
+      this.imageQuiz.next();
+      this.turnSeq += 1;
+      this._startTimer();
+      this._event("next", "Câu hỏi tiếp theo đã bắt đầu!");
       this.onChange();
     }, IMAGE_QUIZ_REVEAL_MS);
   }

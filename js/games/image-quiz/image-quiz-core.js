@@ -1,8 +1,7 @@
 // Pure rules for the photo/illustration guessing mini-game.
 // No DOM, PeerJS or network access: this module can be tested in Node.
-export const IMAGE_QUIZ_SECONDS = 20;
-export const IMAGE_QUIZ_ROUNDS = 8;
-export const IMAGE_QUIZ_REVEAL_MS = 2600;
+export const IMAGE_QUIZ_SECONDS = 40;
+export const IMAGE_QUIZ_REVEAL_MS = 3200;
 
 export function normalizeGuess(value) {
   return String(value ?? "")
@@ -25,7 +24,11 @@ export function prepareQuestions(raw) {
     const answer = String(item.answer || "").normalize("NFC").trim();
     const imageUrl = typeof item.imageUrl === "string" ? item.imageUrl.trim() : "";
     const emoji = typeof item.emoji === "string" ? item.emoji.trim() : "";
-    if (!id || !answer || (!emoji && !imageUrl) || ids.has(id)) continue;
+    // Scene panels are visual hints only, never the answer or an explanatory prompt.
+    const scene = Array.isArray(item.scene)
+      ? item.scene.filter((part) => typeof part === "string" && part.trim()).map((part) => part.trim().slice(0, 24)).slice(0, 3)
+      : [];
+    if (!id || !answer || (!emoji && !imageUrl && !scene.length) || ids.has(id)) continue;
     if (imageUrl && !/^https:\/\//.test(imageUrl) && !/^assets\/image-quiz\/[\w./-]+$/.test(imageUrl)) continue;
     const aliases = Array.isArray(item.aliases)
       ? item.aliases.filter((x) => typeof x === "string").map((x) => x.trim()).filter(Boolean).slice(0, 12)
@@ -34,7 +37,8 @@ export function prepareQuestions(raw) {
     if (!keys.size) continue;
     ids.add(id);
     result.push({
-      id, answer, aliases, keys, imageUrl, emoji,
+      id, answer, aliases, keys, imageUrl, emoji, scene,
+      difficulty: ["hard", "medium"].includes(item.difficulty) ? item.difficulty : "medium",
       category: String(item.category || "Tổng hợp").slice(0, 48),
       sourceUrl: /^https:\/\//.test(item.sourceUrl || "") ? item.sourceUrl : "",
       attribution: String(item.attribution || "").slice(0, 180),
@@ -44,7 +48,7 @@ export function prepareQuestions(raw) {
   return result;
 }
 
-export function chooseQuestions(questions, count, seenIds = [], random = Math.random) {
+export function chooseQuestions(questions, count = questions.length, seenIds = [], random = Math.random) {
   const seen = new Set(seenIds);
   const shuffle = (items) => {
     const result = [...items];
@@ -70,36 +74,67 @@ export function chooseQuestions(questions, count, seenIds = [], random = Math.ra
   return chosen;
 }
 
+// A match has no fixed round count. After all distinct answers have been
+// played, create a new shuffled deck and keep going until the host ends the match.
 export class ImageQuizRound {
-  constructor({ questions = [], seenIds = [], rounds = IMAGE_QUIZ_ROUNDS, onSeen = () => {} } = {}) {
+  constructor({ questions = [], seenIds = [], onSeen = () => {} } = {}) {
     this.questions = prepareQuestions(questions);
     this.seenIds = new Set(seenIds);
-    this.rounds = Math.max(1, Math.min(20, Number(rounds) || IMAGE_QUIZ_ROUNDS));
     this.onSeen = onSeen;
     this.deck = [];
     this.index = -1;
     this.current = null;
+    this.usedAnswers = new Set();
     this.revealed = false;
     this.answered = new Set();
     this.firstWinnerId = null;
   }
 
   start() {
-    if (!this.questions.length) throw new Error("Chưa có ảnh đoán chữ hợp lệ.");
-    this.deck = chooseQuestions(this.questions, this.rounds, this.seenIds);
+    if (!this.questions.length) throw new Error("Chưa có tranh đố mẹo hợp lệ.");
+    this.deck = [];
     this.index = -1;
+    this.current = null;
+    this.usedAnswers.clear();
     return this.next();
   }
 
+  _refillDeck() {
+    const newQuestions = this.questions.filter(
+      (q) => !this.usedAnswers.has(normalizeGuess(q.answer))
+    );
+    if (!newQuestions.length) {
+      // A finite curated bank can be replayed, but NEVER ends the match.
+      this.usedAnswers.clear();
+    }
+    const available = this.questions.filter(
+      (q) => !this.usedAnswers.has(normalizeGuess(q.answer))
+    );
+    const deck = chooseQuestions(available, available.length, this.seenIds);
+    // When cycling, do not immediately repeat the previous answer unless
+    // there is only one possible unique answer.
+    if (deck.length > 1 && this.current) {
+      const last = normalizeGuess(this.current.answer);
+      const candidate = deck.findIndex((q) => normalizeGuess(q.answer) !== last);
+      if (candidate > 0) [deck[0], deck[candidate]] = [deck[candidate], deck[0]];
+    }
+    this.deck = deck;
+  }
+
   next() {
+    if (!this.deck.length) this._refillDeck();
+    const question = this.deck.shift();
+    if (!question) return false;
     this.index += 1;
-    this.current = this.deck[this.index] || null;
+    this.current = question;
+    this.usedAnswers.add(normalizeGuess(question.answer));
     this.answered.clear();
     this.firstWinnerId = null;
     this.revealed = false;
-    if (!this.current) return false;
-    this.seenIds.add(this.current.id);
-    this.onSeen(this.current.id, "answer:" + normalizeGuess(this.current.answer));
+    const answerKey = "answer:" + normalizeGuess(question.answer);
+    this.seenIds.add(question.id);
+    this.seenIds.add(answerKey);
+    this.onSeen(question.id, answerKey);
     return true;
   }
 
@@ -114,7 +149,7 @@ export class ImageQuizRound {
     if (!key) return { ok: false, reason: "Hãy nhập đáp án của bạn." };
     if (key.length > 80) return { ok: false, reason: "Đáp án quá dài." };
     if (!this.current.keys.has(key)) {
-      return { ok: false, reason: "Chưa chính xác! Thử lại nhé." };
+      return { ok: false, reason: "Chưa chính xác! Thử giải ý của cả bức tranh nhé." };
     }
     this.answered.add(playerId);
     const first = !this.firstWinnerId;
@@ -138,12 +173,13 @@ export class ImageQuizRound {
       id: this.current.id,
       imageUrl: this.current.imageUrl,
       emoji: this.current.emoji,
+      scene: [...this.current.scene],
       category: this.current.category,
+      difficulty: this.current.difficulty,
       sourceUrl: this.current.sourceUrl,
       attribution: this.current.attribution,
       license: this.current.license,
       round: this.index + 1,
-      rounds: this.deck.length,
       answeredIds: [...this.answered],
       revealed: this.revealed,
       answer: this.revealed ? this.current.answer : null,

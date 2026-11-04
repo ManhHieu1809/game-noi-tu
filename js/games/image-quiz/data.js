@@ -1,27 +1,27 @@
-import { IMAGE_QUIZ_SEED } from "./seed.js";
+import { REBUS_QUESTIONS } from "./rebus.js";
 import { prepareQuestions } from "./image-quiz-core.js";
 
 let cache = null;
 
-// The reviewed, optionally Wikimedia-enriched JSON takes precedence.
-// Falls back to the 120+ built-in emoji illustrations if no photo bank was generated.
+// Only curated comic rebuses are used: the old easy object-name emoji list
+// and Wikipedia thumbnail importer are NOT added to this game mode.
 export async function loadImageQuizQuestions() {
   if (cache) return cache;
-  let bank = [];
+  let extra = [];
   try {
-    const response = await fetch("assets/image-quiz/questions.json", { cache: "no-cache" });
+    const response = await fetch("assets/image-quiz/rebus-questions.json", { cache: "no-cache" });
     if (response.ok) {
       const payload = await response.json();
-      bank = prepareQuestions(Array.isArray(payload) ? payload : payload.questions);
+      extra = Array.isArray(payload) ? payload : payload.questions;
     }
   } catch {
-    // Offline/local fallback is intentional.
+    // Original built-in comic scenes always work without external images.
   }
-  const combined = [...bank, ...prepareQuestions(IMAGE_QUIZ_SEED)];
+  const candidates = [...(Array.isArray(extra) ? extra : []), ...REBUS_QUESTIONS];
   const ids = new Set();
-  cache = combined.filter((item) => {
-    if (ids.has(item.id)) return false;
-    ids.add(item.id);
+  cache = prepareQuestions(candidates).filter((q) => {
+    if (ids.has(q.id)) return false;
+    ids.add(q.id);
     return true;
   });
   return cache;

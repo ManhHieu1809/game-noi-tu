@@ -1,6 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { IMAGE_QUIZ_SEED } from "../js/games/image-quiz/seed.js";
+import { REBUS_QUESTIONS } from "../js/games/image-quiz/rebus.js";
+import { readFileSync } from "node:fs";
 import { GameHost } from "../js/game-core.js";
 import { normalizeGuess, prepareQuestions, chooseQuestions, ImageQuizRound } from "../js/games/image-quiz/image-quiz-core.js";
 
@@ -76,4 +78,71 @@ test("already-seen answer is deprioritized even with a new photograph", () => {
   ]);
   const deck = chooseQuestions(qs, 1, ["answer:meo"], () => 0.25);
   assert.equal(deck[0].answer, "chó");
+});
+
+test("curated meme comic bank includes 100+ distinct Vietnamese riddles", () => {
+  const questions = prepareQuestions(REBUS_QUESTIONS);
+  assert.ok(questions.length >= 100);
+  assert.equal(new Set(questions.map((q) => normalizeGuess(q.answer))).size, questions.length);
+  assert.ok(questions.every((q) => q.scene.length === 3));
+  assert.ok(questions.every((q) => q.difficulty === "hard" || q.difficulty === "medium"));
+});
+
+test("continuous game reshuffles and NEVER stops when question bank is exhausted", () => {
+  const quiz = new ImageQuizRound({ questions: [
+    { id: "a", answer: "đầu voi đuôi chuột", scene: ["🐘", "✂️", "🐭"] },
+    { id: "b", answer: "ăn cháo đá bát", scene: ["🥣", "🦶", "🥣"] },
+    { id: "c", answer: "nước đổ đầu vịt", scene: ["🚿", "🦆", "😐"] }
+  ] });
+  assert.equal(quiz.start(), true);
+  const firstThree = [quiz.current.id];
+  for (let i = 0; i < 39; i++) {
+    assert.equal(quiz.next(), true);
+    assert.equal(quiz.publicState().round, i + 2);
+    assert.equal(quiz.publicState().rounds, undefined);
+    assert.equal(quiz.publicState().answer, null);
+    if (i < 2) firstThree.push(quiz.current.id);
+  }
+  assert.equal(new Set(firstThree).size, 3);
+  assert.equal(quiz.publicState().round, 40);
+});
+
+test("single puzzle pool still advances forever instead of ending", () => {
+  const quiz = new ImageQuizRound({ questions: [{ id: "only", answer: "nước chảy đá mòn", scene: ["💧", "🪨"] }] });
+  quiz.start();
+  for (let i = 0; i < 15; i++) assert.equal(quiz.next(), true);
+  assert.equal(quiz.publicState().round, 16);
+});
+
+test("host must explicitly end endless image game", () => {
+  const dictionary = { words: new Set(["hoa hồng"]), syllables: new Set(["hoa", "hồng"]) };
+  const game = new GameHost({ code: "ABCDE", hostName: "Host", dictionary, imageQuestions: REBUS_QUESTIONS.slice(0, 2) });
+  const guest = game.addPlayer({ name: "Guest" });
+  game.setGameMode("image");
+  game.start(game.hostPlayerId);
+  // Every timeout merely reveals an answer. A timer never ends the match.
+  for (let i = 0; i < 6; i++) {
+    game._revealImageRound();
+    assert.equal(game.phase, "playing");
+    game._clearQuizTransition();
+    assert.equal(game.imageQuiz.next(), true);
+    game.turnSeq += 1;
+    game._startTimer();
+  }
+  assert.equal(game.phase, "playing");
+  assert.throws(() => game.end(guest.id), /chủ phòng/);
+  assert.equal(game.phase, "playing");
+  game.end(game.hostPlayerId);
+  assert.equal(game.phase, "ended");
+  assert.equal(game.publicState().imageQuiz.round, 7);
+  game.destroy();
+});
+
+test("game interface includes an accessible prominent end button", () => {
+  const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+  const app = readFileSync(new URL("../js/app.js", import.meta.url), "utf8");
+  assert.match(html, /id="imageQuizEndBtn"/);
+  assert.match(html, /Kết thúc trò chơi/);
+  assert.match(app, /imageQuizEndBtn\.addEventListener\("click", requestEndGame\)/);
+  assert.match(app, /els\.imageQuizEndBtn\.hidden = app\.role !== "host"/);
 });

@@ -9,6 +9,7 @@ import {
 } from "./game-core.js";
 import { loadDictionary } from "./dictionary.js";
 import { loadImageQuizQuestions } from "./games/image-quiz/data.js";
+import { renderRebusArt } from "./games/image-quiz/rebus-art.js";
 import { LobbyDirectory } from "./lobby-directory.js";
 import { cleanCode, CODE_LENGTH, createRoomPeer, connectToRoom } from "./net.js";
 
@@ -74,6 +75,8 @@ const els = {
   pairControl: $("pairControl"),
   imageQuizPanel: $("imageQuizPanel"),
   imageQuizPicture: $("imageQuizPicture"),
+  imageQuizScene: $("imageQuizScene"),
+  imageQuizEndBtn: $("imageQuizEndBtn"),
   imageQuizEmoji: $("imageQuizEmoji"),
   imageQuizProgress: $("imageQuizProgress"),
   imageQuizCategory: $("imageQuizCategory"),
@@ -734,8 +737,8 @@ function renderRoom() {
   els.lobbyCode.textContent = state.code;
   const modeLabel = state.gameMode === "letters" ? "Đôi chữ cái" : state.gameMode === "image" ? "Nhìn hình đoán chữ" : "Nối từ";
   const checkLabel = state.mode === "strict" ? "Khắt khe" : "Thông minh";
-  els.roomModePill.textContent = `${modeLabel} · ${checkLabel}`;
-  els.roomModePill.title = `${modeLabel}, kiểm tra ${checkLabel.toLowerCase()}`;
+  els.roomModePill.textContent = state.gameMode === "image" ? modeLabel : `${modeLabel} · ${checkLabel}`;
+  els.roomModePill.title = state.gameMode === "image" ? "Đoán ý tranh hài, không giới hạn số câu" : `${modeLabel}, kiểm tra ${checkLabel.toLowerCase()}`;
   els.gameModeSelect.value = state.gameMode || "chain";
   els.pairModeSelect.value = state.pairMode || "random";
   els.modeSelect.value = state.mode;
@@ -792,6 +795,7 @@ function renderLobbyActions(state) {
   els.hostSettings.hidden = !(host && state.phase === "lobby");
   els.lobbyActions.hidden = !(host && state.phase === "lobby");
   els.gameActions.hidden = !(host && state.phase === "playing");
+  els.endBtn.textContent = state.gameMode === "image" ? "Kết thúc trò chơi" : "Kết thúc ván";
   els.pairModeField.hidden = state.gameMode !== "letters";
   els.modeSelect.closest(".field").hidden = state.gameMode === "image";
 
@@ -819,12 +823,12 @@ function renderStageLobby(state) {
   const letters = state.gameMode === "letters";
   const online = state.players.filter((player) => player.online).length;
 
-  els.lobbyTitle.textContent = state.gameMode === "image" ? "Sẵn sàng đoán hình?" : letters ? "Sẵn sàng thử thách đôi chữ?" : "Sẵn sàng nối từ?";
-  els.lobbySub.textContent = state.gameMode === "image" ? "Tất cả cùng đoán ảnh đang mở dần. Đúng càng sớm càng nhiều điểm!" : letters
+  els.lobbyTitle.textContent = state.gameMode === "image" ? "Sẵn sàng giải tranh troll?" : letters ? "Sẵn sàng thử thách đôi chữ?" : "Sẵn sàng nối từ?";
+  els.lobbySub.textContent = state.gameMode === "image" ? "Ghép các chi tiết trong tranh hài để đoán thành ngữ, tục ngữ và câu nói. Không giới hạn số câu, chủ phòng quyết định khi nào kết thúc!" : letters
     ? "Chủ phòng chọn một cặp chữ cho cả ván và cũng trả lời như mọi người. Nhập đúng hai âm tiết bắt đầu tương ứng."
     : "Gửi link mời để bạn bè vào nhanh. Khi đủ ít nhất 2 người, chủ phòng bấm bắt đầu.";
 
-  els.lobbyChain.innerHTML = state.gameMode === "image" ? "<span>🧩</span><i>→</i><span>Đoán nhanh</span><i>→</i><span>🏆</span>" : letters
+  els.lobbyChain.innerHTML = state.gameMode === "image" ? "<span>🤡</span><i>→</i><span>🧠</span><i>→</i><span>💡</span>" : letters
     ? "<span>H · H</span><i>→</i><span>hoa hồng</span><i>→</i><span>hoàng hôn</span>"
     : "<span>bánh mì</span><i>→</i><span>mì gói</span><i>→</i><span>gói quà</span>";
 
@@ -927,37 +931,47 @@ function renderStageGame(state) {
 
 function renderImageQuiz(state) {
   const quiz = state.imageQuiz;
-  if (quiz?.id && els.imageQuizPanel.dataset.questionId !== quiz.id) {
+  const changed = Boolean(quiz?.id && els.imageQuizPanel.dataset.questionId !== quiz.id);
+  if (changed) {
     els.imageQuizPanel.dataset.questionId = quiz.id;
     const tiles = els.imageQuizPanel.querySelector(".image-quiz__tiles");
     tiles.style.animation = "none";
     void tiles.offsetWidth;
     tiles.style.animation = "";
     els.imageQuizPicture.dataset.failed = "";
+    renderRebusArt(els.imageQuizScene, quiz?.scene, quiz.id);
   }
   els.imageQuizPanel.hidden = false;
+  els.imageQuizEndBtn.hidden = app.role !== "host";
   els.targetCard.hidden = true;
   els.pairControl.hidden = true;
   els.chainMini.closest(".chain-mini-wrap").hidden = true;
   els.waitingTurn.hidden = true;
-  els.turnBadge.textContent = quiz ? `Câu ${quiz.round} / ${quiz.rounds}` : "Đoán ảnh";
+  els.turnBadge.textContent = quiz ? "Câu " + quiz.round + " · Không giới hạn" : "Đố tranh";
   els.turnBadge.classList.add("is-me");
-  els.turnSub.textContent = quiz?.revealed ? "Cùng xem đáp án!" : "Tất cả cùng đoán · đúng càng sớm càng nhiều điểm";
-  els.imageQuizProgress.textContent = quiz ? `${quiz.round} / ${quiz.rounds}` : "";
-  els.imageQuizCategory.textContent = quiz?.category || "Tổng hợp";
-  els.imageQuizEmoji.textContent = quiz?.emoji || "🖼️";
+  els.turnSub.textContent = quiz?.revealed
+    ? "Đáp án đã lộ! Câu tiếp theo sẽ tự xuất hiện."
+    : "Cả phòng cùng đoán thành ngữ hoặc ý hài ẩn trong tranh";
+  els.imageQuizProgress.textContent = quiz ? "Câu #" + quiz.round + " · Chơi liên tục" : "";
+  els.imageQuizCategory.textContent = quiz?.category || "Đố mẹo";
+  els.imageQuizEmoji.textContent = quiz?.emoji || "🤡";
+
   const src = quiz?.imageUrl || "";
   if (src && els.imageQuizPicture.dataset.src !== src) {
     els.imageQuizPicture.dataset.src = src;
     els.imageQuizPicture.src = src;
   }
   const photoReady = Boolean(src && els.imageQuizPicture.dataset.failed !== src);
+  const hasScene = Array.isArray(quiz?.scene) && quiz.scene.length > 0;
   els.imageQuizPicture.hidden = !photoReady;
-  els.imageQuizEmoji.hidden = photoReady;
+  els.imageQuizScene.hidden = !hasScene || photoReady;
+  els.imageQuizEmoji.hidden = photoReady || hasScene;
+  els.imageQuizPanel.classList.toggle("image-quiz--comic", hasScene && !photoReady);
+
   const answered = quiz?.answeredIds?.includes(app.playerId);
   els.imageQuizReveal.textContent = quiz?.revealed
-    ? `Đáp án: ${quiz.answer}`
-    : answered ? "Bạn đã đoán đúng! Đợi mọi người..." : "Nhìn kỹ và nhập đáp án của bạn!";
+    ? "Đáp án: " + quiz.answer
+    : answered ? "Bạn đã đoán đúng! Đợi mọi người..." : "Nhìn cả 3 khung tranh để đoán ý nghĩa!";
   els.imageQuizPanel.classList.toggle("image-quiz--revealed", Boolean(quiz?.revealed));
   els.imageQuizAttribution.textContent = quiz?.attribution || "";
   if (quiz?.sourceUrl) {
@@ -1038,16 +1052,17 @@ function renderStageEnded(state) {
     .map((id) => state.players.find((player) => player.id === id))
     .filter(Boolean);
 
+  const progress = state.gameMode === "image" ? `${state.imageQuiz?.round || 0} câu đố đã chơi` : `${state.usedCount} từ đã nối`;
   if (winners.length === 0) {
     els.winnerTitle.textContent = "Ván đấu kết thúc";
-    els.winnerSub.textContent = `Chưa có ai ghi điểm · ${state.usedCount} từ đã nối.`;
+    els.winnerSub.textContent = `Chưa có ai ghi điểm · ${progress}.`;
   } else if (winners.length === 1) {
     els.winnerTitle.innerHTML = `Chiến thắng: <span class="grad">${esc(winners[0].name)}</span>`;
-    els.winnerSub.textContent = `${winners[0].score} điểm · ${state.usedCount} từ đã nối.`;
+    els.winnerSub.textContent = `${winners[0].score} điểm · ${progress}.`;
   } else {
     const names = winners.map((player) => esc(player.name)).join(", ");
     els.winnerTitle.innerHTML = `Đồng hạng: <span class="grad">${names}</span>`;
-    els.winnerSub.textContent = `${winners[0].score} điểm mỗi người · ${state.usedCount} từ đã nối.`;
+    els.winnerSub.textContent = `${winners[0].score} điểm mỗi người · ${progress}.`;
   }
 
   const winnerTitleIds = [
@@ -1151,7 +1166,7 @@ function renderHistory(state) {
   const isNew = latestN !== 0 && latestN !== app.lastHistoryN;
   app.lastHistoryN = latestN;
 
-  els.usedCount.textContent = `${state.usedCount} từ`;
+  els.usedCount.textContent = state.gameMode === "image" ? `${state.imageQuiz?.round || 0} câu đố` : `${state.usedCount} từ`;
   els.historyEmpty.classList.toggle("hidden", items.length > 0);
   els.historyList.classList.toggle("hidden", items.length === 0);
 
@@ -1159,7 +1174,7 @@ function renderHistory(state) {
     .map((item) => {
       const lastIndex = item.syllables.length - 1;
       const word =
-        state.gameMode === "letters"
+        (state.gameMode === "letters" || state.gameMode === "image")
           ? esc(item.phrase)
           : item.syllables
               .map((syllable, index) => {
@@ -1206,7 +1221,7 @@ function updateAnswerForm(state = app.state) {
   if (!playing) {
     els.answerInput.placeholder = "Nhập từ của bạn…";
   } else if (image) {
-    els.answerInput.placeholder = alreadyCorrect ? "Bạn đã đoán đúng!" : "Nhập đáp án của ảnh...";
+    els.answerInput.placeholder = alreadyCorrect ? "Bạn đã đoán đúng!" : "Nhập thành ngữ / câu nói bạn nghĩ tới...";
   } else if (awaitingPair) {
     els.answerInput.placeholder = "Đang chờ chủ phòng chọn cặp chữ…";
   } else if (app.answerPending) {
@@ -1630,11 +1645,12 @@ function bindEvents() {
     }
   });
 
-  els.endBtn.addEventListener("click", () => {
+  const requestEndGame = () => {
+    if (app.role !== "host" || app.state?.phase !== "playing") return;
     showConfirm({
-      title: "Kết thúc ván?",
-      text: "Bảng điểm sẽ được chốt lại. Bạn vẫn có thể chơi lại hoặc quay về phòng chờ.",
-      confirmLabel: "Kết thúc",
+      title: "Kết thúc trò chơi?",
+      text: "Chỉ khi chủ phòng xác nhận thì trò chơi mới kết thúc và chốt bảng điểm. Bạn có thể bắt đầu lại hoặc trở về sảnh.",
+      confirmLabel: "Kết thúc trò chơi",
       cancelLabel: "Tiếp tục chơi",
       danger: true,
       onConfirm: () => {
@@ -1645,7 +1661,9 @@ function bindEvents() {
         }
       },
     });
-  });
+  };
+  els.endBtn.addEventListener("click", requestEndGame);
+  els.imageQuizEndBtn.addEventListener("click", requestEndGame);
 
   els.gameModeSelect.addEventListener("change", () => {
     try {
@@ -1708,7 +1726,9 @@ function bindEvents() {
   els.imageQuizPicture.addEventListener("error", () => {
     els.imageQuizPicture.dataset.failed = els.imageQuizPicture.dataset.src || "";
     els.imageQuizPicture.hidden = true;
-    els.imageQuizEmoji.hidden = false;
+    els.imageQuizEmoji.hidden = els.imageQuizScene.children.length > 0;
+    els.imageQuizScene.hidden = els.imageQuizScene.children.length === 0;
+    els.imageQuizPanel.classList.toggle("image-quiz--comic", els.imageQuizScene.children.length > 0);
   });
 
   els.leaveBtn.addEventListener("click", requestLeave);

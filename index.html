@@ -357,16 +357,20 @@
             <div class="image-quiz" id="imageQuizPanel" hidden>
               <div class="image-quiz__heading">
                 <span id="imageQuizCategory">Tổng hợp</span>
-                <strong id="imageQuizProgress">1 / 8</strong>
+                <div class="image-quiz__controls">
+                  <strong id="imageQuizProgress">Câu #1 · Chơi liên tục</strong>
+                  <button class="btn btn--danger btn--sm image-quiz__end" id="imageQuizEndBtn" type="button" hidden>Kết thúc trò chơi</button>
+                </div>
               </div>
               <div class="image-quiz__visual" id="imageQuizVisual">
+                <div id="imageQuizScene" class="image-quiz__scene" hidden></div>
                 <img id="imageQuizPicture" alt="Hình ảnh gợi ý cần đoán" hidden>
                 <span class="image-quiz__emoji" id="imageQuizEmoji" aria-label="Biểu tượng gợi ý">🧩</span>
                 <div class="image-quiz__tiles" aria-hidden="true"></div>
               </div>
               <p class="image-quiz__reveal" id="imageQuizReveal">Nhìn hình và đoán nhanh!</p>
               <a id="imageQuizAttribution" class="image-quiz__credit" href="#" target="_blank" rel="noopener noreferrer" hidden>Nguồn ảnh và ghi công</a>
-              <p class="image-quiz__hint">Đúng sớm nhận nhiều điểm hơn · Người đầu tiên được thưởng thêm.</p>
+              <p class="image-quiz__hint">Đoán thành ngữ hoặc câu nói ẩn trong tranh • Đúng sớm được nhiều điểm • Chủ phòng kết thúc khi muốn.</p>
             </div>
             <div class="target-card" id="targetCard">
               <div class="target-card__meta">
