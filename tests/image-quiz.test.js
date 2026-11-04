@@ -290,3 +290,12 @@ test("guests' previously seen picture IDs exclude alternate photos of the answer
   assert.equal(game.imageQuiz.current.answer, "chó");
   game.destroy();
 });
+
+test("bundled Wikimedia photo bank has 200+ distinct source photographs", () => {
+  const { questions } = JSON.parse(readFileSync(new URL("../assets/image-quiz/object-questions.json", import.meta.url), "utf8"));
+  assert.ok(questions.length >= 200, "Expected a substantial photo bank");
+  assert.equal(new Set(questions.map((q) => q.imageUrl)).size, questions.length);
+  assert.equal(new Set(questions.map((q) => q.sourceUrl)).size, questions.length);
+  assert.equal(new Set(questions.map((q) => normalizeGuess(q.answer))).size, questions.length);
+  assert.ok(questions.every((q) => q.imageUrl.startsWith("https://") && q.license && q.sourceUrl));
+});
