@@ -1,7 +1,7 @@
 // Curated Wikimedia photo-bank builder. Run only as a batch job, NOT per game turn.
 // npm run build:object-quiz
 // Photos must be checked for depiction/attribution before public release.
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { OBJECT_QUESTIONS } from "../js/games/image-quiz/objects.js";
 
 const output = new URL("../assets/image-quiz/object-questions.json", import.meta.url);
@@ -9,7 +9,9 @@ const limitArg = process.argv.find((v) => v.startsWith("--limit="));
 const max = limitArg ? Math.max(0, Number(limitArg.split("=")[1]) || 0) : OBJECT_QUESTIONS.length;
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const COMMONS_API = "https://commons.wikimedia.org/w/api.php";
-const sleepBetweenRequests = 160;
+const sleepBetweenRequests = 550;
+const batchArg = process.argv.find((v) => v.startsWith("--batch="));
+const batchSize = batchArg ? Math.max(1, Number(batchArg.split("=")[1]) || 1) : 90;
 
 function stripMarkup(value) {
   return String(value || "")
@@ -33,6 +35,12 @@ async function getJson(url) {
     },
     signal: AbortSignal.timeout(15000),
   });
+  if (response.status === 429 || response.status === 503) {
+    const error = new Error("Wikimedia rate limit HTTP " + response.status);
+    error.rateLimited = true;
+    error.retryAfter = response.headers.get("retry-after");
+    throw error;
+  }
   if (!response.ok) throw new Error("HTTP " + response.status);
   return response.json();
 }
@@ -45,10 +53,22 @@ function filenameFromUrl(url) {
   } catch { return null; }
 }
 
-const downloaded = [];
-const report = { total: OBJECT_QUESTIONS.length, selected: 0, noPhoto: 0, noLicense: 0, failures: 0, byCategory: {} };
+// Keep already verified images when Wikimedia temporarily returns 429/503.
+let existing = [];
+try {
+  const previous = JSON.parse(await readFile(output, "utf8"));
+  if (Array.isArray(previous.questions)) existing = previous.questions.filter((q) =>
+    q?.id && typeof q.imageUrl === "string" && q.imageUrl.startsWith("https://")
+    && typeof q.license === "string" && acceptable(q.license));
+} catch { /* first run has no prior file */ }
+const downloaded = [...existing];
+const alreadyImported = new Set(downloaded.map((q) => q.id));
+const report = { total: OBJECT_QUESTIONS.length, existing: existing.length, added: 0, selected: downloaded.length, noPhoto: 0, noLicense: 0, failures: 0, rateLimited: false, byCategory: {} };
+let requested = 0;
 for (const item of OBJECT_QUESTIONS.slice(0, max)) {
-  if (!item.wiki) continue;
+  if (!item.wiki || alreadyImported.has(item.id)) continue;
+  if (requested >= batchSize) break;
+  requested += 1;
   try {
     const summaryUrl = "https://en.wikipedia.org/api/rest_v1/page/summary/" + encodeURIComponent(item.wiki.replaceAll(" ", "_"));
     const summary = await getJson(summaryUrl);
@@ -82,8 +102,14 @@ for (const item of OBJECT_QUESTIONS.slice(0, max)) {
       reviewStatus: "verify subject and attribution before publishing",
     });
     report.selected++;
+    report.added++;
     report.byCategory[item.category] = (report.byCategory[item.category] || 0) + 1;
   } catch (error) {
+    if (error?.rateLimited) {
+      report.rateLimited = true;
+      console.warn("Wikimedia rate limit; STOPPING requests politely.", error.retryAfter ? "Retry-After: " + error.retryAfter : "");
+      break;
+    }
     report.failures++;
     console.warn("Skipped", item.wiki, String(error?.message || error));
   }
@@ -92,6 +118,7 @@ for (const item of OBJECT_QUESTIONS.slice(0, max)) {
 await mkdir(new URL("../assets/image-quiz/", import.meta.url), { recursive: true });
 await writeFile(output, JSON.stringify({ generatedAt: new Date().toISOString(), source: "Wikipedia thumbnail and Wikimedia Commons imageinfo", questions: downloaded }, null, 2) + "\n");
 console.log(JSON.stringify(report, null, 2));
+console.log("Existing photos are retained. To collect another polite batch, rerun after rate limits reset.");
 if (!downloaded.length) {
   console.warn("No photographs were verified. Retaining visual fallback is intentional; do not claim the photo pack is ready.");
 }
