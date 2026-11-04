@@ -617,8 +617,8 @@ async function joinRoom(inputCode) {
   try {
     // Only send normalized answer keys, not scores or usernames.
     const quizSeen = {
-      idiom: getSeenImageQuizIds("idiom").filter((x) => x.startsWith("answer:")).slice(-1000),
-      object: getSeenImageQuizIds("object").filter((x) => x.startsWith("answer:")).slice(-1000),
+      idiom: getSeenImageQuizIds("idiom").slice(-1000),
+      object: getSeenImageQuizIds("object").slice(-1000),
     };
     const session = await connectToRoom(code, name, quizSeen);
     app.role = "guest";
@@ -961,8 +961,10 @@ function renderImageQuiz(state) {
   const exhausted = Boolean(quiz?.exhausted);
   // Guests remember revealed answers too, so their own device will avoid
   // these questions should they host a later game.
-  if (app.role === "guest" && quiz?.id && quiz?.revealed && quiz.answer) {
-    rememberImageQuizId(state.imageQuizMode, quiz.id, "answer:" + normalizeGuess(quiz.answer));
+  if (app.role === "guest" && quiz?.id) {
+    // A seen image also counts, even if the player leaves before reveal.
+    rememberImageQuizId(state.imageQuizMode, quiz.id,
+      quiz?.revealed && quiz.answer ? "answer:" + normalizeGuess(quiz.answer) : null);
   }
   const changed = Boolean(quiz?.id && els.imageQuizPanel.dataset.questionId !== quiz.id);
   if (changed) {
@@ -1043,8 +1045,11 @@ function getSeenImageQuizIds(mode = "idiom") {
 }
 function rememberImageQuizId(mode, id, answerKey) {
   try {
-    const recent = getSeenImageQuizIds(mode).filter((v) => v !== id && v !== answerKey);
-    recent.push(id, answerKey);
+    const saved = getSeenImageQuizIds(mode);
+    if (saved.includes(id) && (!answerKey || saved.includes(answerKey))) return;
+    const recent = saved.filter((v) => v !== id && v !== answerKey);
+    recent.push(id);
+    if (answerKey) recent.push(answerKey);
     localStorage.setItem(imageSeenKey(mode), JSON.stringify(recent));
   } catch { /* private browsing / storage quota */ }
 }
