@@ -516,14 +516,25 @@ export class GameHost {
     let changed = false;
     for (const mode of [IMAGE_QUIZ_IDIOM, IMAGE_QUIZ_OBJECT]) {
       if (!Array.isArray(history[mode])) continue;
-      const valid = new Set((this.imageQuestionPacks?.[mode] || [])
-        .map((q) => "answer:" + normalizeGuess(q.answer)));
+      const idToAnswer = new Map((this.imageQuestionPacks?.[mode] || [])
+        .map((q) => [q.id, "answer:" + normalizeGuess(q.answer)]));
+      const valid = new Set([
+        ...idToAnswer.keys(),
+        ...idToAnswer.values(),
+      ]);
       if (!Array.isArray(this.imageSeenHistory?.[mode])) this.imageSeenHistory[mode] = [];
       const local = new Set(this.imageSeenHistory[mode]);
       for (const key of history[mode].slice(0, 1000)) {
         if (typeof key !== "string" || !valid.has(key) || local.has(key)) continue;
         local.add(key);
         if (this.imageQuizMode === mode) this.imageQuiz.seenIds.add(key);
+        // A previously shown picture also excludes alternate photos
+        // for the same answer, even if the person never submitted a guess.
+        const answerKey = idToAnswer.get(key);
+        if (answerKey) {
+          local.add(answerKey);
+          if (this.imageQuizMode === mode) this.imageQuiz.seenIds.add(answerKey);
+        }
         changed = true;
       }
       this.imageSeenHistory[mode] = [...local];
