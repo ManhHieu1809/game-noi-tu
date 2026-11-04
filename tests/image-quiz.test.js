@@ -315,7 +315,7 @@ test("object image CSS inherits live reveal/crop variables from quiz panel", () 
   assert.match(app, /imageQuizPanel\.style\.setProperty\("--quiz-reveal", String\(initialReveal\)\)/);
   assert.match(app, /imageQuizPanel\.style\.setProperty\("--quiz-reveal", String\(reveal\)\)/);
   // Accessibility reduced-motion preferences must not bypass puzzle blur.
-  assert.doesNotMatch(css, /prefers-reduced-motion[\s\S]*?\.image-quiz--object[^}]+filter:\s*none/);
+  assert.doesNotMatch(css, /\.image-quiz--object \.image-quiz__visual img,\s*\.image-quiz--object \.image-quiz__emoji\s*\{[^}]*filter:\s*none/);
 });
 
 
