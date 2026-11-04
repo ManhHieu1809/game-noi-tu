@@ -317,3 +317,14 @@ test("object image CSS inherits live reveal/crop variables from quiz panel", () 
   // Accessibility reduced-motion preferences must not bypass puzzle blur.
   assert.doesNotMatch(css, /prefers-reduced-motion[\s\S]*?\.image-quiz--object[^}]+filter:\s*none/);
 });
+
+
+test("full object photo is visible on answer reveal and by 75% of turn time", () => {
+  const css = readFileSync(new URL("../css/image-quiz.css", import.meta.url), "utf8");
+  const app = readFileSync(new URL("../js/app.js", import.meta.url), "utf8");
+  assert.match(css, /\.image-quiz--object\.image-quiz--revealed \.image-quiz__visual img/);
+  assert.match(css, /clip-path:\s*none/);
+  assert.match(css, /transform:\s*none/);
+  assert.match(app, /const initialReveal = [^\n]+\/ 0\.75/);
+  assert.match(app, /const reveal = [^\n]+\/ 0\.75/);
+});
