@@ -4,9 +4,9 @@
 Chủ phòng tạo phòng, chọn **Nhìn hình đoán chữ**, rồi chọn:
 
 - **Ca dao · Tục ngữ · Thành ngữ** (`idiom`): 112 câu hỏi comic 3 khung tranh, giải nghĩa bằng suy luận.
-- **Đoán vật thể ảnh khó** (`object`): 467 đáp án đồ dùng, con vật, món ăn, rau quả, công nghệ... **Ảnh hiển thị đầy đủ và rõ nét ngay từ giây đầu**, không zoom, crop hay làm mờ. Mọi người có 40 giây để trả lời; **hết giờ mới công bố đáp án**, kể cả nếu tất cả đã đoán đúng sớm. Có ảnh thật từ Wikimedia, emoji là hình dự phòng khi tải ảnh lỗi.
+- **Đoán vật thể ảnh khó** (`object`): 467 đáp án đồ dùng, con vật, món ăn, rau quả, công nghệ... **Ảnh hiển thị đầy đủ và rõ nét ngay từ giây đầu**, không zoom, crop hay làm mờ. Mọi người có 40 giây để trả lời; **công bố đáp án ngay khi tất cả người chơi online đã đoán đúng**, hoặc khi hết 40 giây nếu còn người chưa đoán đúng. Có ảnh thật từ Wikimedia, emoji là hình dự phòng khi tải ảnh lỗi.
 
-Mỗi câu có 40 giây đếm ngược. Đúng sớm được nhiều điểm; tất cả cùng đoán. Ở chế độ **Đoán vật thể**, đáp án chỉ công bố khi đồng hồ về 0. Chế độ **Thành ngữ** giữ nguyên cơ chế hiện sớm đáp án nếu tất cả người chơi đã đoán đúng. **Không có giới hạn số vòng**. Hết một câu tự chuyển câu kế tiếp, không tự kết thúc game. Chỉ chủ phòng bấm **Kết thúc trò chơi** để chốt điểm.
+Mỗi câu có 40 giây đếm ngược. Đúng sớm được nhiều điểm; tất cả cùng đoán. Ở cả hai chế độ đoán hình, đáp án được công bố ngay khi tất cả người chơi online đã đoán đúng; nếu không thì chờ đồng hồ về 0. Mỗi người chỉ được tính là đã trả lời xong khi đoán **đúng**. Vẫn giữ đếm ngược 40 giây, và chỉ chủ phòng được kết thúc trò chơi. **Không có giới hạn số vòng**. Hết một câu tự chuyển câu kế tiếp, không tự kết thúc game. Chỉ chủ phòng bấm **Kết thúc trò chơi** để chốt điểm.
 
 ## Chống lặp nghiêm ngặt
 
