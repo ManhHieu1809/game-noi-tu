@@ -299,3 +299,68 @@ test("bundled Wikimedia photo bank has 200+ distinct source photographs", () => 
   assert.equal(new Set(questions.map((q) => normalizeGuess(q.answer))).size, questions.length);
   assert.ok(questions.every((q) => q.imageUrl.startsWith("https://") && q.license && q.sourceUrl));
 });
+
+
+test("object pictures are fully sharp and uncropped from the beginning", () => {
+  const css = readFileSync(new URL("../css/image-quiz.css", import.meta.url), "utf8");
+  const app = readFileSync(new URL("../js/app.js", import.meta.url), "utf8");
+  const imageStyle = css.match(/\.image-quiz--object \.image-quiz__visual img\s*\{([^}]+)\}/);
+  assert.ok(imageStyle, "Object image needs an explicit full-image style");
+  assert.match(imageStyle[1], /object-fit:\s*contain/);
+  assert.match(imageStyle[1], /transform:\s*none/);
+  assert.match(imageStyle[1], /clip-path:\s*none/);
+  assert.match(imageStyle[1], /filter:\s*none/);
+  const emojiStyle = css.match(/\.image-quiz--object \.image-quiz__emoji\s*\{([^}]+)\}/);
+  assert.ok(emojiStyle);
+  assert.match(emojiStyle[1], /filter:\s*none/);
+  assert.match(css, /\.image-quiz--object \.image-quiz__tiles\s*\{[^}]*display:\s*none/);
+  assert.doesNotMatch(app, /--quiz-reveal|--focus-x|--focus-y/);
+  assert.doesNotMatch(css, /--quiz-reveal|--focus-x|--focus-y/);
+  assert.match(app, /els\.timerText\.textContent = String\(Math\.ceil\(left \/ 1000\)\)/);
+});
+
+test("object answers remain secret until the entire 40-second countdown ends", () => {
+  const dictionary = { words: new Set(), syllables: new Set() };
+  const game = new GameHost({
+    code: "ABCDE", hostName: "Host", dictionary,
+    imageQuestions: {
+      idiom: [{ id: "i", answer: "nước chảy đá mòn", scene: ["💧", "🪨", "⌛"] }],
+      object: [{ id: "o", answer: "con mèo", aliases: ["mèo"], emoji: "🐈" }],
+    },
+  });
+  const guest = game.addPlayer({ name: "Guest" });
+  game.setGameMode("image");
+  game.setImageQuizMode("object");
+  game.start(game.hostPlayerId);
+  assert.equal(game.publicState().turnSeconds, 40);
+  assert.ok(game.publicState().remainingMs > 0);
+  assert.equal(game.submit(game.hostPlayerId, "mèo").ok, true);
+  assert.equal(game.submit(guest.id, "con meo").ok, true);
+  assert.equal(game.publicState().imageQuiz.revealed, false);
+  assert.equal(game.publicState().imageQuiz.answer, null);
+  assert.equal(game.phase, "playing");
+  // The authoritative timeout (and only timeout) triggers answer reveal.
+  game._onTimeout();
+  assert.equal(game.publicState().imageQuiz.revealed, true);
+  assert.equal(game.publicState().imageQuiz.answer, "con mèo");
+  game.destroy();
+});
+
+test("idiom mode keeps its existing early-reveal behavior", () => {
+  const dictionary = { words: new Set(), syllables: new Set() };
+  const game = new GameHost({
+    code: "ABCDE", hostName: "Host", dictionary,
+    imageQuestions: {
+      idiom: [{ id: "i", answer: "ăn cháo đá bát", scene: ["🥣", "🦶", "💥"] }],
+      object: [{ id: "o", answer: "mèo", emoji: "🐈" }],
+    },
+  });
+  const guest = game.addPlayer({ name: "Guest" });
+  game.setGameMode("image");
+  game.start(game.hostPlayerId);
+  assert.equal(game.submit(game.hostPlayerId, "an chao da bat").ok, true);
+  assert.equal(game.publicState().imageQuiz.revealed, false);
+  assert.equal(game.submit(guest.id, "ăn cháo đá bát").ok, true);
+  assert.equal(game.publicState().imageQuiz.revealed, true);
+  game.destroy();
+});

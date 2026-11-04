@@ -50,65 +50,40 @@
 @media (prefers-reduced-motion:reduce) { .image-quiz__tiles { animation:none; backdrop-filter:none; background:transparent; } }
 
 
-/* Object challenge: rather than naming a fully visible object, players get a
-   tight crop / silhouette / blur which progressively reveals over 40 seconds. */
+/* Object challenge: always show the full, sharp photograph immediately.
+   The 40s countdown controls guessing and answer reveal only. */
 .image-quiz--object .image-quiz__visual {
-  --quiz-reveal: 0;
-  --focus-x: 52%;
-  --focus-y: 46%;
+  background: #f7f6f1;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 15% 18%, #ffeab0 0 5%, transparent 6%),
-    radial-gradient(circle at 84% 77%, #c5e5df 0 14%, transparent 15%),
-    linear-gradient(135deg, #fff3d5, #e7ebee 65%, #f2dcdf);
 }
-.image-quiz--object .image-quiz__visual::after {
-  content: "🔍  ẢNH BÍ ẨN";
-  position: absolute;
-  top: 14px;
-  left: 16px;
-  z-index: 2;
-  border: 1px solid #473e32;
-  border-radius: 7px;
-  padding: 5px 9px;
-  background: #fff3c4;
-  color: #4c3a25;
-  font: 800 10px var(--font-mono);
-  letter-spacing: .07em;
-  pointer-events: none;
+.image-quiz--object .image-quiz__visual::after,
+.image-quiz--object .image-quiz__tiles {
+  display: none !important;
 }
-.image-quiz--object .image-quiz__tiles { display: none; }
-.image-quiz--object .image-quiz__visual img,
-.image-quiz--object .image-quiz__emoji {
+.image-quiz--object .image-quiz__visual img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  transition: none;
-  transform-origin: var(--focus-x) var(--focus-y);
-  transform:
-    rotate(calc((1 - var(--quiz-reveal)) * -8deg))
-    scale(calc(2.65 - var(--quiz-reveal) * 1.65));
-  clip-path: circle(calc(19% + var(--quiz-reveal) * 122%) at var(--focus-x) var(--focus-y));
-  filter: blur(calc((1 - var(--quiz-reveal)) * 8px));
-}
-.image-quiz--object .image-quiz__visual img {
   object-fit: contain;
-  border-radius: 4px;
+  transform: none;
+  clip-path: none;
+  filter: none;
 }
 .image-quiz--object .image-quiz__emoji {
   display: grid;
   place-items: center;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   font-size: clamp(135px, 27vw, 250px);
-  filter: blur(calc((1 - var(--quiz-reveal)) * 10px))
-          saturate(calc(.08 + var(--quiz-reveal) * .92));
+  transform: none;
+  clip-path: none;
+  filter: none;
 }
 .image-quiz--object .image-quiz__emoji[hidden],
 .image-quiz--object .image-quiz__visual img[hidden] { display: none !important; }
 .image-quiz--exhausted .image-quiz__visual {
   background: repeating-linear-gradient(-45deg,#ffecd2 0 15px,#f4e0bf 15px 30px);
-}
-@media (prefers-reduced-motion: reduce) {
-  .image-quiz--object .image-quiz__visual img,
-  .image-quiz--object .image-quiz__emoji { filter: none; }
 }
