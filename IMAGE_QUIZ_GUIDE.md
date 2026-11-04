@@ -13,7 +13,8 @@ Mỗi câu có 40 giây. Đúng sớm được nhiều điểm; tất cả cùng
 - Mỗi đáp án tiếng Việt sau khi chuẩn hóa (không dấu, chữ thường) chỉ xuất hiện **một lần trên thiết bị chủ phòng** trong toàn bộ lịch sử chơi ở từng chế độ, kể cả có nhiều ảnh cho cùng một đáp án.
 - Lịch sử được lưu ở `localStorage`: `noitu.imageQuiz.seen.v2.idiom` và `noitu.imageQuiz.seen.v2.object`. Bộ thành ngữ còn nhập lịch sử phiên cũ `seen.v1`.
 - Mỗi khi bắt đầu ván mới cũng ưu tiên *chỉ những đáp án chưa gặp*. Game không lặp khi hết ngân hàng. Thay vào đó giữ phòng ở trạng thái chơi, hiển thị **Hết câu mới**, chờ chủ phòng kết thúc hoặc bổ sung dữ liệu và tạo ván mới.
-- Lịch sử chỉ tồn tại ở **trình duyệt thiết bị làm host**: đổi thiết bị chủ phòng, xóa dữ liệu trình duyệt hoặc mở tab riêng tư sẽ mất khả năng bảo đảm xuyên phòng. Muốn đồng bộ với tài khoản cần backend và kho lưu trữ tập trung.
+- Người chơi guest cũng lưu đáp án khi đáp án được công bố. Khi gia nhập phòng mới, guest chia sẻ **chỉ các khóa đáp án từng gặp** cho host. Chủ phòng hợp nhất các lịch sử hợp lệ trước khi chơi và tránh hỏi lại những câu mà người trong nhóm đã gặp; không gửi lại tên hay điểm cũ.
+- Lịch sử vẫn phụ thuộc vào **các trình duyệt đang tham gia phòng**. Nếu đổi nhóm hoàn toàn, xóa dữ liệu, dùng thiết bị mới hay chế độ riêng tư, không thể bảo đảm chống lặp toàn cục. Muốn đồng bộ vĩnh viễn giữa mọi người cần backend/tài khoản.
 - Trong dữ liệu hữu hạn, không thể bảo đảm chơi vô hạn *và* không trùng; cơ chế này ưu tiên **không trùng** hơn việc tự lặp câu.
 
 ## Nguồn hình và câu hỏi
@@ -21,7 +22,7 @@ Mỗi câu có 40 giây. Đúng sớm được nhiều điểm; tất cả cùng
 1. `js/games/image-quiz/rebus.js`: 112 gợi ý tranh comic tự biên soạn.
 2. `js/games/image-quiz/seed.js` + `objects.js`: 467 đáp án vật thể gắn tên bài Wikipedia để truy vấn thumbnail. **Đây là 467 mục dữ liệu và minh họa dự phòng, không phải 467 ảnh chụp đã nhập sẵn.**
 3. Chạy `npm run build:object-quiz` (cần kết nối Internet) để kiểm tra Wikipedia thumbnail + Wikimedia Commons `imageinfo`, chỉ giữ file có metadata giấy phép phù hợp và ghi thông tin tác giả. Kết quả ở `assets/image-quiz/object-questions.json`. Nguồn tham khảo: https://www.mediawiki.org/wiki/API:Imageinfo
-4. `.github/workflows/build-object-quiz.yml` có quy trình tạo ảnh qua GitHub Actions trên nhánh feature. Dữ liệu sinh ra có `reviewStatus`; cần **kiểm tra ảnh có đúng chủ đề, điều kiện giấy phép và ghi công trước khi phát hành**. Dữ liệu đã nhập ghi đè fallback trùng ID; nếu chưa nhập hoặc ảnh hỏng, hình emoji vẫn hoạt động.
+4. `.github/workflows/build-object-quiz.yml` có quy trình tạo ảnh qua GitHub Actions trên nhánh feature. Tính đến lần nhập gần nhất đã có **235 ảnh thật được chọn theo metadata giấy phép** trong JSON (cần kiểm duyệt lại chủ thể trước khi dùng ở production). Script nhập gia tăng từng đợt (`--batch=90` mặc định), dừng lịch sự khi Wikimedia giới hạn 429 và không xóa dữ liệu đã có. Dữ liệu sinh ra có `reviewStatus`; cần **kiểm tra ảnh có đúng chủ đề, điều kiện giấy phép và ghi công trước khi phát hành**. Dữ liệu đã nhập ghi đè fallback trùng ID; nếu chưa nhập hoặc ảnh hỏng, hình emoji vẫn hoạt động.
 5. Có thể bổ sung tranh của bạn vào `assets/image-quiz/rebus-questions.json` hay `assets/image-quiz/object-questions.json`, mỗi câu có `id`, `answer`, `aliases`, `category`, `difficulty`, `imageUrl` (đường dẫn HTTPS hoặc `assets/image-quiz/...`) và `emoji`/`scene` dự phòng.
 
 ## Khởi chạy và thử
