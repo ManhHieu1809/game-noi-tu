@@ -978,10 +978,10 @@ function getSeenImageQuizIds() {
     return [];
   }
 }
-function rememberImageQuizId(id) {
+function rememberImageQuizId(id, answerKey) {
   try {
-    const recent = getSeenImageQuizIds().filter((v) => v !== id);
-    recent.push(id);
+    const recent = getSeenImageQuizIds().filter((v) => v !== id && v !== answerKey);
+    recent.push(id, answerKey);
     localStorage.setItem(QUIZ_SEEN_KEY, JSON.stringify(recent.slice(-10000)));
   } catch { /* localStorage unavailable */ }
 }
