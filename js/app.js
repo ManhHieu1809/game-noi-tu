@@ -9,6 +9,7 @@ import {
 } from "./game-core.js";
 import { loadDictionary } from "./dictionary.js";
 import { loadImageQuizQuestions } from "./games/image-quiz/data.js";
+import { normalizeGuess } from "./games/image-quiz/image-quiz-core.js";
 import { renderRebusArt } from "./games/image-quiz/rebus-art.js";
 import { LobbyDirectory } from "./lobby-directory.js";
 import { cleanCode, CODE_LENGTH, createRoomPeer, connectToRoom } from "./net.js";
@@ -738,7 +739,7 @@ function renderRoom() {
 
   els.roomCodeText.textContent = state.code;
   els.lobbyCode.textContent = state.code;
-  const modeLabel = state.gameMode === "letters" ? "Đôi chữ cái" : state.gameMode === "image" ? "Nhìn hình đoán chữ" : "Nối từ";
+  const modeLabel = state.gameMode === "letters" ? "Đôi chữ cái" : state.gameMode === "image" ? state.imageQuizMode === "object" ? "Đoán vật thể ảnh khó" : "Đố thành ngữ" : "Nối từ";
   const checkLabel = state.mode === "strict" ? "Khắt khe" : "Thông minh";
   els.roomModePill.textContent = state.gameMode === "image" ? modeLabel : `${modeLabel} · ${checkLabel}`;
   els.roomModePill.title = state.gameMode === "image" ? "Đoán ý tranh hài, không giới hạn số câu" : `${modeLabel}, kiểm tra ${checkLabel.toLowerCase()}`;
@@ -952,6 +953,11 @@ function renderImageQuiz(state) {
   const quiz = state.imageQuiz;
   const isObject = state.imageQuizMode === "object";
   const exhausted = Boolean(quiz?.exhausted);
+  // Guests remember revealed answers too, so their own device will avoid
+  // these questions should they host a later game.
+  if (app.role === "guest" && quiz?.id && quiz?.revealed && quiz.answer) {
+    rememberImageQuizId(state.imageQuizMode, quiz.id, "answer:" + normalizeGuess(quiz.answer));
+  }
   const changed = Boolean(quiz?.id && els.imageQuizPanel.dataset.questionId !== quiz.id);
   if (changed) {
     els.imageQuizPanel.dataset.questionId = quiz.id;
@@ -1554,7 +1560,7 @@ function renderLobbyRooms() {
             </span>
           </span>
           <div class="room-card__tags">
-            <span class="room-card__mode ${room.gameMode === "letters" ? "is-letters" : ""}">${room.gameMode === "letters" ? "Đôi chữ cái" : "Nối từ"}</span>
+            <span class="room-card__mode ${room.gameMode === "letters" ? "is-letters" : ""}">${room.gameMode === "letters" ? "Đôi chữ cái" : room.gameMode === "image" ? "Đố hình" : "Nối từ"}</span>
             <span class="room-card__status ${statusClass}">${statusLabel}</span>
           </div>
           <span class="room-card__players">
