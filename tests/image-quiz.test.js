@@ -204,3 +204,25 @@ test("changing a submode after start is rejected", () => {
   assert.throws(() => game.setImageQuizMode("object"), /phòng chờ/);
   game.destroy();
 });
+
+test("switching submodes in the same room does not bring back played objects", () => {
+  const dict = { words: new Set(), syllables: new Set() };
+  const game = new GameHost({
+    code: "ABCDE", hostName: "Host", dictionary: dict,
+    imageQuestions: { idiom: [{ id: "idiom-a", answer: "ăn cháo đá bát", scene: ["🥣", "🦶"] }],
+      object: [{ id: "obj-a", answer: "máy ảnh", emoji: "📷" }, { id: "obj-b", answer: "bàn phím", emoji: "⌨️" }] },
+    imageSeenIds: { idiom: [], object: [] },
+  });
+  game.addPlayer({ name: "Guest" });
+  game.setGameMode("image");
+  game.setImageQuizMode("object");
+  game.start(game.hostPlayerId);
+  assert.equal(game.publicState().imageQuizAvailable, null);
+  game.end(game.hostPlayerId);
+  game.backToLobby(game.hostPlayerId);
+  assert.equal(game.publicState().imageQuizAvailable, 1);
+  game.setImageQuizMode("idiom");
+  game.setImageQuizMode("object");
+  assert.equal(game.publicState().imageQuizAvailable, 1);
+  game.destroy();
+});
