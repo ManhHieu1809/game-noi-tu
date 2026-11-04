@@ -1,0 +1,193 @@
+{
+  "schema": "arena.asset-qa.v1",
+  "technical_exports": "pass",
+  "technical_checks": [
+    "14 RGBA PNGs, 384x384, visible content and real transparency",
+    "no clipped pixels after root registration",
+    "exported frame SHA-256 matches catalog",
+    "GIF has exact frame count and transparency",
+    "Forge WebP timing/alpha verification and clip lints",
+    "preview JavaScript syntax and local hyperlinks"
+  ],
+  "lite_checks": "same 14 poses exported at 192x192 RGBA; dimensions, alpha, hashes and Forge clip checks pass",
+  "visual_release_status": "prototype; NOT all visual gates passed",
+  "frame_diagnostics": [
+    {
+      "action": "run-se",
+      "status": "fail",
+      "report": "../qa/final-run-se/sheet-qc.json",
+      "issues": [
+        {
+          "id": "identity_head_ratio",
+          "status": "fail",
+          "value": {
+            "0": 1.0,
+            "1": 1.02,
+            "2": 1.0,
+            "3": 0.98,
+            "4": 0.94,
+            "5": 0.94,
+            "6": 1.0,
+            "7": 1.1
+          },
+          "threshold": [
+            0.95,
+            1.05
+          ],
+          "frames": [
+            4,
+            5,
+            7
+          ],
+          "note": "head scale against the median frame (frame 0 template)"
+        },
+        {
+          "id": "phase_coverage",
+          "status": "warn",
+          "value": [
+            [
+              "mid",
+              "narrow",
+              "flight",
+              "flight"
+            ],
+            [
+              "narrow",
+              "narrow",
+              "flight",
+              "flight"
+            ]
+          ],
+          "threshold": null,
+          "problems": [
+            "half 0 has no wide-stride contact frame",
+            "half 1 has no wide-stride contact frame"
+          ],
+          "note": "labels from ground clearance and stride width; they cannot judge the pose itself"
+        },
+        {
+          "id": "leg_alternation",
+          "status": "warn",
+          "value": [
+            "near",
+            "near",
+            "unclear",
+            "unclear",
+            "far",
+            "near",
+            "near",
+            "unclear"
+          ],
+          "threshold": "lead differs between i and i+n/2",
+          "verdict": "mixed: some half-cycle pairs repeat the lead",
+          "pairs": [
+            [
+              0,
+              4,
+              false
+            ],
+            [
+              1,
+              5,
+              true
+            ]
+          ],
+          "mode": "auto-luminance",
+          "near_leading": 4,
+          "unclear": 3,
+          "half_cycle": {
+            "pairs": [
+              {
+                "pair": [
+                  0,
+                  4
+                ],
+                "iou_best_shift": 0.5669
+              },
+              {
+                "pair": [
+                  1,
+                  5
+                ],
+                "iou_best_shift": 0.5793
+              },
+              {
+                "pair": [
+                  2,
+                  6
+                ],
+                "iou_best_shift": 0.5654
+              },
+              {
+                "pair": [
+                  3,
+                  7
+                ],
+                "iou_best_shift": 0.55
+              }
+            ],
+            "adjacent_iou_median": 0.624,
+            "half_cycle_iou_median": 0.5661
+          },
+          "fix": "regenerate frames 4-7 with NEAR and FAR swapped (attach frames 0-3 and the guide)"
+        }
+      ],
+      "notProven": [
+        "Pose quality, anatomy, appeal and readability at game scale: look at frames-review.png and the game-size frames.",
+        "That the head band holds only the head: arms raised into it change the match.",
+        "NEAR/FAR leads in auto mode rely on the 'FAR limbs one shade darker' convention; declare the colours to be sure.",
+        "Phase labels come from feet clearance and stride width, not from the pose."
+      ]
+    },
+    {
+      "action": "attack-se",
+      "status": "fail",
+      "report": "../qa/final-attack-se/sheet-qc.json",
+      "issues": [
+        {
+          "id": "identity_head_ratio",
+          "status": "fail",
+          "value": {
+            "0": 1.02,
+            "1": 0.918,
+            "2": 1.082,
+            "3": 0.98,
+            "4": 0.98,
+            "5": 1.02
+          },
+          "threshold": [
+            0.95,
+            1.05
+          ],
+          "frames": [
+            1,
+            2
+          ],
+          "note": "head scale against the median frame (frame 0 template)"
+        },
+        {
+          "id": "torso_drift",
+          "status": "warn",
+          "value": 11.84,
+          "threshold": 2.0,
+          "method": "trunk",
+          "median_x": 186.9,
+          "note": "range of the torso x in game px; scale_frames --root-lock torso-x removes it"
+        }
+      ],
+      "notProven": [
+        "Pose quality, anatomy, appeal and readability at game scale: look at frames-review.png and the game-size frames.",
+        "That the head band holds only the head: arms raised into it change the match.",
+        "NEAR/FAR leads in auto mode rely on the 'FAR limbs one shade darker' convention; declare the colours to be sure.",
+        "Phase labels come from feet clearance and stride width, not from the pose."
+      ]
+    }
+  ],
+  "browser_playback_tested": false,
+  "runtime_game_tested": false,
+  "eight_direction_set_complete": false,
+  "rejected_consistency_pass": {
+    "source": "../raw/fighter-run-se-consistency.png",
+    "reason": "Did not improve head consistency; diagnostic maximum ratio 1.122 versus 1.10 in selected prototype. Not selected."
+  }
+}

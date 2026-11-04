@@ -1,0 +1,157 @@
+{
+  "schema": "generate2dsprite.master.v1",
+  "tool": {
+    "name": "master_still",
+    "version": "0.4.0"
+  },
+  "created": "2026-11-03T07:29:57.977Z",
+  "name": "mage",
+  "subject": "original anime mage hero",
+  "identity_recap": "original anime mage hero (Clean anime fantasy mage, preserve exact costume hair face equipment and palette from supplied source still)",
+  "facing": "right",
+  "view": "orthographic overhead 35 degrees, southeast",
+  "finish": "hd",
+  "class": "hero",
+  "framing": {
+    "canvas": [
+      1024,
+      1024
+    ],
+    "subject_height_px": 788,
+    "top_margin_px": 138,
+    "lead_px": 0,
+    "preset": "hero",
+    "subject_bbox": [
+      365,
+      138,
+      659,
+      926
+    ],
+    "anchor": [
+      435.5,
+      926.0
+    ],
+    "opaque_area_px": 106234,
+    "width_limited": false
+  },
+  "key": "#FF00FF",
+  "files": {
+    "master": {
+      "path": "master.png",
+      "sha256": "88fe8a0815376933fcbbf569d9c7a8697b19c78442ba7bccfbf6e9d4028f4e17",
+      "bytes": 258910,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    "cutout": {
+      "path": "master_rgba.png",
+      "sha256": "b19de821c3008a25d693eaa0bfd2345351653b66a5134555a6754ab1f9054b65",
+      "bytes": 311913,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    "source": {
+      "path": "source.png",
+      "sha256": "06d1a8ed90bf5e278bb79453867af0857fcdbd1cfd453eeb7a09cc8aa7624b2d",
+      "bytes": 1441887,
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    "spec": {
+      "path": "spec.json",
+      "sha256": "8b7744199822a4b2fbcc69bf7e76ff049ccb2531ed91554927ae26c6770e5faf",
+      "bytes": 726
+    },
+    "prompt": null
+  },
+  "references": [],
+  "transform": {
+    "mapping": "master = scale * source + offset (continuous pixel coordinates: pixel i spans [i, i + 1))",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_subject_bbox": [
+      461,
+      131,
+      830,
+      1120
+    ],
+    "crop_box": [
+      455,
+      125,
+      836,
+      1126
+    ],
+    "crop_margin_px": 6,
+    "scale": 0.7967644084934277,
+    "offset": [
+      -2.311425682507547,
+      33.62386248736098
+    ],
+    "canvas": [
+      1024,
+      1024
+    ],
+    "resampler": "lanczos",
+    "premultiplied": true,
+    "alpha_floor_px": 3138,
+    "subject_parts": 1,
+    "ignored_parts": 0,
+    "ignored_px": 0,
+    "source_touches": [],
+    "key_rgb": [
+      255,
+      0,
+      255
+    ]
+  },
+  "route": "host-image_gen",
+  "provenance": {
+    "command": "external",
+    "run": null,
+    "take": null,
+    "source_name": "mage.png",
+    "source_sha256": "06d1a8ed90bf5e278bb79453867af0857fcdbd1cfd453eeb7a09cc8aa7624b2d",
+    "media": null,
+    "media_cli_source": null,
+    "edit": null
+  },
+  "matte": {
+    "requested": "soft",
+    "key_estimate": {
+      "key": [
+        252.0,
+        3.0,
+        251.0
+      ],
+      "source": "border_median",
+      "valid": true,
+      "ring_share": 1.0,
+      "coverage": 0.8911406942759247,
+      "distance_from_declared": 5.83
+    },
+    "quality": "soft",
+    "interior_despill": false,
+    "qa": {
+      "opaque_key_px": 0,
+      "outer_ring_spill_fraction": 0.018091079226450407,
+      "semitransparent_fraction": 0.06151800892946429,
+      "enclosed_key_pockets": 0,
+      "key_hued_px": 26,
+      "visible_px": 169999
+    },
+    "key_choice": {
+      "status": "ok",
+      "overlap_share": 0.002138,
+      "rule": "reject a key when more than 0.5% of subject pixels have key dominance >= 40; first acceptable candidate wins"
+    }
+  },
+  "warnings": []
+}

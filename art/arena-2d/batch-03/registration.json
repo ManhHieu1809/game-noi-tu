@@ -1,0 +1,38 @@
+[
+  {
+    "source": "fighter-run-se-combined-v3.png",
+    "output": "fighter-run-se-registered.png",
+    "scale": 0.94,
+    "offset": [
+      15,
+      3
+    ],
+    "source_root": [
+      256,
+      450
+    ],
+    "registered_root": [
+      256,
+      426
+    ],
+    "method": "one shared scale and translation for every pose of this action"
+  },
+  {
+    "source": "fighter-attack-se-v1.png",
+    "output": "fighter-attack-se-registered.png",
+    "scale": 0.752,
+    "offset": [
+      63,
+      76
+    ],
+    "source_root": [
+      256,
+      466
+    ],
+    "registered_root": [
+      256,
+      426
+    ],
+    "method": "one shared scale and translation for every pose of this action"
+  }
+]

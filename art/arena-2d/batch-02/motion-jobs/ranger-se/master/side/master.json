@@ -1,0 +1,157 @@
+{
+  "schema": "generate2dsprite.master.v1",
+  "tool": {
+    "name": "master_still",
+    "version": "0.4.0"
+  },
+  "created": "2026-11-03T07:30:02.236Z",
+  "name": "ranger",
+  "subject": "original anime ranger hero",
+  "identity_recap": "original anime ranger hero (Clean anime fantasy ranger, preserve exact costume hair face equipment and palette from supplied source still)",
+  "facing": "right",
+  "view": "orthographic overhead 35 degrees, southeast",
+  "finish": "hd",
+  "class": "hero",
+  "framing": {
+    "canvas": [
+      1024,
+      1024
+    ],
+    "subject_height_px": 788,
+    "top_margin_px": 138,
+    "lead_px": 0,
+    "preset": "hero",
+    "subject_bbox": [
+      365,
+      138,
+      659,
+      926
+    ],
+    "anchor": [
+      406.5,
+      926.0
+    ],
+    "opaque_area_px": 96079,
+    "width_limited": false
+  },
+  "key": "#FF00FF",
+  "files": {
+    "master": {
+      "path": "master.png",
+      "sha256": "47fc133535090bcea22d04c66ea080e928ca5c5e1f0e24cc5d4d8cb38667519a",
+      "bytes": 234735,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    "cutout": {
+      "path": "master_rgba.png",
+      "sha256": "c88d8786534c673e7c64dffb15b97092cb0bbf7910b99dcf258e2bf83972e89f",
+      "bytes": 280584,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    "source": {
+      "path": "source.png",
+      "sha256": "e76afdbe2254bf6207875f24c487d8187b34746ac9fd564b8fe13b9859b9c956",
+      "bytes": 1446900,
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    "spec": {
+      "path": "spec.json",
+      "sha256": "acb49327d7b606e737c874e1b2446ccd171175c46fd5029182dce41ae86fc4bf",
+      "bytes": 736
+    },
+    "prompt": null
+  },
+  "references": [],
+  "transform": {
+    "mapping": "master = scale * source + offset (continuous pixel coordinates: pixel i spans [i, i + 1))",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_subject_bbox": [
+      458,
+      90,
+      858,
+      1164
+    ],
+    "crop_box": [
+      452,
+      84,
+      864,
+      1170
+    ],
+    "crop_margin_px": 6,
+    "scale": 0.7337057728119181,
+    "offset": [
+      29.221601489757916,
+      71.96648044692738
+    ],
+    "canvas": [
+      1024,
+      1024
+    ],
+    "resampler": "lanczos",
+    "premultiplied": true,
+    "alpha_floor_px": 3185,
+    "subject_parts": 1,
+    "ignored_parts": 2,
+    "ignored_px": 12,
+    "source_touches": [],
+    "key_rgb": [
+      255,
+      0,
+      255
+    ]
+  },
+  "route": "host-image_gen",
+  "provenance": {
+    "command": "external",
+    "run": null,
+    "take": null,
+    "source_name": "ranger.png",
+    "source_sha256": "e76afdbe2254bf6207875f24c487d8187b34746ac9fd564b8fe13b9859b9c956",
+    "media": null,
+    "media_cli_source": null,
+    "edit": null
+  },
+  "matte": {
+    "requested": "soft",
+    "key_estimate": {
+      "key": [
+        252.0,
+        3.0,
+        251.0
+      ],
+      "source": "border_median",
+      "valid": true,
+      "ring_share": 1.0,
+      "coverage": 0.8840367919944853,
+      "distance_from_declared": 5.83
+    },
+    "quality": "soft",
+    "interior_despill": true,
+    "qa": {
+      "opaque_key_px": 0,
+      "outer_ring_spill_fraction": 0.0,
+      "semitransparent_fraction": 0.05582512213298004,
+      "enclosed_key_pockets": 0,
+      "key_hued_px": 0,
+      "visible_px": 181155
+    },
+    "key_choice": {
+      "status": "ok",
+      "overlap_share": 0.0,
+      "rule": "reject a key when more than 0.5% of subject pixels have key dominance >= 40; first acceptable candidate wins"
+    }
+  },
+  "warnings": []
+}

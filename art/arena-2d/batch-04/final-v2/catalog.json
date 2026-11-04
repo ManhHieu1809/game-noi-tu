@@ -1,0 +1,223 @@
+{
+  "schema": "arena.sprite-batch.v2",
+  "character": "fighter-anime",
+  "directions": [
+    "SE"
+  ],
+  "status": "revised SE run and slash; raw diagnostic caveats retained",
+  "eight_directions_complete": false,
+  "runtime_integrated": false,
+  "repository": "https://github.com/0x0funky/agent-sprite-forge",
+  "commit": "5324342fdfab72430f4e9604f3fe427009f8596d",
+  "license": "MIT (toolchain)",
+  "generation": "built-in ImageGen; image poses, no video",
+  "assets": [
+    {
+      "id": "fighter-run-se",
+      "action": "run",
+      "facing": "SE",
+      "frames": 8,
+      "ticks": 4,
+      "loop_policy": "cycle",
+      "variants": [
+        {
+          "size": 384,
+          "anchor_px": [
+            192.0,
+            365.0
+          ],
+          "frames": [
+            {
+              "path": "run-se/run-1.png",
+              "sha256": "b59d7d98a813736a373c18ca47abd851b349793ed9299f97b69eef1eed43e21a",
+              "bytes": 42757
+            },
+            {
+              "path": "run-se/run-2.png",
+              "sha256": "3192adf3c44710749ce62d9c02e6a238b2c9489955bd1ba15ba69c9452ec5042",
+              "bytes": 40380
+            },
+            {
+              "path": "run-se/run-3.png",
+              "sha256": "37970661f9f3799011ce778b354cce5dc4b6f81ce1135ddfc9b9f595c6165a56",
+              "bytes": 39228
+            },
+            {
+              "path": "run-se/run-4.png",
+              "sha256": "3cb2b67591e9b1a483a80d8349ba8059bfdf76fa862911006fd7e6b261070416",
+              "bytes": 39122
+            },
+            {
+              "path": "run-se/run-5.png",
+              "sha256": "4505cb954c11c124409897123c1536b44853aae8567f6fbd4f106a8870ac4d4a",
+              "bytes": 39403
+            },
+            {
+              "path": "run-se/run-6.png",
+              "sha256": "08f2e1fc772b888229260af5947ff1be4e11b409f3eae766cb288fbad699e399",
+              "bytes": 39447
+            },
+            {
+              "path": "run-se/run-7.png",
+              "sha256": "1daa682f693094f25f9359611c51ccb2c0570cbfd1592e75208d56b249be6e64",
+              "bytes": 33016
+            },
+            {
+              "path": "run-se/run-8.png",
+              "sha256": "46b6a36124f0db1b0f24af3dda64200d1780b246dab3755239987163fbf48b0c",
+              "bytes": 36922
+            }
+          ],
+          "clips": "run-se/clips/animation-clips.json"
+        },
+        {
+          "size": 192,
+          "anchor_px": [
+            96.0,
+            182.5
+          ],
+          "frames": [
+            {
+              "path": "lite/run-se/run-1.png",
+              "sha256": "1dc69dd8bdbe9bc8ca41dc1d2900a26774e82d3e76e2233440b34c7892c406f0",
+              "bytes": 12287
+            },
+            {
+              "path": "lite/run-se/run-2.png",
+              "sha256": "d043f72babe5076de6a7787680a11724d2f9d0d71e67964f2ae5243e2789fe6b",
+              "bytes": 11516
+            },
+            {
+              "path": "lite/run-se/run-3.png",
+              "sha256": "59df6aeb24857c1799b548e300f0f7d7ba07879bf878161d6fcefd4ddb38a7a8",
+              "bytes": 11206
+            },
+            {
+              "path": "lite/run-se/run-4.png",
+              "sha256": "aa86d97416fa4a9623e1c7799dde961c0381335140104ee17407cdca21e5d106",
+              "bytes": 11296
+            },
+            {
+              "path": "lite/run-se/run-5.png",
+              "sha256": "79a786b2a548a2536e0ffa99c2e9e50f7383253326032482933dd82606ca361f",
+              "bytes": 11340
+            },
+            {
+              "path": "lite/run-se/run-6.png",
+              "sha256": "2189b6e453a4eecfbf1eb0dc9d4ef717485c69058bfab814e10fc12634195dc1",
+              "bytes": 11297
+            },
+            {
+              "path": "lite/run-se/run-7.png",
+              "sha256": "dbec74192a0c443d1f95e0b6a0dd19ff1256cb7342e60594591e8ad5a52c64a1",
+              "bytes": 9415
+            },
+            {
+              "path": "lite/run-se/run-8.png",
+              "sha256": "3a89203e24f0a580d444fa7b26d47fd4f46a6be26e426e46fbf6b03adae815a8",
+              "bytes": 10635
+            }
+          ],
+          "clips": "lite/run-se/clips/animation-clips.json"
+        }
+      ]
+    },
+    {
+      "id": "fighter-attack-se",
+      "action": "attack",
+      "facing": "SE",
+      "frames": 6,
+      "ticks": [
+        5,
+        6,
+        4,
+        3,
+        5,
+        7
+      ],
+      "loop_policy": "oneshot",
+      "variants": [
+        {
+          "size": 384,
+          "anchor_px": [
+            192.0,
+            365.0
+          ],
+          "frames": [
+            {
+              "path": "attack-se/attack-1.png",
+              "sha256": "28cc1cc052840eaae454849bf6e0a5442336d1ef1d1732d0037eec83ecb001ed",
+              "bytes": 39700
+            },
+            {
+              "path": "attack-se/attack-2.png",
+              "sha256": "2d0e290e0028be2ebac0a325d363c714b58385bf86370ed6113f010b24908fa7",
+              "bytes": 39433
+            },
+            {
+              "path": "attack-se/attack-3.png",
+              "sha256": "7b2c7003125934baf10ef8afc976626be9fded75f601e0014b5248deb6502bf3",
+              "bytes": 40305
+            },
+            {
+              "path": "attack-se/attack-4.png",
+              "sha256": "5cd37afa5dd66d7c36478889f9dc532fdcb3d24b1a96aeb0eca16b71f29d5d63",
+              "bytes": 37314
+            },
+            {
+              "path": "attack-se/attack-5.png",
+              "sha256": "fc07936dd95cc50e26e450978b81a612d900572d59695bc9320eb0c5fe84d506",
+              "bytes": 35891
+            },
+            {
+              "path": "attack-se/attack-6.png",
+              "sha256": "6d0bfb2165d630eacdec6072d2bb076bcf21962b8b1f9f695b27e0c05786f336",
+              "bytes": 39532
+            }
+          ],
+          "clips": "attack-se/clips/animation-clips.json"
+        },
+        {
+          "size": 192,
+          "anchor_px": [
+            96.0,
+            182.5
+          ],
+          "frames": [
+            {
+              "path": "lite/attack-se/attack-1.png",
+              "sha256": "4c1be3a0745ababa83f1a2ccfad4b4b08ca3b4da6c6286391acbdfd82d39aea8",
+              "bytes": 11578
+            },
+            {
+              "path": "lite/attack-se/attack-2.png",
+              "sha256": "b06a857d1d72bac805bdd553cb3dd38a0bd8cb1327d45edeef50ceee6ccbb6cb",
+              "bytes": 11414
+            },
+            {
+              "path": "lite/attack-se/attack-3.png",
+              "sha256": "02e8418ef78da7d271c3d10010c4070c607eebe8d68ede8ec65cfc0a0b46f9f6",
+              "bytes": 11706
+            },
+            {
+              "path": "lite/attack-se/attack-4.png",
+              "sha256": "283e49858b5565d63e7214f178fa20de33b126e929a4f29fcc8e310669dbc5d0",
+              "bytes": 10842
+            },
+            {
+              "path": "lite/attack-se/attack-5.png",
+              "sha256": "1502d4949f81cf7a76b05459b2736a21f3a37f580b1c1a67e09fa725ebbebbe3",
+              "bytes": 10331
+            },
+            {
+              "path": "lite/attack-se/attack-6.png",
+              "sha256": "e8ecddbdc72d685f0a78d32fbbc15a95966253f28322af9a5a1a972c858c98a8",
+              "bytes": 11435
+            }
+          ],
+          "clips": "lite/attack-se/clips/animation-clips.json"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "selected_outputs": [
+    {
+      "asset": "compact-props",
+      "id": "strategy_aspect",
+      "status": "warn",
+      "value": [
+        "moss-rock 363x224",
+        "flowers 307x178",
+        "stone-stump 334x196"
+      ],
+      "threshold": 1.6
+    }
+  ],
+  "superseded_attempts": [
+    {
+      "file": "animations/arrow/pipeline-meta.json",
+      "id": "key_ring_spill",
+      "status": "warn",
+      "value": 0.218484,
+      "threshold": 0.01
+    },
+    {
+      "file": "animations/crystal/pipeline-meta.json",
+      "id": "key_ring_spill",
+      "status": "warn",
+      "value": 0.214709,
+      "threshold": 0.01
+    },
+    {
+      "file": "animations/earth/pipeline-meta.json",
+      "id": "key_ring_spill",
+      "status": "warn",
+      "value": 0.09085,
+      "threshold": 0.01
+    },
+    {
+      "file": "animations/frost/pipeline-meta.json",
+      "id": "key_ring_spill",
+      "status": "warn",
+      "value": 0.182673,
+      "threshold": 0.01
+    },
+    {
+      "file": "animations/lightning/pipeline-meta.json",
+      "id": "key_ring_spill",
+      "status": "warn",
+      "value": 0.15402,
+      "threshold": 0.01
+    },
+    {
+      "file": "animations/shield/pipeline-meta.json",
+      "id": "key_ring_spill",
+      "status": "warn",
+      "value": 0.259757,
+      "threshold": 0.01
+    },
+    {
+      "file": "animations/slash/pipeline-meta.json",
+      "id": "key_ring_spill",
+      "status": "warn",
+      "value": 0.052002,
+      "threshold": 0.01
+    }
+  ],
+  "not_proven": [
+    "runtime playback",
+    "perfect loop seams",
+    "root locking of foliage",
+    "multiplayer alignment",
+    "complete eight-direction character animation"
+  ]
+}

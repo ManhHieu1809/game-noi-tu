@@ -1,0 +1,543 @@
+{
+  "schema": "generate2dsprite.animation_clips.v2",
+  "source_manifest": {
+    "path": "../../animations/lightning/clips-input.json",
+    "file_sha256": "ca93a929626afac63814daaf711878151799a449e5ab34f191e87c397a529731",
+    "copy": "source-manifest.json"
+  },
+  "frame_size": [
+    256,
+    256
+  ],
+  "anchor_px": [
+    128,
+    128
+  ],
+  "anchor_semantics": "shared canvas/root origin, often a ground reference; not per-frame visible bottom",
+  "sampling": "linear",
+  "pixel_art": false,
+  "art_source": "host_image",
+  "frames": [
+    {
+      "index": 0,
+      "name": "sheet-1",
+      "source": {
+        "path": "../../animations/lightning/sheet-1.png",
+        "file_sha256": "5620ab7909dcad77673df5aa1be03126b66d3546a9d965e7718838a44dbe8e7d",
+        "bytes": 3911,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      "rgba_pixel_sha256": "f7b305c093fd064ea49e15ff1402f9c79a1760e5dca86d46c6078255984a69ee",
+      "transparent_pixel_count": 64577,
+      "visible_pixel_count": 959,
+      "near_duplicates": [],
+      "holds": [],
+      "file": "frames/frame-00.png"
+    },
+    {
+      "index": 1,
+      "name": "sheet-2",
+      "source": {
+        "path": "../../animations/lightning/sheet-2.png",
+        "file_sha256": "5f35c6b75487e99e13b1d94cc8f7ea57bb864990f00ad74e05f96bec1697ebef",
+        "bytes": 6639,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      "rgba_pixel_sha256": "bccd6bf0bec9eb899842981cbb4712a7cb1deed3bda7a96262608a56cd666c01",
+      "transparent_pixel_count": 63936,
+      "visible_pixel_count": 1600,
+      "near_duplicates": [],
+      "holds": [],
+      "file": "frames/frame-01.png"
+    },
+    {
+      "index": 2,
+      "name": "sheet-3",
+      "source": {
+        "path": "../../animations/lightning/sheet-3.png",
+        "file_sha256": "6706bb9f4b6ef2e7a26dd3829842fc5c6a05db4712e410c78217f8f6c67cc31a",
+        "bytes": 16907,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      "rgba_pixel_sha256": "5ea6773b63788ee56425c067667bc12e0e9170f45185323ef5e42861cf804494",
+      "transparent_pixel_count": 60948,
+      "visible_pixel_count": 4588,
+      "near_duplicates": [],
+      "holds": [],
+      "file": "frames/frame-02.png"
+    },
+    {
+      "index": 3,
+      "name": "sheet-4",
+      "source": {
+        "path": "../../animations/lightning/sheet-4.png",
+        "file_sha256": "75ec8b95b8d0049e35ba5dd70099ebea4e4f267379f9b8e6e1e3c558c5290b60",
+        "bytes": 13294,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      "rgba_pixel_sha256": "2642c2c323e3cb884e256fb15328f9a3ceccddbd9c2f9242f94c1f8d5125b9ba",
+      "transparent_pixel_count": 61858,
+      "visible_pixel_count": 3678,
+      "near_duplicates": [],
+      "holds": [],
+      "file": "frames/frame-03.png"
+    },
+    {
+      "index": 4,
+      "name": "sheet-5",
+      "source": {
+        "path": "../../animations/lightning/sheet-5.png",
+        "file_sha256": "a58048d5d5b69e6158316a1e2f3eea3dc3da021ddf66fcf55b9c6c22ffecbacb",
+        "bytes": 11111,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      "rgba_pixel_sha256": "43b1acabfe4a28af05b468238aaea8ec8632da4a1ebfc9334fde7e23e901695a",
+      "transparent_pixel_count": 62933,
+      "visible_pixel_count": 2603,
+      "near_duplicates": [],
+      "holds": [],
+      "file": "frames/frame-04.png"
+    },
+    {
+      "index": 5,
+      "name": "sheet-6",
+      "source": {
+        "path": "../../animations/lightning/sheet-6.png",
+        "file_sha256": "dade7a950e3f910581befb8dd4e79b7fad7f93849d60bf03e2979ea1c520395b",
+        "bytes": 4875,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      "rgba_pixel_sha256": "f67808d7bb64d5a0d15378de592bc746a6e5c275a4ab702d1c15c6c192a90a7f",
+      "transparent_pixel_count": 64454,
+      "visible_pixel_count": 1082,
+      "near_duplicates": [],
+      "holds": [],
+      "file": "frames/frame-05.png"
+    }
+  ],
+  "clips": {
+    "lightning": {
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "duration_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": false,
+      "total_duration_ms": 600,
+      "nominal_fps": 10.0,
+      "average_fps": 10.0,
+      "loop_policy": "oneshot",
+      "timing_source": "ticks",
+      "ticks": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "tick_hz": 60,
+      "fps_rational": "10/1",
+      "events_ms": [],
+      "role": "fx",
+      "tick_grid": {
+        "hz": 60,
+        "max_drift_ms": 0.0,
+        "frame_ticks": [
+          6,
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "zero_tick_positions": [],
+        "even": true,
+        "cycle_ticks": 36.0,
+        "cycle_aligned": true,
+        "method": "cumulative integer-ms frame boundaries rounded half-up to the nearest tick"
+      },
+      "holds": [],
+      "preview": {
+        "file": "clips/clip-00.webp",
+        "decoded_frames": [
+          {
+            "index": 0,
+            "start_ms": 0,
+            "duration_ms": 100,
+            "clip_positions": [
+              0
+            ]
+          },
+          {
+            "index": 1,
+            "start_ms": 100,
+            "duration_ms": 100,
+            "clip_positions": [
+              1
+            ]
+          },
+          {
+            "index": 2,
+            "start_ms": 200,
+            "duration_ms": 100,
+            "clip_positions": [
+              2
+            ]
+          },
+          {
+            "index": 3,
+            "start_ms": 300,
+            "duration_ms": 100,
+            "clip_positions": [
+              3
+            ]
+          },
+          {
+            "index": 4,
+            "start_ms": 400,
+            "duration_ms": 100,
+            "clip_positions": [
+              4
+            ]
+          },
+          {
+            "index": 5,
+            "start_ms": 500,
+            "duration_ms": 100,
+            "clip_positions": [
+              5
+            ]
+          }
+        ],
+        "decoded_frame_count": 6,
+        "total_duration_ms": 600,
+        "native_loop_count": 1,
+        "timeline_verified": true,
+        "alpha_and_visible_rgb_exact": true,
+        "hidden_rgb_guaranteed": false,
+        "lossless": true,
+        "file_sha256": "c07661d79524d41e4c2da9a89ccf8f491e863952ae6d625d1ad140b34e55c306"
+      },
+      "transitions": [
+        {
+          "from_position": 0,
+          "to_position": 1,
+          "premultiplied_rgb_mae": 1.590752,
+          "alpha_mae": 1.877518,
+          "changed_visible_pixels": 1607
+        },
+        {
+          "from_position": 1,
+          "to_position": 2,
+          "premultiplied_rgb_mae": 8.588862,
+          "alpha_mae": 10.463776,
+          "changed_visible_pixels": 4631
+        },
+        {
+          "from_position": 2,
+          "to_position": 3,
+          "premultiplied_rgb_mae": 10.489177,
+          "alpha_mae": 12.55249,
+          "changed_visible_pixels": 5878
+        },
+        {
+          "from_position": 3,
+          "to_position": 4,
+          "premultiplied_rgb_mae": 6.962074,
+          "alpha_mae": 8.070007,
+          "changed_visible_pixels": 4304
+        },
+        {
+          "from_position": 4,
+          "to_position": 5,
+          "premultiplied_rgb_mae": 3.7111,
+          "alpha_mae": 4.737762,
+          "changed_visible_pixels": 2669
+        }
+      ],
+      "last_to_first": {
+        "applies_to_playback": false,
+        "premultiplied_rgb_mae": 2.956529,
+        "alpha_mae": 4.160416,
+        "changed_visible_pixels": 1620
+      }
+    }
+  },
+  "states": {
+    "active": "lightning"
+  },
+  "diagnostics": {
+    "visible_pixel_duplicate_groups": [],
+    "visual_approval": false,
+    "note": "Pixel differences and duplicates do not establish animation quality or physical root stability.",
+    "near_duplicate_mae": 1.5,
+    "near_duplicate_pairs": [],
+    "tick_hz": 60,
+    "lint": []
+  },
+  "contact_sheet": {
+    "file": "contact-sheet.png",
+    "native_scale": true,
+    "scale": 1,
+    "requested_scale": 1,
+    "annotated_with_shared_root": true,
+    "not_a_runtime_atlas": true,
+    "file_sha256": "373e0ddef151d6e9cb94c96389416fa1d544f3109505e769dd3e4b12cf5bd9b3"
+  },
+  "review": {
+    "scale": 1,
+    "requested_scale": 1,
+    "backgrounds": [
+      "light",
+      "dark",
+      "checker"
+    ],
+    "filmstrips": {
+      "lightning": {
+        "file": "review/filmstrip-00.png",
+        "backgrounds": [
+          "light",
+          "dark",
+          "checker"
+        ],
+        "positions_shown": 6,
+        "truncated": false
+      }
+    },
+    "onion": {
+      "lightning": {
+        "file": "review/onion-00.png",
+        "background": "checker",
+        "positions_shown": 6,
+        "truncated": false
+      }
+    },
+    "transitions": [],
+    "turn_test": {
+      "file": "review/turn-test.png",
+      "background": "dark",
+      "anchor_mark_rgb": [
+        255,
+        220,
+        80
+      ],
+      "cells": [
+        {
+          "clip": "lightning",
+          "frame": 0,
+          "anchor_screen_x": 136,
+          "rows": [
+            [
+              32,
+              288
+            ],
+            [
+              304,
+              560
+            ]
+          ],
+          "mirrored_offset_px": 0,
+          "turn_slide_px": 2.0
+        }
+      ],
+      "clips_shown": 1,
+      "truncated": false
+    }
+  },
+  "processing": {
+    "source_pngs_byte_identical": true,
+    "resized": false,
+    "cropped": false,
+    "per_frame_alignment": false,
+    "chroma_keyed": false
+  },
+  "alpha_validation": "Every input has fully transparent and visible pixels; edge quality still requires visual review.",
+  "qa": {
+    "status": "needs-visual-review",
+    "method": "Frame PNGs are byte copies (sha256 checked); each WebP preview is decoded and its timing, alpha and visible RGB compared with the source frames; tick grid = cumulative integer-ms boundaries rounded to the nearest tick; holds = repeated indices or premultiplied union-visible MAE <= 1.5; seams = forge_core.seam_report with wrap_ratio = seam / mean adjacent step; telegraph = tell -> hit in 60 Hz ticks.",
+    "notProven": [
+      "animation quality, gait, anatomy or identity",
+      "physical root stability or foot contact (anchor_px is declared, not measured)",
+      "runtime playback on a device (previews are verified files, not a game loop)",
+      "that near-duplicate thresholds suit every art style (heuristic)"
+    ],
+    "checks": [
+      {
+        "id": "png_byte_copy",
+        "status": "pass",
+        "value": 6,
+        "threshold": null
+      },
+      {
+        "id": "webp_timeline",
+        "status": "pass",
+        "value": 1,
+        "threshold": null
+      },
+      {
+        "id": "tick_grid",
+        "status": "pass",
+        "value": 0.0,
+        "threshold": null
+      },
+      {
+        "id": "telegraph",
+        "threshold": 28,
+        "status": "skipped",
+        "value": null
+      },
+      {
+        "id": "near_duplicate_holds",
+        "status": "pass",
+        "value": 0,
+        "threshold": 0
+      },
+      {
+        "id": "loop_seam",
+        "status": "skipped",
+        "value": null,
+        "threshold": null
+      },
+      {
+        "id": "manifest_lint",
+        "status": "pass",
+        "value": 0,
+        "threshold": 0
+      }
+    ],
+    "inputs": [
+      {
+        "path": "../../animations/lightning/clips-input.json",
+        "sha256": "ca93a929626afac63814daaf711878151799a449e5ab34f191e87c397a529731",
+        "bytes": 584
+      },
+      {
+        "path": "../../animations/lightning/sheet-1.png",
+        "sha256": "5620ab7909dcad77673df5aa1be03126b66d3546a9d965e7718838a44dbe8e7d",
+        "bytes": 3911
+      },
+      {
+        "path": "../../animations/lightning/sheet-2.png",
+        "sha256": "5f35c6b75487e99e13b1d94cc8f7ea57bb864990f00ad74e05f96bec1697ebef",
+        "bytes": 6639
+      },
+      {
+        "path": "../../animations/lightning/sheet-3.png",
+        "sha256": "6706bb9f4b6ef2e7a26dd3829842fc5c6a05db4712e410c78217f8f6c67cc31a",
+        "bytes": 16907
+      },
+      {
+        "path": "../../animations/lightning/sheet-4.png",
+        "sha256": "75ec8b95b8d0049e35ba5dd70099ebea4e4f267379f9b8e6e1e3c558c5290b60",
+        "bytes": 13294
+      },
+      {
+        "path": "../../animations/lightning/sheet-5.png",
+        "sha256": "a58048d5d5b69e6158316a1e2f3eea3dc3da021ddf66fcf55b9c6c22ffecbacb",
+        "bytes": 11111
+      },
+      {
+        "path": "../../animations/lightning/sheet-6.png",
+        "sha256": "dade7a950e3f910581befb8dd4e79b7fad7f93849d60bf03e2979ea1c520395b",
+        "bytes": 4875
+      }
+    ],
+    "outputs": [
+      {
+        "path": "frames/frame-00.png",
+        "sha256": "5620ab7909dcad77673df5aa1be03126b66d3546a9d965e7718838a44dbe8e7d",
+        "bytes": 3911
+      },
+      {
+        "path": "frames/frame-01.png",
+        "sha256": "5f35c6b75487e99e13b1d94cc8f7ea57bb864990f00ad74e05f96bec1697ebef",
+        "bytes": 6639
+      },
+      {
+        "path": "frames/frame-02.png",
+        "sha256": "6706bb9f4b6ef2e7a26dd3829842fc5c6a05db4712e410c78217f8f6c67cc31a",
+        "bytes": 16907
+      },
+      {
+        "path": "frames/frame-03.png",
+        "sha256": "75ec8b95b8d0049e35ba5dd70099ebea4e4f267379f9b8e6e1e3c558c5290b60",
+        "bytes": 13294
+      },
+      {
+        "path": "frames/frame-04.png",
+        "sha256": "a58048d5d5b69e6158316a1e2f3eea3dc3da021ddf66fcf55b9c6c22ffecbacb",
+        "bytes": 11111
+      },
+      {
+        "path": "frames/frame-05.png",
+        "sha256": "dade7a950e3f910581befb8dd4e79b7fad7f93849d60bf03e2979ea1c520395b",
+        "bytes": 4875
+      },
+      {
+        "path": "clips/clip-00.webp",
+        "sha256": "c07661d79524d41e4c2da9a89ccf8f491e863952ae6d625d1ad140b34e55c306",
+        "bytes": 44474
+      },
+      {
+        "path": "contact-sheet.png",
+        "sha256": "373e0ddef151d6e9cb94c96389416fa1d544f3109505e769dd3e4b12cf5bd9b3",
+        "bytes": 53157
+      },
+      {
+        "path": "review/filmstrip-00.png",
+        "sha256": "0109232d2c1dbc9b3139b6710be2eb14939a3b4bafaabd3c16e29e5f37cdb721",
+        "bytes": 152256
+      },
+      {
+        "path": "review/onion-00.png",
+        "sha256": "77f75860c9713a5c59df2222a9243ed6f82cfc7db8895ce70c711f4738d7769e",
+        "bytes": 69458
+      },
+      {
+        "path": "review/turn-test.png",
+        "sha256": "525157915158866098444c602e1cf6e8964b73e7e3646b35c68532cb8f2a7f4f",
+        "bytes": 14033
+      }
+    ],
+    "tool": {
+      "name": "build_animation_clips",
+      "version": "0.4.0"
+    }
+  }
+}

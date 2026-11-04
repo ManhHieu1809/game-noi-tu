@@ -1,0 +1,26 @@
+{
+  "source": "raw\\attack-se-guided-v1.png",
+  "original_size": [
+    1536,
+    1024
+  ],
+  "normalized_size": [
+    1536,
+    1024
+  ],
+  "whole_action_scale": 0.78,
+  "whole_action_offset": [
+    56,
+    71
+  ],
+  "source_anchor": [
+    256,
+    440.0
+  ],
+  "registered_anchor": [
+    256,
+    414
+  ],
+  "per_frame_rescale": false,
+  "per_frame_root_shift": false
+}

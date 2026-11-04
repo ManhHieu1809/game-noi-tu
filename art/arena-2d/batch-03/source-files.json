@@ -1,0 +1,19 @@
+{
+  "generation_route": "built-in ImageGen",
+  "underlying_model_version": "not exposed by tool",
+  "reference": "../characters/fighter-anime/master/master_rgba.png",
+  "calls": [
+    {"raw": "raw/fighter-run-se-v1.png", "prompt": "prompts/fighter-run-se-v1.txt", "selection": "first four poses used in composite"},
+    {"raw": "raw/fighter-run-se-v2.png", "prompt": "prompts/fighter-run-se-v2.txt", "selection": "rejected: did not fix repeated lead leg"},
+    {"raw": "raw/fighter-run-se-far-half.png", "prompt": "prompts/fighter-run-se-far-half.txt", "selection": "four second-half poses used in composite"},
+    {"raw": "raw/fighter-attack-se-v1.png", "prompt": "prompts/fighter-attack-se-v1.txt", "selection": "six poses used in prototype"},
+    {"raw": "raw/fighter-run-se-consistency.png", "prompt": "prompts/fighter-run-se-consistency.txt", "selection": "not selected: head consistency did not improve"}
+  ],
+  "generated_layout_reference": "references/fighter-run-se-anchor.png",
+  "processing_only": ["assemble_run_trial.py", "register_actions.py", "register_consistency.py", "finalize.py", "export_lite.py"],
+  "unique_selected_poses": 14,
+  "directions_selected": ["SE"],
+  "release_grade": "prototype with unresolved visual QA issues",
+  "video_used": false,
+  "game_runtime_changed": false
+}

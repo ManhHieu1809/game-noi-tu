@@ -1,0 +1,532 @@
+{
+  "schema": "generate2dmap.compose_report.v2",
+  "tool": {
+    "name": "compose_layered_preview",
+    "version": "0.4.0"
+  },
+  "base": "../../../map/foundation-anime.png",
+  "base_sha256": "26f06b8a45c461833b557a244bd8f2ec8aaab17895ef344761203ff27c08ca90",
+  "placements": "../../placements.json",
+  "placements_sha256": "e455efcae9923e8bad172b8a6f25d77fb40bdcfca9d608f9806970d865fc9cf6",
+  "output": "../layered-preview-v2.png",
+  "output_sha256": "47a5999bfcf4bef2491cb81afadf47815409aca9b96018038fa6593f500979ab",
+  "canvas_size": [
+    1448,
+    1086
+  ],
+  "scale": 1.0,
+  "resampler": "lanczos",
+  "sort": "ground-line",
+  "anchor_policy": "manifest",
+  "compositing_order": [
+    {
+      "band": "base",
+      "draws": "the base image (scaled by --scale)"
+    },
+    {
+      "band": "background",
+      "draws": "placements on layer background",
+      "sorted_by": [
+        "sortY",
+        "x",
+        "id"
+      ]
+    },
+    {
+      "band": "world",
+      "draws": "props, objects, actors and every other layer",
+      "sorted_by": [
+        "sortY",
+        "x",
+        "id"
+      ]
+    },
+    {
+      "band": "foreground",
+      "draws": "the foreground list and layer foreground",
+      "sorted_by": [
+        "sortY",
+        "x",
+        "id"
+      ]
+    },
+    {
+      "band": "not baked",
+      "draws": "the debug overlay and plate pan are separate files"
+    }
+  ],
+  "prop_packs": [],
+  "pasted": [
+    {
+      "id": "tree-1",
+      "group": "props",
+      "kind": "prop",
+      "layer": "props",
+      "band": "world",
+      "draw_index": 0,
+      "image": "../../props/tree/clean.png",
+      "image_sha256": "2f940d25922714c486151fcf024320fe7077ae8ab43ba083f8c7d0ff03b3abe2",
+      "left": 992,
+      "top": 16,
+      "w": 215,
+      "h": 215,
+      "source_size": [
+        768,
+        768
+      ],
+      "anchorPx": [
+        386.747944,
+        730.0
+      ],
+      "anchor_source": "px",
+      "anchor_world": [
+        1100.0,
+        220.0
+      ],
+      "anchor_canvas": [
+        1100.269281,
+        220.361979
+      ],
+      "anchor_world_error": [
+        0.269281,
+        0.361979
+      ],
+      "resampler": "lanczos",
+      "clipped": false,
+      "visible_bounds": [
+        1002,
+        28,
+        1197,
+        221
+      ],
+      "sortY": 220.0,
+      "sort_source": "explicit",
+      "footprint": null,
+      "warnings": []
+    },
+    {
+      "id": "pine-3",
+      "group": "props",
+      "kind": "prop",
+      "layer": "props",
+      "band": "world",
+      "draw_index": 1,
+      "image": "../../props/pine/clean.png",
+      "image_sha256": "a64f3a88bf12bda05b1bfb9379e113bbc330b4622c57e5a92f899859e5348585",
+      "left": 1203,
+      "top": 48,
+      "w": 192,
+      "h": 192,
+      "source_size": [
+        768,
+        768
+      ],
+      "anchorPx": [
+        388.369938,
+        730.0
+      ],
+      "anchor_source": "px",
+      "anchor_world": [
+        1300.0,
+        230.0
+      ],
+      "anchor_canvas": [
+        1300.092484,
+        230.5
+      ],
+      "anchor_world_error": [
+        0.092484,
+        0.5
+      ],
+      "resampler": "lanczos",
+      "clipped": false,
+      "visible_bounds": [
+        1238,
+        58,
+        1359,
+        231
+      ],
+      "sortY": 230.0,
+      "sort_source": "explicit",
+      "footprint": null,
+      "warnings": []
+    },
+    {
+      "id": "tree-2",
+      "group": "props",
+      "kind": "prop",
+      "layer": "props",
+      "band": "world",
+      "draw_index": 2,
+      "image": "../../props/tree/clean.png",
+      "image_sha256": "2f940d25922714c486151fcf024320fe7077ae8ab43ba083f8c7d0ff03b3abe2",
+      "left": 1083,
+      "top": 168,
+      "w": 192,
+      "h": 192,
+      "source_size": [
+        768,
+        768
+      ],
+      "anchorPx": [
+        386.747944,
+        730.0
+      ],
+      "anchor_source": "px",
+      "anchor_world": [
+        1180.0,
+        350.0
+      ],
+      "anchor_canvas": [
+        1179.686986,
+        350.5
+      ],
+      "anchor_world_error": [
+        -0.313014,
+        0.5
+      ],
+      "resampler": "lanczos",
+      "clipped": false,
+      "visible_bounds": [
+        1092,
+        178,
+        1266,
+        351
+      ],
+      "sortY": 350.0,
+      "sort_source": "explicit",
+      "footprint": null,
+      "warnings": []
+    },
+    {
+      "id": "tree-0",
+      "group": "props",
+      "kind": "prop",
+      "layer": "props",
+      "band": "world",
+      "draw_index": 3,
+      "image": "../../props/tree/clean.png",
+      "image_sha256": "2f940d25922714c486151fcf024320fe7077ae8ab43ba083f8c7d0ff03b3abe2",
+      "left": 42,
+      "top": 176,
+      "w": 215,
+      "h": 215,
+      "source_size": [
+        768,
+        768
+      ],
+      "anchorPx": [
+        386.747944,
+        730.0
+      ],
+      "anchor_source": "px",
+      "anchor_world": [
+        150.0,
+        380.0
+      ],
+      "anchor_canvas": [
+        150.269281,
+        380.361979
+      ],
+      "anchor_world_error": [
+        0.269281,
+        0.361979
+      ],
+      "resampler": "lanczos",
+      "clipped": false,
+      "visible_bounds": [
+        52,
+        188,
+        247,
+        381
+      ],
+      "sortY": 380.0,
+      "sort_source": "explicit",
+      "footprint": null,
+      "warnings": []
+    },
+    {
+      "id": "core-6",
+      "group": "props",
+      "kind": "prop",
+      "layer": "props",
+      "band": "world",
+      "draw_index": 4,
+      "image": "../../props/core/clean.png",
+      "image_sha256": "5cc9ab2933c6f1b7a2669ce5fc5d27a6811cbc205410b6ab8650ade42ad4145b",
+      "left": 184,
+      "top": 248,
+      "w": 207,
+      "h": 207,
+      "source_size": [
+        768,
+        768
+      ],
+      "anchorPx": [
+        392.832474,
+        730.0
+      ],
+      "anchor_source": "px",
+      "anchor_world": [
+        290.0,
+        445.0
+      ],
+      "anchor_canvas": [
+        289.880628,
+        444.757812
+      ],
+      "anchor_world_error": [
+        -0.119372,
+        -0.242188
+      ],
+      "resampler": "lanczos",
+      "clipped": false,
+      "visible_bounds": [
+        207,
+        258,
+        368,
+        445
+      ],
+      "sortY": 445.0,
+      "sort_source": "explicit",
+      "footprint": null,
+      "warnings": []
+    },
+    {
+      "id": "stall-7",
+      "group": "props",
+      "kind": "prop",
+      "layer": "props",
+      "band": "world",
+      "draw_index": 5,
+      "image": "../../props/stall/clean.png",
+      "image_sha256": "1a028f05279d2d319a5f85697d528adc3f06272d61d38d9e55e5f37e12866ede",
+      "left": 989,
+      "top": 256,
+      "w": 246,
+      "h": 246,
+      "source_size": [
+        768,
+        768
+      ],
+      "anchorPx": [
+        471.803013,
+        730.0
+      ],
+      "anchor_source": "px",
+      "anchor_world": [
+        1140.0,
+        490.0
+      ],
+      "anchor_canvas": [
+        1140.124403,
+        489.828125
+      ],
+      "anchor_world_error": [
+        0.124403,
+        -0.171875
+      ],
+      "resampler": "lanczos",
+      "clipped": false,
+      "visible_bounds": [
+        1001,
+        310,
+        1223,
+        490
+      ],
+      "sortY": 490.0,
+      "sort_source": "explicit",
+      "footprint": null,
+      "warnings": []
+    },
+    {
+      "id": "fighter-demo",
+      "group": "actors",
+      "kind": "actor",
+      "layer": "actors",
+      "band": "world",
+      "draw_index": 6,
+      "image": "../../../characters/fighter-anime/master/master_rgba.png",
+      "image_sha256": "68da618cef0bfa1f6bc1c3f912f4678ef639208ccc4a105a6099165eeee45b2a",
+      "left": 379,
+      "top": 421,
+      "w": 143,
+      "h": 143,
+      "source_size": [
+        1024,
+        1024
+      ],
+      "anchorPx": [
+        440.0,
+        926.0
+      ],
+      "anchor_source": "px",
+      "anchor_world": [
+        440.0,
+        550.0
+      ],
+      "anchor_canvas": [
+        440.445312,
+        550.314453
+      ],
+      "anchor_world_error": [
+        0.445312,
+        0.314453
+      ],
+      "resampler": "lanczos",
+      "clipped": false,
+      "visible_bounds": [
+        429,
+        440,
+        472,
+        551
+      ],
+      "sortY": 550.0,
+      "sort_source": "explicit",
+      "footprint": null,
+      "warnings": []
+    },
+    {
+      "id": "bridge-8",
+      "group": "props",
+      "kind": "prop",
+      "layer": "props",
+      "band": "world",
+      "draw_index": 7,
+      "image": "../../props/bridge/clean.png",
+      "image_sha256": "9d29e3bc8c45dc0be4a6b85d7ea3a8c5a61c9188428646f494638956911d3817",
+      "left": 521,
+      "top": 299,
+      "w": 338,
+      "h": 338,
+      "source_size": [
+        768,
+        768
+      ],
+      "anchorPx": [
+        384.0,
+        730.0
+      ],
+      "anchor_source": "px",
+      "anchor_world": [
+        690.0,
+        620.0
+      ],
+      "anchor_canvas": [
+        690.0,
+        620.276042
+      ],
+      "anchor_world_error": [
+        0.0,
+        0.276042
+      ],
+      "resampler": "lanczos",
+      "clipped": false,
+      "visible_bounds": [
+        537,
+        471,
+        842,
+        621
+      ],
+      "sortY": 620.0,
+      "sort_source": "explicit",
+      "footprint": null,
+      "warnings": []
+    },
+    {
+      "id": "pine-4",
+      "group": "props",
+      "kind": "prop",
+      "layer": "props",
+      "band": "world",
+      "draw_index": 8,
+      "image": "../../props/pine/clean.png",
+      "image_sha256": "a64f3a88bf12bda05b1bfb9379e113bbc330b4622c57e5a92f899859e5348585",
+      "left": 757,
+      "top": 600,
+      "w": 184,
+      "h": 184,
+      "source_size": [
+        768,
+        768
+      ],
+      "anchorPx": [
+        388.369938,
+        730.0
+      ],
+      "anchor_source": "px",
+      "anchor_world": [
+        850.0,
+        775.0
+      ],
+      "anchor_canvas": [
+        850.046964,
+        774.895833
+      ],
+      "anchor_world_error": [
+        0.046964,
+        -0.104167
+      ],
+      "resampler": "lanczos",
+      "clipped": false,
+      "visible_bounds": [
+        791,
+        609,
+        907,
+        775
+      ],
+      "sortY": 775.0,
+      "sort_source": "explicit",
+      "footprint": null,
+      "warnings": []
+    },
+    {
+      "id": "tree-5",
+      "group": "props",
+      "kind": "prop",
+      "layer": "props",
+      "band": "world",
+      "draw_index": 9,
+      "image": "../../props/tree/clean.png",
+      "image_sha256": "2f940d25922714c486151fcf024320fe7077ae8ab43ba083f8c7d0ff03b3abe2",
+      "left": 64,
+      "top": 591,
+      "w": 230,
+      "h": 230,
+      "source_size": [
+        768,
+        768
+      ],
+      "anchorPx": [
+        386.747944,
+        730.0
+      ],
+      "anchor_source": "px",
+      "anchor_world": [
+        180.0,
+        810.0
+      ],
+      "anchor_canvas": [
+        179.822952,
+        809.619792
+      ],
+      "anchor_world_error": [
+        -0.177048,
+        -0.380208
+      ],
+      "resampler": "lanczos",
+      "clipped": false,
+      "visible_bounds": [
+        75,
+        604,
+        283,
+        810
+      ],
+      "sortY": 810.0,
+      "sort_source": "explicit",
+      "footprint": null,
+      "warnings": []
+    }
+  ],
+  "warnings": []
+}

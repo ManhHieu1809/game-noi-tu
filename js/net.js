@@ -1,4 +1,4 @@
-export const PEER_ID_PREFIX = "noitu-";
+﻿export const PEER_ID_PREFIX = "noitu-";
 export const CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 export const CODE_LENGTH = 5;
 
@@ -41,14 +41,14 @@ export function generateCode() {
   return Array.from(bytes, (byte) => CODE_ALPHABET[byte % CODE_ALPHABET.length]).join("");
 }
 
-function peerOptions() {
+export function getPeerOptions() {
   return { debug: 1, config: { iceServers: ICE_SERVERS } };
 }
 
 function waitForPeerOpen(peer, timeoutMs) {
   return new Promise((resolve, reject) => {
     let settled = false;
-    const timer = setTimeout(() => finish(Object.assign(new Error("Hết thời gian kết nối."), { type: "timeout" })), timeoutMs);
+    const timer = setTimeout(() => finish(Object.assign(new Error("Háº¿t thá»i gian káº¿t ná»‘i."), { type: "timeout" })), timeoutMs);
 
     function finish(error) {
       if (settled) return;
@@ -65,7 +65,7 @@ function waitForPeerOpen(peer, timeoutMs) {
     }
 
     function onError(error) {
-      finish(Object.assign(new Error(error?.message || error?.type || "Lỗi kết nối."), { type: error?.type }));
+      finish(Object.assign(new Error(error?.message || error?.type || "Lá»—i káº¿t ná»‘i."), { type: error?.type }));
     }
 
     peer.on("open", onOpen);
@@ -75,13 +75,13 @@ function waitForPeerOpen(peer, timeoutMs) {
 
 export async function createRoomPeer() {
   if (!window.Peer) {
-    throw new Error("Không tải được thư viện kết nối. Kiểm tra mạng rồi tải lại trang.");
+    throw new Error("KhĂ´ng táº£i Ä‘Æ°á»£c thÆ° viá»‡n káº¿t ná»‘i. Kiá»ƒm tra máº¡ng rá»“i táº£i láº¡i trang.");
   }
 
   let lastError = null;
   for (let attempt = 0; attempt < 2; attempt += 1) {
     const code = generateCode();
-    const peer = new window.Peer(`${PEER_ID_PREFIX}${code}`, peerOptions());
+    const peer = new window.Peer(`${PEER_ID_PREFIX}${code}`, getPeerOptions());
     try {
       await waitForPeerOpen(peer, 10000);
       return { code, peer };
@@ -97,19 +97,19 @@ export async function createRoomPeer() {
   }
 
   if (lastError?.type === "unavailable-id") {
-    throw new Error("Không tìm được mã phòng trống. Hãy thử lại.");
+    throw new Error("KhĂ´ng tĂ¬m Ä‘Æ°á»£c mĂ£ phĂ²ng trá»‘ng. HĂ£y thá»­ láº¡i.");
   }
-  throw new Error("Không kết nối được máy chủ ghép phòng. Kiểm tra mạng rồi thử lại.");
+  throw new Error("KhĂ´ng káº¿t ná»‘i Ä‘Æ°á»£c mĂ¡y chá»§ ghĂ©p phĂ²ng. Kiá»ƒm tra máº¡ng rá»“i thá»­ láº¡i.");
 }
 
 export function connectToRoom(code, name) {
   return new Promise((resolve, reject) => {
     if (!window.Peer) {
-      reject(new Error("Không tải được thư viện kết nối. Kiểm tra mạng rồi tải lại trang."));
+      reject(new Error("KhĂ´ng táº£i Ä‘Æ°á»£c thÆ° viá»‡n káº¿t ná»‘i. Kiá»ƒm tra máº¡ng rá»“i táº£i láº¡i trang."));
       return;
     }
 
-    const peer = new window.Peer(peerOptions());
+    const peer = new window.Peer(getPeerOptions());
     let conn = null;
     let settled = false;
     const timers = new Set();
@@ -147,24 +147,24 @@ export function connectToRoom(code, name) {
     const onPeerError = (error) => {
       const type = error?.type;
       if (type === "peer-unavailable") {
-        fail(`Không tìm thấy phòng ${code}. Có thể chủ phòng đã rời đi.`);
+        fail(`KhĂ´ng tĂ¬m tháº¥y phĂ²ng ${code}. CĂ³ thá»ƒ chá»§ phĂ²ng Ä‘Ă£ rá»i Ä‘i.`);
       } else if (type === "browser-incompatible") {
-        fail("Trình duyệt này không hỗ trợ kết nối ngang hàng (WebRTC).");
+        fail("TrĂ¬nh duyá»‡t nĂ y khĂ´ng há»— trá»£ káº¿t ná»‘i ngang hĂ ng (WebRTC).");
       } else if (["network", "server-error", "socket-error", "socket-closed"].includes(type)) {
-        fail("Không kết nối được máy chủ ghép phòng. Kiểm tra mạng rồi thử lại.");
+        fail("KhĂ´ng káº¿t ná»‘i Ä‘Æ°á»£c mĂ¡y chá»§ ghĂ©p phĂ²ng. Kiá»ƒm tra máº¡ng rá»“i thá»­ láº¡i.");
       } else {
-        fail(error?.message || "Không kết nối được tới phòng.");
+        fail(error?.message || "KhĂ´ng káº¿t ná»‘i Ä‘Æ°á»£c tá»›i phĂ²ng.");
       }
     };
 
     peer.on("error", onPeerError);
-    later(() => fail("Hết thời gian kết nối. Thử lại nhé."), 16000);
+    later(() => fail("Háº¿t thá»i gian káº¿t ná»‘i. Thá»­ láº¡i nhĂ©."), 16000);
 
     peer.on("open", () => {
       try {
         conn = peer.connect(`${PEER_ID_PREFIX}${code}`, { reliable: true, serialization: "json" });
       } catch {
-        fail("Không tạo được kết nối tới phòng.");
+        fail("KhĂ´ng táº¡o Ä‘Æ°á»£c káº¿t ná»‘i tá»›i phĂ²ng.");
         return;
       }
 
@@ -177,7 +177,7 @@ export function connectToRoom(code, name) {
           peer.off("error", onPeerError);
           resolve({ peer, conn, playerId: message.playerId, state: message.state });
         } else if (message.t === "rejected") {
-          fail(message.reason || "Không vào được phòng.");
+          fail(message.reason || "KhĂ´ng vĂ o Ä‘Æ°á»£c phĂ²ng.");
         }
       };
 
@@ -186,11 +186,12 @@ export function connectToRoom(code, name) {
         conn.send({ t: "hello", name });
       });
       conn.on("close", () => {
-        if (!settled) fail("Mất kết nối tới chủ phòng. Có thể phòng đã đóng.");
+        if (!settled) fail("Máº¥t káº¿t ná»‘i tá»›i chá»§ phĂ²ng. CĂ³ thá»ƒ phĂ²ng Ä‘Ă£ Ä‘Ă³ng.");
       });
       conn.on("error", () => {
-        if (!settled) fail("Lỗi kết nối tới phòng.");
+        if (!settled) fail("Lá»—i káº¿t ná»‘i tá»›i phĂ²ng.");
       });
     });
   });
 }
+

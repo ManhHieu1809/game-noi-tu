@@ -1,0 +1,199 @@
+{
+  "schema": "arena.sprite-batch.v1",
+  "status": "SE-animation-prototype-with-visual-QA-issues",
+  "art_source": "built-in ImageGen pose sheets; no video",
+  "character": "fighter-anime",
+  "directions_created": [
+    "SE"
+  ],
+  "all_eight_directions_complete": false,
+  "runtime_integrated": false,
+  "repository": "https://github.com/0x0funky/agent-sprite-forge",
+  "commit": "5324342fdfab72430f4e9604f3fe427009f8596d",
+  "assets": [
+    {
+      "id": "fighter-run-se",
+      "action": "run",
+      "direction": "SE",
+      "frame_count": 8,
+      "cell_px": [
+        384,
+        384
+      ],
+      "anchor_px": [
+        192,
+        365
+      ],
+      "sheet": "run-se/sheet.png",
+      "clips": "run-se/clips/animation-clips.json",
+      "gif_preview": "run-se/preview.gif",
+      "status": "prototype; inspect QA report before runtime integration",
+      "frames": [
+        {
+          "file": "run-se/run-1.png",
+          "sha256": "f9eb3a29b2e622a3fb98035e729947514b740ccc89bf03668a02180b58c80c3f"
+        },
+        {
+          "file": "run-se/run-2.png",
+          "sha256": "c079ac3b3f9aeb2a394081d1d1176264f42c74f83b1142343aa18909b072cece"
+        },
+        {
+          "file": "run-se/run-3.png",
+          "sha256": "bbbd2f19e134f790074584b21d2323d3167028cab84f00aa774917ff7f0e81c9"
+        },
+        {
+          "file": "run-se/run-4.png",
+          "sha256": "9c70efc2c5d83056ccee520be465e9289f3540c8836758b1ee06e7d2da8df04e"
+        },
+        {
+          "file": "run-se/run-5.png",
+          "sha256": "0ea9d3454a640d81bb9cf7601d52569eddc47a5ad6fedafc4b85982f75334c05"
+        },
+        {
+          "file": "run-se/run-6.png",
+          "sha256": "9455ecd8a4fd33ad4a7a71873001a1ccb6545f16433e65a1c6ed7a4cb6b7970c"
+        },
+        {
+          "file": "run-se/run-7.png",
+          "sha256": "d9ccf7b76068112ba0fea24a27a36b392859a516fac5477c8eef85856349125d"
+        },
+        {
+          "file": "run-se/run-8.png",
+          "sha256": "127098d4b9eea87592f3f32f8f98960ad486a7d5a6030727baaa01b2c2689d92"
+        }
+      ],
+      "lite": {
+        "cell_px": [
+          192,
+          192
+        ],
+        "anchor_px": [
+          96.0,
+          182.5
+        ],
+        "frames": [
+          {
+            "file": "lite/run-se/run-1.png",
+            "sha256": "6fcab2733a04e25e94541a69938ac523038c40041f58e223dcdc38726b0dbcd0"
+          },
+          {
+            "file": "lite/run-se/run-2.png",
+            "sha256": "4a89785944b6d5375d5a2c93e1129131e459bb936976385843aaa34316056d1d"
+          },
+          {
+            "file": "lite/run-se/run-3.png",
+            "sha256": "e63d3deadc1f36891ed737075779e62670f9f39ee8a912ca783e7ba17f29b80c"
+          },
+          {
+            "file": "lite/run-se/run-4.png",
+            "sha256": "f5cacdf6836b32b4b487957da6078b2c0533cd84831fb57399fe89f7e72c594d"
+          },
+          {
+            "file": "lite/run-se/run-5.png",
+            "sha256": "5f44a7da7f01b1ea3a0f03a83fb3e5c0a74ef2177629db9e803462654fcdc28f"
+          },
+          {
+            "file": "lite/run-se/run-6.png",
+            "sha256": "3a7050e3e6c7fe59e0c55c8682c586b5c60be0338effc0ad2390a1921573c3bb"
+          },
+          {
+            "file": "lite/run-se/run-7.png",
+            "sha256": "1d20a1eaa1d8efd1d18e83611c466cac5c5e97cb5160adb87d860fd457857ae0"
+          },
+          {
+            "file": "lite/run-se/run-8.png",
+            "sha256": "85dacc3746f66ad1d6d21b661c6838390a6f50c690d946e8224eea352dbbf2bc"
+          }
+        ],
+        "clips": "lite/run-se/clips/animation-clips.json"
+      }
+    },
+    {
+      "id": "fighter-attack-se",
+      "action": "attack",
+      "direction": "SE",
+      "frame_count": 6,
+      "cell_px": [
+        384,
+        384
+      ],
+      "anchor_px": [
+        192,
+        365
+      ],
+      "sheet": "attack-se/sheet.png",
+      "clips": "attack-se/clips/animation-clips.json",
+      "gif_preview": "attack-se/preview.gif",
+      "status": "prototype; inspect QA report before runtime integration",
+      "frames": [
+        {
+          "file": "attack-se/attack-1.png",
+          "sha256": "17b4cea54441f35104b4543104e28ff6419bd15f920ece72e8d1706c2a838bb0"
+        },
+        {
+          "file": "attack-se/attack-2.png",
+          "sha256": "66eede1fb642b557a3973304600bdeef945e225f70b19f37d084c251eeaae8db"
+        },
+        {
+          "file": "attack-se/attack-3.png",
+          "sha256": "e7653a2d17fa7dbd86814567c9deb3660515c2fcbb7fbb4412dc3073c4add9e5"
+        },
+        {
+          "file": "attack-se/attack-4.png",
+          "sha256": "8eab370d66258ee82a57c27a909f87dd3fcc0ef71939f0d595721460cbbf2817"
+        },
+        {
+          "file": "attack-se/attack-5.png",
+          "sha256": "e199b8e162f874bd3975ae9c04de739d79a22b119a8fc7fc62efe5bbf0d109b4"
+        },
+        {
+          "file": "attack-se/attack-6.png",
+          "sha256": "26b1c7a9f775e651010aa0e317bacdf628c4d5543ed851c4f56911abf85567e0"
+        }
+      ],
+      "lite": {
+        "cell_px": [
+          192,
+          192
+        ],
+        "anchor_px": [
+          96.0,
+          182.5
+        ],
+        "frames": [
+          {
+            "file": "lite/attack-se/attack-1.png",
+            "sha256": "dc6733ef5551666c985db5b5bfaab1812aed537e56de22121bce60f5ddbf9606"
+          },
+          {
+            "file": "lite/attack-se/attack-2.png",
+            "sha256": "a338c87a99fb31e154004a5e06aeb92399513da6f5296eecf221088a989479bc"
+          },
+          {
+            "file": "lite/attack-se/attack-3.png",
+            "sha256": "5d86cc7d2115024d8bee267dd41682f61561fd26dd493efb93acbdfe72fde19a"
+          },
+          {
+            "file": "lite/attack-se/attack-4.png",
+            "sha256": "f4c6aa70537ea41e04d85266e05d48fe05209a1d91086663e69545d1b22737fa"
+          },
+          {
+            "file": "lite/attack-se/attack-5.png",
+            "sha256": "04e2b51e266633fde1b78fde32000c6add5ad1187045ad60e4545556898fe762"
+          },
+          {
+            "file": "lite/attack-se/attack-6.png",
+            "sha256": "2360e285ed0b8993e009a8311069e31a423bf97f471f96cd13aa13d00db564a5"
+          }
+        ],
+        "clips": "lite/attack-se/clips/animation-clips.json"
+      }
+    }
+  ],
+  "memory_note": {
+    "unique_poses": 14,
+    "rgba_384_bytes": 8257536,
+    "rgba_192_bytes": 2064384,
+    "not_included": "Browser overhead, decoded atlases, duplicate previews and GPU copies. No device FPS benchmark."
+  }
+}

@@ -1,0 +1,316 @@
+{
+  "schema": "arena.asset-qa.v2",
+  "technical_exports": "pass",
+  "unique_poses": 14,
+  "sizes": [
+    384,
+    192
+  ],
+  "png_hashes_and_alpha": "pass",
+  "clip_builder_strict": "pass: all four exports; WebP timing, alpha and PNG bytes verified",
+  "preview_javascript_syntax": "pass",
+  "browser_playback_verified": false,
+  "browser_blocker": "CUA initialization failed to write kernel assets: OS error 3; browser host unavailable earlier",
+  "raw_forge_diagnostics": [
+    {
+      "action": "run-se",
+      "status": "fail",
+      "report": "qa\\final-v2-run-se\\sheet-qc.json",
+      "issues": [
+        {
+          "id": "identity_head_ratio",
+          "status": "fail",
+          "value": {
+            "0": 1.064,
+            "1": 1.064,
+            "2": 1.0,
+            "3": 1.0,
+            "4": 1.0,
+            "5": 1.064,
+            "6": 1.0,
+            "7": 1.0
+          },
+          "threshold": [
+            0.95,
+            1.05
+          ],
+          "frames": [
+            0,
+            1,
+            5
+          ],
+          "note": "head scale against the median frame (frame 0 template)"
+        },
+        {
+          "id": "leg_alternation",
+          "status": "fail",
+          "value": [
+            "near",
+            "near",
+            "unclear",
+            "near",
+            "near",
+            "near",
+            "near",
+            "near"
+          ],
+          "threshold": "lead differs between i and i+n/2",
+          "verdict": "duplicated half-cycle: the same leg leads in both halves",
+          "pairs": [
+            [
+              0,
+              4,
+              true
+            ],
+            [
+              1,
+              5,
+              true
+            ],
+            [
+              3,
+              7,
+              true
+            ]
+          ],
+          "mode": "auto-luminance",
+          "near_leading": 7,
+          "unclear": 1,
+          "half_cycle": {
+            "pairs": [
+              {
+                "pair": [
+                  0,
+                  4
+                ],
+                "iou_best_shift": 0.456
+              },
+              {
+                "pair": [
+                  1,
+                  5
+                ],
+                "iou_best_shift": 0.6533
+              },
+              {
+                "pair": [
+                  2,
+                  6
+                ],
+                "iou_best_shift": 0.6005
+              },
+              {
+                "pair": [
+                  3,
+                  7
+                ],
+                "iou_best_shift": 0.5214
+              }
+            ],
+            "adjacent_iou_median": 0.572,
+            "half_cycle_iou_median": 0.561
+          },
+          "fix": "regenerate frames 4-7 with NEAR and FAR swapped (attach frames 0-3 and the guide)"
+        }
+      ]
+    },
+    {
+      "action": "attack-se",
+      "status": "fail",
+      "report": "qa\\final-v2-attack-se\\sheet-qc.json",
+      "issues": [
+        {
+          "id": "identity_head_ratio",
+          "status": "fail",
+          "value": {
+            "0": 1.01,
+            "1": 1.071,
+            "2": 0.97,
+            "3": 0.97,
+            "4": 0.99,
+            "5": 1.01
+          },
+          "threshold": [
+            0.95,
+            1.05
+          ],
+          "frames": [
+            1
+          ],
+          "note": "head scale against the median frame (frame 0 template)"
+        },
+        {
+          "id": "torso_drift",
+          "status": "warn",
+          "value": 6.77,
+          "threshold": 2.0,
+          "method": "trunk",
+          "median_x": 188.5,
+          "note": "range of the torso x in game px; scale_frames --root-lock torso-x removes it"
+        }
+      ]
+    }
+  ],
+  "head_only_diagnostics": [
+    {
+      "action": "run-se",
+      "ratio_range": [
+        1.0,
+        1.0
+      ],
+      "method": "Bounded ROI, navy hair / warm skin mask, largest 8-connected component; inspection only, art unmodified",
+      "limitations": [
+        "Mask completeness and actual skull dimensions require visual inspection.",
+        "This does not override the original full-band Forge diagnostic."
+      ]
+    },
+    {
+      "action": "attack-se",
+      "ratio_range": [
+        1.0,
+        1.04
+      ],
+      "method": "Bounded ROI, navy hair / warm skin mask, largest 8-connected component; inspection only, art unmodified",
+      "limitations": [
+        "Mask completeness and actual skull dimensions require visual inspection.",
+        "This does not override the original full-band Forge diagnostic."
+      ]
+    }
+  ],
+  "camera_calibrated_run": {
+    "method": "same Forge checker, declared sampled boot colours, leg band 65% to include both feet in elevated SE projection",
+    "report": "qa\\final-v2-run-camera\\sheet-qc.json",
+    "status": "fail",
+    "checks": [
+      {
+        "id": "phase_coverage",
+        "status": "pass",
+        "value": [
+          [
+            "contact",
+            "flight",
+            "flight",
+            "flight"
+          ],
+          [
+            "contact",
+            "flight",
+            "flight",
+            "flight"
+          ]
+        ],
+        "threshold": null,
+        "problems": [],
+        "note": "labels from ground clearance and stride width; they cannot judge the pose itself"
+      },
+      {
+        "id": "leg_alternation",
+        "status": "pass",
+        "value": [
+          "near",
+          "near",
+          "far",
+          "far",
+          "far",
+          "far",
+          "near",
+          "near"
+        ],
+        "threshold": "lead differs between i and i+n/2",
+        "verdict": "alternates",
+        "pairs": [
+          [
+            0,
+            4,
+            false
+          ],
+          [
+            1,
+            5,
+            false
+          ],
+          [
+            2,
+            6,
+            false
+          ],
+          [
+            3,
+            7,
+            false
+          ]
+        ],
+        "mode": "colour",
+        "near_leading": 4,
+        "unclear": 0,
+        "half_cycle": {
+          "pairs": [
+            {
+              "pair": [
+                0,
+                4
+              ],
+              "iou_best_shift": 0.456
+            },
+            {
+              "pair": [
+                1,
+                5
+              ],
+              "iou_best_shift": 0.6533
+            },
+            {
+              "pair": [
+                2,
+                6
+              ],
+              "iou_best_shift": 0.6005
+            },
+            {
+              "pair": [
+                3,
+                7
+              ],
+              "iou_best_shift": 0.5214
+            }
+          ],
+          "adjacent_iou_median": 0.572,
+          "half_cycle_iou_median": 0.561
+        },
+        "fix": null
+      },
+      {
+        "id": "torso_drift",
+        "status": "warn",
+        "value": 14.75,
+        "threshold": 2.0,
+        "method": "colour",
+        "median_x": 201.0,
+        "note": "range of the torso x in game px; scale_frames --root-lock torso-x removes it"
+      },
+      {
+        "id": "row_baseline",
+        "status": "pass",
+        "value": 0.5,
+        "threshold": 0.5,
+        "baselines": {
+          "0": 373,
+          "1": 372
+        },
+        "note": "ground line of each sheet row; scale_frames --row-baseline aligns them"
+      },
+      {
+        "id": "seam",
+        "status": "pass",
+        "value": 1.21,
+        "threshold": 1.5,
+        "transitions": [],
+        "note": "largest frame-to-frame change over the median step; review these joins first"
+      }
+    ]
+  },
+  "visual_review": "Looked at full action sheets and enlarged head crops; contact phases are clearer; compare in preview.html",
+  "release_status": "revised SE asset bundle; automated raw visual warnings remain, not an all-pass eight-direction set",
+  "game_integrated": false,
+  "eight_direction_set_complete": false
+}

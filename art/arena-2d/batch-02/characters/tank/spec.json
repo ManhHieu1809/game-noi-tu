@@ -1,0 +1,22 @@
+{
+  "schema": "generate2dsprite.master_spec.v1",
+  "name": "tank",
+  "subject": "original anime tank hero",
+  "identity": "Clean anime fantasy tank, preserve exact costume hair face equipment and palette from supplied source still",
+  "pose": null,
+  "recap": "original anime tank hero (Clean anime fantasy tank, preserve exact costume hair face equipment and palette from supplied source still)",
+  "facing": "right",
+  "facing_parts": null,
+  "view": "orthographic overhead 35 degrees, southeast",
+  "class": "hero",
+  "finish": "hd",
+  "key": "#FF00FF",
+  "genre": null,
+  "pronoun": "they",
+  "identity_ref": null,
+  "style_ref": null,
+  "allowed_text": null,
+  "extra_bans": [],
+  "opaque_parts": null,
+  "extra": null
+}

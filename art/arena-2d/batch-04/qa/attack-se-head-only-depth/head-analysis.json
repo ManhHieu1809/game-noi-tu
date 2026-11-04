@@ -1,0 +1,210 @@
+{
+  "method": "Bounded ROI, navy hair / warm skin mask, largest 8-connected component; inspection only, art unmodified",
+  "notProven": [
+    "Mask completeness and actual skull dimensions require visual inspection.",
+    "This does not override the original full-band Forge diagnostic."
+  ],
+  "metrics": [
+    {
+      "frame": 0,
+      "roi": [
+        174,
+        150,
+        233,
+        215
+      ],
+      "bbox": [
+        174,
+        158,
+        218,
+        215
+      ],
+      "source": "processed\\attack-se\\attack-1.png"
+    },
+    {
+      "frame": 1,
+      "roi": [
+        174,
+        150,
+        233,
+        215
+      ],
+      "bbox": [
+        174,
+        160,
+        218,
+        215
+      ],
+      "source": "processed\\attack-se\\attack-2.png"
+    },
+    {
+      "frame": 2,
+      "roi": [
+        174,
+        150,
+        233,
+        215
+      ],
+      "bbox": [
+        174,
+        166,
+        218,
+        215
+      ],
+      "source": "processed\\attack-se\\attack-3.png"
+    },
+    {
+      "frame": 3,
+      "roi": [
+        174,
+        150,
+        233,
+        215
+      ],
+      "bbox": [
+        175,
+        163,
+        226,
+        215
+      ],
+      "source": "processed\\attack-se\\attack-4.png"
+    },
+    {
+      "frame": 4,
+      "roi": [
+        174,
+        150,
+        233,
+        215
+      ],
+      "bbox": [
+        175,
+        160,
+        220,
+        215
+      ],
+      "source": "processed\\attack-se\\attack-5.png"
+    },
+    {
+      "frame": 5,
+      "roi": [
+        174,
+        150,
+        233,
+        215
+      ],
+      "bbox": [
+        174,
+        159,
+        220,
+        215
+      ],
+      "source": "processed\\attack-se\\attack-6.png"
+    }
+  ],
+  "ratios": {
+    "frames": [
+      {
+        "frame": 0,
+        "scale": 1.0,
+        "residual": 0.0,
+        "head_box": [
+          174,
+          158,
+          218,
+          215
+        ],
+        "head_ratio": 1.0,
+        "template": true,
+        "residual_over_median": null
+      },
+      {
+        "frame": 1,
+        "scale": 1.04,
+        "residual": 34.08,
+        "head_box": [
+          174,
+          160,
+          218,
+          215
+        ],
+        "head_ratio": 1.04,
+        "template": false,
+        "residual_over_median": 0.95
+      },
+      {
+        "frame": 2,
+        "scale": 1.0,
+        "residual": 35.79,
+        "head_box": [
+          174,
+          166,
+          218,
+          215
+        ],
+        "head_ratio": 1.0,
+        "template": false,
+        "residual_over_median": 1.0
+      },
+      {
+        "frame": 3,
+        "scale": 1.02,
+        "residual": 41.92,
+        "head_box": [
+          175,
+          163,
+          226,
+          215
+        ],
+        "head_ratio": 1.02,
+        "template": false,
+        "residual_over_median": 1.17
+      },
+      {
+        "frame": 4,
+        "scale": 1.0,
+        "residual": 41.36,
+        "head_box": [
+          175,
+          160,
+          220,
+          215
+        ],
+        "head_ratio": 1.0,
+        "template": false,
+        "residual_over_median": 1.16
+      },
+      {
+        "frame": 5,
+        "scale": 1.0,
+        "residual": 23.0,
+        "head_box": [
+          174,
+          159,
+          220,
+          215
+        ],
+        "head_ratio": 1.0,
+        "template": false,
+        "residual_over_median": 0.64
+      }
+    ],
+    "reduction": 2,
+    "median_scale": 1.0,
+    "median_residual": 35.79,
+    "scales": [
+      0.9,
+      0.92,
+      0.94,
+      0.96,
+      0.98,
+      1.0,
+      1.02,
+      1.04,
+      1.06,
+      1.08,
+      1.1
+    ],
+    "template": "frame 0"
+  }
+}

@@ -1,0 +1,510 @@
+{
+  "schema": "generate2dmap.prop_pack.v2",
+  "tool": {
+    "name": "extract_prop_pack",
+    "version": "0.4.0"
+  },
+  "input": "../../raw/compact.png",
+  "source_size": [
+    1254,
+    1254
+  ],
+  "source_sha256": "dda48fe5ed1ba059199c325227ca559c366d00440727120235dcab47a822ce1c",
+  "source_mode": "RGB",
+  "layout_mode": "grid",
+  "boxes_file": null,
+  "labels_file": null,
+  "background_mode": "chroma_key",
+  "rows": 2,
+  "cols": 2,
+  "threshold": 100,
+  "edge_threshold": 150,
+  "despill_radius": 1,
+  "despill": {
+    "mode": "edge",
+    "applied": "edge",
+    "radius": 1,
+    "margin": 12,
+    "changed_px": 1829
+  },
+  "hygiene": {
+    "mode": "none",
+    "floor": 4,
+    "solid_min": 32,
+    "attach_radius": 2,
+    "connectivity": 8,
+    "floor_px": 0,
+    "detached_px": 0,
+    "detached_components": 0,
+    "max_removed_alpha": 0
+  },
+  "alpha_floor": 0,
+  "alpha_floor_pixels_removed": 0,
+  "trim_border": 0,
+  "edge_clean_depth": 0,
+  "component_mode": "largest",
+  "component_padding": 8,
+  "min_component_area": "auto",
+  "edge_touch_margin": 0,
+  "geometry": {
+    "connectivity": 8,
+    "alpha_geometry_threshold": 16,
+    "anchor_mode": "stance",
+    "support_band_fraction": 0.25,
+    "anchor_rounding": "whole pixels, half-up",
+    "grid_rounding": "exact",
+    "keep_canvas": false,
+    "world_scale": null
+  },
+  "accepted": [
+    {
+      "index": 0,
+      "label": "moss-rock",
+      "display_name": "moss-rock",
+      "status": "accepted",
+      "image": "moss-rock/prop.png",
+      "sha256": "d326ab8439bfdbb0a8c3a787d8fd3431f09023b952a8314946eeb4aa5ecdad0c",
+      "output_size": [
+        379,
+        240
+      ],
+      "grid": [
+        0,
+        0
+      ],
+      "cell_box": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "source_box": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "source_rect": [
+        137,
+        209,
+        516,
+        449
+      ],
+      "trim_offset": [
+        137,
+        209
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor_px": [
+        193,
+        232
+      ],
+      "anchor_source": "measured",
+      "component_mode": "largest",
+      "component_count": 1,
+      "min_component_area": 100,
+      "trim_applied": 0,
+      "crop_bbox": [
+        145,
+        217,
+        508,
+        441
+      ],
+      "padded_crop_bbox": [
+        137,
+        209,
+        516,
+        449
+      ],
+      "selected_component_area": 53111,
+      "selected_component_bbox": [
+        145,
+        217,
+        508,
+        441
+      ],
+      "kept_area": 53111,
+      "dropped_components": 1,
+      "dropped_area": 3,
+      "edge_touch": false,
+      "footprint": {
+        "shape": "ellipse",
+        "width": 280,
+        "depth": 140,
+        "offset": [
+          0,
+          -70
+        ],
+        "rotate": 0,
+        "basis": "prop_px",
+        "suggested": true,
+        "method": "columns at least half covered in the bottom 25% of alpha > 16; depth = width x 0.5; front edge on the ground line"
+      },
+      "edge_fringe_px": 5
+    },
+    {
+      "index": 1,
+      "label": "shrub",
+      "display_name": "shrub",
+      "status": "accepted",
+      "image": "shrub/prop.png",
+      "sha256": "154b0577b50e41ad1884c17f8bc5cb5a9a7d5fbae32a5592a855659a66dbd5c6",
+      "output_size": [
+        337,
+        271
+      ],
+      "grid": [
+        0,
+        1
+      ],
+      "cell_box": [
+        627,
+        0,
+        1254,
+        627
+      ],
+      "source_box": [
+        627,
+        0,
+        1254,
+        627
+      ],
+      "source_rect": [
+        763,
+        183,
+        1100,
+        454
+      ],
+      "trim_offset": [
+        136,
+        183
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor_px": [
+        170,
+        263
+      ],
+      "anchor_source": "measured",
+      "component_mode": "largest",
+      "component_count": 1,
+      "min_component_area": 100,
+      "trim_applied": 0,
+      "crop_bbox": [
+        144,
+        191,
+        465,
+        446
+      ],
+      "padded_crop_bbox": [
+        136,
+        183,
+        473,
+        454
+      ],
+      "selected_component_area": 52862,
+      "selected_component_bbox": [
+        144,
+        191,
+        465,
+        446
+      ],
+      "kept_area": 52862,
+      "dropped_components": 0,
+      "dropped_area": 0,
+      "edge_touch": false,
+      "footprint": {
+        "shape": "ellipse",
+        "width": 251,
+        "depth": 125.5,
+        "offset": [
+          -9.5,
+          -62.75
+        ],
+        "rotate": 0,
+        "basis": "prop_px",
+        "suggested": true,
+        "method": "columns at least half covered in the bottom 25% of alpha > 16; depth = width x 0.5; front edge on the ground line"
+      },
+      "edge_fringe_px": 18
+    },
+    {
+      "index": 2,
+      "label": "flowers",
+      "display_name": "flowers",
+      "status": "accepted",
+      "image": "flowers/prop.png",
+      "sha256": "1852a4967dad991792bc20ec67d59a19ff52528bdfd2fb3d6442951917133338",
+      "output_size": [
+        323,
+        194
+      ],
+      "grid": [
+        1,
+        0
+      ],
+      "cell_box": [
+        0,
+        627,
+        627,
+        1254
+      ],
+      "source_box": [
+        0,
+        627,
+        627,
+        1254
+      ],
+      "source_rect": [
+        159,
+        839,
+        482,
+        1033
+      ],
+      "trim_offset": [
+        159,
+        212
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor_px": [
+        162,
+        186
+      ],
+      "anchor_source": "measured",
+      "component_mode": "largest",
+      "component_count": 1,
+      "min_component_area": 100,
+      "trim_applied": 0,
+      "crop_bbox": [
+        167,
+        220,
+        474,
+        398
+      ],
+      "padded_crop_bbox": [
+        159,
+        212,
+        482,
+        406
+      ],
+      "selected_component_area": 27548,
+      "selected_component_bbox": [
+        167,
+        220,
+        474,
+        398
+      ],
+      "kept_area": 27548,
+      "dropped_components": 1,
+      "dropped_area": 9,
+      "edge_touch": false,
+      "footprint": {
+        "shape": "ellipse",
+        "width": 204,
+        "depth": 102,
+        "offset": [
+          6,
+          -51
+        ],
+        "rotate": 0,
+        "basis": "prop_px",
+        "suggested": true,
+        "method": "columns at least half covered in the bottom 25% of alpha > 16; depth = width x 0.5; front edge on the ground line"
+      },
+      "edge_fringe_px": 27
+    },
+    {
+      "index": 3,
+      "label": "stone-stump",
+      "display_name": "stone-stump",
+      "status": "accepted",
+      "image": "stone-stump/prop.png",
+      "sha256": "0d00f5e7b7e2b17359f8afa03181ebe7d3b06a087266bbb29fd5f263a0934b67",
+      "output_size": [
+        350,
+        212
+      ],
+      "grid": [
+        1,
+        1
+      ],
+      "cell_box": [
+        627,
+        627,
+        1254,
+        1254
+      ],
+      "source_box": [
+        627,
+        627,
+        1254,
+        1254
+      ],
+      "source_rect": [
+        748,
+        824,
+        1098,
+        1036
+      ],
+      "trim_offset": [
+        121,
+        197
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor_px": [
+        172,
+        204
+      ],
+      "anchor_source": "measured",
+      "component_mode": "largest",
+      "component_count": 1,
+      "min_component_area": 100,
+      "trim_applied": 0,
+      "crop_bbox": [
+        129,
+        205,
+        463,
+        401
+      ],
+      "padded_crop_bbox": [
+        121,
+        197,
+        471,
+        409
+      ],
+      "selected_component_area": 42490,
+      "selected_component_bbox": [
+        129,
+        205,
+        463,
+        401
+      ],
+      "kept_area": 42490,
+      "dropped_components": 1,
+      "dropped_area": 17,
+      "edge_touch": false,
+      "footprint": {
+        "shape": "ellipse",
+        "width": 239,
+        "depth": 119.5,
+        "offset": [
+          -5.5,
+          -59.75
+        ],
+        "rotate": 0,
+        "basis": "prop_px",
+        "suggested": true,
+        "method": "columns at least half covered in the bottom 25% of alpha > 16; depth = width x 0.5; front edge on the ground line"
+      },
+      "edge_fringe_px": 9
+    }
+  ],
+  "rejected": [],
+  "edge_touch_props": [],
+  "warnings": [
+    "tall or wide props in a square grid (aspect > 1.6): ['moss-rock 363x224', 'flowers 307x178', 'stone-stump 334x196']; generate them one by one or in custom cells, or extract with --auto-boxes"
+  ],
+  "qa": {
+    "status": "warn",
+    "method": "legacy #FF00FF key (100/150) and edge despill radius 1; alpha hygiene none; 8-connected components (largest); checks measured on the published pixels",
+    "notProven": [
+      "that each label names the art in its cell or box",
+      "that a prop is complete: clipping is detected only where art meets the cell edge",
+      "keyed-edge quality beyond the edge fringe count",
+      "that anchors and suggested footprints match gameplay contact (both are measured from alpha)",
+      "runtime placement, collision or occlusion"
+    ],
+    "checks": [
+      {
+        "id": "accepted",
+        "status": "pass",
+        "value": 4,
+        "threshold": ">= 1"
+      },
+      {
+        "id": "edge_touch",
+        "status": "pass",
+        "value": [],
+        "threshold": 0
+      },
+      {
+        "id": "dropped_area",
+        "status": "pass",
+        "value": {
+          "moss-rock": 0.0001,
+          "flowers": 0.0003,
+          "stone-stump": 0.0004
+        },
+        "threshold": 0.01
+      },
+      {
+        "id": "strategy_aspect",
+        "status": "warn",
+        "value": [
+          "moss-rock 363x224",
+          "flowers 307x178",
+          "stone-stump 334x196"
+        ],
+        "threshold": 1.6
+      },
+      {
+        "id": "edge_fringe",
+        "status": "pass",
+        "value": 0.0052,
+        "threshold": 0.02
+      }
+    ],
+    "inputs": [
+      {
+        "path": "../../raw/compact.png",
+        "sha256": "dda48fe5ed1ba059199c325227ca559c366d00440727120235dcab47a822ce1c",
+        "bytes": 1414805
+      }
+    ],
+    "outputs": [
+      {
+        "path": "moss-rock/prop.png",
+        "sha256": "d326ab8439bfdbb0a8c3a787d8fd3431f09023b952a8314946eeb4aa5ecdad0c",
+        "bytes": 119818
+      },
+      {
+        "path": "shrub/prop.png",
+        "sha256": "154b0577b50e41ad1884c17f8bc5cb5a9a7d5fbae32a5592a855659a66dbd5c6",
+        "bytes": 121087
+      },
+      {
+        "path": "flowers/prop.png",
+        "sha256": "1852a4967dad991792bc20ec67d59a19ff52528bdfd2fb3d6442951917133338",
+        "bytes": 75267
+      },
+      {
+        "path": "stone-stump/prop.png",
+        "sha256": "0d00f5e7b7e2b17359f8afa03181ebe7d3b06a087266bbb29fd5f263a0934b67",
+        "bytes": 100340
+      }
+    ],
+    "tool": {
+      "name": "extract_prop_pack",
+      "version": "0.4.0"
+    }
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "schema": "generate2dsprite.master.v1",
+  "tool": {
+    "name": "master_still",
+    "version": "0.4.0"
+  },
+  "created": "2026-11-03T07:30:00.160Z",
+  "name": "tank",
+  "subject": "original anime tank hero",
+  "identity_recap": "original anime tank hero (Clean anime fantasy tank, preserve exact costume hair face equipment and palette from supplied source still)",
+  "facing": "right",
+  "view": "orthographic overhead 35 degrees, southeast",
+  "finish": "hd",
+  "class": "hero",
+  "framing": {
+    "canvas": [
+      1024,
+      1024
+    ],
+    "subject_height_px": 788,
+    "top_margin_px": 138,
+    "lead_px": 0,
+    "preset": "hero",
+    "subject_bbox": [
+      276,
+      138,
+      748,
+      926
+    ],
+    "anchor": [
+      440.0,
+      926.0
+    ],
+    "opaque_area_px": 184256,
+    "width_limited": false
+  },
+  "key": "#FF00FF",
+  "files": {
+    "master": {
+      "path": "master.png",
+      "sha256": "5a6d531987745fc4ac4ce45066ef4025037232be186e40d282795e0b059d1005",
+      "bytes": 411717,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    "cutout": {
+      "path": "master_rgba.png",
+      "sha256": "564cabcd13fa5c68f3c2552c833a039f1c80eebf5e54d79887056bed4717f9ee",
+      "bytes": 484910,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    "source": {
+      "path": "source.png",
+      "sha256": "3ce6ac1198d58606c5bd3f49361411c6fc748d63872126378701eab7ffa4d750",
+      "bytes": 1568636,
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    "spec": {
+      "path": "spec.json",
+      "sha256": "0893b29143e85b6d1e8364291db5826007591e5e1ceb83e908fc2bdc916c7c7e",
+      "bytes": 726
+    },
+    "prompt": null
+  },
+  "references": [],
+  "transform": {
+    "mapping": "master = scale * source + offset (continuous pixel coordinates: pixel i spans [i, i + 1))",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_subject_bbox": [
+      322,
+      152,
+      909,
+      1132
+    ],
+    "crop_box": [
+      316,
+      146,
+      915,
+      1138
+    ],
+    "crop_margin_px": 6,
+    "scale": 0.8040816326530612,
+    "offset": [
+      17.08775510204083,
+      15.779591836734696
+    ],
+    "canvas": [
+      1024,
+      1024
+    ],
+    "resampler": "lanczos",
+    "premultiplied": true,
+    "alpha_floor_px": 3277,
+    "subject_parts": 1,
+    "ignored_parts": 0,
+    "ignored_px": 0,
+    "source_touches": [],
+    "key_rgb": [
+      255,
+      0,
+      255
+    ]
+  },
+  "route": "host-image_gen",
+  "provenance": {
+    "command": "external",
+    "run": null,
+    "take": null,
+    "source_name": "tank.png",
+    "source_sha256": "3ce6ac1198d58606c5bd3f49361411c6fc748d63872126378701eab7ffa4d750",
+    "media": null,
+    "media_cli_source": null,
+    "edit": null
+  },
+  "matte": {
+    "requested": "soft",
+    "key_estimate": {
+      "key": [
+        252.0,
+        3.0,
+        251.0
+      ],
+      "source": "border_median",
+      "valid": true,
+      "ring_share": 1.0,
+      "coverage": 0.816513154715119,
+      "distance_from_declared": 5.83
+    },
+    "quality": "soft",
+    "interior_despill": false,
+    "qa": {
+      "opaque_key_px": 0,
+      "outer_ring_spill_fraction": 0.0,
+      "semitransparent_fraction": 0.036735602440229,
+      "enclosed_key_pockets": 0,
+      "key_hued_px": 0,
+      "visible_px": 287514
+    },
+    "key_choice": {
+      "status": "ok",
+      "overlap_share": 0.000175,
+      "rule": "reject a key when more than 0.5% of subject pixels have key dominance >= 40; first acceptable candidate wins"
+    }
+  },
+  "warnings": []
+}

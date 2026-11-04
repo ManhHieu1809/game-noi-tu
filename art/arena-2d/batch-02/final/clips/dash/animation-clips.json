@@ -1,0 +1,543 @@
+{
+  "schema": "generate2dsprite.animation_clips.v2",
+  "source_manifest": {
+    "path": "../../animations/dash/clips-input.json",
+    "file_sha256": "17f3e7b5e35fbe14d5eeda87b8dff01db609a951ca71aacf991cac34746517ef",
+    "copy": "source-manifest.json"
+  },
+  "frame_size": [
+    256,
+    256
+  ],
+  "anchor_px": [
+    128,
+    128
+  ],
+  "anchor_semantics": "shared canvas/root origin, often a ground reference; not per-frame visible bottom",
+  "sampling": "linear",
+  "pixel_art": false,
+  "art_source": "host_image",
+  "frames": [
+    {
+      "index": 0,
+      "name": "sheet-1",
+      "source": {
+        "path": "../../animations/dash/sheet-1.png",
+        "file_sha256": "03c0101e03028395129cd123e9d73fd44e7c4fa926fb90a89d0aa9c8db59bf07",
+        "bytes": 3809,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      "rgba_pixel_sha256": "afcfa009b9954b7713ff9f0fbdecb572e80a3004c50391f69938d8df5568f276",
+      "transparent_pixel_count": 64673,
+      "visible_pixel_count": 863,
+      "near_duplicates": [],
+      "holds": [],
+      "file": "frames/frame-00.png"
+    },
+    {
+      "index": 1,
+      "name": "sheet-2",
+      "source": {
+        "path": "../../animations/dash/sheet-2.png",
+        "file_sha256": "7267d630daf9269c53a02f1fbec0470febf4035c57e0f61cf4bd4763126604ac",
+        "bytes": 8383,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      "rgba_pixel_sha256": "bf893fadbc3748f4e764beeeed7f78c007a311d09137b5ef432ac1beccadd574",
+      "transparent_pixel_count": 63260,
+      "visible_pixel_count": 2276,
+      "near_duplicates": [],
+      "holds": [],
+      "file": "frames/frame-01.png"
+    },
+    {
+      "index": 2,
+      "name": "sheet-3",
+      "source": {
+        "path": "../../animations/dash/sheet-3.png",
+        "file_sha256": "f060075eb38390b2a35a2bc29ecdfb0c52aea5f362ccd90079adad0b2c1bae3a",
+        "bytes": 16013,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      "rgba_pixel_sha256": "89a33e66cb7f68534d1f3ee38a2d4a852d7452116a9a817370429b1175134829",
+      "transparent_pixel_count": 60860,
+      "visible_pixel_count": 4676,
+      "near_duplicates": [],
+      "holds": [],
+      "file": "frames/frame-02.png"
+    },
+    {
+      "index": 3,
+      "name": "sheet-4",
+      "source": {
+        "path": "../../animations/dash/sheet-4.png",
+        "file_sha256": "89377864631c73b5fab1510f9c4560d6d670cb803fee9b3554c915bb0885f061",
+        "bytes": 8921,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      "rgba_pixel_sha256": "40a5528bedae62250ceae1e3f3bdb981235627c610f47cb83b83b6c50b904d21",
+      "transparent_pixel_count": 63253,
+      "visible_pixel_count": 2283,
+      "near_duplicates": [],
+      "holds": [],
+      "file": "frames/frame-03.png"
+    },
+    {
+      "index": 4,
+      "name": "sheet-5",
+      "source": {
+        "path": "../../animations/dash/sheet-5.png",
+        "file_sha256": "d35869d29acb70f01ba12b818bdca3e7f757c3d92f372bc191c88a8c8623490c",
+        "bytes": 3761,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      "rgba_pixel_sha256": "bcc4a27d00fb225ece0dc75e4cfa9903ef795ac28b74f5d13db65cc8db99bde6",
+      "transparent_pixel_count": 64765,
+      "visible_pixel_count": 771,
+      "near_duplicates": [],
+      "holds": [],
+      "file": "frames/frame-04.png"
+    },
+    {
+      "index": 5,
+      "name": "sheet-6",
+      "source": {
+        "path": "../../animations/dash/sheet-6.png",
+        "file_sha256": "47accc53b314d05dcbcd8ec05a8bb8d9d19d3e2cd5f4b2f81d94c1555d8afd29",
+        "bytes": 1921,
+        "size": [
+          256,
+          256
+        ],
+        "mode": "RGBA"
+      },
+      "rgba_pixel_sha256": "5219a466fc460922e5003a9f862aec88298dea52bbe4b2efbbe2b5b67fc3914c",
+      "transparent_pixel_count": 65236,
+      "visible_pixel_count": 300,
+      "near_duplicates": [],
+      "holds": [],
+      "file": "frames/frame-05.png"
+    }
+  ],
+  "clips": {
+    "dash": {
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "duration_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "loop": false,
+      "total_duration_ms": 600,
+      "nominal_fps": 10.0,
+      "average_fps": 10.0,
+      "loop_policy": "oneshot",
+      "timing_source": "ticks",
+      "ticks": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "tick_hz": 60,
+      "fps_rational": "10/1",
+      "events_ms": [],
+      "role": "fx",
+      "tick_grid": {
+        "hz": 60,
+        "max_drift_ms": 0.0,
+        "frame_ticks": [
+          6,
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "zero_tick_positions": [],
+        "even": true,
+        "cycle_ticks": 36.0,
+        "cycle_aligned": true,
+        "method": "cumulative integer-ms frame boundaries rounded half-up to the nearest tick"
+      },
+      "holds": [],
+      "preview": {
+        "file": "clips/clip-00.webp",
+        "decoded_frames": [
+          {
+            "index": 0,
+            "start_ms": 0,
+            "duration_ms": 100,
+            "clip_positions": [
+              0
+            ]
+          },
+          {
+            "index": 1,
+            "start_ms": 100,
+            "duration_ms": 100,
+            "clip_positions": [
+              1
+            ]
+          },
+          {
+            "index": 2,
+            "start_ms": 200,
+            "duration_ms": 100,
+            "clip_positions": [
+              2
+            ]
+          },
+          {
+            "index": 3,
+            "start_ms": 300,
+            "duration_ms": 100,
+            "clip_positions": [
+              3
+            ]
+          },
+          {
+            "index": 4,
+            "start_ms": 400,
+            "duration_ms": 100,
+            "clip_positions": [
+              4
+            ]
+          },
+          {
+            "index": 5,
+            "start_ms": 500,
+            "duration_ms": 100,
+            "clip_positions": [
+              5
+            ]
+          }
+        ],
+        "decoded_frame_count": 6,
+        "total_duration_ms": 600,
+        "native_loop_count": 1,
+        "timeline_verified": true,
+        "alpha_and_visible_rgb_exact": true,
+        "hidden_rgb_guaranteed": false,
+        "lossless": true,
+        "file_sha256": "9ce9389a603b225320d65639d37cf414e63571abfb928147116bd4aeed768318"
+      },
+      "transitions": [
+        {
+          "from_position": 0,
+          "to_position": 1,
+          "premultiplied_rgb_mae": 6.059961,
+          "alpha_mae": 7.01268,
+          "changed_visible_pixels": 2604
+        },
+        {
+          "from_position": 1,
+          "to_position": 2,
+          "premultiplied_rgb_mae": 10.822284,
+          "alpha_mae": 12.248947,
+          "changed_visible_pixels": 5331
+        },
+        {
+          "from_position": 2,
+          "to_position": 3,
+          "premultiplied_rgb_mae": 11.837562,
+          "alpha_mae": 13.604965,
+          "changed_visible_pixels": 5522
+        },
+        {
+          "from_position": 3,
+          "to_position": 4,
+          "premultiplied_rgb_mae": 5.335644,
+          "alpha_mae": 6.120926,
+          "changed_visible_pixels": 2550
+        },
+        {
+          "from_position": 4,
+          "to_position": 5,
+          "premultiplied_rgb_mae": 1.622518,
+          "alpha_mae": 1.956223,
+          "changed_visible_pixels": 869
+        }
+      ],
+      "last_to_first": {
+        "applies_to_playback": false,
+        "premultiplied_rgb_mae": 2.375968,
+        "alpha_mae": 2.934006,
+        "changed_visible_pixels": 1057
+      }
+    }
+  },
+  "states": {
+    "active": "dash"
+  },
+  "diagnostics": {
+    "visible_pixel_duplicate_groups": [],
+    "visual_approval": false,
+    "note": "Pixel differences and duplicates do not establish animation quality or physical root stability.",
+    "near_duplicate_mae": 1.5,
+    "near_duplicate_pairs": [],
+    "tick_hz": 60,
+    "lint": []
+  },
+  "contact_sheet": {
+    "file": "contact-sheet.png",
+    "native_scale": true,
+    "scale": 1,
+    "requested_scale": 1,
+    "annotated_with_shared_root": true,
+    "not_a_runtime_atlas": true,
+    "file_sha256": "eaa1065e76ecbba1b6915f58794e546d8df0bc2ef66641b7a6d15097d7723fcb"
+  },
+  "review": {
+    "scale": 1,
+    "requested_scale": 1,
+    "backgrounds": [
+      "light",
+      "dark",
+      "checker"
+    ],
+    "filmstrips": {
+      "dash": {
+        "file": "review/filmstrip-00.png",
+        "backgrounds": [
+          "light",
+          "dark",
+          "checker"
+        ],
+        "positions_shown": 6,
+        "truncated": false
+      }
+    },
+    "onion": {
+      "dash": {
+        "file": "review/onion-00.png",
+        "background": "checker",
+        "positions_shown": 6,
+        "truncated": false
+      }
+    },
+    "transitions": [],
+    "turn_test": {
+      "file": "review/turn-test.png",
+      "background": "dark",
+      "anchor_mark_rgb": [
+        255,
+        220,
+        80
+      ],
+      "cells": [
+        {
+          "clip": "dash",
+          "frame": 0,
+          "anchor_screen_x": 136,
+          "rows": [
+            [
+              32,
+              288
+            ],
+            [
+              304,
+              560
+            ]
+          ],
+          "mirrored_offset_px": 0,
+          "turn_slide_px": 64.0
+        }
+      ],
+      "clips_shown": 1,
+      "truncated": false
+    }
+  },
+  "processing": {
+    "source_pngs_byte_identical": true,
+    "resized": false,
+    "cropped": false,
+    "per_frame_alignment": false,
+    "chroma_keyed": false
+  },
+  "alpha_validation": "Every input has fully transparent and visible pixels; edge quality still requires visual review.",
+  "qa": {
+    "status": "needs-visual-review",
+    "method": "Frame PNGs are byte copies (sha256 checked); each WebP preview is decoded and its timing, alpha and visible RGB compared with the source frames; tick grid = cumulative integer-ms boundaries rounded to the nearest tick; holds = repeated indices or premultiplied union-visible MAE <= 1.5; seams = forge_core.seam_report with wrap_ratio = seam / mean adjacent step; telegraph = tell -> hit in 60 Hz ticks.",
+    "notProven": [
+      "animation quality, gait, anatomy or identity",
+      "physical root stability or foot contact (anchor_px is declared, not measured)",
+      "runtime playback on a device (previews are verified files, not a game loop)",
+      "that near-duplicate thresholds suit every art style (heuristic)"
+    ],
+    "checks": [
+      {
+        "id": "png_byte_copy",
+        "status": "pass",
+        "value": 6,
+        "threshold": null
+      },
+      {
+        "id": "webp_timeline",
+        "status": "pass",
+        "value": 1,
+        "threshold": null
+      },
+      {
+        "id": "tick_grid",
+        "status": "pass",
+        "value": 0.0,
+        "threshold": null
+      },
+      {
+        "id": "telegraph",
+        "threshold": 28,
+        "status": "skipped",
+        "value": null
+      },
+      {
+        "id": "near_duplicate_holds",
+        "status": "pass",
+        "value": 0,
+        "threshold": 0
+      },
+      {
+        "id": "loop_seam",
+        "status": "skipped",
+        "value": null,
+        "threshold": null
+      },
+      {
+        "id": "manifest_lint",
+        "status": "pass",
+        "value": 0,
+        "threshold": 0
+      }
+    ],
+    "inputs": [
+      {
+        "path": "../../animations/dash/clips-input.json",
+        "sha256": "17f3e7b5e35fbe14d5eeda87b8dff01db609a951ca71aacf991cac34746517ef",
+        "bytes": 574
+      },
+      {
+        "path": "../../animations/dash/sheet-1.png",
+        "sha256": "03c0101e03028395129cd123e9d73fd44e7c4fa926fb90a89d0aa9c8db59bf07",
+        "bytes": 3809
+      },
+      {
+        "path": "../../animations/dash/sheet-2.png",
+        "sha256": "7267d630daf9269c53a02f1fbec0470febf4035c57e0f61cf4bd4763126604ac",
+        "bytes": 8383
+      },
+      {
+        "path": "../../animations/dash/sheet-3.png",
+        "sha256": "f060075eb38390b2a35a2bc29ecdfb0c52aea5f362ccd90079adad0b2c1bae3a",
+        "bytes": 16013
+      },
+      {
+        "path": "../../animations/dash/sheet-4.png",
+        "sha256": "89377864631c73b5fab1510f9c4560d6d670cb803fee9b3554c915bb0885f061",
+        "bytes": 8921
+      },
+      {
+        "path": "../../animations/dash/sheet-5.png",
+        "sha256": "d35869d29acb70f01ba12b818bdca3e7f757c3d92f372bc191c88a8c8623490c",
+        "bytes": 3761
+      },
+      {
+        "path": "../../animations/dash/sheet-6.png",
+        "sha256": "47accc53b314d05dcbcd8ec05a8bb8d9d19d3e2cd5f4b2f81d94c1555d8afd29",
+        "bytes": 1921
+      }
+    ],
+    "outputs": [
+      {
+        "path": "frames/frame-00.png",
+        "sha256": "03c0101e03028395129cd123e9d73fd44e7c4fa926fb90a89d0aa9c8db59bf07",
+        "bytes": 3809
+      },
+      {
+        "path": "frames/frame-01.png",
+        "sha256": "7267d630daf9269c53a02f1fbec0470febf4035c57e0f61cf4bd4763126604ac",
+        "bytes": 8383
+      },
+      {
+        "path": "frames/frame-02.png",
+        "sha256": "f060075eb38390b2a35a2bc29ecdfb0c52aea5f362ccd90079adad0b2c1bae3a",
+        "bytes": 16013
+      },
+      {
+        "path": "frames/frame-03.png",
+        "sha256": "89377864631c73b5fab1510f9c4560d6d670cb803fee9b3554c915bb0885f061",
+        "bytes": 8921
+      },
+      {
+        "path": "frames/frame-04.png",
+        "sha256": "d35869d29acb70f01ba12b818bdca3e7f757c3d92f372bc191c88a8c8623490c",
+        "bytes": 3761
+      },
+      {
+        "path": "frames/frame-05.png",
+        "sha256": "47accc53b314d05dcbcd8ec05a8bb8d9d19d3e2cd5f4b2f81d94c1555d8afd29",
+        "bytes": 1921
+      },
+      {
+        "path": "clips/clip-00.webp",
+        "sha256": "9ce9389a603b225320d65639d37cf414e63571abfb928147116bd4aeed768318",
+        "bytes": 31316
+      },
+      {
+        "path": "contact-sheet.png",
+        "sha256": "eaa1065e76ecbba1b6915f58794e546d8df0bc2ef66641b7a6d15097d7723fcb",
+        "bytes": 44583
+      },
+      {
+        "path": "review/filmstrip-00.png",
+        "sha256": "046ce33b7f182be850f679f4f462caf06b3b76f317e9ec5bc46b8cfdf36286b6",
+        "bytes": 123849
+      },
+      {
+        "path": "review/onion-00.png",
+        "sha256": "7684515636b5600d5ff1a340ff1f52e15fc289d1b78da022169d7132c3ca5f55",
+        "bytes": 65084
+      },
+      {
+        "path": "review/turn-test.png",
+        "sha256": "27f009d82cab98011168aaa0125620011bf0101e0a1cfb45cebde387c7f2608f",
+        "bytes": 13942
+      }
+    ],
+    "tool": {
+      "name": "build_animation_clips",
+      "version": "0.4.0"
+    }
+  }
+}

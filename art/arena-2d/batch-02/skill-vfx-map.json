@@ -1,0 +1,31 @@
+{
+  "status": "asset-binding-plan-not-integrated",
+  "note": "Shared effect families are intentional. These are effect animations, not completed caster body animations.",
+  "fighter": {
+    "Q": {"effects":["dash","slash"],"body_animation":"pending"},
+    "E": {"effects":["shield"],"hold_clip":"shield-hold","body_animation":"pending"},
+    "R": {"effects":["earth"],"body_animation":"pending"}
+  },
+  "tank": {
+    "Q": {"effects":["dash","earth"],"body_animation":"pending"},
+    "E": {"effects":["shield"],"body_animation":"pending"},
+    "R": {"effects":["shield"],"hold_clip":"shield-hold","body_animation":"pending"}
+  },
+  "mage": {
+    "Q": {"effects":["orb"],"body_animation":"pending"},
+    "E": {"effects":["frost"],"body_animation":"pending"},
+    "R": {"effects":["lightning"],"repeat":"multiple strikes across active zone","body_animation":"pending"}
+  },
+  "ranger": {
+    "Q": {"effects":["arrow"],"body_animation":"pending"},
+    "E": {"effects":["dash"],"body_animation":"pending"},
+    "R": {"effects":["arrow"],"repeat":"attack cadence controlled by game","body_animation":"pending"}
+  },
+  "environment": {
+    "broadleaf_tree":"tree-sway",
+    "stream_overlay":"water",
+    "waterfall_overlay":"waterfall",
+    "energy_pickup":"crystal",
+    "core_shrine":"static core sprite currently includes its own crystal; do not double-layer crystal without a prepared mask"
+  }
+}

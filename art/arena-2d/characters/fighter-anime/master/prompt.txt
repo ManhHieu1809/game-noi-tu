@@ -1,0 +1,11 @@
+Create exactly ONE square image (1024x1024).
+
+Style: premium HD 2D game art for an anime 2.5D fantasy action RPG: a clean, high-resolution hand-painted sprite illustration with crisp sharp edges, a clean dark outline, rich but controlled colours, cel shading with soft highlights and clear light and shadow shapes, fine readable detail, no blur, no photo-realism, no 3D render look. No text, no letters, no numbers, no logo, no watermark, no signature, no UI, no border, no frame, no grid.
+
+Subject: an original young adult anime swordsman, full body, orthographic overhead three-quarter, camera looking down 35 degrees, facing down-right southeast, clearly FACING RIGHT: their face, gaze and chest turn toward the RIGHT edge of the image; forward is RIGHT and their back is toward the LEFT edge. Six-heads-tall anime proportions, tousled dark navy hair, expressive amber eyes, ivory shirt, short teal-blue adventurer jacket, coral-red scarf, brown fitted trousers and boots, clean light silver bracers, one slim steel sword lowered in right hand. Clean anime linework and cel shading; no realism or gritty texture. Calm combat-ready standing, both feet grounded, weapon held close to body.
+
+Size and position: one single figure, the top of the figure (including hair, headgear, raised weapons and effects) about 14 percent below the top edge of the canvas and its lowest point about 14 percent above the bottom edge (the figure about 72 percent of the canvas height), centred horizontally, generous empty magenta margin on every side, nothing touching or crossing the edges. The whole figure is drawn with solid, fully opaque pixels: no transparency, no semi-transparent glow, no soft aura, nothing blended with the background.
+
+ANIME illustration, crisp cel shading, elegant expressive anime face. No semi-realistic western character art, no photorealism, no 3D render, no chibi. Preserve generous empty margin and one figure only.
+
+Background: solid flat pure magenta #FF00FF everywhere outside the character, no shadow, no ground, no glow on the background.

@@ -1,0 +1,5123 @@
+{
+  "schema": "arena.asset-catalog.v1",
+  "art_source": "host_image",
+  "forge_commit": "5324342fdfab72430f4e9604f3fe427009f8596d",
+  "integrated": false,
+  "entries": [
+    {
+      "id": "arrow",
+      "kind": "animation",
+      "title": "Đạn xuyên",
+      "image": "final/clips-v2/arrow/clips/clip-00.webp",
+      "gif": "final/animations/arrow/animation.gif",
+      "sheet": "final/animations/arrow/sheet-transparent.png",
+      "frames": 6,
+      "decoded_gif_frames": 6,
+      "duration_ms": 600,
+      "loop": true,
+      "metadata": "final/clips-v2/arrow/animation-clips.json",
+      "pipeline": "final/animations/arrow/pipeline-meta.json",
+      "status": "processed-needs-runtime-review",
+      "key_qa": {
+        "key": [
+          252.0,
+          4.0,
+          251.0
+        ],
+        "opaque_key_px": 0,
+        "outer_ring_spill_fraction": 0.0,
+        "semitransparent_fraction": 0.3277692684400821,
+        "enclosed_key_pockets": 0,
+        "key_hued_px": 4038,
+        "visible_px": 95973,
+        "outer_ring_px": 11383,
+        "thresholds": {
+          "key_tolerance": 48.0,
+          "spill_threshold": 20.0,
+          "min_pocket_area": 16,
+          "opaque_alpha": 128,
+          "spill_hue_balance": 0.5
+        },
+        "method": "forge_matte.matte_qa v1: straight-colour key distance and dominance on the keyed image; two-channel keys count spill only where the key channels are balanced"
+      }
+    },
+    {
+      "id": "crystal",
+      "kind": "animation",
+      "title": "Tinh thể xoay",
+      "image": "final/clips-v2/crystal/clips/clip-00.webp",
+      "gif": "final/animations/crystal/animation.gif",
+      "sheet": "final/animations/crystal/sheet-transparent.png",
+      "frames": 6,
+      "decoded_gif_frames": 6,
+      "duration_ms": 1200,
+      "loop": true,
+      "metadata": "final/clips-v2/crystal/animation-clips.json",
+      "pipeline": "final/animations/crystal/pipeline-meta.json",
+      "status": "processed-needs-runtime-review",
+      "key_qa": {
+        "key": [
+          252.0,
+          3.0,
+          251.0
+        ],
+        "opaque_key_px": 0,
+        "outer_ring_spill_fraction": 0.0,
+        "semitransparent_fraction": 0.12197568975496817,
+        "enclosed_key_pockets": 0,
+        "key_hued_px": 1629,
+        "visible_px": 233235,
+        "outer_ring_px": 7601,
+        "thresholds": {
+          "key_tolerance": 48.0,
+          "spill_threshold": 20.0,
+          "min_pocket_area": 16,
+          "opaque_alpha": 128,
+          "spill_hue_balance": 0.5
+        },
+        "method": "forge_matte.matte_qa v1: straight-colour key distance and dominance on the keyed image; two-channel keys count spill only where the key channels are balanced"
+      }
+    },
+    {
+      "id": "dash",
+      "kind": "animation",
+      "title": "Lướt / bụi",
+      "image": "final/clips-v2/dash/clips/clip-00.webp",
+      "gif": "final/animations/dash/animation.gif",
+      "sheet": "final/animations/dash/sheet-transparent.png",
+      "frames": 6,
+      "decoded_gif_frames": 6,
+      "duration_ms": 600,
+      "loop": false,
+      "metadata": "final/clips-v2/dash/animation-clips.json",
+      "pipeline": "final/animations/dash/pipeline-meta.json",
+      "status": "processed-needs-runtime-review",
+      "key_qa": {
+        "key": [
+          252.0,
+          6.0,
+          251.0
+        ],
+        "opaque_key_px": 0,
+        "outer_ring_spill_fraction": 0.0,
+        "semitransparent_fraction": 0.28295244690674054,
+        "enclosed_key_pockets": 0,
+        "key_hued_px": 0,
+        "visible_px": 51984,
+        "outer_ring_px": 8682,
+        "thresholds": {
+          "key_tolerance": 48.0,
+          "spill_threshold": 20.0,
+          "min_pocket_area": 16,
+          "opaque_alpha": 128,
+          "spill_hue_balance": 0.5
+        },
+        "method": "forge_matte.matte_qa v1: straight-colour key distance and dominance on the keyed image; two-channel keys count spill only where the key channels are balanced"
+      }
+    },
+    {
+      "id": "earth",
+      "kind": "animation",
+      "title": "Địa chấn",
+      "image": "final/clips-v2/earth/clips/clip-00.webp",
+      "gif": "final/animations/earth/animation.gif",
+      "sheet": "final/animations/earth/sheet-transparent.png",
+      "frames": 6,
+      "decoded_gif_frames": 6,
+      "duration_ms": 600,
+      "loop": false,
+      "metadata": "final/clips-v2/earth/animation-clips.json",
+      "pipeline": "final/animations/earth/pipeline-meta.json",
+      "status": "processed-needs-runtime-review",
+      "key_qa": {
+        "key": [
+          252.0,
+          5.0,
+          251.0
+        ],
+        "opaque_key_px": 0,
+        "outer_ring_spill_fraction": 0.0,
+        "semitransparent_fraction": 0.14222595933343526,
+        "enclosed_key_pockets": 0,
+        "key_hued_px": 4632,
+        "visible_px": 196230,
+        "outer_ring_px": 13781,
+        "thresholds": {
+          "key_tolerance": 48.0,
+          "spill_threshold": 20.0,
+          "min_pocket_area": 16,
+          "opaque_alpha": 128,
+          "spill_hue_balance": 0.5
+        },
+        "method": "forge_matte.matte_qa v1: straight-colour key distance and dominance on the keyed image; two-channel keys count spill only where the key channels are balanced"
+      }
+    },
+    {
+      "id": "frost",
+      "kind": "animation",
+      "title": "Vùng làm chậm",
+      "image": "final/clips-v2/frost/clips/clip-00.webp",
+      "gif": "final/animations/frost/animation.gif",
+      "sheet": "final/animations/frost/sheet-transparent.png",
+      "frames": 6,
+      "decoded_gif_frames": 6,
+      "duration_ms": 900,
+      "loop": true,
+      "metadata": "final/clips-v2/frost/animation-clips.json",
+      "pipeline": "final/animations/frost/pipeline-meta.json",
+      "status": "processed-needs-runtime-review",
+      "key_qa": {
+        "key": [
+          252.0,
+          3.0,
+          250.0
+        ],
+        "opaque_key_px": 0,
+        "outer_ring_spill_fraction": 0.0,
+        "semitransparent_fraction": 0.4353406543008561,
+        "enclosed_key_pockets": 0,
+        "key_hued_px": 4019,
+        "visible_px": 156992,
+        "outer_ring_px": 24240,
+        "thresholds": {
+          "key_tolerance": 48.0,
+          "spill_threshold": 20.0,
+          "min_pocket_area": 16,
+          "opaque_alpha": 128,
+          "spill_hue_balance": 0.5
+        },
+        "method": "forge_matte.matte_qa v1: straight-colour key distance and dominance on the keyed image; two-channel keys count spill only where the key channels are balanced"
+      }
+    },
+    {
+      "id": "lightning",
+      "kind": "animation",
+      "title": "Sét đánh",
+      "image": "final/clips-v2/lightning/clips/clip-00.webp",
+      "gif": "final/animations/lightning/animation.gif",
+      "sheet": "final/animations/lightning/sheet-transparent.png",
+      "frames": 6,
+      "decoded_gif_frames": 6,
+      "duration_ms": 600,
+      "loop": false,
+      "metadata": "final/clips-v2/lightning/animation-clips.json",
+      "pipeline": "final/animations/lightning/pipeline-meta.json",
+      "status": "processed-needs-runtime-review",
+      "key_qa": {
+        "key": [
+          2.0,
+          244.0,
+          4.0
+        ],
+        "opaque_key_px": 0,
+        "outer_ring_spill_fraction": 0.0,
+        "semitransparent_fraction": 0.25125897795756624,
+        "enclosed_key_pockets": 0,
+        "key_hued_px": 481,
+        "visible_px": 72678,
+        "outer_ring_px": 5298,
+        "thresholds": {
+          "key_tolerance": 48.0,
+          "spill_threshold": 20.0,
+          "min_pocket_area": 16,
+          "opaque_alpha": 128,
+          "spill_hue_balance": 0.5
+        },
+        "method": "forge_matte.matte_qa v1: straight-colour key distance and dominance on the keyed image; two-channel keys count spill only where the key channels are balanced"
+      }
+    },
+    {
+      "id": "orb",
+      "kind": "animation",
+      "title": "Cầu phép",
+      "image": "final/clips-v2/orb/clips/clip-00.webp",
+      "gif": "final/animations/orb/animation.gif",
+      "sheet": "final/animations/orb/sheet-transparent.png",
+      "frames": 6,
+      "decoded_gif_frames": 6,
+      "duration_ms": 600,
+      "loop": true,
+      "metadata": "final/clips-v2/orb/animation-clips.json",
+      "pipeline": "final/animations/orb/pipeline-meta.json",
+      "status": "processed-needs-runtime-review",
+      "key_qa": {
+        "key": [
+          252.0,
+          3.0,
+          251.0
+        ],
+        "opaque_key_px": 0,
+        "outer_ring_spill_fraction": 0.0,
+        "semitransparent_fraction": 0.04866150033083989,
+        "enclosed_key_pockets": 0,
+        "key_hued_px": 0,
+        "visible_px": 445835,
+        "outer_ring_px": 10446,
+        "thresholds": {
+          "key_tolerance": 48.0,
+          "spill_threshold": 20.0,
+          "min_pocket_area": 16,
+          "opaque_alpha": 128,
+          "spill_hue_balance": 0.5
+        },
+        "method": "forge_matte.matte_qa v1: straight-colour key distance and dominance on the keyed image; two-channel keys count spill only where the key channels are balanced"
+      }
+    },
+    {
+      "id": "shield",
+      "kind": "animation",
+      "title": "Khiên năng lượng",
+      "image": "final/clips-v2/shield/clips/clip-00.webp",
+      "gif": "final/animations/shield/animation.gif",
+      "sheet": "final/animations/shield/sheet-transparent.png",
+      "frames": 6,
+      "decoded_gif_frames": 6,
+      "duration_ms": 600,
+      "loop": false,
+      "metadata": "final/clips-v2/shield/animation-clips.json",
+      "pipeline": "final/animations/shield/pipeline-meta.json",
+      "status": "processed-needs-runtime-review",
+      "key_qa": {
+        "key": [
+          251.0,
+          3.0,
+          251.0
+        ],
+        "opaque_key_px": 0,
+        "outer_ring_spill_fraction": 0.0,
+        "semitransparent_fraction": 0.08016874422195808,
+        "enclosed_key_pockets": 0,
+        "key_hued_px": 9713,
+        "visible_px": 393732,
+        "outer_ring_px": 10633,
+        "thresholds": {
+          "key_tolerance": 48.0,
+          "spill_threshold": 20.0,
+          "min_pocket_area": 16,
+          "opaque_alpha": 128,
+          "spill_hue_balance": 0.5
+        },
+        "method": "forge_matte.matte_qa v1: straight-colour key distance and dominance on the keyed image; two-channel keys count spill only where the key channels are balanced"
+      }
+    },
+    {
+      "id": "slash",
+      "kind": "animation",
+      "title": "Vệt chém",
+      "image": "final/clips-v2/slash/clips/clip-00.webp",
+      "gif": "final/animations/slash/animation.gif",
+      "sheet": "final/animations/slash/sheet-transparent.png",
+      "frames": 6,
+      "decoded_gif_frames": 6,
+      "duration_ms": 600,
+      "loop": false,
+      "metadata": "final/clips-v2/slash/animation-clips.json",
+      "pipeline": "final/animations/slash/pipeline-meta.json",
+      "status": "processed-needs-runtime-review",
+      "key_qa": {
+        "key": [
+          252.0,
+          4.0,
+          251.0
+        ],
+        "opaque_key_px": 0,
+        "outer_ring_spill_fraction": 0.0,
+        "semitransparent_fraction": 0.231915444987413,
+        "enclosed_key_pockets": 0,
+        "key_hued_px": 903,
+        "visible_px": 54024,
+        "outer_ring_px": 6269,
+        "thresholds": {
+          "key_tolerance": 48.0,
+          "spill_threshold": 20.0,
+          "min_pocket_area": 16,
+          "opaque_alpha": 128,
+          "spill_hue_balance": 0.5
+        },
+        "method": "forge_matte.matte_qa v1: straight-colour key distance and dominance on the keyed image; two-channel keys count spill only where the key channels are balanced"
+      }
+    },
+    {
+      "id": "tree-sway",
+      "kind": "animation",
+      "title": "Cây lay động",
+      "image": "final/clips-v2/tree-sway/clips/clip-00.webp",
+      "gif": "final/animations/tree-sway/animation.gif",
+      "sheet": "final/animations/tree-sway/sheet-transparent.png",
+      "frames": 6,
+      "decoded_gif_frames": 6,
+      "duration_ms": 1800,
+      "loop": true,
+      "metadata": "final/clips-v2/tree-sway/animation-clips.json",
+      "pipeline": "final/animations/tree-sway/pipeline-meta.json",
+      "status": "processed-needs-runtime-review",
+      "key_qa": {
+        "key": [
+          252.0,
+          9.0,
+          251.0
+        ],
+        "opaque_key_px": 0,
+        "outer_ring_spill_fraction": 0.0,
+        "semitransparent_fraction": 0.053202020510006,
+        "enclosed_key_pockets": 0,
+        "key_hued_px": 0,
+        "visible_px": 491955,
+        "outer_ring_px": 12204,
+        "thresholds": {
+          "key_tolerance": 48.0,
+          "spill_threshold": 20.0,
+          "min_pocket_area": 16,
+          "opaque_alpha": 128,
+          "spill_hue_balance": 0.5
+        },
+        "method": "forge_matte.matte_qa v1: straight-colour key distance and dominance on the keyed image; two-channel keys count spill only where the key channels are balanced"
+      }
+    },
+    {
+      "id": "water",
+      "kind": "animation",
+      "title": "Nước chảy",
+      "image": "final/clips-v2/water/clips/clip-00.webp",
+      "gif": "final/animations/water/animation.gif",
+      "sheet": "final/animations/water/sheet-transparent.png",
+      "frames": 6,
+      "decoded_gif_frames": 6,
+      "duration_ms": 600,
+      "loop": true,
+      "metadata": "final/clips-v2/water/animation-clips.json",
+      "pipeline": "final/animations/water/pipeline-meta.json",
+      "status": "processed-needs-runtime-review",
+      "key_qa": {
+        "key": [
+          252.0,
+          4.0,
+          251.0
+        ],
+        "opaque_key_px": 0,
+        "outer_ring_spill_fraction": 0.0,
+        "semitransparent_fraction": 0.019566730923242234,
+        "enclosed_key_pockets": 0,
+        "key_hued_px": 0,
+        "visible_px": 496966,
+        "outer_ring_px": 5828,
+        "thresholds": {
+          "key_tolerance": 48.0,
+          "spill_threshold": 20.0,
+          "min_pocket_area": 16,
+          "opaque_alpha": 128,
+          "spill_hue_balance": 0.5
+        },
+        "method": "forge_matte.matte_qa v1: straight-colour key distance and dominance on the keyed image; two-channel keys count spill only where the key channels are balanced"
+      }
+    },
+    {
+      "id": "waterfall",
+      "kind": "animation",
+      "title": "Thác chảy",
+      "image": "final/clips-v2/waterfall/clips/clip-00.webp",
+      "gif": "final/animations/waterfall/animation.gif",
+      "sheet": "final/animations/waterfall/sheet-transparent.png",
+      "frames": 6,
+      "decoded_gif_frames": 6,
+      "duration_ms": 600,
+      "loop": true,
+      "metadata": "final/clips-v2/waterfall/animation-clips.json",
+      "pipeline": "final/animations/waterfall/pipeline-meta.json",
+      "status": "processed-needs-runtime-review",
+      "key_qa": {
+        "key": [
+          252.0,
+          3.0,
+          251.0
+        ],
+        "opaque_key_px": 0,
+        "outer_ring_spill_fraction": 0.0,
+        "semitransparent_fraction": 0.06501161191518516,
+        "enclosed_key_pockets": 0,
+        "key_hued_px": 0,
+        "visible_px": 198503,
+        "outer_ring_px": 8078,
+        "thresholds": {
+          "key_tolerance": 48.0,
+          "spill_threshold": 20.0,
+          "min_pocket_area": 16,
+          "opaque_alpha": 128,
+          "spill_hue_balance": 0.5
+        },
+        "method": "forge_matte.matte_qa v1: straight-colour key distance and dominance on the keyed image; two-channel keys count spill only where the key channels are balanced"
+      }
+    },
+    {
+      "id": "tree",
+      "kind": "prop",
+      "title": "tree",
+      "image": "props/tree/clean.png",
+      "anchor_px": [
+        386.7479435957697,
+        730.0
+      ],
+      "status": "processed-needs-placement-review"
+    },
+    {
+      "id": "pine",
+      "kind": "prop",
+      "title": "pine",
+      "image": "props/pine/clean.png",
+      "anchor_px": [
+        388.36993769470405,
+        730.0
+      ],
+      "status": "processed-needs-placement-review"
+    },
+    {
+      "id": "bridge",
+      "kind": "prop",
+      "title": "bridge",
+      "image": "props/bridge/clean.png",
+      "anchor_px": [
+        184.33350100603622,
+        730.0
+      ],
+      "status": "processed-needs-placement-review"
+    },
+    {
+      "id": "core",
+      "kind": "prop",
+      "title": "core",
+      "image": "props/core/clean.png",
+      "anchor_px": [
+        392.83247422680415,
+        730.0
+      ],
+      "status": "processed-needs-placement-review"
+    },
+    {
+      "id": "stall",
+      "kind": "prop",
+      "title": "stall",
+      "image": "props/stall/clean.png",
+      "anchor_px": [
+        471.80301339285717,
+        730.0
+      ],
+      "status": "processed-needs-placement-review"
+    },
+    {
+      "id": "moss-rock",
+      "kind": "prop",
+      "title": "moss-rock",
+      "image": "props/compact/moss-rock/prop.png",
+      "status": "processed-needs-placement-review"
+    },
+    {
+      "id": "shrub",
+      "kind": "prop",
+      "title": "shrub",
+      "image": "props/compact/shrub/prop.png",
+      "status": "processed-needs-placement-review"
+    },
+    {
+      "id": "flowers",
+      "kind": "prop",
+      "title": "flowers",
+      "image": "props/compact/flowers/prop.png",
+      "status": "processed-needs-placement-review"
+    },
+    {
+      "id": "stone-stump",
+      "kind": "prop",
+      "title": "stone-stump",
+      "image": "props/compact/stone-stump/prop.png",
+      "status": "processed-needs-placement-review"
+    },
+    {
+      "id": "mage",
+      "kind": "character-master",
+      "title": "mage / SE master",
+      "image": "characters/mage/master_rgba.png",
+      "status": "master-only-not-animated"
+    },
+    {
+      "id": "tank",
+      "kind": "character-master",
+      "title": "tank / SE master",
+      "image": "characters/tank/master_rgba.png",
+      "status": "master-only-not-animated"
+    },
+    {
+      "id": "ranger",
+      "kind": "character-master",
+      "title": "ranger / SE master",
+      "image": "characters/ranger/master_rgba.png",
+      "status": "master-only-not-animated"
+    },
+    {
+      "id": "mountain",
+      "kind": "terrain-sample",
+      "title": "Đồi núi / đường dốc",
+      "image": "raw/mountain.png",
+      "status": "art-only-no-collision"
+    }
+  ],
+  "files": [
+    {
+      "path": "animations/arrow/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 280879,
+      "sha256": "cefbe0e83cc9237b77c9536d25152256fe43ef4ace019a048ab94b2babd1e722"
+    },
+    {
+      "path": "animations/arrow/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1352728,
+      "sha256": "bfd310bfab6798aeaf60da07c1308301d51f5f943bea3c166a2ee32199ab7d08"
+    },
+    {
+      "path": "animations/arrow/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 8519,
+      "sha256": "b98f41e3a31b9c71df570a6230f4f6cd7e9b33596ab5a547dc9dad16249bc6e4"
+    },
+    {
+      "path": "animations/arrow/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 11298,
+      "sha256": "e9058c0d2fd375b97a26b2ddc01bc6e025aef035a8059bf7fcccd7c8c0f17acc"
+    },
+    {
+      "path": "animations/arrow/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 15447,
+      "sha256": "175733cb236193b89815e4efb2f329d3cfc43fb4d7f8d4bb80ec24d8fefc98fa"
+    },
+    {
+      "path": "animations/arrow/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 17233,
+      "sha256": "c09ea272075ae83ccb07b1f0aa62bf3116c8ff4675196429d41d9d7b9a5b621e"
+    },
+    {
+      "path": "animations/arrow/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 12450,
+      "sha256": "a91ff3e39afddf29ba463198108fe6baeb05c9a9cfc92b7497e772e7278ba28f"
+    },
+    {
+      "path": "animations/arrow/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 8758,
+      "sha256": "6d4455478c0b4c4c57c7e2dcb479d59ab38e11f67085dd5522909e41e58c9f82"
+    },
+    {
+      "path": "animations/arrow/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 72737,
+      "sha256": "bfbe5b24f8c7097655e03bf1fe33cc70551901055960dc35ace65dbf367bcc7b"
+    },
+    {
+      "path": "animations/crystal/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 464866,
+      "sha256": "0a4589b0224c7f30739ba83669a09fbaff20fd2efa585f29336b888c2a1c705e"
+    },
+    {
+      "path": "animations/crystal/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1378596,
+      "sha256": "eb87e6d3ac1ac7061ede3b05b8a495d5973537a88a96445afae3be5b7e8f35bb"
+    },
+    {
+      "path": "animations/crystal/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19906,
+      "sha256": "e648e905cbdd74102fc1c3457853303601d8534b0da129f8c2324daa02ee5b4f"
+    },
+    {
+      "path": "animations/crystal/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 20307,
+      "sha256": "927a564b62f45c84545b7933835150cb3008e1feac49a0cf1cc49b5240e3ea79"
+    },
+    {
+      "path": "animations/crystal/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 20674,
+      "sha256": "6a19367f62b00bd4df50e885b46ed02a361c8d69010b66d66b853c6050af31c7"
+    },
+    {
+      "path": "animations/crystal/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19869,
+      "sha256": "98cbab812cc37c1cfe35009ca032d29bf1c3ddcb851506b08772cc4c2db124b9"
+    },
+    {
+      "path": "animations/crystal/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19775,
+      "sha256": "44833b684b6933527a200b1ed08e259d25e2384b79b17c7aea8dea17a87e94e0"
+    },
+    {
+      "path": "animations/crystal/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19899,
+      "sha256": "18f94e523164ea03ce89ce51f2e3ca00950b7163c9986fba24b31a36e63f98ad"
+    },
+    {
+      "path": "animations/crystal/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 117039,
+      "sha256": "7126f2b9c5247db9db660f5497e774d5153831b63196c54c4c8165680ad94735"
+    },
+    {
+      "path": "animations/dash/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 152151,
+      "sha256": "91ebd7c33cb67b8c12bd9451a5c726af818cd659091a01e6150e0c54fcaa0937"
+    },
+    {
+      "path": "animations/dash/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1268133,
+      "sha256": "9ae289b803bafce0b6d4c575f1ab42145a2f212ab7ee9e1907e2c88bb41e7754"
+    },
+    {
+      "path": "animations/dash/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 3812,
+      "sha256": "614a47415468947a17098108d89e30ed1bb4b25f394cf10e7eae87daa0872dd2"
+    },
+    {
+      "path": "animations/dash/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 8385,
+      "sha256": "b25e1fc67ab75fa2f83d48dc2575d7cdcbfd2bfa0e21b80acb0d3559bdf55fc9"
+    },
+    {
+      "path": "animations/dash/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 16012,
+      "sha256": "4df1ee30a8d0de973a24f26c4c0396ac787895374864a7f2d83d2468f1036090"
+    },
+    {
+      "path": "animations/dash/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 8913,
+      "sha256": "97fca217ea1a3c18030e9772a0e98ba20dcb0e775fb4e53bd2709d5ea31e8207"
+    },
+    {
+      "path": "animations/dash/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 3757,
+      "sha256": "98d6c3d83ca633ccb7a1fc22f223d34e075d93c29b03942d1bc042ac6340fe07"
+    },
+    {
+      "path": "animations/dash/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 1923,
+      "sha256": "1ebf31c267777cbd235cfe03382d700952971b1af215d36f17dd41934d71a09a"
+    },
+    {
+      "path": "animations/dash/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 42331,
+      "sha256": "218ba14ff6baa9f0f3ad418ed3f6963e746aeb9dd2ab9f29816e677c75305b5d"
+    },
+    {
+      "path": "animations/earth/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 543968,
+      "sha256": "2a68295be03353dfabead9b1a198451fd5b8fe8d17d0b052fdab8b9be597e499"
+    },
+    {
+      "path": "animations/earth/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1519405,
+      "sha256": "eae644ad6b9b97a4d78556190e20f4705831eed3d4e492d2ed67cec2445b3a68"
+    },
+    {
+      "path": "animations/earth/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 2548,
+      "sha256": "512f4eacd4a8278ad595e90e6d8b5de2051e157ecd5836d1e28226b31266c1c1"
+    },
+    {
+      "path": "animations/earth/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 15911,
+      "sha256": "b6963ccd12dab2e04092b65ce81c6d8a9806f96000bf28b14726d58fa382b63f"
+    },
+    {
+      "path": "animations/earth/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 42590,
+      "sha256": "5d4498fb1fce2806b30f373c474291f7021dfa763cd0c38e4190b38282d7b0ac"
+    },
+    {
+      "path": "animations/earth/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 40028,
+      "sha256": "7e22edd559e5b674accc49907af9c4d6f346f6fe35c60d40936dd1911331bab3"
+    },
+    {
+      "path": "animations/earth/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19483,
+      "sha256": "06d470b1fed0865cb40120fddf07b6a000c899ed5a31147e46423868229a4a0b"
+    },
+    {
+      "path": "animations/earth/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 10134,
+      "sha256": "efc2919470c3b6d89686bfb7e1068f114a07e8d1c2070a703ebe05dbb9436b7f"
+    },
+    {
+      "path": "animations/earth/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 131776,
+      "sha256": "14cc0d4d7d9f4879566288a6d4a55f12a200315815384cc016f96f1144cff5ee"
+    },
+    {
+      "path": "animations/frost/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 524081,
+      "sha256": "2c3315f1bd27484cbeab11bedbc8fb22f79d321d57584ef1a5cf27e0e9dd276a"
+    },
+    {
+      "path": "animations/frost/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1497662,
+      "sha256": "048dde02e115514f414c5862a9d1d0e2a746a4af06cc42724b189105385690e5"
+    },
+    {
+      "path": "animations/frost/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 18865,
+      "sha256": "ac49d3e1e5fc35ecc5463fbd4cc698847487d147cb1bec06a638e39a7c0c9b5c"
+    },
+    {
+      "path": "animations/frost/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 23582,
+      "sha256": "805d6fe39ca221c6846e3f8993fc5700b4c04d0092018d03ba0d499876d76c53"
+    },
+    {
+      "path": "animations/frost/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 26480,
+      "sha256": "4aabaf331a8f4ef68c4383f40f6dfada37021a2a38bb2568627f592f3bfeffcc"
+    },
+    {
+      "path": "animations/frost/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 27012,
+      "sha256": "9410b0a885ce1130309164ca78e0490f137a35bbe9a3eaa45b5644b70e7b8667"
+    },
+    {
+      "path": "animations/frost/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 22440,
+      "sha256": "fede6ba1fafffc4af08cc0d982724d27d9cef3c48397e81b328e04dea0f5ca3d"
+    },
+    {
+      "path": "animations/frost/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 18731,
+      "sha256": "a34b1093767d7ae76a3054301ed09e91f147f80ec6c3a0734094cc4cef29b40e"
+    },
+    {
+      "path": "animations/frost/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 135700,
+      "sha256": "0f7c591421b572d30c6f5c2de608a338e34ee5ba492ee7428a883df0b9e8a309"
+    },
+    {
+      "path": "animations/lightning/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 227333,
+      "sha256": "ab7f1480b0c2eeb2c7913b959be8b66b0ff87a1f570e97f2bc7592cb328a95fc"
+    },
+    {
+      "path": "animations/lightning/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1317675,
+      "sha256": "a570b363641e6e507a135b220a83abfeda578ded56108577c8444441bd430958"
+    },
+    {
+      "path": "animations/lightning/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 3897,
+      "sha256": "b4f7cba7e5a785bc9fda61f1eb8bc2457f5089caa3af5e813a46e7ab12a0a791"
+    },
+    {
+      "path": "animations/lightning/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 6616,
+      "sha256": "78a49d7ef84cc73c324b26b7135b6642dde40c44ce0af46e54d95456894233fe"
+    },
+    {
+      "path": "animations/lightning/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 16896,
+      "sha256": "787dbaee9ed9db518c0a06dc30be6fa406a99e63ea1c84360be1f8a72cee0134"
+    },
+    {
+      "path": "animations/lightning/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 13278,
+      "sha256": "63e1d8444bab72e53481bdfecd0fd7e8e15a69629dbfbb1888abd38c00f78e06"
+    },
+    {
+      "path": "animations/lightning/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 11095,
+      "sha256": "d29bc6cb6657ef07e4c891ad42cde22454f97c3d4495164b3c6fc0537afaf6d8"
+    },
+    {
+      "path": "animations/lightning/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 4869,
+      "sha256": "6426df8dd8128ab286b03966c248286bd91b53e146d7b3f70dbcfd45393568af"
+    },
+    {
+      "path": "animations/lightning/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 55828,
+      "sha256": "d1d78531bcf264e8a948d171235f34dc4464703fd5cb4f121008f3d7e8c7bbc5"
+    },
+    {
+      "path": "animations/orb/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 895520,
+      "sha256": "abc3ee038a06895b7627190e63a618adae5446666e50fa2f82f9a5fb31ade22a"
+    },
+    {
+      "path": "animations/orb/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1612527,
+      "sha256": "e875c8195d349c92ed1f3254f3471e57271a064394d24c1b0d39edeceab96299"
+    },
+    {
+      "path": "animations/orb/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 35994,
+      "sha256": "9766ea71eb5ffb76fbd4bacedea0560baedb32b79fc9ac76746c10a32b9e879e"
+    },
+    {
+      "path": "animations/orb/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36251,
+      "sha256": "cfb65d3df95b1f76c2b28eb610643931529171fd272ac34a15bcd813e8b1c2c3"
+    },
+    {
+      "path": "animations/orb/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36869,
+      "sha256": "1361feb368b620a33a5d330d3fcc10f507b1348e74b208b99da053d4d04dfd76"
+    },
+    {
+      "path": "animations/orb/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36531,
+      "sha256": "f209c865f9f43dfda1907c303767c5a026e688a1d99475cd546985b2be013424"
+    },
+    {
+      "path": "animations/orb/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36879,
+      "sha256": "25bff664ed042b20b207b6759aadb77d41c3d2b3a85f5274e9facb46891a5bd4"
+    },
+    {
+      "path": "animations/orb/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36313,
+      "sha256": "5edd6911cd890938a48e249de1d2b0ec4a97d0101f20a5a615cf458db1c35ff4"
+    },
+    {
+      "path": "animations/orb/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 215814,
+      "sha256": "1d6618d22858d476b0d577b1ae45ae128c7c47d1eb688353f7ee481ab6efa2d7"
+    },
+    {
+      "path": "animations/shield/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 751019,
+      "sha256": "5615ac917f82c854ec3de4fa6044f7f8f1636150b28c124d9d1b6ec7d63b8eab"
+    },
+    {
+      "path": "animations/shield/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1499872,
+      "sha256": "8d1400d3270dcb110ba3d463eeaa854d42d535b7bae5fa4f574ad7966b8ed16c"
+    },
+    {
+      "path": "animations/shield/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 9512,
+      "sha256": "ee51cd081cd60917771e90ad4aa1b60a317decd350fb4dc8a8c9494d882cb292"
+    },
+    {
+      "path": "animations/shield/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 23781,
+      "sha256": "462ab29e0856601475d82ef9b768dec5366db2a2bca2c1ab9f41d7ce3f729d9d"
+    },
+    {
+      "path": "animations/shield/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 37171,
+      "sha256": "027aeb5722fa873d9d0a64d155d8006b5737e4eea007de4c3a5ddfbffa766c80"
+    },
+    {
+      "path": "animations/shield/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 42795,
+      "sha256": "bda3dd8a6fb968cf88d6c63ff286e9c9a8ca429a07175dd319064456d58d3e0f"
+    },
+    {
+      "path": "animations/shield/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36129,
+      "sha256": "ceff7a8dca3fb8afd726731ad7a2386a6a8ad5ba651123a60267b7ec3707a5c2"
+    },
+    {
+      "path": "animations/shield/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 35010,
+      "sha256": "cf41bfe8a917df07b4ff346540ceb96854187fb968fa5b2c72a03691fdb87688"
+    },
+    {
+      "path": "animations/shield/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 183184,
+      "sha256": "fc101a5ba1d3ce9befbca940ab381b23a2e01a09bda0e4d59da567c8c6fdef24"
+    },
+    {
+      "path": "animations/slash/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 148048,
+      "sha256": "17b233506507b80cf7c48fe1f5f7defb5ea907596faa6c459149a71f3aaf5a53"
+    },
+    {
+      "path": "animations/slash/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1259652,
+      "sha256": "2307ebba8d092c312b5f44a580fd38824e18029f32f13e6ee8d6edb4ce344028"
+    },
+    {
+      "path": "animations/slash/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 2550,
+      "sha256": "9739c48020fa57b6e406c633a38f8ba714a06329b1f2c76853110bd7503dfd7d"
+    },
+    {
+      "path": "animations/slash/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 7262,
+      "sha256": "e9523cc6478f4e1d51857319e38ca48f19b669d7527f75ce3ab5ca140bb85791"
+    },
+    {
+      "path": "animations/slash/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 15026,
+      "sha256": "b4ef6c268211c5f92d852687d2a2471aedeb96f8879e109c41cf36a0ad67c073"
+    },
+    {
+      "path": "animations/slash/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 9162,
+      "sha256": "4ec3950ebfb3032a9aa73a12f8166a420f1c25b02d89e12f833670a002457bf8"
+    },
+    {
+      "path": "animations/slash/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 4367,
+      "sha256": "55e23b972f4a3641caa074acfa16eba19e17633423f84055f534167f02687b7c"
+    },
+    {
+      "path": "animations/slash/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 1160,
+      "sha256": "bffc4a7c3379d0667481d11ad0200c77894c1dd227cd05a5e31a42826a39f978"
+    },
+    {
+      "path": "animations/slash/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 39338,
+      "sha256": "d86ca7dcdc24c9e0a053dc416173be16e8e4d82c77eebb33b8ae543478d8f652"
+    },
+    {
+      "path": "animations/tree-sway/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1191684,
+      "sha256": "416ec4be57484066fa1b9d70b3cbbabad6b96283658c78e872801a7e2a529db4"
+    },
+    {
+      "path": "animations/tree-sway/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1829791,
+      "sha256": "c9b7111fbbcbb23f3b6bfd1661cbd703d364eda94c0f6c73f6d6c5ad36be848f"
+    },
+    {
+      "path": "animations/tree-sway/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45405,
+      "sha256": "6d08683b2efa08585bcd0922b9f27d1bf6b11d21315dfbc6b72d27a0b32969bf"
+    },
+    {
+      "path": "animations/tree-sway/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45152,
+      "sha256": "6db55970895840289b90b4c58fddd4eb39602b2e3b1c6f92c19d6055d2c6bf62"
+    },
+    {
+      "path": "animations/tree-sway/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45540,
+      "sha256": "ddecd1b45f30fa342dfebc8cc977b0c695dcc57f686532c713ab1791f54128cb"
+    },
+    {
+      "path": "animations/tree-sway/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45331,
+      "sha256": "afeeeabf265922214ccaaf78681f0303c37449ecbf9a4b2803aee4c5ac26d5d9"
+    },
+    {
+      "path": "animations/tree-sway/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45575,
+      "sha256": "2b75f5272fea7c1fcc53ce9cf24f361764e62b3718aac3ae7a71e8d877aa03e7"
+    },
+    {
+      "path": "animations/tree-sway/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45218,
+      "sha256": "410a17a1b760ac9ca2c9f2ebad963a61b69a14fabedfc2bd6869973b1398fe29"
+    },
+    {
+      "path": "animations/tree-sway/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 268715,
+      "sha256": "9e5e49a4c14daa4197c73f1dadca66be9268171c21efa4a41973936696163350"
+    },
+    {
+      "path": "animations/water/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 847511,
+      "sha256": "97810da8a0d5089b0ccb941310371a262d61e993ba9196ce8cbe056e1950ff47"
+    },
+    {
+      "path": "animations/water/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1540292,
+      "sha256": "a18cd435d4b9b9b0b6fcbf83102874dfba206c1704d7cbffaec2a983eafd40a2"
+    },
+    {
+      "path": "animations/water/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 33836,
+      "sha256": "dfd7ddc9827a09d40815572ec27e21c2baefe4995a619c0687b6235711fe0f1b"
+    },
+    {
+      "path": "animations/water/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 35192,
+      "sha256": "3b3453135ae45b0aa420a672112bb997f278e49cad1f30b7429ac5979eabd160"
+    },
+    {
+      "path": "animations/water/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 34560,
+      "sha256": "365a47589585e673d16d9c91cf5a6ca924d0d67f6bee492d8b48d317bed0fee6"
+    },
+    {
+      "path": "animations/water/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 34429,
+      "sha256": "1d217cf1348a1815c606810ec82e2243a376b491c2713191552932cf14562cc6"
+    },
+    {
+      "path": "animations/water/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 33890,
+      "sha256": "24a20cf5c4682725794e7a4396267a8f5dca799b2ff1bb15cabc6e6f79793b2e"
+    },
+    {
+      "path": "animations/water/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 33764,
+      "sha256": "90294d5d9f927db062d7b03d7efb6324735f6718a9fd023cf6409d186d71b1c1"
+    },
+    {
+      "path": "animations/water/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 202634,
+      "sha256": "bd25d8b0c49e2ac4aa62798a661f849d41b169de85487ebb919c6efe96dcde7c"
+    },
+    {
+      "path": "characters/mage/master.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 258910,
+      "sha256": "88fe8a0815376933fcbbf569d9c7a8697b19c78442ba7bccfbf6e9d4028f4e17"
+    },
+    {
+      "path": "characters/mage/master_rgba.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 311913,
+      "sha256": "b19de821c3008a25d693eaa0bfd2345351653b66a5134555a6754ab1f9054b65"
+    },
+    {
+      "path": "characters/mage/source.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 1441887,
+      "sha256": "06d1a8ed90bf5e278bb79453867af0857fcdbd1cfd453eeb7a09cc8aa7624b2d"
+    },
+    {
+      "path": "characters/ranger/master.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 234735,
+      "sha256": "47fc133535090bcea22d04c66ea080e928ca5c5e1f0e24cc5d4d8cb38667519a"
+    },
+    {
+      "path": "characters/ranger/master_rgba.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 280584,
+      "sha256": "c88d8786534c673e7c64dffb15b97092cb0bbf7910b99dcf258e2bf83972e89f"
+    },
+    {
+      "path": "characters/ranger/source.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 1446900,
+      "sha256": "e76afdbe2254bf6207875f24c487d8187b34746ac9fd564b8fe13b9859b9c956"
+    },
+    {
+      "path": "characters/tank/master.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 411717,
+      "sha256": "5a6d531987745fc4ac4ce45066ef4025037232be186e40d282795e0b059d1005"
+    },
+    {
+      "path": "characters/tank/master_rgba.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 484910,
+      "sha256": "564cabcd13fa5c68f3c2552c833a039f1c80eebf5e54d79887056bed4717f9ee"
+    },
+    {
+      "path": "characters/tank/source.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 1568636,
+      "sha256": "3ce6ac1198d58606c5bd3f49361411c6fc748d63872126378701eab7ffa4d750"
+    },
+    {
+      "path": "final/animations/arrow/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 282108,
+      "sha256": "4870a909d9c45c2ec5a04d47f2e2b519c5d95f33554d077b01be8562be6b7a29"
+    },
+    {
+      "path": "final/animations/arrow/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1352728,
+      "sha256": "bfd310bfab6798aeaf60da07c1308301d51f5f943bea3c166a2ee32199ab7d08"
+    },
+    {
+      "path": "final/animations/arrow/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 8569,
+      "sha256": "efedc6034c966ed0d83c804fdc092c3407cd69aebacee8de0d8f1de3e8a79d2c"
+    },
+    {
+      "path": "final/animations/arrow/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 11378,
+      "sha256": "428529b349f4c74c8a81b449a959a464a1d7aacd8e677412973ffee3df0d06e2"
+    },
+    {
+      "path": "final/animations/arrow/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 15595,
+      "sha256": "c9c28d437320058117c9cb6d97ceaeaf600b721dbc1ac476d0799af2b9f26d5f"
+    },
+    {
+      "path": "final/animations/arrow/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 17390,
+      "sha256": "6d0f3265c4504638f4787e86a71fc127e571e2a73da376e42b06ce7b0a1eb5c6"
+    },
+    {
+      "path": "final/animations/arrow/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 12544,
+      "sha256": "8db7832f8e655d5f365f9405270d3fe048168cd3599bc671c5144f1a9ecc29c1"
+    },
+    {
+      "path": "final/animations/arrow/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 8809,
+      "sha256": "88253016be8ea93e4c0de4e45721d8cd79b8e48a450696e2fb523f750b93f03d"
+    },
+    {
+      "path": "final/animations/arrow/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 73308,
+      "sha256": "80dd33233fe2bf7d1765b52a73e415109656672f50c9db45b8370ee92e9ca304"
+    },
+    {
+      "path": "final/animations/crystal/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 465254,
+      "sha256": "64f1cd5f7436b14d311b6f65f6c0ed57a9ab078f7feb165fd826c5bbebf67044"
+    },
+    {
+      "path": "final/animations/crystal/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1378596,
+      "sha256": "eb87e6d3ac1ac7061ede3b05b8a495d5973537a88a96445afae3be5b7e8f35bb"
+    },
+    {
+      "path": "final/animations/crystal/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19932,
+      "sha256": "588ba66dba51ffef0f2f29e16f41658704222a5642a70f61812bb2b2f322848e"
+    },
+    {
+      "path": "final/animations/crystal/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 20365,
+      "sha256": "47964b4c937b4c279ee1811c3f0b83501c2cc5067de8453689704dd9b490d7bc"
+    },
+    {
+      "path": "final/animations/crystal/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 20776,
+      "sha256": "a92cfbfd8dd0d28e74e3acda8157f5dee32bd42daccd60afba17830a0364f6de"
+    },
+    {
+      "path": "final/animations/crystal/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19925,
+      "sha256": "a8164b3d4957839d350720df0a20391413d2498df4f441f113d0b40672c0c82e"
+    },
+    {
+      "path": "final/animations/crystal/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19819,
+      "sha256": "eaf0777f285091716048864548710da35c02772574ce5d0b112f3d26c79f33e4"
+    },
+    {
+      "path": "final/animations/crystal/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19935,
+      "sha256": "c3cc451819c02e99e6254615567b583f33b0d1dff523ba9cba8fc3adbcdc87c1"
+    },
+    {
+      "path": "final/animations/crystal/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 117377,
+      "sha256": "2ee35d2aea3bf22c92ef8751904bbd1ffa81c0e17fe935facad926e58e332b40"
+    },
+    {
+      "path": "final/animations/dash/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 152151,
+      "sha256": "91ebd7c33cb67b8c12bd9451a5c726af818cd659091a01e6150e0c54fcaa0937"
+    },
+    {
+      "path": "final/animations/dash/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1268133,
+      "sha256": "9ae289b803bafce0b6d4c575f1ab42145a2f212ab7ee9e1907e2c88bb41e7754"
+    },
+    {
+      "path": "final/animations/dash/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 3809,
+      "sha256": "03c0101e03028395129cd123e9d73fd44e7c4fa926fb90a89d0aa9c8db59bf07"
+    },
+    {
+      "path": "final/animations/dash/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 8383,
+      "sha256": "7267d630daf9269c53a02f1fbec0470febf4035c57e0f61cf4bd4763126604ac"
+    },
+    {
+      "path": "final/animations/dash/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 16013,
+      "sha256": "f060075eb38390b2a35a2bc29ecdfb0c52aea5f362ccd90079adad0b2c1bae3a"
+    },
+    {
+      "path": "final/animations/dash/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 8921,
+      "sha256": "89377864631c73b5fab1510f9c4560d6d670cb803fee9b3554c915bb0885f061"
+    },
+    {
+      "path": "final/animations/dash/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 3761,
+      "sha256": "d35869d29acb70f01ba12b818bdca3e7f757c3d92f372bc191c88a8c8623490c"
+    },
+    {
+      "path": "final/animations/dash/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 1921,
+      "sha256": "47accc53b314d05dcbcd8ec05a8bb8d9d19d3e2cd5f4b2f81d94c1555d8afd29"
+    },
+    {
+      "path": "final/animations/dash/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 42351,
+      "sha256": "a965cc58e6388040b6d91fbb277813106a860d177b7055e638d54718b5b2d3c2"
+    },
+    {
+      "path": "final/animations/earth/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 544183,
+      "sha256": "7df0e08bce4392671719254fa6dcde345111391544c95bc562c4e2e5d64aa60c"
+    },
+    {
+      "path": "final/animations/earth/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1519405,
+      "sha256": "eae644ad6b9b97a4d78556190e20f4705831eed3d4e492d2ed67cec2445b3a68"
+    },
+    {
+      "path": "final/animations/earth/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 2549,
+      "sha256": "0642f4056b0ed36a53c9f5658b830db9e2e199a6937bcb2f95a259ec0c146a86"
+    },
+    {
+      "path": "final/animations/earth/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 15956,
+      "sha256": "daf86c5b44e1ba3521cbff810e71de7e86019fe0148d4ab4fc8846af3ef9d024"
+    },
+    {
+      "path": "final/animations/earth/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 42645,
+      "sha256": "2357fadb819e14f0668b7d99afa2c1f419d3c48ba29900c7614c0b617f13b759"
+    },
+    {
+      "path": "final/animations/earth/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 40099,
+      "sha256": "3214bdfea11940b6b6e482872d97ffbeea9c0d8afd4d69abd72b6a576615adcd"
+    },
+    {
+      "path": "final/animations/earth/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19525,
+      "sha256": "a4abc720864bdbbc841640187064d01ea1054ce6938992aa8bd4b8d3a5c9861e"
+    },
+    {
+      "path": "final/animations/earth/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 10161,
+      "sha256": "4af347b981ee1a055193add25836a2285ff181b9bf0065b53185fb0398aa5957"
+    },
+    {
+      "path": "final/animations/earth/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 131873,
+      "sha256": "95bd34d93b8cea5228416d89702100caef78a9c8a8531592a815b1541ab5542e"
+    },
+    {
+      "path": "final/animations/frost/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 527493,
+      "sha256": "5788bdf1cf23054fd9ebfe2a98e93b2e1f9ad6e5475f404cc028c82bca087e6f"
+    },
+    {
+      "path": "final/animations/frost/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1497662,
+      "sha256": "048dde02e115514f414c5862a9d1d0e2a746a4af06cc42724b189105385690e5"
+    },
+    {
+      "path": "final/animations/frost/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19016,
+      "sha256": "9643b2b2e629c7a6ef4aa7b08190e5106b8431769b4b5a10a67085d2c17992d6"
+    },
+    {
+      "path": "final/animations/frost/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 23713,
+      "sha256": "54ff9adc7dbc4cefc1c99268eee60ec03f68b289aa844f6e152417ef1a37efa3"
+    },
+    {
+      "path": "final/animations/frost/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 26784,
+      "sha256": "63a6b5db6a7f2f9dcb668d33bb88f33dc01805dd4bff9f01bf0467cd6a61b217"
+    },
+    {
+      "path": "final/animations/frost/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 27296,
+      "sha256": "f7f127433da1bd7a6985c6b523af3c7f2044fd92b028884bd2b3585d86dd7656"
+    },
+    {
+      "path": "final/animations/frost/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 22630,
+      "sha256": "8fc6b57db815b42207b12fbd4d44a3584839ac7cebc809c2d4f89f78308d421f"
+    },
+    {
+      "path": "final/animations/frost/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 18883,
+      "sha256": "3968ddfd4731d83c551995ff20cdb5daf1eb12b3f0cbffdded60cf40c3784e5a"
+    },
+    {
+      "path": "final/animations/frost/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 136933,
+      "sha256": "ca557bf826d1b2696100680a7cdd51b7f9255d21de21b4f7e545dd3f15495420"
+    },
+    {
+      "path": "final/animations/lightning/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 227609,
+      "sha256": "021870079c562d2011dc14bcaf723df96b99e7e8f08fb375d0be288f7b59c00f"
+    },
+    {
+      "path": "final/animations/lightning/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1317675,
+      "sha256": "a570b363641e6e507a135b220a83abfeda578ded56108577c8444441bd430958"
+    },
+    {
+      "path": "final/animations/lightning/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 3911,
+      "sha256": "5620ab7909dcad77673df5aa1be03126b66d3546a9d965e7718838a44dbe8e7d"
+    },
+    {
+      "path": "final/animations/lightning/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 6639,
+      "sha256": "5f35c6b75487e99e13b1d94cc8f7ea57bb864990f00ad74e05f96bec1697ebef"
+    },
+    {
+      "path": "final/animations/lightning/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 16907,
+      "sha256": "6706bb9f4b6ef2e7a26dd3829842fc5c6a05db4712e410c78217f8f6c67cc31a"
+    },
+    {
+      "path": "final/animations/lightning/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 13294,
+      "sha256": "75ec8b95b8d0049e35ba5dd70099ebea4e4f267379f9b8e6e1e3c558c5290b60"
+    },
+    {
+      "path": "final/animations/lightning/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 11111,
+      "sha256": "a58048d5d5b69e6158316a1e2f3eea3dc3da021ddf66fcf55b9c6c22ffecbacb"
+    },
+    {
+      "path": "final/animations/lightning/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 4875,
+      "sha256": "dade7a950e3f910581befb8dd4e79b7fad7f93849d60bf03e2979ea1c520395b"
+    },
+    {
+      "path": "final/animations/lightning/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 55875,
+      "sha256": "edcdfbec9b9254435c28137d32bc994c86ec0223256f85be5a2c09442cb36b87"
+    },
+    {
+      "path": "final/animations/orb/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 895520,
+      "sha256": "abc3ee038a06895b7627190e63a618adae5446666e50fa2f82f9a5fb31ade22a"
+    },
+    {
+      "path": "final/animations/orb/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1612527,
+      "sha256": "e875c8195d349c92ed1f3254f3471e57271a064394d24c1b0d39edeceab96299"
+    },
+    {
+      "path": "final/animations/orb/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 35986,
+      "sha256": "c192028f566567869ae42f032ddfdc5c296162f9852db93a6b8905a5f4651af1"
+    },
+    {
+      "path": "final/animations/orb/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36270,
+      "sha256": "2f62ac4ceabb5ec46d0734b2dcaa30fb43ca6e52d23813947d555c57ea1f169d"
+    },
+    {
+      "path": "final/animations/orb/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36892,
+      "sha256": "8f028facc1aa8442176f4c9b4218b48013faeb09b031fa2e5f04f1ff3bd0452e"
+    },
+    {
+      "path": "final/animations/orb/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36539,
+      "sha256": "ee423e6dd98562def95f565e168c2849ff49c4ec8d47758c3f832441de185a77"
+    },
+    {
+      "path": "final/animations/orb/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36881,
+      "sha256": "d02f59728b361449c16c5a3992f2371a5f35ec5f14cdba2107bf833dc5b4d520"
+    },
+    {
+      "path": "final/animations/orb/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36317,
+      "sha256": "e2e68b08916cb4dccecb39eef29ae16901528b3dd0a01b5fa82e8b263580e7b0"
+    },
+    {
+      "path": "final/animations/orb/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 215751,
+      "sha256": "3f2dbfc5455debfe24af6fcd1d579232a135f03bd0d5bca421da7c40caf91bc2"
+    },
+    {
+      "path": "final/animations/shield/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 752920,
+      "sha256": "ef45eaa78b2e1951d94a02ae702f9fa115a42394ed3b7c7ccb08d5897cb0c029"
+    },
+    {
+      "path": "final/animations/shield/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1499872,
+      "sha256": "8d1400d3270dcb110ba3d463eeaa854d42d535b7bae5fa4f574ad7966b8ed16c"
+    },
+    {
+      "path": "final/animations/shield/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 9527,
+      "sha256": "d24f58b0cf6cc68c710f3429684d176646703b7801213ab9704fed8c207e7047"
+    },
+    {
+      "path": "final/animations/shield/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 23934,
+      "sha256": "a64536309357b5d0e0cbe7bb3eb25157fd18be133dcb191f1e0aca6ba7d05c65"
+    },
+    {
+      "path": "final/animations/shield/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 37574,
+      "sha256": "75c128ac290ea75a076dbe999fb5372e5f9a60cc2340eb87e15463fb011cd478"
+    },
+    {
+      "path": "final/animations/shield/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 43071,
+      "sha256": "a14f08a82ab319b1b64ebea58181bf22790ba212373ec7f34091fa347757329e"
+    },
+    {
+      "path": "final/animations/shield/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36135,
+      "sha256": "21ba6728b8d389ccf1f08fbde35e93e502936e442e46820888d503136d124059"
+    },
+    {
+      "path": "final/animations/shield/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 35011,
+      "sha256": "be927f11f42c00db359baa138dc9caad8778e6e12f61f9b24f4cd020c85cc91a"
+    },
+    {
+      "path": "final/animations/shield/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 183848,
+      "sha256": "b58684bac6c0ef53dacb451d178d6aad180af9c60c85bd74185de233ac985be7"
+    },
+    {
+      "path": "final/animations/slash/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 148196,
+      "sha256": "60633e7966aa72dfb26863b48647fef815455be0c7088e3285280bf5aa0ca72f"
+    },
+    {
+      "path": "final/animations/slash/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1259652,
+      "sha256": "2307ebba8d092c312b5f44a580fd38824e18029f32f13e6ee8d6edb4ce344028"
+    },
+    {
+      "path": "final/animations/slash/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 2562,
+      "sha256": "0cece83965d922b1381bda1887ecc3913ad6abd0733fd93e115108a41a6f01b9"
+    },
+    {
+      "path": "final/animations/slash/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 7273,
+      "sha256": "66d0ab7c1c6ff235a8b7a738ef9f7e70861ecc6323faba5be2c1f1a4e5adcb89"
+    },
+    {
+      "path": "final/animations/slash/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 15033,
+      "sha256": "30f3f1bf674aff189a2a20e18f9b1144a6acfe6c18ab0587ac629ac4d8e5d123"
+    },
+    {
+      "path": "final/animations/slash/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 9161,
+      "sha256": "7f1ade6cb3757893b06701f81a4286a173c679c105f0b90408ed1c6746700962"
+    },
+    {
+      "path": "final/animations/slash/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 4364,
+      "sha256": "c2f6689eb4b5d84984cf88d2df17c684254629dccbe08176d9876938c432b499"
+    },
+    {
+      "path": "final/animations/slash/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 1162,
+      "sha256": "a588f10f144acede2aa4497bf904b0c7420821a86d771f77af0a61df1150571f"
+    },
+    {
+      "path": "final/animations/slash/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 39369,
+      "sha256": "3f8e6a539c929ad3633ae402b21f09113e77a008a532c6c118d940d94c10102e"
+    },
+    {
+      "path": "final/animations/tree-sway/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1191684,
+      "sha256": "416ec4be57484066fa1b9d70b3cbbabad6b96283658c78e872801a7e2a529db4"
+    },
+    {
+      "path": "final/animations/tree-sway/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1829791,
+      "sha256": "c9b7111fbbcbb23f3b6bfd1661cbd703d364eda94c0f6c73f6d6c5ad36be848f"
+    },
+    {
+      "path": "final/animations/tree-sway/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45455,
+      "sha256": "e5110a6cc300ee7b752af3fcafe0b6e77b08d09e17616a771f4a5f70dd5fae2b"
+    },
+    {
+      "path": "final/animations/tree-sway/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45182,
+      "sha256": "2f0494536e3e1f33eb0b104987afe54fd2be6eee4c9b7d9be3be7d95e27c7918"
+    },
+    {
+      "path": "final/animations/tree-sway/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45515,
+      "sha256": "10d0b2b45c87457f2ea02e37c9e2b441e7f07bd7c0448831ad1d919f9d7e380f"
+    },
+    {
+      "path": "final/animations/tree-sway/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45364,
+      "sha256": "d6bc015451186822331adbe2b873ff7f740d84b56f436854726e24d3aea85a5b"
+    },
+    {
+      "path": "final/animations/tree-sway/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45593,
+      "sha256": "ed7cabe415ee76981d2ecef92044793fe0e38b2f919c01fc2528a5dfc88da82d"
+    },
+    {
+      "path": "final/animations/tree-sway/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45223,
+      "sha256": "76d22b9fdbfffae58f25bcdecff3eff38cf207903c21b64b4cb9a42f71cd3a1d"
+    },
+    {
+      "path": "final/animations/tree-sway/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 268752,
+      "sha256": "50d3db8f0f9c667ad9440d059a122944df4e086e782da0e35f786c5ed1f1edb0"
+    },
+    {
+      "path": "final/animations/water/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 847511,
+      "sha256": "97810da8a0d5089b0ccb941310371a262d61e993ba9196ce8cbe056e1950ff47"
+    },
+    {
+      "path": "final/animations/water/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1540292,
+      "sha256": "a18cd435d4b9b9b0b6fcbf83102874dfba206c1704d7cbffaec2a983eafd40a2"
+    },
+    {
+      "path": "final/animations/water/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 33836,
+      "sha256": "238a2c70ad49b77bb8f0064a2ca82939a7c485cd520819b74b87189f5098ca5e"
+    },
+    {
+      "path": "final/animations/water/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 35190,
+      "sha256": "f874d54a3111606e821cd9eb323aa0951260b319e123ed7239535548d9e6405f"
+    },
+    {
+      "path": "final/animations/water/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 34560,
+      "sha256": "cb3800b29fe618e577e8b72ff7183447e9a73ed61869e810483107f1589e1c5d"
+    },
+    {
+      "path": "final/animations/water/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 34428,
+      "sha256": "2c0cf69df56d276374de68a94e516d9d9334a3b6d669b52950c8ec8b8c323516"
+    },
+    {
+      "path": "final/animations/water/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 33890,
+      "sha256": "0770789bf38b698d7db8344fa4f38297e4cb49938271385ba71f682b2d215204"
+    },
+    {
+      "path": "final/animations/water/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 33762,
+      "sha256": "b0cabda5281fc0ed66fddb9688685a2d0d3046b2f056cb516948a615eaad85ce"
+    },
+    {
+      "path": "final/animations/water/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 202644,
+      "sha256": "3df2a63e5fddfa4b6afa2bd531f5f58a758e9e86dd4b9cb046b90c1b5be00cec"
+    },
+    {
+      "path": "final/animations/waterfall/raw-sheet-clean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 418305,
+      "sha256": "8c25bf169d381445afb4e09bc6fedf5cd2ca7eb5cc0d996ba3ab18d3082a0c8e"
+    },
+    {
+      "path": "final/animations/waterfall/raw-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1355965,
+      "sha256": "dfa79e38c0e8d60a4c342260a8448b702b1ca72912132889363e58c6192c9eee"
+    },
+    {
+      "path": "final/animations/waterfall/sheet-1.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 16812,
+      "sha256": "a0b0cc2370aa51d6894be88c1877f38f54b499624bbb2fadb579b51dfef70f2d"
+    },
+    {
+      "path": "final/animations/waterfall/sheet-2.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 17301,
+      "sha256": "9318a87b4fba55b374bd1f59b28f1261978bb1b242aaa354d37741899041c66e"
+    },
+    {
+      "path": "final/animations/waterfall/sheet-3.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 18276,
+      "sha256": "b7e0d34b51c57806aeb1461571d3d839cced06bc94ad397d4cc39b43fcc64f34"
+    },
+    {
+      "path": "final/animations/waterfall/sheet-4.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 17651,
+      "sha256": "de3d2610e355b96815bac3209ef6dd805f386afc07fce57b8ebcfc85337a14aa"
+    },
+    {
+      "path": "final/animations/waterfall/sheet-5.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 17248,
+      "sha256": "dada6fb9034e0ecea74a8ab7d9a3e1a8c0d71137c22bed05e68ec0f6d9d52622"
+    },
+    {
+      "path": "final/animations/waterfall/sheet-6.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 16959,
+      "sha256": "0ad02bf34dfc037ac78b87e5bc39ecdbe1c5c1e5fb8372708751bc6b21827d70"
+    },
+    {
+      "path": "final/animations/waterfall/sheet-transparent.png",
+      "size": [
+        768,
+        512
+      ],
+      "bytes": 101595,
+      "sha256": "7a0f234eb58ef0f19e912e21e58168e9f0df9da8dc58539191d9e7e8fc318123"
+    },
+    {
+      "path": "final/character-lineup.png",
+      "size": [
+        1000,
+        370
+      ],
+      "bytes": 224789,
+      "sha256": "f76900e24e5a999e2aebcc02e57a70cb4bdd2117a93d73a6f8436a4bf62bbdb7"
+    },
+    {
+      "path": "final/clips/arrow/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 67681,
+      "sha256": "544202621f09bf8d7486e8774a64e6a3d7a7f0d320fd6642227c2e989fe7d873"
+    },
+    {
+      "path": "final/clips/arrow/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 8569,
+      "sha256": "efedc6034c966ed0d83c804fdc092c3407cd69aebacee8de0d8f1de3e8a79d2c"
+    },
+    {
+      "path": "final/clips/arrow/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 11378,
+      "sha256": "428529b349f4c74c8a81b449a959a464a1d7aacd8e677412973ffee3df0d06e2"
+    },
+    {
+      "path": "final/clips/arrow/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 15595,
+      "sha256": "c9c28d437320058117c9cb6d97ceaeaf600b721dbc1ac476d0799af2b9f26d5f"
+    },
+    {
+      "path": "final/clips/arrow/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 17390,
+      "sha256": "6d0f3265c4504638f4787e86a71fc127e571e2a73da376e42b06ce7b0a1eb5c6"
+    },
+    {
+      "path": "final/clips/arrow/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 12544,
+      "sha256": "8db7832f8e655d5f365f9405270d3fe048168cd3599bc671c5144f1a9ecc29c1"
+    },
+    {
+      "path": "final/clips/arrow/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 8809,
+      "sha256": "88253016be8ea93e4c0de4e45721d8cd79b8e48a450696e2fb523f750b93f03d"
+    },
+    {
+      "path": "final/clips/arrow/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 189920,
+      "sha256": "dfbbde35cc928ab20fa5555128656bab078d0ea2af0816e3f651bb2ee9d58578"
+    },
+    {
+      "path": "final/clips/arrow/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 87507,
+      "sha256": "3c4a31a654e1d3d03b7e2b99bd9afb4c50a08361e827c51cc17848a9f67b0bef"
+    },
+    {
+      "path": "final/clips/arrow/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 21044,
+      "sha256": "9531e213a680c65d3acda0fca9f89ad7c15fbad901ebb8623b0d320ad5949e4f"
+    },
+    {
+      "path": "final/clips/crystal/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 108231,
+      "sha256": "d2b067fe5a5d5681cdc45a5c08b6dbaac6a26729bed6ec67c1c8621d933103a7"
+    },
+    {
+      "path": "final/clips/crystal/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19932,
+      "sha256": "588ba66dba51ffef0f2f29e16f41658704222a5642a70f61812bb2b2f322848e"
+    },
+    {
+      "path": "final/clips/crystal/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 20365,
+      "sha256": "47964b4c937b4c279ee1811c3f0b83501c2cc5067de8453689704dd9b490d7bc"
+    },
+    {
+      "path": "final/clips/crystal/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 20776,
+      "sha256": "a92cfbfd8dd0d28e74e3acda8157f5dee32bd42daccd60afba17830a0364f6de"
+    },
+    {
+      "path": "final/clips/crystal/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19925,
+      "sha256": "a8164b3d4957839d350720df0a20391413d2498df4f441f113d0b40672c0c82e"
+    },
+    {
+      "path": "final/clips/crystal/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19819,
+      "sha256": "eaf0777f285091716048864548710da35c02772574ce5d0b112f3d26c79f33e4"
+    },
+    {
+      "path": "final/clips/crystal/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19935,
+      "sha256": "c3cc451819c02e99e6254615567b583f33b0d1dff523ba9cba8fc3adbcdc87c1"
+    },
+    {
+      "path": "final/clips/crystal/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 309051,
+      "sha256": "39c4b02ca3d12feffa2b02fc8a0a1b61b65884f623711e1cae186cb48ceae73a"
+    },
+    {
+      "path": "final/clips/crystal/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 111711,
+      "sha256": "fa6f3e60d73853f1e8f32ffe11fae97644082f8754a96ccf0ac60d7e3b4fdd89"
+    },
+    {
+      "path": "final/clips/crystal/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 41855,
+      "sha256": "f370ef02c80abcaa361106621b547d96434b014578ef3344129159bac28b4ad4"
+    },
+    {
+      "path": "final/clips/dash/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 44583,
+      "sha256": "eaa1065e76ecbba1b6915f58794e546d8df0bc2ef66641b7a6d15097d7723fcb"
+    },
+    {
+      "path": "final/clips/dash/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 3809,
+      "sha256": "03c0101e03028395129cd123e9d73fd44e7c4fa926fb90a89d0aa9c8db59bf07"
+    },
+    {
+      "path": "final/clips/dash/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 8383,
+      "sha256": "7267d630daf9269c53a02f1fbec0470febf4035c57e0f61cf4bd4763126604ac"
+    },
+    {
+      "path": "final/clips/dash/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 16013,
+      "sha256": "f060075eb38390b2a35a2bc29ecdfb0c52aea5f362ccd90079adad0b2c1bae3a"
+    },
+    {
+      "path": "final/clips/dash/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 8921,
+      "sha256": "89377864631c73b5fab1510f9c4560d6d670cb803fee9b3554c915bb0885f061"
+    },
+    {
+      "path": "final/clips/dash/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 3761,
+      "sha256": "d35869d29acb70f01ba12b818bdca3e7f757c3d92f372bc191c88a8c8623490c"
+    },
+    {
+      "path": "final/clips/dash/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 1921,
+      "sha256": "47accc53b314d05dcbcd8ec05a8bb8d9d19d3e2cd5f4b2f81d94c1555d8afd29"
+    },
+    {
+      "path": "final/clips/dash/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 123849,
+      "sha256": "046ce33b7f182be850f679f4f462caf06b3b76f317e9ec5bc46b8cfdf36286b6"
+    },
+    {
+      "path": "final/clips/dash/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 65084,
+      "sha256": "7684515636b5600d5ff1a340ff1f52e15fc289d1b78da022169d7132c3ca5f55"
+    },
+    {
+      "path": "final/clips/dash/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 13942,
+      "sha256": "27f009d82cab98011168aaa0125620011bf0101e0a1cfb45cebde387c7f2608f"
+    },
+    {
+      "path": "final/clips/earth/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 113681,
+      "sha256": "0f464a2c4dbb3004de9eec4c3d67bba2ffe8859befaf163fdb5a15badd1bfdab"
+    },
+    {
+      "path": "final/clips/earth/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 2549,
+      "sha256": "0642f4056b0ed36a53c9f5658b830db9e2e199a6937bcb2f95a259ec0c146a86"
+    },
+    {
+      "path": "final/clips/earth/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 15956,
+      "sha256": "daf86c5b44e1ba3521cbff810e71de7e86019fe0148d4ab4fc8846af3ef9d024"
+    },
+    {
+      "path": "final/clips/earth/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 42645,
+      "sha256": "2357fadb819e14f0668b7d99afa2c1f419d3c48ba29900c7614c0b617f13b759"
+    },
+    {
+      "path": "final/clips/earth/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 40099,
+      "sha256": "3214bdfea11940b6b6e482872d97ffbeea9c0d8afd4d69abd72b6a576615adcd"
+    },
+    {
+      "path": "final/clips/earth/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19525,
+      "sha256": "a4abc720864bdbbc841640187064d01ea1054ce6938992aa8bd4b8d3a5c9861e"
+    },
+    {
+      "path": "final/clips/earth/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 10161,
+      "sha256": "4af347b981ee1a055193add25836a2285ff181b9bf0065b53185fb0398aa5957"
+    },
+    {
+      "path": "final/clips/earth/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 337872,
+      "sha256": "ec9858044d58f08ddb289a5f9e3fdea16ae7c06f40ae0d6f543a78141d2983c2"
+    },
+    {
+      "path": "final/clips/earth/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 146076,
+      "sha256": "94b001986c38d747fa06e6eb5fde714e8dfec9539f4767321311b9b4b1f442fa"
+    },
+    {
+      "path": "final/clips/earth/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 11289,
+      "sha256": "0089004953a1dbac6665eabf2a0259853467e9cfc5d87f032fad2343f6a39ee3"
+    },
+    {
+      "path": "final/clips/frost/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 119054,
+      "sha256": "d33abe3092acc278356466a066dfb32d9bb1c5fbc3d3ec0313fb0ea3c0496436"
+    },
+    {
+      "path": "final/clips/frost/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19016,
+      "sha256": "9643b2b2e629c7a6ef4aa7b08190e5106b8431769b4b5a10a67085d2c17992d6"
+    },
+    {
+      "path": "final/clips/frost/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 23713,
+      "sha256": "54ff9adc7dbc4cefc1c99268eee60ec03f68b289aa844f6e152417ef1a37efa3"
+    },
+    {
+      "path": "final/clips/frost/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 26784,
+      "sha256": "63a6b5db6a7f2f9dcb668d33bb88f33dc01805dd4bff9f01bf0467cd6a61b217"
+    },
+    {
+      "path": "final/clips/frost/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 27296,
+      "sha256": "f7f127433da1bd7a6985c6b523af3c7f2044fd92b028884bd2b3585d86dd7656"
+    },
+    {
+      "path": "final/clips/frost/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 22630,
+      "sha256": "8fc6b57db815b42207b12fbd4d44a3584839ac7cebc809c2d4f89f78308d421f"
+    },
+    {
+      "path": "final/clips/frost/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 18883,
+      "sha256": "3968ddfd4731d83c551995ff20cdb5daf1eb12b3f0cbffdded60cf40c3784e5a"
+    },
+    {
+      "path": "final/clips/frost/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 335471,
+      "sha256": "e2ffcaad0c8df20661955bdd6f4570ee26df61c5949853c862f604dbea008445"
+    },
+    {
+      "path": "final/clips/frost/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 143101,
+      "sha256": "fc3baaec1dab7084d071fc4be6de779d0b41837a7a5441a2ff5a9e7c9dd6b087"
+    },
+    {
+      "path": "final/clips/frost/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 38152,
+      "sha256": "e746f9c374ee5f2ebd0865550bfa3e5289a525b94e68e8c5fd311b409768090a"
+    },
+    {
+      "path": "final/clips/lightning/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 53157,
+      "sha256": "373e0ddef151d6e9cb94c96389416fa1d544f3109505e769dd3e4b12cf5bd9b3"
+    },
+    {
+      "path": "final/clips/lightning/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 3911,
+      "sha256": "5620ab7909dcad77673df5aa1be03126b66d3546a9d965e7718838a44dbe8e7d"
+    },
+    {
+      "path": "final/clips/lightning/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 6639,
+      "sha256": "5f35c6b75487e99e13b1d94cc8f7ea57bb864990f00ad74e05f96bec1697ebef"
+    },
+    {
+      "path": "final/clips/lightning/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 16907,
+      "sha256": "6706bb9f4b6ef2e7a26dd3829842fc5c6a05db4712e410c78217f8f6c67cc31a"
+    },
+    {
+      "path": "final/clips/lightning/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 13294,
+      "sha256": "75ec8b95b8d0049e35ba5dd70099ebea4e4f267379f9b8e6e1e3c558c5290b60"
+    },
+    {
+      "path": "final/clips/lightning/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 11111,
+      "sha256": "a58048d5d5b69e6158316a1e2f3eea3dc3da021ddf66fcf55b9c6c22ffecbacb"
+    },
+    {
+      "path": "final/clips/lightning/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 4875,
+      "sha256": "dade7a950e3f910581befb8dd4e79b7fad7f93849d60bf03e2979ea1c520395b"
+    },
+    {
+      "path": "final/clips/lightning/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 152256,
+      "sha256": "0109232d2c1dbc9b3139b6710be2eb14939a3b4bafaabd3c16e29e5f37cdb721"
+    },
+    {
+      "path": "final/clips/lightning/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 69458,
+      "sha256": "77f75860c9713a5c59df2222a9243ed6f82cfc7db8895ce70c711f4738d7769e"
+    },
+    {
+      "path": "final/clips/lightning/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 14033,
+      "sha256": "525157915158866098444c602e1cf6e8964b73e7e3646b35c68532cb8f2a7f4f"
+    },
+    {
+      "path": "final/clips/orb/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 192006,
+      "sha256": "b47d211b6a7ff0ae8d9eb1ea844c9e1d68110d430367e9f958aa194b034be3f7"
+    },
+    {
+      "path": "final/clips/orb/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 35986,
+      "sha256": "c192028f566567869ae42f032ddfdc5c296162f9852db93a6b8905a5f4651af1"
+    },
+    {
+      "path": "final/clips/orb/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36270,
+      "sha256": "2f62ac4ceabb5ec46d0734b2dcaa30fb43ca6e52d23813947d555c57ea1f169d"
+    },
+    {
+      "path": "final/clips/orb/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36892,
+      "sha256": "8f028facc1aa8442176f4c9b4218b48013faeb09b031fa2e5f04f1ff3bd0452e"
+    },
+    {
+      "path": "final/clips/orb/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36539,
+      "sha256": "ee423e6dd98562def95f565e168c2849ff49c4ec8d47758c3f832441de185a77"
+    },
+    {
+      "path": "final/clips/orb/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36881,
+      "sha256": "d02f59728b361449c16c5a3992f2371a5f35ec5f14cdba2107bf833dc5b4d520"
+    },
+    {
+      "path": "final/clips/orb/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36317,
+      "sha256": "e2e68b08916cb4dccecb39eef29ae16901528b3dd0a01b5fa82e8b263580e7b0"
+    },
+    {
+      "path": "final/clips/orb/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 565314,
+      "sha256": "c179d15aebee12a1d05cc46e82bd57b8e181c4bd41bc89b0c24d2eccb65a2060"
+    },
+    {
+      "path": "final/clips/orb/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 202967,
+      "sha256": "096aefc19952cff467d6ff27ed752f27f734c4f5a4e973a1b6ae50a601caa5a2"
+    },
+    {
+      "path": "final/clips/orb/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 69368,
+      "sha256": "51e10959f326b65d452abfded6158fa1f275d259f303afb21ccbb05eef348638"
+    },
+    {
+      "path": "final/clips/shield/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 163342,
+      "sha256": "ed4bba79a9614c6fe21d663916a1d7b2363b90e7c05ecc800c39fb4cd2462204"
+    },
+    {
+      "path": "final/clips/shield/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 9527,
+      "sha256": "d24f58b0cf6cc68c710f3429684d176646703b7801213ab9704fed8c207e7047"
+    },
+    {
+      "path": "final/clips/shield/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 23934,
+      "sha256": "a64536309357b5d0e0cbe7bb3eb25157fd18be133dcb191f1e0aca6ba7d05c65"
+    },
+    {
+      "path": "final/clips/shield/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 37574,
+      "sha256": "75c128ac290ea75a076dbe999fb5372e5f9a60cc2340eb87e15463fb011cd478"
+    },
+    {
+      "path": "final/clips/shield/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 43071,
+      "sha256": "a14f08a82ab319b1b64ebea58181bf22790ba212373ec7f34091fa347757329e"
+    },
+    {
+      "path": "final/clips/shield/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36135,
+      "sha256": "21ba6728b8d389ccf1f08fbde35e93e502936e442e46820888d503136d124059"
+    },
+    {
+      "path": "final/clips/shield/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 35011,
+      "sha256": "be927f11f42c00db359baa138dc9caad8778e6e12f61f9b24f4cd020c85cc91a"
+    },
+    {
+      "path": "final/clips/shield/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 485278,
+      "sha256": "2aa4f16f1581095079c11ab84177f3cdb2ba9ed35567233eaa8b5924dc21d255"
+    },
+    {
+      "path": "final/clips/shield/review/filmstrip-01.png",
+      "size": [
+        544,
+        984
+      ],
+      "bytes": 195324,
+      "sha256": "4bbd3b5bca7c901046777924272b13797aade3d78764e6ff288042280282f700"
+    },
+    {
+      "path": "final/clips/shield/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 185803,
+      "sha256": "b6c093c8a0fdea4f75d23756515c2e015fc214017f158f843ad8ddc36c1fc3b4"
+    },
+    {
+      "path": "final/clips/shield/review/onion-01.png",
+      "size": [
+        544,
+        344
+      ],
+      "bytes": 66404,
+      "sha256": "45ed2be7dba52cdae676f4c32b7839e4c6101c64c62226f95749cc2ee482695f"
+    },
+    {
+      "path": "final/clips/shield/review/turn-test.png",
+      "size": [
+        544,
+        600
+      ],
+      "bytes": 87352,
+      "sha256": "f2fecf3adfcdf6dc7a879621838bd5c5ce9665e802972e0e0c9aad81fb24beb4"
+    },
+    {
+      "path": "final/clips/slash/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 41088,
+      "sha256": "9d4e40f8da747f96b54e6e62e27d06eba1596ccee74af9a7090f5bae79a44e2d"
+    },
+    {
+      "path": "final/clips/slash/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 2562,
+      "sha256": "0cece83965d922b1381bda1887ecc3913ad6abd0733fd93e115108a41a6f01b9"
+    },
+    {
+      "path": "final/clips/slash/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 7273,
+      "sha256": "66d0ab7c1c6ff235a8b7a738ef9f7e70861ecc6323faba5be2c1f1a4e5adcb89"
+    },
+    {
+      "path": "final/clips/slash/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 15033,
+      "sha256": "30f3f1bf674aff189a2a20e18f9b1144a6acfe6c18ab0587ac629ac4d8e5d123"
+    },
+    {
+      "path": "final/clips/slash/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 9161,
+      "sha256": "7f1ade6cb3757893b06701f81a4286a173c679c105f0b90408ed1c6746700962"
+    },
+    {
+      "path": "final/clips/slash/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 4364,
+      "sha256": "c2f6689eb4b5d84984cf88d2df17c684254629dccbe08176d9876938c432b499"
+    },
+    {
+      "path": "final/clips/slash/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 1162,
+      "sha256": "a588f10f144acede2aa4497bf904b0c7420821a86d771f77af0a61df1150571f"
+    },
+    {
+      "path": "final/clips/slash/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 117372,
+      "sha256": "573f0f47de937cbb417433349acd43dc9ab98550516924474e31660025c99703"
+    },
+    {
+      "path": "final/clips/slash/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 59556,
+      "sha256": "945f4c78c18eacc44579d9d8a2a46f7d76da4dff24f0a4ee7a6d59d68930c58f"
+    },
+    {
+      "path": "final/clips/slash/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 11432,
+      "sha256": "f11dd93bc9887bb7b8edd47c1f3997ff2076bed0c5582d0e4c5ffe14902a3300"
+    },
+    {
+      "path": "final/clips/tree-sway/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 229174,
+      "sha256": "6c6fb35f28d39e6cdda51c75bee46370ecc1d3a7b8bcd5c49b4da9f0b93e9ce4"
+    },
+    {
+      "path": "final/clips/tree-sway/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45455,
+      "sha256": "e5110a6cc300ee7b752af3fcafe0b6e77b08d09e17616a771f4a5f70dd5fae2b"
+    },
+    {
+      "path": "final/clips/tree-sway/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45182,
+      "sha256": "2f0494536e3e1f33eb0b104987afe54fd2be6eee4c9b7d9be3be7d95e27c7918"
+    },
+    {
+      "path": "final/clips/tree-sway/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45515,
+      "sha256": "10d0b2b45c87457f2ea02e37c9e2b441e7f07bd7c0448831ad1d919f9d7e380f"
+    },
+    {
+      "path": "final/clips/tree-sway/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45364,
+      "sha256": "d6bc015451186822331adbe2b873ff7f740d84b56f436854726e24d3aea85a5b"
+    },
+    {
+      "path": "final/clips/tree-sway/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45593,
+      "sha256": "ed7cabe415ee76981d2ecef92044793fe0e38b2f919c01fc2528a5dfc88da82d"
+    },
+    {
+      "path": "final/clips/tree-sway/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45223,
+      "sha256": "76d22b9fdbfffae58f25bcdecff3eff38cf207903c21b64b4cb9a42f71cd3a1d"
+    },
+    {
+      "path": "final/clips/tree-sway/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 683387,
+      "sha256": "b72a6169e293dcce1f835ae4be93ad16eb7423f29baffcb07ea0ea2065670389"
+    },
+    {
+      "path": "final/clips/tree-sway/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 244720,
+      "sha256": "3a344d824d893cbe324931b9a90cd615fea03f72521956f38c8baa2aa9db4cd0"
+    },
+    {
+      "path": "final/clips/tree-sway/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 82681,
+      "sha256": "d75ef4451258549c3acfd6836359af8c3fc90330f69f9fa8b0e641e08375e283"
+    },
+    {
+      "path": "final/clips/water/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 185573,
+      "sha256": "3f1fd5de27459935b6936c6edab9d319b4bab6a427e39b255bd211e7f373cf44"
+    },
+    {
+      "path": "final/clips/water/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 33836,
+      "sha256": "238a2c70ad49b77bb8f0064a2ca82939a7c485cd520819b74b87189f5098ca5e"
+    },
+    {
+      "path": "final/clips/water/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 35190,
+      "sha256": "f874d54a3111606e821cd9eb323aa0951260b319e123ed7239535548d9e6405f"
+    },
+    {
+      "path": "final/clips/water/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 34560,
+      "sha256": "cb3800b29fe618e577e8b72ff7183447e9a73ed61869e810483107f1589e1c5d"
+    },
+    {
+      "path": "final/clips/water/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 34428,
+      "sha256": "2c0cf69df56d276374de68a94e516d9d9334a3b6d669b52950c8ec8b8c323516"
+    },
+    {
+      "path": "final/clips/water/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 33890,
+      "sha256": "0770789bf38b698d7db8344fa4f38297e4cb49938271385ba71f682b2d215204"
+    },
+    {
+      "path": "final/clips/water/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 33762,
+      "sha256": "b0cabda5281fc0ed66fddb9688685a2d0d3046b2f056cb516948a615eaad85ce"
+    },
+    {
+      "path": "final/clips/water/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 545083,
+      "sha256": "cdaf33b10fc18805d8e80e941041d203f654ae3fa9b4844deec572bc6e125718"
+    },
+    {
+      "path": "final/clips/water/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 188414,
+      "sha256": "0838424e1266b01fd8e25d3b6561eab9eef120335923e61d6a031b9ccc115eb7"
+    },
+    {
+      "path": "final/clips/water/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 66973,
+      "sha256": "45950b28df3e546899f728cf3d42bd8d98b96d62bbf32c0d5dce7bb9658ca681"
+    },
+    {
+      "path": "final/clips/waterfall/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 96023,
+      "sha256": "18d8b0b9f38702875f443584ef3ed0fdb5ef4f6aee3cf53bfdd3c7909ab20c62"
+    },
+    {
+      "path": "final/clips/waterfall/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 16812,
+      "sha256": "a0b0cc2370aa51d6894be88c1877f38f54b499624bbb2fadb579b51dfef70f2d"
+    },
+    {
+      "path": "final/clips/waterfall/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 17301,
+      "sha256": "9318a87b4fba55b374bd1f59b28f1261978bb1b242aaa354d37741899041c66e"
+    },
+    {
+      "path": "final/clips/waterfall/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 18276,
+      "sha256": "b7e0d34b51c57806aeb1461571d3d839cced06bc94ad397d4cc39b43fcc64f34"
+    },
+    {
+      "path": "final/clips/waterfall/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 17651,
+      "sha256": "de3d2610e355b96815bac3209ef6dd805f386afc07fce57b8ebcfc85337a14aa"
+    },
+    {
+      "path": "final/clips/waterfall/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 17248,
+      "sha256": "dada6fb9034e0ecea74a8ab7d9a3e1a8c0d71137c22bed05e68ec0f6d9d52622"
+    },
+    {
+      "path": "final/clips/waterfall/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 16959,
+      "sha256": "0ad02bf34dfc037ac78b87e5bc39ecdbe1c5c1e5fb8372708751bc6b21827d70"
+    },
+    {
+      "path": "final/clips/waterfall/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 273592,
+      "sha256": "7f5ceec389fd297d3d992275398d51c3eb594dc762859b32eb841140f9673651"
+    },
+    {
+      "path": "final/clips/waterfall/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 97677,
+      "sha256": "183284f2918479d1390c14e55138b32df42b496c2ab218cca7375072319930bb"
+    },
+    {
+      "path": "final/clips/waterfall/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 36898,
+      "sha256": "ffd3372c85ddf488ba13c3d7662efe1c0522a70cb4c7109aab8652063f93e9d5"
+    },
+    {
+      "path": "final/clips-v2/arrow/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 67681,
+      "sha256": "544202621f09bf8d7486e8774a64e6a3d7a7f0d320fd6642227c2e989fe7d873"
+    },
+    {
+      "path": "final/clips-v2/arrow/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 8569,
+      "sha256": "efedc6034c966ed0d83c804fdc092c3407cd69aebacee8de0d8f1de3e8a79d2c"
+    },
+    {
+      "path": "final/clips-v2/arrow/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 11378,
+      "sha256": "428529b349f4c74c8a81b449a959a464a1d7aacd8e677412973ffee3df0d06e2"
+    },
+    {
+      "path": "final/clips-v2/arrow/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 15595,
+      "sha256": "c9c28d437320058117c9cb6d97ceaeaf600b721dbc1ac476d0799af2b9f26d5f"
+    },
+    {
+      "path": "final/clips-v2/arrow/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 17390,
+      "sha256": "6d0f3265c4504638f4787e86a71fc127e571e2a73da376e42b06ce7b0a1eb5c6"
+    },
+    {
+      "path": "final/clips-v2/arrow/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 12544,
+      "sha256": "8db7832f8e655d5f365f9405270d3fe048168cd3599bc671c5144f1a9ecc29c1"
+    },
+    {
+      "path": "final/clips-v2/arrow/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 8809,
+      "sha256": "88253016be8ea93e4c0de4e45721d8cd79b8e48a450696e2fb523f750b93f03d"
+    },
+    {
+      "path": "final/clips-v2/arrow/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 189920,
+      "sha256": "dfbbde35cc928ab20fa5555128656bab078d0ea2af0816e3f651bb2ee9d58578"
+    },
+    {
+      "path": "final/clips-v2/arrow/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 87507,
+      "sha256": "3c4a31a654e1d3d03b7e2b99bd9afb4c50a08361e827c51cc17848a9f67b0bef"
+    },
+    {
+      "path": "final/clips-v2/arrow/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 21044,
+      "sha256": "9531e213a680c65d3acda0fca9f89ad7c15fbad901ebb8623b0d320ad5949e4f"
+    },
+    {
+      "path": "final/clips-v2/crystal/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 108231,
+      "sha256": "d2b067fe5a5d5681cdc45a5c08b6dbaac6a26729bed6ec67c1c8621d933103a7"
+    },
+    {
+      "path": "final/clips-v2/crystal/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19932,
+      "sha256": "588ba66dba51ffef0f2f29e16f41658704222a5642a70f61812bb2b2f322848e"
+    },
+    {
+      "path": "final/clips-v2/crystal/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 20365,
+      "sha256": "47964b4c937b4c279ee1811c3f0b83501c2cc5067de8453689704dd9b490d7bc"
+    },
+    {
+      "path": "final/clips-v2/crystal/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 20776,
+      "sha256": "a92cfbfd8dd0d28e74e3acda8157f5dee32bd42daccd60afba17830a0364f6de"
+    },
+    {
+      "path": "final/clips-v2/crystal/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19925,
+      "sha256": "a8164b3d4957839d350720df0a20391413d2498df4f441f113d0b40672c0c82e"
+    },
+    {
+      "path": "final/clips-v2/crystal/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19819,
+      "sha256": "eaf0777f285091716048864548710da35c02772574ce5d0b112f3d26c79f33e4"
+    },
+    {
+      "path": "final/clips-v2/crystal/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19935,
+      "sha256": "c3cc451819c02e99e6254615567b583f33b0d1dff523ba9cba8fc3adbcdc87c1"
+    },
+    {
+      "path": "final/clips-v2/crystal/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 308757,
+      "sha256": "842b75aafb6211a35ed1bd938a0f0a2314716d5fcf8b553e00bfe5f1f609de60"
+    },
+    {
+      "path": "final/clips-v2/crystal/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 111711,
+      "sha256": "fa6f3e60d73853f1e8f32ffe11fae97644082f8754a96ccf0ac60d7e3b4fdd89"
+    },
+    {
+      "path": "final/clips-v2/crystal/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 41855,
+      "sha256": "f370ef02c80abcaa361106621b547d96434b014578ef3344129159bac28b4ad4"
+    },
+    {
+      "path": "final/clips-v2/dash/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 44583,
+      "sha256": "eaa1065e76ecbba1b6915f58794e546d8df0bc2ef66641b7a6d15097d7723fcb"
+    },
+    {
+      "path": "final/clips-v2/dash/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 3809,
+      "sha256": "03c0101e03028395129cd123e9d73fd44e7c4fa926fb90a89d0aa9c8db59bf07"
+    },
+    {
+      "path": "final/clips-v2/dash/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 8383,
+      "sha256": "7267d630daf9269c53a02f1fbec0470febf4035c57e0f61cf4bd4763126604ac"
+    },
+    {
+      "path": "final/clips-v2/dash/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 16013,
+      "sha256": "f060075eb38390b2a35a2bc29ecdfb0c52aea5f362ccd90079adad0b2c1bae3a"
+    },
+    {
+      "path": "final/clips-v2/dash/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 8921,
+      "sha256": "89377864631c73b5fab1510f9c4560d6d670cb803fee9b3554c915bb0885f061"
+    },
+    {
+      "path": "final/clips-v2/dash/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 3761,
+      "sha256": "d35869d29acb70f01ba12b818bdca3e7f757c3d92f372bc191c88a8c8623490c"
+    },
+    {
+      "path": "final/clips-v2/dash/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 1921,
+      "sha256": "47accc53b314d05dcbcd8ec05a8bb8d9d19d3e2cd5f4b2f81d94c1555d8afd29"
+    },
+    {
+      "path": "final/clips-v2/dash/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 123849,
+      "sha256": "046ce33b7f182be850f679f4f462caf06b3b76f317e9ec5bc46b8cfdf36286b6"
+    },
+    {
+      "path": "final/clips-v2/dash/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 65084,
+      "sha256": "7684515636b5600d5ff1a340ff1f52e15fc289d1b78da022169d7132c3ca5f55"
+    },
+    {
+      "path": "final/clips-v2/dash/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 13942,
+      "sha256": "27f009d82cab98011168aaa0125620011bf0101e0a1cfb45cebde387c7f2608f"
+    },
+    {
+      "path": "final/clips-v2/earth/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 113681,
+      "sha256": "0f464a2c4dbb3004de9eec4c3d67bba2ffe8859befaf163fdb5a15badd1bfdab"
+    },
+    {
+      "path": "final/clips-v2/earth/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 2549,
+      "sha256": "0642f4056b0ed36a53c9f5658b830db9e2e199a6937bcb2f95a259ec0c146a86"
+    },
+    {
+      "path": "final/clips-v2/earth/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 15956,
+      "sha256": "daf86c5b44e1ba3521cbff810e71de7e86019fe0148d4ab4fc8846af3ef9d024"
+    },
+    {
+      "path": "final/clips-v2/earth/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 42645,
+      "sha256": "2357fadb819e14f0668b7d99afa2c1f419d3c48ba29900c7614c0b617f13b759"
+    },
+    {
+      "path": "final/clips-v2/earth/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 40099,
+      "sha256": "3214bdfea11940b6b6e482872d97ffbeea9c0d8afd4d69abd72b6a576615adcd"
+    },
+    {
+      "path": "final/clips-v2/earth/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19525,
+      "sha256": "a4abc720864bdbbc841640187064d01ea1054ce6938992aa8bd4b8d3a5c9861e"
+    },
+    {
+      "path": "final/clips-v2/earth/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 10161,
+      "sha256": "4af347b981ee1a055193add25836a2285ff181b9bf0065b53185fb0398aa5957"
+    },
+    {
+      "path": "final/clips-v2/earth/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 337872,
+      "sha256": "ec9858044d58f08ddb289a5f9e3fdea16ae7c06f40ae0d6f543a78141d2983c2"
+    },
+    {
+      "path": "final/clips-v2/earth/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 146076,
+      "sha256": "94b001986c38d747fa06e6eb5fde714e8dfec9539f4767321311b9b4b1f442fa"
+    },
+    {
+      "path": "final/clips-v2/earth/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 11289,
+      "sha256": "0089004953a1dbac6665eabf2a0259853467e9cfc5d87f032fad2343f6a39ee3"
+    },
+    {
+      "path": "final/clips-v2/frost/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 119054,
+      "sha256": "d33abe3092acc278356466a066dfb32d9bb1c5fbc3d3ec0313fb0ea3c0496436"
+    },
+    {
+      "path": "final/clips-v2/frost/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19016,
+      "sha256": "9643b2b2e629c7a6ef4aa7b08190e5106b8431769b4b5a10a67085d2c17992d6"
+    },
+    {
+      "path": "final/clips-v2/frost/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 23713,
+      "sha256": "54ff9adc7dbc4cefc1c99268eee60ec03f68b289aa844f6e152417ef1a37efa3"
+    },
+    {
+      "path": "final/clips-v2/frost/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 26784,
+      "sha256": "63a6b5db6a7f2f9dcb668d33bb88f33dc01805dd4bff9f01bf0467cd6a61b217"
+    },
+    {
+      "path": "final/clips-v2/frost/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 27296,
+      "sha256": "f7f127433da1bd7a6985c6b523af3c7f2044fd92b028884bd2b3585d86dd7656"
+    },
+    {
+      "path": "final/clips-v2/frost/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 22630,
+      "sha256": "8fc6b57db815b42207b12fbd4d44a3584839ac7cebc809c2d4f89f78308d421f"
+    },
+    {
+      "path": "final/clips-v2/frost/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 18883,
+      "sha256": "3968ddfd4731d83c551995ff20cdb5daf1eb12b3f0cbffdded60cf40c3784e5a"
+    },
+    {
+      "path": "final/clips-v2/frost/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 335885,
+      "sha256": "1dbdd25db68693dc55a50bade088c98b724ecf76ca50a3d8ad3ed353b68233dd"
+    },
+    {
+      "path": "final/clips-v2/frost/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 143101,
+      "sha256": "fc3baaec1dab7084d071fc4be6de779d0b41837a7a5441a2ff5a9e7c9dd6b087"
+    },
+    {
+      "path": "final/clips-v2/frost/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 38152,
+      "sha256": "e746f9c374ee5f2ebd0865550bfa3e5289a525b94e68e8c5fd311b409768090a"
+    },
+    {
+      "path": "final/clips-v2/lightning/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 53157,
+      "sha256": "373e0ddef151d6e9cb94c96389416fa1d544f3109505e769dd3e4b12cf5bd9b3"
+    },
+    {
+      "path": "final/clips-v2/lightning/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 3911,
+      "sha256": "5620ab7909dcad77673df5aa1be03126b66d3546a9d965e7718838a44dbe8e7d"
+    },
+    {
+      "path": "final/clips-v2/lightning/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 6639,
+      "sha256": "5f35c6b75487e99e13b1d94cc8f7ea57bb864990f00ad74e05f96bec1697ebef"
+    },
+    {
+      "path": "final/clips-v2/lightning/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 16907,
+      "sha256": "6706bb9f4b6ef2e7a26dd3829842fc5c6a05db4712e410c78217f8f6c67cc31a"
+    },
+    {
+      "path": "final/clips-v2/lightning/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 13294,
+      "sha256": "75ec8b95b8d0049e35ba5dd70099ebea4e4f267379f9b8e6e1e3c558c5290b60"
+    },
+    {
+      "path": "final/clips-v2/lightning/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 11111,
+      "sha256": "a58048d5d5b69e6158316a1e2f3eea3dc3da021ddf66fcf55b9c6c22ffecbacb"
+    },
+    {
+      "path": "final/clips-v2/lightning/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 4875,
+      "sha256": "dade7a950e3f910581befb8dd4e79b7fad7f93849d60bf03e2979ea1c520395b"
+    },
+    {
+      "path": "final/clips-v2/lightning/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 152256,
+      "sha256": "0109232d2c1dbc9b3139b6710be2eb14939a3b4bafaabd3c16e29e5f37cdb721"
+    },
+    {
+      "path": "final/clips-v2/lightning/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 69458,
+      "sha256": "77f75860c9713a5c59df2222a9243ed6f82cfc7db8895ce70c711f4738d7769e"
+    },
+    {
+      "path": "final/clips-v2/lightning/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 14033,
+      "sha256": "525157915158866098444c602e1cf6e8964b73e7e3646b35c68532cb8f2a7f4f"
+    },
+    {
+      "path": "final/clips-v2/orb/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 192006,
+      "sha256": "b47d211b6a7ff0ae8d9eb1ea844c9e1d68110d430367e9f958aa194b034be3f7"
+    },
+    {
+      "path": "final/clips-v2/orb/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 35986,
+      "sha256": "c192028f566567869ae42f032ddfdc5c296162f9852db93a6b8905a5f4651af1"
+    },
+    {
+      "path": "final/clips-v2/orb/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36270,
+      "sha256": "2f62ac4ceabb5ec46d0734b2dcaa30fb43ca6e52d23813947d555c57ea1f169d"
+    },
+    {
+      "path": "final/clips-v2/orb/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36892,
+      "sha256": "8f028facc1aa8442176f4c9b4218b48013faeb09b031fa2e5f04f1ff3bd0452e"
+    },
+    {
+      "path": "final/clips-v2/orb/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36539,
+      "sha256": "ee423e6dd98562def95f565e168c2849ff49c4ec8d47758c3f832441de185a77"
+    },
+    {
+      "path": "final/clips-v2/orb/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36881,
+      "sha256": "d02f59728b361449c16c5a3992f2371a5f35ec5f14cdba2107bf833dc5b4d520"
+    },
+    {
+      "path": "final/clips-v2/orb/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36317,
+      "sha256": "e2e68b08916cb4dccecb39eef29ae16901528b3dd0a01b5fa82e8b263580e7b0"
+    },
+    {
+      "path": "final/clips-v2/orb/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 565314,
+      "sha256": "c179d15aebee12a1d05cc46e82bd57b8e181c4bd41bc89b0c24d2eccb65a2060"
+    },
+    {
+      "path": "final/clips-v2/orb/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 202967,
+      "sha256": "096aefc19952cff467d6ff27ed752f27f734c4f5a4e973a1b6ae50a601caa5a2"
+    },
+    {
+      "path": "final/clips-v2/orb/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 69368,
+      "sha256": "51e10959f326b65d452abfded6158fa1f275d259f303afb21ccbb05eef348638"
+    },
+    {
+      "path": "final/clips-v2/shield/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 163342,
+      "sha256": "ed4bba79a9614c6fe21d663916a1d7b2363b90e7c05ecc800c39fb4cd2462204"
+    },
+    {
+      "path": "final/clips-v2/shield/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 9527,
+      "sha256": "d24f58b0cf6cc68c710f3429684d176646703b7801213ab9704fed8c207e7047"
+    },
+    {
+      "path": "final/clips-v2/shield/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 23934,
+      "sha256": "a64536309357b5d0e0cbe7bb3eb25157fd18be133dcb191f1e0aca6ba7d05c65"
+    },
+    {
+      "path": "final/clips-v2/shield/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 37574,
+      "sha256": "75c128ac290ea75a076dbe999fb5372e5f9a60cc2340eb87e15463fb011cd478"
+    },
+    {
+      "path": "final/clips-v2/shield/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 43071,
+      "sha256": "a14f08a82ab319b1b64ebea58181bf22790ba212373ec7f34091fa347757329e"
+    },
+    {
+      "path": "final/clips-v2/shield/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 36135,
+      "sha256": "21ba6728b8d389ccf1f08fbde35e93e502936e442e46820888d503136d124059"
+    },
+    {
+      "path": "final/clips-v2/shield/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 35011,
+      "sha256": "be927f11f42c00db359baa138dc9caad8778e6e12f61f9b24f4cd020c85cc91a"
+    },
+    {
+      "path": "final/clips-v2/shield/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 485278,
+      "sha256": "2aa4f16f1581095079c11ab84177f3cdb2ba9ed35567233eaa8b5924dc21d255"
+    },
+    {
+      "path": "final/clips-v2/shield/review/filmstrip-01.png",
+      "size": [
+        544,
+        984
+      ],
+      "bytes": 195324,
+      "sha256": "4bbd3b5bca7c901046777924272b13797aade3d78764e6ff288042280282f700"
+    },
+    {
+      "path": "final/clips-v2/shield/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 185803,
+      "sha256": "b6c093c8a0fdea4f75d23756515c2e015fc214017f158f843ad8ddc36c1fc3b4"
+    },
+    {
+      "path": "final/clips-v2/shield/review/onion-01.png",
+      "size": [
+        544,
+        344
+      ],
+      "bytes": 66404,
+      "sha256": "45ed2be7dba52cdae676f4c32b7839e4c6101c64c62226f95749cc2ee482695f"
+    },
+    {
+      "path": "final/clips-v2/shield/review/turn-test.png",
+      "size": [
+        544,
+        600
+      ],
+      "bytes": 87352,
+      "sha256": "f2fecf3adfcdf6dc7a879621838bd5c5ce9665e802972e0e0c9aad81fb24beb4"
+    },
+    {
+      "path": "final/clips-v2/slash/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 41088,
+      "sha256": "9d4e40f8da747f96b54e6e62e27d06eba1596ccee74af9a7090f5bae79a44e2d"
+    },
+    {
+      "path": "final/clips-v2/slash/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 2562,
+      "sha256": "0cece83965d922b1381bda1887ecc3913ad6abd0733fd93e115108a41a6f01b9"
+    },
+    {
+      "path": "final/clips-v2/slash/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 7273,
+      "sha256": "66d0ab7c1c6ff235a8b7a738ef9f7e70861ecc6323faba5be2c1f1a4e5adcb89"
+    },
+    {
+      "path": "final/clips-v2/slash/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 15033,
+      "sha256": "30f3f1bf674aff189a2a20e18f9b1144a6acfe6c18ab0587ac629ac4d8e5d123"
+    },
+    {
+      "path": "final/clips-v2/slash/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 9161,
+      "sha256": "7f1ade6cb3757893b06701f81a4286a173c679c105f0b90408ed1c6746700962"
+    },
+    {
+      "path": "final/clips-v2/slash/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 4364,
+      "sha256": "c2f6689eb4b5d84984cf88d2df17c684254629dccbe08176d9876938c432b499"
+    },
+    {
+      "path": "final/clips-v2/slash/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 1162,
+      "sha256": "a588f10f144acede2aa4497bf904b0c7420821a86d771f77af0a61df1150571f"
+    },
+    {
+      "path": "final/clips-v2/slash/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 117372,
+      "sha256": "573f0f47de937cbb417433349acd43dc9ab98550516924474e31660025c99703"
+    },
+    {
+      "path": "final/clips-v2/slash/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 59556,
+      "sha256": "945f4c78c18eacc44579d9d8a2a46f7d76da4dff24f0a4ee7a6d59d68930c58f"
+    },
+    {
+      "path": "final/clips-v2/slash/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 11432,
+      "sha256": "f11dd93bc9887bb7b8edd47c1f3997ff2076bed0c5582d0e4c5ffe14902a3300"
+    },
+    {
+      "path": "final/clips-v2/tree-sway/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 229174,
+      "sha256": "6c6fb35f28d39e6cdda51c75bee46370ecc1d3a7b8bcd5c49b4da9f0b93e9ce4"
+    },
+    {
+      "path": "final/clips-v2/tree-sway/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45455,
+      "sha256": "e5110a6cc300ee7b752af3fcafe0b6e77b08d09e17616a771f4a5f70dd5fae2b"
+    },
+    {
+      "path": "final/clips-v2/tree-sway/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45182,
+      "sha256": "2f0494536e3e1f33eb0b104987afe54fd2be6eee4c9b7d9be3be7d95e27c7918"
+    },
+    {
+      "path": "final/clips-v2/tree-sway/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45515,
+      "sha256": "10d0b2b45c87457f2ea02e37c9e2b441e7f07bd7c0448831ad1d919f9d7e380f"
+    },
+    {
+      "path": "final/clips-v2/tree-sway/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45364,
+      "sha256": "d6bc015451186822331adbe2b873ff7f740d84b56f436854726e24d3aea85a5b"
+    },
+    {
+      "path": "final/clips-v2/tree-sway/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45593,
+      "sha256": "ed7cabe415ee76981d2ecef92044793fe0e38b2f919c01fc2528a5dfc88da82d"
+    },
+    {
+      "path": "final/clips-v2/tree-sway/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 45223,
+      "sha256": "76d22b9fdbfffae58f25bcdecff3eff38cf207903c21b64b4cb9a42f71cd3a1d"
+    },
+    {
+      "path": "final/clips-v2/tree-sway/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 683705,
+      "sha256": "266eccd3a3e67d05ca494aa8270adcf74669f9c14b45d5cacdf0f8d65b5716fe"
+    },
+    {
+      "path": "final/clips-v2/tree-sway/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 244720,
+      "sha256": "3a344d824d893cbe324931b9a90cd615fea03f72521956f38c8baa2aa9db4cd0"
+    },
+    {
+      "path": "final/clips-v2/tree-sway/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 82681,
+      "sha256": "d75ef4451258549c3acfd6836359af8c3fc90330f69f9fa8b0e641e08375e283"
+    },
+    {
+      "path": "final/clips-v2/water/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 185573,
+      "sha256": "3f1fd5de27459935b6936c6edab9d319b4bab6a427e39b255bd211e7f373cf44"
+    },
+    {
+      "path": "final/clips-v2/water/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 33836,
+      "sha256": "238a2c70ad49b77bb8f0064a2ca82939a7c485cd520819b74b87189f5098ca5e"
+    },
+    {
+      "path": "final/clips-v2/water/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 35190,
+      "sha256": "f874d54a3111606e821cd9eb323aa0951260b319e123ed7239535548d9e6405f"
+    },
+    {
+      "path": "final/clips-v2/water/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 34560,
+      "sha256": "cb3800b29fe618e577e8b72ff7183447e9a73ed61869e810483107f1589e1c5d"
+    },
+    {
+      "path": "final/clips-v2/water/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 34428,
+      "sha256": "2c0cf69df56d276374de68a94e516d9d9334a3b6d669b52950c8ec8b8c323516"
+    },
+    {
+      "path": "final/clips-v2/water/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 33890,
+      "sha256": "0770789bf38b698d7db8344fa4f38297e4cb49938271385ba71f682b2d215204"
+    },
+    {
+      "path": "final/clips-v2/water/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 33762,
+      "sha256": "b0cabda5281fc0ed66fddb9688685a2d0d3046b2f056cb516948a615eaad85ce"
+    },
+    {
+      "path": "final/clips-v2/water/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 545083,
+      "sha256": "cdaf33b10fc18805d8e80e941041d203f654ae3fa9b4844deec572bc6e125718"
+    },
+    {
+      "path": "final/clips-v2/water/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 188414,
+      "sha256": "0838424e1266b01fd8e25d3b6561eab9eef120335923e61d6a031b9ccc115eb7"
+    },
+    {
+      "path": "final/clips-v2/water/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 66973,
+      "sha256": "45950b28df3e546899f728cf3d42bd8d98b96d62bbf32c0d5dce7bb9658ca681"
+    },
+    {
+      "path": "final/clips-v2/waterfall/contact-sheet.png",
+      "size": [
+        816,
+        638
+      ],
+      "bytes": 96023,
+      "sha256": "18d8b0b9f38702875f443584ef3ed0fdb5ef4f6aee3cf53bfdd3c7909ab20c62"
+    },
+    {
+      "path": "final/clips-v2/waterfall/frames/frame-00.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 16812,
+      "sha256": "a0b0cc2370aa51d6894be88c1877f38f54b499624bbb2fadb579b51dfef70f2d"
+    },
+    {
+      "path": "final/clips-v2/waterfall/frames/frame-01.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 17301,
+      "sha256": "9318a87b4fba55b374bd1f59b28f1261978bb1b242aaa354d37741899041c66e"
+    },
+    {
+      "path": "final/clips-v2/waterfall/frames/frame-02.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 18276,
+      "sha256": "b7e0d34b51c57806aeb1461571d3d839cced06bc94ad397d4cc39b43fcc64f34"
+    },
+    {
+      "path": "final/clips-v2/waterfall/frames/frame-03.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 17651,
+      "sha256": "de3d2610e355b96815bac3209ef6dd805f386afc07fce57b8ebcfc85337a14aa"
+    },
+    {
+      "path": "final/clips-v2/waterfall/frames/frame-04.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 17248,
+      "sha256": "dada6fb9034e0ecea74a8ab7d9a3e1a8c0d71137c22bed05e68ec0f6d9d52622"
+    },
+    {
+      "path": "final/clips-v2/waterfall/frames/frame-05.png",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 16959,
+      "sha256": "0ad02bf34dfc037ac78b87e5bc39ecdbe1c5c1e5fb8372708751bc6b21827d70"
+    },
+    {
+      "path": "final/clips-v2/waterfall/review/filmstrip-00.png",
+      "size": [
+        1632,
+        984
+      ],
+      "bytes": 273592,
+      "sha256": "7f5ceec389fd297d3d992275398d51c3eb594dc762859b32eb841140f9673651"
+    },
+    {
+      "path": "final/clips-v2/waterfall/review/onion-00.png",
+      "size": [
+        1632,
+        344
+      ],
+      "bytes": 97677,
+      "sha256": "183284f2918479d1390c14e55138b32df42b496c2ab218cca7375072319930bb"
+    },
+    {
+      "path": "final/clips-v2/waterfall/review/turn-test.png",
+      "size": [
+        395,
+        600
+      ],
+      "bytes": 36898,
+      "sha256": "ffd3372c85ddf488ba13c3d7662efe1c0522a70cb4c7109aab8652063f93e9d5"
+    },
+    {
+      "path": "final/layered-preview-v2.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "bytes": 2777887,
+      "sha256": "47a5999bfcf4bef2491cb81afadf47815409aca9b96018038fa6593f500979ab"
+    },
+    {
+      "path": "final/layered-preview.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "bytes": 2780712,
+      "sha256": "3a0fb861a6f559e605444965c08f7e4710da6ebd1d5273e3cf77389feeac4941"
+    },
+    {
+      "path": "motion-jobs/fighter-se/master/side/master.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 248017,
+      "sha256": "7c38d1634dcea7b8e01a9c730ce752ff5447b8cc4193f87e3e40aac10e486291"
+    },
+    {
+      "path": "motion-jobs/mage-se/master/side/master.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 258910,
+      "sha256": "88fe8a0815376933fcbbf569d9c7a8697b19c78442ba7bccfbf6e9d4028f4e17"
+    },
+    {
+      "path": "motion-jobs/ranger-se/master/side/master.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 234735,
+      "sha256": "47fc133535090bcea22d04c66ea080e928ca5c5e1f0e24cc5d4d8cb38667519a"
+    },
+    {
+      "path": "motion-jobs/tank-se/master/side/master.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 411717,
+      "sha256": "5a6d531987745fc4ac4ce45066ef4025037232be186e40d282795e0b059d1005"
+    },
+    {
+      "path": "props/bridge/clean.png",
+      "size": [
+        768,
+        768
+      ],
+      "bytes": 355347,
+      "sha256": "9d29e3bc8c45dc0be4a6b85d7ea3a8c5a61c9188428646f494638956911d3817"
+    },
+    {
+      "path": "props/bridge/raw.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1481187,
+      "sha256": "f20a49d1e4ccbed837168a5fe2f829436a192795c0aaf5fc8ef17aa03b9ce758"
+    },
+    {
+      "path": "props/compact/flowers/prop.png",
+      "size": [
+        323,
+        194
+      ],
+      "bytes": 75267,
+      "sha256": "1852a4967dad991792bc20ec67d59a19ff52528bdfd2fb3d6442951917133338"
+    },
+    {
+      "path": "props/compact/moss-rock/prop.png",
+      "size": [
+        379,
+        240
+      ],
+      "bytes": 119818,
+      "sha256": "d326ab8439bfdbb0a8c3a787d8fd3431f09023b952a8314946eeb4aa5ecdad0c"
+    },
+    {
+      "path": "props/compact/shrub/prop.png",
+      "size": [
+        337,
+        271
+      ],
+      "bytes": 121087,
+      "sha256": "154b0577b50e41ad1884c17f8bc5cb5a9a7d5fbae32a5592a855659a66dbd5c6"
+    },
+    {
+      "path": "props/compact/stone-stump/prop.png",
+      "size": [
+        350,
+        212
+      ],
+      "bytes": 100340,
+      "sha256": "0d00f5e7b7e2b17359f8afa03181ebe7d3b06a087266bbb29fd5f263a0934b67"
+    },
+    {
+      "path": "props/core/clean.png",
+      "size": [
+        768,
+        768
+      ],
+      "bytes": 629041,
+      "sha256": "5cc9ab2933c6f1b7a2669ce5fc5d27a6811cbc205410b6ab8650ade42ad4145b"
+    },
+    {
+      "path": "props/core/raw.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 1718516,
+      "sha256": "6da36d6475158cdc0dc574d2102619d48f363078d35c4993e49107e217f8371b"
+    },
+    {
+      "path": "props/pine/clean.png",
+      "size": [
+        768,
+        768
+      ],
+      "bytes": 338306,
+      "sha256": "a64f3a88bf12bda05b1bfb9379e113bbc330b4622c57e5a92f899859e5348585"
+    },
+    {
+      "path": "props/pine/raw.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 1415958,
+      "sha256": "f925263d9ef24d21ad9f22c3baa2653acfbc5f6130173a8bc955129db625ea4b"
+    },
+    {
+      "path": "props/stall/clean.png",
+      "size": [
+        768,
+        768
+      ],
+      "bytes": 542948,
+      "sha256": "1a028f05279d2d319a5f85697d528adc3f06272d61d38d9e55e5f37e12866ede"
+    },
+    {
+      "path": "props/stall/raw.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "bytes": 1575460,
+      "sha256": "6e022d58660b261a8b230859e62813214ab99c7ba59c05915242136703d3bced"
+    },
+    {
+      "path": "props/tree/clean.png",
+      "size": [
+        768,
+        768
+      ],
+      "bytes": 582839,
+      "sha256": "2f940d25922714c486151fcf024320fe7077ae8ab43ba083f8c7d0ff03b3abe2"
+    },
+    {
+      "path": "props/tree/raw.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 1542589,
+      "sha256": "38046d50f892c7dc342afb8a7942c71430bba13b9b9d9730fccecd99fa6ba3c8"
+    },
+    {
+      "path": "raw/arrow.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1352728,
+      "sha256": "bfd310bfab6798aeaf60da07c1308301d51f5f943bea3c166a2ee32199ab7d08"
+    },
+    {
+      "path": "raw/bridge.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1481187,
+      "sha256": "f20a49d1e4ccbed837168a5fe2f829436a192795c0aaf5fc8ef17aa03b9ce758"
+    },
+    {
+      "path": "raw/compact.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 1414805,
+      "sha256": "dda48fe5ed1ba059199c325227ca559c366d00440727120235dcab47a822ce1c"
+    },
+    {
+      "path": "raw/core.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 1718516,
+      "sha256": "6da36d6475158cdc0dc574d2102619d48f363078d35c4993e49107e217f8371b"
+    },
+    {
+      "path": "raw/crystal.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1378596,
+      "sha256": "eb87e6d3ac1ac7061ede3b05b8a495d5973537a88a96445afae3be5b7e8f35bb"
+    },
+    {
+      "path": "raw/dash.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1268133,
+      "sha256": "9ae289b803bafce0b6d4c575f1ab42145a2f212ab7ee9e1907e2c88bb41e7754"
+    },
+    {
+      "path": "raw/dressed-reference.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "bytes": 2526522,
+      "sha256": "d5f1c4849fb6f0e89a6a55e1e73c16050954d3c78eeaa090b03feff61967dbe6"
+    },
+    {
+      "path": "raw/earth.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1519405,
+      "sha256": "eae644ad6b9b97a4d78556190e20f4705831eed3d4e492d2ed67cec2445b3a68"
+    },
+    {
+      "path": "raw/frost.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1497662,
+      "sha256": "048dde02e115514f414c5862a9d1d0e2a746a4af06cc42724b189105385690e5"
+    },
+    {
+      "path": "raw/lightning-rejected-clipping.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1468395,
+      "sha256": "8239008f1445916ab6b9932ca0fa2b22f2db14501221c4bff9b64bee9beb2b6e"
+    },
+    {
+      "path": "raw/lightning.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1317675,
+      "sha256": "a570b363641e6e507a135b220a83abfeda578ded56108577c8444441bd430958"
+    },
+    {
+      "path": "raw/mage.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 1441887,
+      "sha256": "06d1a8ed90bf5e278bb79453867af0857fcdbd1cfd453eeb7a09cc8aa7624b2d"
+    },
+    {
+      "path": "raw/mountain.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "bytes": 2299251,
+      "sha256": "c6bfa61c796eece2fdb58c01f79f690f30399d716e455544867183c784a86e5a"
+    },
+    {
+      "path": "raw/orb.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1612527,
+      "sha256": "e875c8195d349c92ed1f3254f3471e57271a064394d24c1b0d39edeceab96299"
+    },
+    {
+      "path": "raw/pine.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 1415958,
+      "sha256": "f925263d9ef24d21ad9f22c3baa2653acfbc5f6130173a8bc955129db625ea4b"
+    },
+    {
+      "path": "raw/ranger.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 1446900,
+      "sha256": "e76afdbe2254bf6207875f24c487d8187b34746ac9fd564b8fe13b9859b9c956"
+    },
+    {
+      "path": "raw/shield.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1499872,
+      "sha256": "8d1400d3270dcb110ba3d463eeaa854d42d535b7bae5fa4f574ad7966b8ed16c"
+    },
+    {
+      "path": "raw/slash.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1259652,
+      "sha256": "2307ebba8d092c312b5f44a580fd38824e18029f32f13e6ee8d6edb4ce344028"
+    },
+    {
+      "path": "raw/stall.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "bytes": 1575460,
+      "sha256": "6e022d58660b261a8b230859e62813214ab99c7ba59c05915242136703d3bced"
+    },
+    {
+      "path": "raw/tank.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 1568636,
+      "sha256": "3ce6ac1198d58606c5bd3f49361411c6fc748d63872126378701eab7ffa4d750"
+    },
+    {
+      "path": "raw/tree-sway.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1829791,
+      "sha256": "c9b7111fbbcbb23f3b6bfd1661cbd703d364eda94c0f6c73f6d6c5ad36be848f"
+    },
+    {
+      "path": "raw/tree.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 1542589,
+      "sha256": "38046d50f892c7dc342afb8a7942c71430bba13b9b9d9730fccecd99fa6ba3c8"
+    },
+    {
+      "path": "raw/water-rejected-grid.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1571259,
+      "sha256": "52f3f5b8e0d4089f5203b5561e659623a63cc7a856b1536708e583c062728626"
+    },
+    {
+      "path": "raw/water.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1540292,
+      "sha256": "a18cd435d4b9b9b0b6fcbf83102874dfba206c1704d7cbffaec2a983eafd40a2"
+    },
+    {
+      "path": "raw/waterfall.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 1355965,
+      "sha256": "dfa79e38c0e8d60a4c342260a8448b702b1ca72912132889363e58c6192c9eee"
+    }
+  ],
+  "animation_count": 12,
+  "frame_count": 72,
+  "selected_warning_count": 1,
+  "character_animation": "blocked-no-video-route; motion jobs prepared only"
+}

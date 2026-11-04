@@ -1,0 +1,270 @@
+{
+  "method": "Bounded ROI, navy hair / warm skin mask, largest 8-connected component; inspection only, art unmodified",
+  "notProven": [
+    "Mask completeness and actual skull dimensions require visual inspection.",
+    "This does not override the original full-band Forge diagnostic."
+  ],
+  "metrics": [
+    {
+      "frame": 0,
+      "roi": [
+        180,
+        145,
+        244,
+        207
+      ],
+      "bbox": [
+        180,
+        151,
+        235,
+        207
+      ],
+      "source": "processed\\run-se\\run-1.png"
+    },
+    {
+      "frame": 1,
+      "roi": [
+        180,
+        145,
+        244,
+        207
+      ],
+      "bbox": [
+        182,
+        156,
+        237,
+        207
+      ],
+      "source": "processed\\run-se\\run-2.png"
+    },
+    {
+      "frame": 2,
+      "roi": [
+        180,
+        145,
+        244,
+        207
+      ],
+      "bbox": [
+        180,
+        150,
+        235,
+        207
+      ],
+      "source": "processed\\run-se\\run-3.png"
+    },
+    {
+      "frame": 3,
+      "roi": [
+        180,
+        145,
+        244,
+        207
+      ],
+      "bbox": [
+        180,
+        151,
+        235,
+        207
+      ],
+      "source": "processed\\run-se\\run-4.png"
+    },
+    {
+      "frame": 4,
+      "roi": [
+        180,
+        145,
+        244,
+        207
+      ],
+      "bbox": [
+        181,
+        151,
+        235,
+        207
+      ],
+      "source": "processed\\run-se\\run-5.png"
+    },
+    {
+      "frame": 5,
+      "roi": [
+        180,
+        145,
+        244,
+        207
+      ],
+      "bbox": [
+        183,
+        156,
+        236,
+        207
+      ],
+      "source": "processed\\run-se\\run-6.png"
+    },
+    {
+      "frame": 6,
+      "roi": [
+        180,
+        145,
+        244,
+        207
+      ],
+      "bbox": [
+        183,
+        151,
+        235,
+        207
+      ],
+      "source": "processed\\run-se\\run-7.png"
+    },
+    {
+      "frame": 7,
+      "roi": [
+        180,
+        145,
+        244,
+        207
+      ],
+      "bbox": [
+        188,
+        151,
+        236,
+        207
+      ],
+      "source": "processed\\run-se\\run-8.png"
+    }
+  ],
+  "ratios": {
+    "frames": [
+      {
+        "frame": 0,
+        "scale": 1.0,
+        "residual": 0.0,
+        "head_box": [
+          180,
+          151,
+          235,
+          207
+        ],
+        "head_ratio": 1.0,
+        "template": true,
+        "residual_over_median": null
+      },
+      {
+        "frame": 1,
+        "scale": 1.0,
+        "residual": 37.01,
+        "head_box": [
+          182,
+          156,
+          237,
+          207
+        ],
+        "head_ratio": 1.0,
+        "template": false,
+        "residual_over_median": 1.03
+      },
+      {
+        "frame": 2,
+        "scale": 1.0,
+        "residual": 35.18,
+        "head_box": [
+          180,
+          150,
+          235,
+          207
+        ],
+        "head_ratio": 1.0,
+        "template": false,
+        "residual_over_median": 0.98
+      },
+      {
+        "frame": 3,
+        "scale": 1.0,
+        "residual": 30.68,
+        "head_box": [
+          180,
+          151,
+          235,
+          207
+        ],
+        "head_ratio": 1.0,
+        "template": false,
+        "residual_over_median": 0.85
+      },
+      {
+        "frame": 4,
+        "scale": 1.0,
+        "residual": 33.0,
+        "head_box": [
+          181,
+          151,
+          235,
+          207
+        ],
+        "head_ratio": 1.0,
+        "template": false,
+        "residual_over_median": 0.92
+      },
+      {
+        "frame": 5,
+        "scale": 1.0,
+        "residual": 36.95,
+        "head_box": [
+          183,
+          156,
+          236,
+          207
+        ],
+        "head_ratio": 1.0,
+        "template": false,
+        "residual_over_median": 1.03
+      },
+      {
+        "frame": 6,
+        "scale": 1.0,
+        "residual": 36.0,
+        "head_box": [
+          183,
+          151,
+          235,
+          207
+        ],
+        "head_ratio": 1.0,
+        "template": false,
+        "residual_over_median": 1.0
+      },
+      {
+        "frame": 7,
+        "scale": 1.0,
+        "residual": 47.73,
+        "head_box": [
+          188,
+          151,
+          236,
+          207
+        ],
+        "head_ratio": 1.0,
+        "template": false,
+        "residual_over_median": 1.33
+      }
+    ],
+    "reduction": 2,
+    "median_scale": 1.0,
+    "median_residual": 36.0,
+    "scales": [
+      0.9,
+      0.92,
+      0.94,
+      0.96,
+      0.98,
+      1.0,
+      1.02,
+      1.04,
+      1.06,
+      1.08,
+      1.1
+    ],
+    "template": "frame 0"
+  }
+}

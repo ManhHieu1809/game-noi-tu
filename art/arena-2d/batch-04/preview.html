@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="vi">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Đấu sĩ anime — so sánh chuyển động đã sửa</title>
+<style>
+:root{font-family:system-ui,sans-serif;color:#eaf0fa;background:#101827;color-scheme:dark}*{box-sizing:border-box}body{margin:0;padding:26px}main{max-width:1080px;margin:auto}h1{font-size:26px;margin:8px 0 12px}p{color:#b3c3d8;line-height:1.6}a{color:#86dbcc}.tag{font-size:12px;color:#8cd8c8;letter-spacing:.07em}.stage{border:1px solid #394d68;border-radius:18px;overflow:hidden;background:#243142}.stage[data-bg=light]{background:#d6e0df}.stage[data-bg=checker]{background:#7d8992;background-image:conic-gradient(#a7b0b5 25%,transparent 0 50%,#a7b0b5 0 75%,transparent 0);background-size:28px 28px}.stage[data-bg=map]{background:linear-gradient(#10203033,#10203033),url('../map/foundation-anime.png') center/cover}canvas{display:block;width:100%;height:auto}.labels{display:grid;grid-template-columns:1fr 1fr;text-align:center;border-bottom:1px solid #41576e;padding:12px;gap:12px;background:#1a283bcc;font-size:14px}.labels b:last-child{color:#98e8cf}.controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:16px 0}button,select{font:inherit;color:#eff5ff;background:#24364e;border:1px solid #465f7d;padding:9px 13px;border-radius:9px}button{cursor:pointer}button[aria-pressed=true]{background:#16686c;border-color:#74d8c9}button:disabled,select:disabled{opacity:.5;cursor:wait}label{display:flex;align-items:center;gap:7px;font-size:14px}input{accent-color:#60d1b7}output{font-size:13px;color:#b9cadd;font-variant-numeric:tabular-nums}.note{font-size:13px}.warning{color:#f0cc96}.frames{display:grid;grid-template-columns:repeat(8,1fr);gap:8px}.frames button{padding:0;background:#223146;overflow:hidden}.frames img{width:100%;display:block;aspect-ratio:1}.frames span{display:block;font-size:11px;padding:5px}.frames button[aria-pressed=true]{outline:2px solid #6cddc3}.footer{border-top:1px solid #31465f;margin-top:22px;padding-top:12px}@media(max-width:680px){body{padding:14px}h1{font-size:21px}.frames{grid-template-columns:repeat(4,1fr)}button,select{font-size:13px}}
+</style>
+<main>
+<span class="tag">BẢN SỬA ASSET · ĐÔNG NAM / SE</span>
+<h1>Đấu sĩ anime — chạy và đánh kiếm</h1>
+<p>So sánh trực tiếp bản cũ và bản vẽ lại theo sơ đồ khớp. Có thể dừng và chọn từng tư thế để xem đầu, vai, chân và tay cầm kiếm.</p>
+<div class="stage" id="stage" data-bg="dark">
+ <div class="labels"><b>Trước — batch 03</b><b>Sau — batch 04</b></div>
+ <canvas id="player" width="920" height="360" aria-label="So sánh animation cũ bên trái và mới bên phải"></canvas>
+</div>
+<div class="controls">
+ <button id="run" aria-pressed="true">Chạy</button><button id="attack" aria-pressed="false">Đánh kiếm</button>
+ <button id="pause">Tạm dừng</button><button id="restart">Phát lại</button>
+ <label><input type="checkbox" id="repeat" checked>Lặp lại để xem</label>
+</div>
+<div class="controls">
+ <label>Nền <select id="background"><option value="dark">Tối</option><option value="light">Sáng</option><option value="checker">Ô kiểm nền trong suốt</option><option value="map">Bản đồ</option></select></label>
+ <label>Ảnh <select id="quality"><option value="192">192px · nhẹ</option><option value="384">384px · xem chi tiết</option></select></label>
+ <label>Tốc độ <select id="speed"><option value="0.5">0,5×</option><option value="1" selected>1×</option><option value="1.5">1,5×</option></select></label>
+ <label><input type="checkbox" id="root">Hiện điểm neo</label>
+</div>
+<div class="controls"><label>Từng frame <input id="scrub" type="range" min="0" max="7" value="0"></label><output id="status" aria-live="polite">Đang tải ảnh…</output></div>
+<p class="note">Hai bản dùng cùng chỉ số frame để so tư thế; nhịp phát theo bản mới. Chạy gồm 8 tư thế, đánh gồm 6 tư thế. Bản nhẹ chỉ tải PNG 192px; chọn 384px khi cần xem chi tiết.</p>
+<div class="frames" id="frames"></div>
+<p class="warning note" id="error" role="alert" hidden></p>
+<div class="footer">
+ <p class="note">Đã vẽ lại tư thế tiếp đất, đổi chân, lấy đà và thu kiếm; căn lệch ngang khi chạy và giữ gốc hông khi đánh. Đây là trang xem asset độc lập, chưa tích hợp vào game.</p>
+ <p class="note warning">Bộ kiểm tra tự động vẫn có cảnh báo về vùng đầu và phân loại chân theo độ sáng. Giữ nguyên báo cáo để đối chiếu; không coi đây là bộ tám hướng đã hoàn tất.</p>
+ <p class="note"><a href="README.md">Báo cáo sửa lỗi</a> · <a href="final-v2/qa-report.json">Kết quả kiểm tra</a> · <a href="final-v2/catalog.json">Danh mục PNG và clip</a> · <a href="../batch-03/preview.html">Trang cũ</a></p>
+</div>
+<script>
+'use strict';
+const D={run:{name:'Chạy',count:8,ticks:[4,4,4,4,4,4,4,4],loop:true},attack:{name:'Đánh kiếm',count:6,ticks:[5,6,4,3,5,7],loop:false}};
+const el=id=>document.getElementById(id),ctx=el('player').getContext('2d'),cache=new Map();
+let action='run',frame=0,elapsed=0,hold=0,paused=false,ready=false,last=performance.now(),size=192,bank=null,loadVersion=0;
+function pathFor(which,key,i,n){const base=which==='before'?'../batch-03/final':'final-v2';return `${base}/${n===192?'lite/':''}${key}-se/${key}-${i+1}.png`;}
+async function load(n){
+ if(cache.has(n))return cache.get(n);
+ const result={};
+ await Promise.all(['before','after'].flatMap(which=>Object.entries(D).map(async([key,d])=>{
+  result[`${which}-${key}`]=await Promise.all(Array.from({length:d.count},(_,i)=>new Promise((resolve,reject)=>{
+   const image=new Image();image.onload=()=>resolve(image);image.onerror=()=>reject(new Error(`Không tải được ${pathFor(which,key,i,n)}`));image.src=pathFor(which,key,i,n);
+  })));
+ })));
+ cache.set(n,result);return result;
+}
+function setPaused(value){paused=value;el('pause').textContent=value?'Tiếp tục':'Tạm dừng';}
+function strip(){
+ el('frames').replaceChildren();el('scrub').max=D[action].count-1;
+ for(let i=0;i<D[action].count;i++){
+  const button=document.createElement('button'),image=document.createElement('img'),span=document.createElement('span');
+  image.src=bank[`after-${action}`][i].src;image.alt=`Bản mới ${D[action].name} frame ${i+1}`;
+  span.textContent=`${i+1}${action==='attack'&&i===3?' · chém':''}`;
+  button.append(image,span);button.onclick=()=>{frame=i;elapsed=0;hold=0;setPaused(true);draw();};el('frames').append(button);
+ }
+}
+function draw(){
+ if(!ready||!bank)return;ctx.clearRect(0,0,920,360);ctx.imageSmoothingEnabled=true;
+ for(const[which,x]of[['before',230],['after',690]]){
+  ctx.drawImage(bank[`${which}-${action}`][frame],x-192,305-365,384,384);
+  if(el('root').checked){ctx.strokeStyle='#ffefab';ctx.beginPath();ctx.moveTo(x-8,305);ctx.lineTo(x+8,305);ctx.moveTo(x,297);ctx.lineTo(x,313);ctx.stroke();}
+ }
+ el('status').value=`${D[action].name} · ${frame+1}/${D[action].count} · ${size}px${paused?' · dừng':''}`;
+ el('scrub').value=frame;[...el('frames').children].forEach((b,i)=>b.setAttribute('aria-pressed',String(i===frame)));
+}
+function select(next){if(!ready)return;action=next;frame=0;elapsed=0;hold=0;setPaused(false);for(const key of Object.keys(D))el(key).setAttribute('aria-pressed',String(key===next));strip();draw();}
+function tick(now){
+ const dt=Math.min(100,Math.max(0,now-last));last=now;
+ if(ready&&!paused&&!document.hidden){
+  const d=D[action];elapsed+=dt*Number(el('speed').value);
+  if(hold>0){hold-=dt*Number(el('speed').value);if(hold<=0){frame=0;elapsed=0;}}
+  else while(elapsed>=d.ticks[frame]*1000/60){
+   elapsed-=d.ticks[frame]*1000/60;
+   if(frame+1<d.count)frame++;
+   else if(d.loop&&el('repeat').checked)frame=0;
+   else if(!d.loop&&el('repeat').checked){hold=500;elapsed=0;break;}
+   else{setPaused(true);elapsed=0;break;}
+  }
+  draw();
+ }
+ requestAnimationFrame(tick);
+}
+async function changeQuality(){
+ const version=++loadVersion;ready=false;el('status').value='Đang tải ảnh…';
+ try{const n=Number(el('quality').value),loaded=await load(n);if(version!==loadVersion)return;size=n;bank=loaded;ready=true;last=performance.now();strip();draw();}
+ catch(error){el('error').hidden=false;el('error').textContent=error.message;el('status').value='Không tải được ảnh';}
+}
+el('run').onclick=()=>select('run');el('attack').onclick=()=>select('attack');el('pause').onclick=()=>{setPaused(!paused);draw();};el('restart').onclick=()=>select(action);
+el('background').onchange=()=>{el('stage').dataset.bg=el('background').value;};el('quality').onchange=changeQuality;el('root').onchange=draw;
+el('scrub').oninput=()=>{frame=Number(el('scrub').value);elapsed=0;hold=0;setPaused(true);draw();};
+document.addEventListener('visibilitychange',()=>{last=performance.now();});
+changeQuality();requestAnimationFrame(tick);
+</script>
+</main>
+</html>

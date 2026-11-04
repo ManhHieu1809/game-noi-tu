@@ -1,0 +1,22 @@
+{
+  "schema": "arena.anime-motion-contract.v1",
+  "art_source": "built-in ImageGen; generated pose sheets, no video",
+  "character": "fighter-anime",
+  "identity_reference": "../characters/fighter-anime/master/master_rgba.png",
+  "camera": "orthographic elevated 35 degrees",
+  "test_facing": "SE",
+  "run": {
+    "frame_count": 8,
+    "source_grid": {"rows": 2, "cols": 4},
+    "phases": ["near-contact", "near-down", "near-passing", "flight-to-far", "far-contact", "far-down", "far-passing", "flight-to-near"],
+    "ticks_at_60hz": 5,
+    "loop_policy": "cycle",
+    "registration": "shared source-cell origin; preserve drawn bob and airborne clearance",
+    "forbidden": ["per-frame bbox-fit scale", "mirroring asymmetric weapon to fake directions", "padding poses with duplicates", "pingpong gait"]
+  },
+  "quality": {
+    "technical": ["non-empty RGBA frames", "no cell spill or output clamping", "body scale CV <= 0.08", "shared timing and root"],
+    "visual": ["identity and weapon handedness", "both legs alternate lead", "anatomically connected limbs", "loop seam", "readability at gameplay scale"],
+    "not_proven": ["in-game movement speed and foot sliding", "network timing", "all device performance", "other heroes until generated"]
+  }
+}

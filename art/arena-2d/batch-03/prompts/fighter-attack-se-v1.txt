@@ -1,0 +1,14 @@
+Create ONE clean HD anime sword-attack BODY animation sheet for the EXACT male swordsman reference. Exactly 6 full-body poses in 2 rows x 3 columns, landscape 3:2 image, invisible square cells. One continuous single sword slash, row-major playback, NOT run poses or multiple attacks. Reference fixes identity, not pose.
+
+Same tousled navy hair, amber eyes, teal cropped jacket with gold edging, ivory fitted shirt, coral-red scarf, brown trousers/belt, silver-gold bracers and boots. Same original anime face, six-head adult proportions, clean hand-painted cel shading. Same fixed elevated orthographic 35-degree southeast view looking lower-right. Sword MUST stay in his ANATOMICAL RIGHT hand, the nearer hand at viewer-left in neutral. Never two swords, no hand swap, no mirrored character. Off-hand open for balance. Blade silver, gold guard with teal jewel.
+
+6 genuinely distinct poses:
+1 ready stance: knees slightly flexed, sword held low in right hand in front, looking southeast.
+2 anticipation: torso coils, right elbow bent bringing sword above right shoulder, knees compress. Left hand reaches forward.
+3 wind-up peak: sword raised high but contained, weight on back foot, hips coiled, silhouette visibly broader than ready.
+4 STRIKE: strong diagonal down-forward slash towards southeast, right sword hand crosses front of body, hips turn into cut, front knee bent. Sword blade sharply visible and connected to fist, NOT a glowing arc.
+5 follow-through: blade lowered across the front towards lower-right, shoulders rotate past strike, back heel raised, scarf trails.
+6 recovery: sword returns to ready near right side, torso straightens, feet return toward pose1.
+
+Stable pelvis root x=50% y=55% of each cell and ground y=84%, same body/head scale across frames, standing-equivalent body height66% cell. Keep body scale identical to the approved master; do not shrink body to fit sword. Keep sword diagonal or flex elbow so WHOLE silhouette including blade fits inside central70% cell area, >15% padding around each cell. No crossing, no cropping. Feet contact same floor throughout; modest crouch only.
+Uniform solid #FF00FF background, no text/grid/borders, no ground/shadows/dust. BODY AND HELD WEAPON ONLY: no slash arcs, light trails, projectiles, sparks or detached effects. Anatomy with connected shoulders/elbows/wrists/knees, two arms/two legs, keep identity across six dynamic poses.

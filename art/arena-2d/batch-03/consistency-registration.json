@@ -1,0 +1,25 @@
+{
+  "source": "raw\\fighter-run-se-consistency.png",
+  "original_size": [
+    1774,
+    887
+  ],
+  "whole_sheet_normalized_size": [
+    2048,
+    1024
+  ],
+  "cell_resize": [
+    481,
+    481
+  ],
+  "shared_offset": [
+    15,
+    3
+  ],
+  "declared_root": [
+    256,
+    426
+  ],
+  "per_frame_bbox_fit": false,
+  "per_frame_reanchor": false
+}

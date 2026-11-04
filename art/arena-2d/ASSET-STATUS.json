@@ -1,0 +1,50 @@
+{
+  "style": "anime-hd",
+  "status": "anime-style-approved-by-user; batch-04-revised-SE-run-and-slash; visual-diagnostic-caveats-retained",
+  "latest_batch": "batch-04/final-v2/catalog.json",
+  "gallery": "batch-04/preview.html",
+  "previous_props_and_effects": "batch-02/final/catalog.json",
+  "toolchain": {
+    "repository": "https://github.com/0x0funky/agent-sprite-forge",
+    "commit": "5324342fdfab72430f4e9604f3fe427009f8596d",
+    "license": "MIT",
+    "generation_route": "host_image / built-in ImageGen",
+    "generation_model": "not exposed by host tool",
+    "processing": "master_still.py prompt and approve; approve is a framing/keying operation, not user style approval"
+  },
+  "assets": [
+    {
+      "id": "fighter-anime-se",
+      "raw": "raw/fighter-anime.png",
+      "transparent": "characters/fighter-anime/master/master_rgba.png",
+      "metadata": "characters/fighter-anime/master/master.json",
+      "actual_generation_prompt": "prompts/fighter-anime.txt",
+      "status": "processed-needs-visual-review",
+      "action": "single neutral standing master",
+      "directions_created": ["SE"],
+      "animations_created": [
+        {"action": "run", "direction": "SE", "frames": 8, "status": "revised in batch-04; declared-colour gait alternation and phase coverage pass; raw diagnostic caveats retained"},
+        {"action": "attack", "direction": "SE", "frames": 6, "status": "revised in batch-04; hip registered; raw head/torso diagnostics retained"}
+      ],
+      "notes": "master/prompt.txt is the generated Forge prompt contract; prompts/fighter-anime.txt is the literal prompt actually sent to ImageGen."
+    },
+    {
+      "id": "foundation-anime-sector-sample",
+      "image": "map/foundation-anime.png",
+      "actual_generation_prompt": "prompts/foundation-anime.txt",
+      "status": "generated-needs-visual-review",
+      "usage": "foundation-only sector art sample, not full map, not runtime-ready",
+      "collision_created": false
+    }
+  ],
+  "rejected_style": ["prompts/fighter.txt", "prompts/foundation.txt"],
+  "pending": [
+    "live browser review of revised SE bundle; other seven directions and other heroes; raw visual diagnostic caveats",
+    "full twelve-sector map art and geometry",
+    "game code integration"
+  ],
+  "runtime_code_modified_this_pass": false,
+  "video_generation_available": false,
+  "animation_workaround": "ImageGen pose sheets + Agent Sprite Forge; batch-04 revises SE run/slash using joint guides and near/far shading; no video required; full eight-direction set and runtime integration remain incomplete",
+  "ffmpeg_available": false
+}

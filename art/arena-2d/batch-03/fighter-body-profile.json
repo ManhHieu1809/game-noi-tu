@@ -1,0 +1,48 @@
+{
+  "version": 2,
+  "schema": "generate2dsprite.scale_profile.v2",
+  "name": "fighter-anime-384",
+  "processing": {
+    "cell_size": 384,
+    "fit_scale": 0.9,
+    "trim_border": 0,
+    "edge_clean_depth": 3,
+    "align": "feet",
+    "shared_scale": false,
+    "scale_strategy": "registered",
+    "component_mode": "largest",
+    "component_padding": 0,
+    "min_component_area": 1,
+    "edge_touch_margin": 0,
+    "background_mode": "chroma_key",
+    "resampler": "lanczos",
+    "despill_radius": 2,
+    "key_quality": "soft",
+    "key": "magenta",
+    "alpha_geometry_threshold": 16,
+    "connectivity": 8,
+    "anchor_mode": "feet",
+    "alpha_hygiene": "none",
+    "alpha_floor": 4,
+    "pixel_scale": null,
+    "logical_pixel": 1
+  },
+  "output_origin": [
+    192.0,
+    365.0
+  ],
+  "reference": {
+    "target": "asset",
+    "mode": "run",
+    "rows": 2,
+    "cols": 4,
+    "body_scale_mean": 0.5276692708333334,
+    "body_scale_cv": 0.06367863012909016,
+    "anchor_y_mean": 0.83203125,
+    "output_subject_height_px": 213.0,
+    "legacy_body_scale_mean": 0.30325080302426255
+  },
+  "qc": {
+    "max_body_scale_drift": 0.1
+  }
+}

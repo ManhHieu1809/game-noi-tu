@@ -1,0 +1,183 @@
+{
+  "schema": "arena.asset-qa.v2",
+  "technical_exports": "pass",
+  "unique_poses": 14,
+  "sizes": [
+    384,
+    192
+  ],
+  "png_hashes_and_alpha": "pass",
+  "clip_builder_strict": "pass: all four exports; WebP timing, alpha and PNG bytes verified",
+  "preview_javascript_syntax": "pass",
+  "browser_playback_verified": false,
+  "browser_blocker": "CUA initialization failed to write kernel assets: OS error 3; browser host unavailable earlier",
+  "raw_forge_diagnostics": [
+    {
+      "action": "run-se",
+      "status": "fail",
+      "report": "qa\\final-run-se\\sheet-qc.json",
+      "issues": [
+        {
+          "id": "identity_head_ratio",
+          "status": "fail",
+          "value": {
+            "0": 1.064,
+            "1": 1.064,
+            "2": 0.979,
+            "3": 1.0,
+            "4": 1.021,
+            "5": 1.0,
+            "6": 0.979,
+            "7": 1.0
+          },
+          "threshold": [
+            0.95,
+            1.05
+          ],
+          "frames": [
+            0,
+            1
+          ],
+          "note": "head scale against the median frame (frame 0 template)"
+        },
+        {
+          "id": "leg_alternation",
+          "status": "fail",
+          "value": [
+            "near",
+            "near",
+            "unclear",
+            "near",
+            "near",
+            "near",
+            "near",
+            "near"
+          ],
+          "threshold": "lead differs between i and i+n/2",
+          "verdict": "duplicated half-cycle: the same leg leads in both halves",
+          "pairs": [
+            [
+              0,
+              4,
+              true
+            ],
+            [
+              1,
+              5,
+              true
+            ],
+            [
+              3,
+              7,
+              true
+            ]
+          ],
+          "mode": "auto-luminance",
+          "near_leading": 7,
+          "unclear": 1,
+          "half_cycle": {
+            "pairs": [
+              {
+                "pair": [
+                  0,
+                  4
+                ],
+                "iou_best_shift": 0.4701
+              },
+              {
+                "pair": [
+                  1,
+                  5
+                ],
+                "iou_best_shift": 0.651
+              },
+              {
+                "pair": [
+                  2,
+                  6
+                ],
+                "iou_best_shift": 0.6001
+              },
+              {
+                "pair": [
+                  3,
+                  7
+                ],
+                "iou_best_shift": 0.5268
+              }
+            ],
+            "adjacent_iou_median": 0.5753,
+            "half_cycle_iou_median": 0.5635
+          },
+          "fix": "regenerate frames 4-7 with NEAR and FAR swapped (attach frames 0-3 and the guide)"
+        }
+      ]
+    },
+    {
+      "action": "attack-se",
+      "status": "fail",
+      "report": "qa\\final-attack-se\\sheet-qc.json",
+      "issues": [
+        {
+          "id": "identity_head_ratio",
+          "status": "fail",
+          "value": {
+            "0": 1.01,
+            "1": 1.071,
+            "2": 0.97,
+            "3": 0.97,
+            "4": 0.99,
+            "5": 1.01
+          },
+          "threshold": [
+            0.95,
+            1.05
+          ],
+          "frames": [
+            1
+          ],
+          "note": "head scale against the median frame (frame 0 template)"
+        },
+        {
+          "id": "torso_drift",
+          "status": "warn",
+          "value": 6.77,
+          "threshold": 2.0,
+          "method": "trunk",
+          "median_x": 188.5,
+          "note": "range of the torso x in game px; scale_frames --root-lock torso-x removes it"
+        }
+      ]
+    }
+  ],
+  "head_only_diagnostics": [
+    {
+      "action": "run-se",
+      "ratio_range": [
+        1.0,
+        1.0
+      ],
+      "method": "Bounded ROI, navy hair / warm skin mask, largest 8-connected component; inspection only, art unmodified",
+      "limitations": [
+        "Mask completeness and actual skull dimensions require visual inspection.",
+        "This does not override the original full-band Forge diagnostic."
+      ]
+    },
+    {
+      "action": "attack-se",
+      "ratio_range": [
+        1.0,
+        1.04
+      ],
+      "method": "Bounded ROI, navy hair / warm skin mask, largest 8-connected component; inspection only, art unmodified",
+      "limitations": [
+        "Mask completeness and actual skull dimensions require visual inspection.",
+        "This does not override the original full-band Forge diagnostic."
+      ]
+    }
+  ],
+  "visual_review": "Looked at full action sheets and enlarged head crops; contact phases are clearer; compare in preview.html",
+  "release_status": "revised SE asset bundle; automated raw visual warnings remain, not an all-pass eight-direction set",
+  "game_integrated": false,
+  "eight_direction_set_complete": false
+}

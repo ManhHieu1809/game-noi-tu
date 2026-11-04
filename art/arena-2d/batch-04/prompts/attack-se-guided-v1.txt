@@ -1,0 +1,16 @@
+Corrected production anime sword-slash BODY animation sheet. EXACTLY6 poses, 2 rows x3columns, landscape1536x1024, equal invisible512-square cells, chronological row-major order. Image1 gives accepted character identity and art finish. Image2 gives ONLY joint positions, skull size and origin; paint the fully clothed anatomical hero following those skeletons, then remove all guide marks and colours.
+
+Same exact young adult anime male: navy tousled hair, amber eyes, teal-blue cropped jacket edged in gold, ivory fitted shirt, coral scarf, brown trousers/belt, silver/gold bracers and armored boots. Slim silver sword, gold guard and small teal gem. Same recognizable face and human anime proportions, no chibi. Clean HD cel-shaded anime painting, not3D/pixel. Orthographic elevated35degree southeast camera throughout. RIGHT/NEAR hand on viewer-left ALWAYS holds sword, no hand swap, no duplicated weapons.
+
+CORRECTION PRIORITIES: Head/skull dimensions are IDENTICAL in all6frames, matching the guide's head oval and reference face. Never shrink head in raised-arm pose2 or enlarge it in pose3. Only slight head tilt; no zoom or perspective change. Same jacket/waist/limb scale. Pelvis origin stays fixed at local(256,400) projected ground, torso stays on its axis with a small natural weight shift, not20pixel lateral swimming. Same standing-equivalent330px height and camera distance. Both feet remain planted at the guide's positions through this controlled grounded sword cut; knees absorb motion. Shoulders and waist rotate naturally without moving the whole actor sideways.
+
+Precisely follow the6 anatomical poses in guide, orange RIGHT/NEAR limbs, blue LEFT/FAR limbs; those are geometry labels, not final costume colours:
+1 ready: right sword low diagonal forward, free left hand lifted for balance.
+2 anticipation: right elbow bent up, right fist lifts sword to right side of head, blade points up; shoulders coil.
+3 wind-up peak: right fist raised beside/above shoulder, blade diagonally above head within cell; knees compressed. Same head size as1.
+4 strike: right arm swings sharply down-forward to lower-right, diagonal sword slash, torso uncoils, clear distinct strike silhouette. Free left hand stays safe away from blade.
+5 follow-through: right hand lower and slightly inward, blade lowered, chest turns through cut, knees start recovering.
+6 recovery: right sword returns near ready, shoulders relax and feet stay in stance. Seam into neutral is smooth.
+
+Sword blade is a solid attached weapon, not an energy effect. Maintain blade length and hilt design; bend elbow and angle weapon diagonally to fit without shrinking hero. WHOLE envelope inside central70% each cell with >15% blank margin, no crossing or cropping.
+Flat pure #FF00FF chroma-key background. No ground/shadow/dust, no lines/grid/labels/joint markers/text, no detached slash arc, no magic/projectile/glow. Body+held sword only. Consistent two arms/two legs, anatomically connected joints. Distinct anticipation/peak/strike/follow-through/recovery with identical head size and root.

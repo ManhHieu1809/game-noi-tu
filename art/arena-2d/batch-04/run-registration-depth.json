@@ -1,0 +1,26 @@
+{
+  "source": "raw\\run-se-depth-v2.png",
+  "original_size": [
+    1774,
+    887
+  ],
+  "normalized_size": [
+    2048,
+    1024
+  ],
+  "whole_action_scale": 0.72,
+  "whole_action_offset": [
+    72,
+    76
+  ],
+  "source_anchor": [
+    256,
+    470.0
+  ],
+  "registered_anchor": [
+    256,
+    414
+  ],
+  "per_frame_rescale": false,
+  "per_frame_root_shift": false
+}

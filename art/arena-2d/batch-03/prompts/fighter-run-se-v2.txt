@@ -1,0 +1,18 @@
+Edit the supplied 8-frame anime run sheet, preserving the same exact original swordsman identity, costume, face, overhead camera, southeast facing, solid magenta background, two rows four columns. This is a technical corrective animation pass. The present sheet has the SAME leg leading in both halves, which is WRONG. Redraw the run gait so the two leg identities visibly exchange positions in the bottom row. Do not just move the same silhouette or flip the entire character. Keep sword in HIS RIGHT hand, the hand on screen-left in this southeast view, same as reference.
+
+Use 2048x1024 landscape canvas, eight 512-square invisible cells. Same root in all cells: pelvis around x=256 y=280, ground y=430. Same anatomical scale: standing-equivalent body height 330 pixels. Root bob up/down at most 8 px, head same size. Character faces lower-right and remains fully within the central 70% of each cell. Sword held close low and angled back/up-left during running, scarf streams upper-left. More generous blank margin especially around sword. No detached shadow, no numbers/grid.
+
+Define the legs by their hip attachment, not by position of boots. Near anatomical RIGHT leg starts at screen-left hip in this view and is in front when overlapping; far anatomical LEFT leg starts at screen-right hip and stays behind at overlap. Two knees, two boots only, never merge or exchange anatomical attachments.
+Top row poses:
+1 right/NEAR leg strides FORWARD toward lower-right, left/FAR leg reaches BACK upper-left; left free arm forward, right sword arm back.
+2 right support compresses, left heel curls up behind, pelvis down.
+3 left/FAR knee comes FORWARD past planted right leg, right support toe pushes back.
+4 airborne opening into LEFT contact: left/FAR knee leading forward lower-right, right/NEAR heel curled behind.
+
+Bottom row MUST be opposite:
+5 left/FAR leg strides FORWARD lower-right, right/NEAR leg reaches BACK upper-left. The near/right thigh visibly slopes BACKWARD from its screen-left hip towards upper-left, while the far/left thigh slopes FORWARD from screen-right hip towards lower-right. Near right sword arm forward and free left arm back. Not the same pose as frame 1.
+6 left/FAR support compresses below screen-right hip, right/NEAR knee remains back with heel curled up behind upper-left; arms opposite frame 2.
+7 right/NEAR knee swings FORWARD past planted left/FAR leg; different leg silhouette than frame 3.
+8 airborne opening into RIGHT contact: right/NEAR knee forward lower-right, left/FAR heel curled back upper-left; arms opposite frame4. Leads naturally into frame1.
+
+A readable full alternating run cycle, not repeated hopping. Body and sword only, absolutely no FX. High quality clean anime outlines and cel shading matching reference. No text, labels, painted ground, extra fingers or limbs.

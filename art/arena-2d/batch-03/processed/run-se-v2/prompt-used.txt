@@ -1,0 +1,12 @@
+Polish this EXISTING 8-pose anime run-cycle sheet into one CONSISTENT animation drawing, preserving all eight distinct poses and the leg leading order EXACTLY. 2 rows x4columns, same square cells, landscape2:1. Do NOT redesign the poses. This is cleanup of character consistency and alignment only.
+
+Reference1 is the sheet to clean. Top row's near right leg leads, bottom row's far left leg leads. Preserve that difference. Preserve each elbow/knee/boot location and sword-handedness. Do not turn the bottom row into copies of the top row. No mirroring. Reference2 is only the accepted face and costume master.
+
+Fixes required:
+- One identical head model and HEAD SIZE across all eight poses, including bottom-right which is currently larger. All heads have the same navy hairstyle silhouette, skull width, face proportions and amber eyes. Head may tilt a little, but NEVER zoom, shrink, or grow it. Head width close to top-left frame, in all cells.
+- Same shoulder, chest, waist, pelvis proportions in every pose; bottom row currently has a slightly different torso drawing. Repaint consistently. Jacket teal-blue, gold edging, ivory shirt, coral scarf, brown trousers, silver boots and bracers. Original six-head adult anime hero, not chibi.
+- Keep pelvis CENTER on exactly the same cell-local x coordinate in every pose. Keep torso lean consistent to southeast, no lateral sliding between rows. Only natural modest vertical running bob, up to1% cell, and limb swing.
+- Same anatomical RIGHT hand holds the same slim silver sword, gold guard, teal jewel. Blade may foreshorten from its changing angle; not a different shorter weapon. Separate body from detached FX; no FX.
+- Exact original fixed overhead orthographic35degree camera, facing lower-right/southeast throughout. Foot contact phases rest on the same ground plane; airborne phases genuinely lift feet, don't align bottoms of all poses.
+- All frames remain at the SAME camera scale, full action envelope inside central70% cell with blank padding. Keep each subject around64% cell height and pelvis near50% cell width. Ground/root y83% cell.
+Final art clean hand-painted cel anime linework and shading. Background pure flat #FF00FF. No floor, no cast shadows, no typography, no gridlines, no decorations, no additional poses. Prioritize exact consistent head scale, same character anatomy and no lateral root drift.

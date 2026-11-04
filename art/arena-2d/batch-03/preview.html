@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="vi">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đấu sĩ anime · kiểm tra animation</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;color:#e8f0fb;background:#111a2b}*{box-sizing:border-box}body{margin:0;padding:24px}main{max-width:1100px;margin:auto}h1{font-size:25px;margin:8px 0}p{line-height:1.6;color:#b5c5d9}button,select,input{font:inherit}button,select{background:#22344c;color:#edf5ff;border:1px solid #425f7d;border-radius:9px;padding:9px 13px}button{cursor:pointer}button[aria-pressed=true]{background:#126e76;border-color:#4dd4cc}button:disabled{opacity:.5;cursor:wait}a{color:#76dcda}.tag{color:#8ee4cd;font-size:13px}.layout{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}.stage{min-height:365px;border:1px solid #39516d;border-radius:16px;display:grid;place-items:center;overflow:hidden;background:#1b293b}.stage[data-bg=light]{background:#d4dfde}.stage[data-bg=checker]{background-color:#71818d;background-image:conic-gradient(#9aa7ae 25%,transparent 0 50%,#9aa7ae 0 75%,transparent 0);background-size:32px 32px}.stage[data-bg=map]{background:linear-gradient(#10203022,#10203022),url('../map/foundation-anime.png') center/cover}.stage canvas{width:min(100%,480px);height:auto}.card{background:#19263a;border:1px solid #314964;border-radius:16px;padding:18px}.controls{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:16px 0}label{display:flex;align-items:center;gap:8px;font-size:14px}input[type=range]{width:150px;accent-color:#59cfbf}output{font-size:13px;color:#a9bfd5;font-variant-numeric:tabular-nums}.note{font-size:13px}.warning{color:#f7ce8c}.filmstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.filmstrip button{padding:0;background:#243247}.filmstrip img{display:block;width:100%;aspect-ratio:1;object-fit:contain}.filmstrip button[aria-pressed=true]{outline:2px solid #6be4cc}.filmstrip span{display:block;font-size:11px;padding:4px}details{margin-top:22px}summary{cursor:pointer;padding:10px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;color:#b5c5d9}@media(max-width:760px){body{padding:14px}.layout{grid-template-columns:1fr}h1{font-size:21px}}
+</style>
+<main>
+<span class="tag">ASSET REVIEW · ĐÔNG NAM / SE · KHÔNG CẦN VIDEO</span>
+<h1>Đấu sĩ anime — chạy &amp; đánh kiếm</h1>
+<p>14 frame vẽ tư thế bằng ImageGen, tách nền và đóng gói bằng Agent Sprite Forge. Đây là trang xem asset độc lập; chưa tích hợp vào game.</p>
+<div class="layout">
+ <section>
+  <div class="stage" id="stage" data-bg="checker"><canvas id="player" width="480" height="340" aria-label="Xem animation đấu sĩ"></canvas></div>
+  <div class="controls">
+   <button id="run" aria-pressed="true">Chạy · 8 frame</button><button id="attack" aria-pressed="false">Đánh · 6 frame</button>
+   <button id="pause">Tạm dừng</button><button id="restart">Phát lại</button>
+  </div>
+  <div class="controls">
+   <label>Nền <select id="background"><option value="checker">Ô kiểm alpha</option><option value="map">Bản đồ đã duyệt</option><option value="dark">Tối</option><option value="light">Sáng</option></select></label>
+   <label>Tốc độ <select id="speed"><option value="0.5">0,5×</option><option value="1" selected>1×</option><option value="1.5">1,5×</option></select></label>
+   <label><input id="root" type="checkbox"> Hiện điểm neo</label>
+  </div>
+  <div class="controls"><label>Từng frame <input id="scrub" type="range" min="0" max="7" value="0"></label><output id="status" aria-live="polite">Đang tải 14 PNG…</output></div>
+ </section>
+ <aside class="card">
+  <strong>Kiểm tra chuyển động</strong>
+  <p class="note">Chạy phát theo chu kỳ hai chân, không đảo ngược chuỗi. Đánh phát một lần rồi giữ tư thế cuối; nhấn “Phát lại” để xem tiếp. Frame chém có sự kiện hit riêng cho lần tích hợp sau.</p>
+  <p class="note">Điểm neo chung: <b>192, 365</b> trên canvas 384 × 384. Chạy dùng 5 tick/frame ở 60 Hz; đánh dùng thời gian khác nhau cho lấy đà, chém và thu kiếm. Trang này hiển thị PNG trực tiếp, không dùng video hay CDN.</p>
+  <p class="note warning">Bản thử một hướng. Đã sửa lệch ngang khi chạy bằng đăng ký thân. Kiểm tra hình ảnh vẫn báo biến thiên đầu và chưa xác nhận chắc việc đổi chân ở mọi pha; chưa đạt toàn bộ kiểm tra để nhân rộng thành bộ tám hướng.</p>
+  <p class="note"><a href="README.md">Báo cáo và giới hạn</a> · <a href="final/catalog.json">Danh mục asset</a> · <a href="final/qa-report.json">Kết quả kiểm tra</a></p>
+  <p class="note">Các hướng khác và ba tướng còn lại chưa có animation trong đợt này. Hiệu ứng kỹ năng và cây/nước chuyển động đã tạo ở <a href="../batch-02/gallery.html">thư viện đợt trước</a>.</p>
+ </aside>
+</div>
+<details open><summary>Chọn từng tư thế để kiểm tra</summary><div class="filmstrip" id="filmstrip"></div></details>
+<p id="error" class="warning" role="alert" hidden></p>
+<script>
+'use strict';
+const definitions={
+ run:{name:'Chạy · SE',prefix:'run',count:8,ticks:[5,5,5,5,5,5,5,5],loop:true},
+ attack:{name:'Đánh · SE',prefix:'attack',count:6,ticks:[6,7,5,3,5,8],loop:false}
+};
+const el=id=>document.getElementById(id), canvas=el('player'), ctx=canvas.getContext('2d');
+let action='run',frame=0,elapsed=0,paused=false,ready=false,last=performance.now(),images={};
+function renderStrip(){
+ const d=definitions[action];el('filmstrip').replaceChildren();el('scrub').max=d.count-1;
+ for(let i=0;i<d.count;i++){
+  const button=document.createElement('button'),image=document.createElement('img'),label=document.createElement('span');
+  image.src=images[action][i].src;image.alt=`${d.name}, frame ${i+1}`;label.textContent=`${i+1}${action==='attack'&&i===3?' · chém / hit':''}`;
+  button.append(image,label);button.addEventListener('click',()=>{frame=i;elapsed=0;setPaused(true);draw();});el('filmstrip').append(button);
+ }
+}
+function setPaused(value){paused=value;el('pause').textContent=paused?'Tiếp tục':'Tạm dừng';}
+function select(next){action=next;frame=0;elapsed=0;setPaused(false);for(const key of Object.keys(definitions))el(key).setAttribute('aria-pressed',String(key===next));renderStrip();draw();}
+function draw(){
+ if(!ready)return;
+ ctx.clearRect(0,0,480,340);ctx.imageSmoothingEnabled=true;
+ // Display only: draw finished generated PNG at the common world root, no procedural character art.
+ ctx.drawImage(images[action][frame],240-192,300-365);
+ if(el('root').checked){ctx.strokeStyle='#fff3a0';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(230,300);ctx.lineTo(250,300);ctx.moveTo(240,290);ctx.lineTo(240,310);ctx.stroke();}
+ el('status').value=`${definitions[action].name} · ${frame+1}/${definitions[action].count}${paused?' · dừng':''}`;
+ el('scrub').value=frame;
+ [...el('filmstrip').children].forEach((b,i)=>b.setAttribute('aria-pressed',String(i===frame)));
+}
+function tick(now){
+ const dt=Math.min(100,Math.max(0,now-last));last=now;
+ if(ready&&!paused&&!document.hidden){
+  elapsed+=dt*Number(el('speed').value);const d=definitions[action];
+  while(elapsed>=d.ticks[frame]*1000/60){elapsed-=d.ticks[frame]*1000/60;if(frame+1<d.count)frame++;else if(d.loop)frame=0;else{setPaused(true);elapsed=0;break;}}
+  draw();
+ }
+ requestAnimationFrame(tick);
+}
+el('run').onclick=()=>ready&&select('run');el('attack').onclick=()=>ready&&select('attack');
+el('restart').onclick=()=>ready&&select(action);el('pause').onclick=()=>setPaused(!paused);
+el('scrub').oninput=()=>{frame=Number(el('scrub').value);elapsed=0;setPaused(true);draw();};
+el('background').onchange=()=>el('stage').dataset.bg=el('background').value;el('root').onchange=draw;
+document.addEventListener('visibilitychange',()=>{last=performance.now();});
+Promise.all(Object.entries(definitions).map(async([key,d])=>{
+ images[key]=await Promise.all(Array.from({length:d.count},(_,i)=>new Promise((resolve,reject)=>{
+  const image=new Image();image.onload=()=>resolve(image);image.onerror=()=>reject(new Error(`Không tải được ${key} frame ${i+1}`));image.src=`final/${key}-se/${d.prefix}-${i+1}.png`;
+ })));
+})).then(()=>{ready=true;renderStrip();draw();}).catch(error=>{el('error').hidden=false;el('error').textContent=error.message;el('status').value='Không tải được asset';});
+requestAnimationFrame(tick);
+</script>
+</main>
+</html>

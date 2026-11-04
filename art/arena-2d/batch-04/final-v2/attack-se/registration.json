@@ -1,0 +1,52 @@
+{
+  "method": "unmodified Forge measure/hip_x/plan_shifts; whole-pixel horizontal translations only",
+  "shifts": [
+    [
+      0,
+      0
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      -6,
+      0
+    ],
+    [
+      -12,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      3,
+      0
+    ]
+  ],
+  "lock_info": {
+    "horizontal": "hip",
+    "vertical": null,
+    "row_grounds": {
+      "0": 373,
+      "1": 372
+    },
+    "feature_values": [
+      187.0,
+      184.0,
+      193.5,
+      199.0,
+      186.0,
+      184.5
+    ]
+  },
+  "anchor_px": [
+    192,
+    365
+  ],
+  "scale_per_frame": false,
+  "vertical_pinning": false,
+  "all_visible_pixels_retained": true
+}

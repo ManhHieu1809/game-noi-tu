@@ -1,0 +1,11 @@
+TARGETED SHADING CORRECTION of Image1, an existing eight-pose anime run sheet. Preserve the EXACT poses, anatomy, head size, face, scale, registration, camera, sword hand, all limb outlines, costume, grid and flat magenta background. Do not generate a different running cycle. Image2 is ONLY the anatomical NEAR/FAR leg label reference.
+
+Change ONE thing: clearly separate the two anatomical leg depths by consistent lighting so the forward leg is readable when the legs alternate.
+- His RIGHT leg is NEAR (orange in guide): retain the current brighter brown trousers and bright silver armored boot in ALL eight poses.
+- His LEFT leg is FAR (blue in guide): shade its trousers and entire armored shin/boot in deeper cooler brown / medium-dark slate silver, approximately 30 percent darker than the near leg, in ALL eight poses. This is the same silver armor material in shade, not a black boot or redesign.
+- The far LEFT leg must STAY DARKER even when it swings forward to lead in frames5 and6. Do not put the bright near boot on whichever leg happens to be forward. Maintain the same leg identities by their HIP attachments.
+- Frame1 and2: bright near RIGHT leg leads down-right, darker far LEFT heel is behind up-left.
+- Frame3 and4: dark far LEFT knee swings forward past near right support.
+- Frame5 and6: DARK far LEFT leg is the front support; bright near RIGHT thigh extends back and bright right heel is behind.
+- Frame7 and8: bright near RIGHT knee swings forward past dark far LEFT support.
+Do not shade an arm instead, do not move/swap boots or make both legs identical, do not mirror frames. The RIGHT/NEAR arm still holds sword. Absolutely no edits to head, hair, scarf, jacket or sword. Keep exact same eight distinct poses with connected hip-knee-ankle anatomy. Same camera35degrees southeast. Exactly2rows4columns, landscape2:1, eight equal square cells. Flat pure #FF00FF, no grid, no ground, no shadows, no labels or detached FX. Clean anime cel shading matching input.

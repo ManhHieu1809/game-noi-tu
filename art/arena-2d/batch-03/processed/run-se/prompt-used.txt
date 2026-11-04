@@ -1,0 +1,17 @@
+Create a production 2D anime game character RUN CYCLE sprite sheet, exactly 2 rows x 4 columns = 8 full-body poses, landscape 2:1 canvas. Each invisible cell is square. Read frames left to right, top row then bottom row. Image 1 is the accepted character identity reference; image 2 is ONLY the exact repeated scale/root template, not the desired poses. Replace all eight standing poses with the eight DIFFERENT run phases specified below.
+
+IDENTITY INVARIANTS: the SAME young adult anime male swordsman in every cell: navy tousled hair, amber eyes, teal-blue cropped jacket edged in gold, ivory fitted shirt, coral-red scarf, brown trousers and belt, silver-gold bracers and armored boots. Match the reference's polished hand-painted cel anime finish, mature 6-head proportions, recognizable face and silhouette. No chibi, no pixel art, no 3D render. One slim silver sword stays gripped in HIS ANATOMICAL RIGHT hand (near hand, on viewer's left in the supplied reference). Do not swap the sword between hands or change its design. Free opposite hand swings. Right weapon arm pumps slightly while holding sword low alongside body with blade trailing safely; not a fixed limp arm.
+
+CAMERA: fixed orthographic elevated 35-degree overhead 3/4 view, facing southeast, towards lower-right screen, in all eight frames. Run IN PLACE, no turning. Match reference head/body scale, centered pelvis near cell x=50%, ground/root reference y=84%. Subject approximately 66% cell height. Torso leans forward modestly, hips and shoulders counter-rotate, head stable; cloth and hair follow motion. Keep all body/weapon/scarf inside central 70% cell area with generous magenta margin, no cell crossing, no cropping. Use same anatomical scale, not independent bounding-box fits. Natural vertical bob and airborne foot clearance allowed; only contact phases put the support foot on the baseline.
+
+ANIMATION, whole alternating gait, NOT eight variations of one pose. NEAR leg is closer to camera and brighter; FAR leg is behind, slightly darker and visibly distinct. The second half MUST lead with the opposite leg:
+1 NEAR contact: near boot reaches forward/down-right, far leg extends backward/up-left, far free arm forward.
+2 NEAR down: weight over bent near knee, pelvis lowers slightly, far heel folds upward behind.
+3 NEAR passing: far knee travels forward underneath pelvis, near support pushes backward.
+4 flight toward FAR contact: both feet off ground, far knee opens forward, near boot folds back.
+5 FAR contact: far boot leads forward/down-right, near leg extends backward/up-left, near weapon arm forward. Clearly opposite of frame 1, never a duplicate.
+6 FAR down: weight over bent far knee, pelvis lowers, near heel folds up behind.
+7 FAR passing: near knee travels forward underneath pelvis, far support pushes backward, opposite of frame 3.
+8 flight toward NEAR contact: near knee opens forward, far boot folds back, leading smoothly into frame 1.
+
+BACKGROUND: pure uniform solid #FF00FF chroma-key background, no gradient, no painted ground, no cast shadow, no contact circles, no dust, no detached effects, no grid lines, no text, no labels, no numbers, no frame borders. EXACT eight characters only. Prioritize readable anatomically connected elbows/knees, consistent handedness, complementary arms, and a clean cyclic gait over fine texture.

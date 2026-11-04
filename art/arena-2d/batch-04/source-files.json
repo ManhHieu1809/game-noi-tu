@@ -1,0 +1,24 @@
+{
+  "generation_route": "built-in ImageGen",
+  "generation_model_version": "not exposed by host tool",
+  "identity_reference": "../characters/fighter-anime/master/master_rgba.png",
+  "generations": [
+    {"image": "raw/run-se-guided-v1.png", "prompt": "prompts/run-se-guided-v1.txt", "geometry_reference": "references/run-se-pose-guide.png", "usage": "base run before near/far shading correction"},
+    {"image": "raw/attack-se-guided-v1.png", "prompt": "prompts/attack-se-guided-v1.txt", "geometry_reference": "references/attack-se-pose-guide.png", "usage": "selected six slash poses"},
+    {"image": "raw/run-se-depth-v2.png", "prompt": "prompts/run-se-depth-v2.txt", "reference": "raw/run-se-guided-v1.png", "geometry_reference": "references/run-se-pose-guide.png", "usage": "selected eight run poses with consistent near/far shading"}
+  ],
+  "selected": "final-v2/catalog.json",
+  "intermediate_not_selected": "final/catalog.json",
+  "registration": ["run-registration-depth.json", "attack-registration.json"],
+  "toolchain": {
+    "repo": "https://github.com/0x0funky/agent-sprite-forge",
+    "commit": "5324342fdfab72430f4e9604f3fe427009f8596d",
+    "license": "MIT",
+    "modified": false
+  },
+  "unique_poses": 14,
+  "directions": ["SE"],
+  "video_used": false,
+  "runtime_integrated": false,
+  "notes": "Head-only masks and joint diagrams are diagnostic/reference images, never delivered as character artwork. Full-band warnings remain in QA reports."
+}

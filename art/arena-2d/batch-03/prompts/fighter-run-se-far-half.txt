@@ -1,0 +1,13 @@
+Create a new clean HD anime RUNNING animation sheet for the EXACT male hero in the reference. Image is identity only; substantially change his pose. Exactly FOUR full body drawings in a 2 rows x 2 columns square grid, equally spaced, no grid lines. Each square cell has same character scale and camera; solid #FF00FF background.
+
+Camera elevated orthographic 35-degree 3/4, hero faces down-right / southeast throughout. Tousled navy hair, amber eyes, teal short gold-edged jacket, ivory shirt, coral scarf, brown fitted trousers, silver/gold bracers and armored boots, six-head human proportions. Slim sword in HIS RIGHT hand, which is nearer the camera at viewer left. Sword stays connected to right hand, no FX.
+
+MOST IMPORTANT: show a runner whose LEFT leg, the FAR leg at screen-right hip, is FORWARD; his RIGHT leg, the NEAR leg at screen-left hip, is BACK. This is the LEFT-leading half of the run, not a right-leading pose. Nearest RIGHT thigh angles backward to upper-left, and nearest RIGHT heel kicks up behind his buttocks. FAR LEFT thigh angles forward lower-right and passes IN FRONT of pelvis. Torso leans into movement, near RIGHT sword hand swings FORWARD close to chest, far LEFT free fist swings BACK towards upper-left. Do not reproduce reference idle pose or right-leg-leading running pose.
+
+Read row-major:
+A LEFT heel forward reaches contact lower-right; RIGHT knee bent BACKWARD upper-left with right boot lifted behind. Right sword forearm forward. Clear left-leading extreme.
+B LEFT knee supports weight bent; RIGHT heel tucked back near buttock, both thighs point in different directions. Head down slightly.
+C LEFT supporting leg now pushes backward, RIGHT knee comes forward and passes under torso toward lower-right, opposite arm positions begin.
+D Both feet airborne: RIGHT knee forward lower-right, LEFT knee bends trailing back upper-left. Prepare right-foot contact next. Pelvis rises 5 pixels only.
+
+Same hip root x=50%, y=55%, floor at84% cell. Standing-equivalent head-to-foot height66% cell, full motion envelope in central70% width and height, consistent head size and proportions, generous padding for sword. No shadow, no ground, no text, no lines, no extra limbs, no detached artifacts. Four genuinely different sequential poses with readable alternating anatomy; no mirrored character, no sword hand swap.

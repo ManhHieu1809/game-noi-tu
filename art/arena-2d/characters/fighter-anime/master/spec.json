@@ -1,0 +1,22 @@
+{
+  "schema": "generate2dsprite.master_spec.v1",
+  "name": "fighter-anime",
+  "subject": "an original young adult anime swordsman, full body",
+  "identity": "Six-heads-tall anime proportions, tousled dark navy hair, expressive amber eyes, ivory shirt, short teal-blue adventurer jacket, coral-red scarf, brown fitted trousers and boots, clean light silver bracers, one slim steel sword lowered in right hand. Clean anime linework and cel shading; no realism or gritty texture.",
+  "pose": "calm combat-ready standing, both feet grounded, weapon held close to body",
+  "recap": "original young adult anime swordsman, full body (Six-heads-tall anime proportions, tousled dark navy hair, expressive amber eyes, ivory shirt, short teal-blue adventurer jacket, coral-red scarf, brown fitted trousers and boots, clean light silver bracers, one slim steel sword lowered in right hand. Clean anime linework and cel shading; no realism or gritty texture)",
+  "facing": "right",
+  "facing_parts": null,
+  "view": "orthographic overhead three-quarter, camera looking down 35 degrees, facing down-right southeast",
+  "class": "hero",
+  "finish": "hd",
+  "key": "#FF00FF",
+  "genre": "an anime 2.5D fantasy action RPG",
+  "pronoun": "they",
+  "identity_ref": null,
+  "style_ref": null,
+  "allowed_text": null,
+  "extra_bans": [],
+  "opaque_parts": null,
+  "extra": "ANIME illustration, crisp cel shading, elegant expressive anime face. No semi-realistic western character art, no photorealism, no 3D render, no chibi. Preserve generous empty margin and one figure only."
+}

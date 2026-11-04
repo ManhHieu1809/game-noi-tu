@@ -1,0 +1,161 @@
+{
+  "schema": "generate2dsprite.master.v1",
+  "tool": {
+    "name": "master_still",
+    "version": "0.4.0"
+  },
+  "created": "2026-11-03T07:18:23.324Z",
+  "name": "fighter-anime",
+  "subject": "an original young adult anime swordsman, full body",
+  "identity_recap": "original young adult anime swordsman, full body (Six-heads-tall anime proportions, tousled dark navy hair, expressive amber eyes, ivory shirt, short teal-blue adventurer jacket, coral-red scarf, brown fitted trousers and boots, clean light silver bracers, one slim steel sword lowered in right hand. Clean anime linework and cel shading; no realism or gritty texture)",
+  "facing": "right",
+  "view": "orthographic overhead three-quarter, camera looking down 35 degrees, facing down-right southeast",
+  "finish": "hd",
+  "class": "hero",
+  "framing": {
+    "canvas": [
+      1024,
+      1024
+    ],
+    "subject_height_px": 788,
+    "top_margin_px": 138,
+    "lead_px": 0,
+    "preset": "hero",
+    "subject_bbox": [
+      362,
+      138,
+      662,
+      926
+    ],
+    "anchor": [
+      440.0,
+      926.0
+    ],
+    "opaque_area_px": 108260,
+    "width_limited": false
+  },
+  "key": "#FF00FF",
+  "files": {
+    "master": {
+      "path": "master.png",
+      "sha256": "7c38d1634dcea7b8e01a9c730ce752ff5447b8cc4193f87e3e40aac10e486291",
+      "bytes": 248017,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    "cutout": {
+      "path": "master_rgba.png",
+      "sha256": "68da618cef0bfa1f6bc1c3f912f4678ef639208ccc4a105a6099165eeee45b2a",
+      "bytes": 295448,
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    "source": {
+      "path": "source.png",
+      "sha256": "cdd70f77bf7e80f1ee7fe911315a9a113772a6940ad14ab968b293d7f2d75c4f",
+      "bytes": 1503332,
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    "spec": {
+      "path": "spec.json",
+      "sha256": "f02347e47c27018704c025668ca660e4ff9d0e83ab981a5597c797f1a84fd608",
+      "bytes": 1560
+    },
+    "prompt": {
+      "path": "prompt.txt",
+      "sha256": "d153598295f84a01c5d16a06c10170adcc896575a4b312afbc11cf433770bbff",
+      "bytes": 2062
+    }
+  },
+  "references": [],
+  "transform": {
+    "mapping": "master = scale * source + offset (continuous pixel coordinates: pixel i spans [i, i + 1))",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_subject_bbox": [
+      356,
+      17,
+      818,
+      1235
+    ],
+    "crop_box": [
+      350,
+      11,
+      824,
+      1241
+    ],
+    "crop_margin_px": 6,
+    "scale": 0.6469622331691297,
+    "offset": [
+      132.23316912972086,
+      127.00164203612479
+    ],
+    "canvas": [
+      1024,
+      1024
+    ],
+    "resampler": "lanczos",
+    "premultiplied": true,
+    "alpha_floor_px": 3482,
+    "subject_parts": 1,
+    "ignored_parts": 0,
+    "ignored_px": 0,
+    "source_touches": [],
+    "key_rgb": [
+      255,
+      0,
+      255
+    ]
+  },
+  "route": "host-image_gen",
+  "provenance": {
+    "command": "prompt",
+    "run": "../prompt-contract",
+    "take": null,
+    "source_name": "fighter-anime.png",
+    "source_sha256": "cdd70f77bf7e80f1ee7fe911315a9a113772a6940ad14ab968b293d7f2d75c4f",
+    "media": null,
+    "media_cli_source": null,
+    "edit": null
+  },
+  "matte": {
+    "requested": "soft",
+    "key_estimate": {
+      "key": [
+        252.0,
+        3.0,
+        251.0
+      ],
+      "source": "border_median",
+      "valid": true,
+      "ring_share": 1.0,
+      "coverage": 0.8331113960048737,
+      "distance_from_declared": 5.83
+    },
+    "quality": "soft",
+    "interior_despill": false,
+    "qa": {
+      "opaque_key_px": 0,
+      "outer_ring_spill_fraction": 0.0,
+      "semitransparent_fraction": 0.04207517277799463,
+      "enclosed_key_pockets": 0,
+      "key_hued_px": 3,
+      "visible_px": 261318
+    },
+    "key_choice": {
+      "status": "ok",
+      "overlap_share": 0.000154,
+      "rule": "reject a key when more than 0.5% of subject pixels have key dominance >= 40; first acceptable candidate wins"
+    }
+  },
+  "warnings": []
+}

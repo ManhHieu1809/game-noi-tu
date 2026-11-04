@@ -1,0 +1,18 @@
+Generate a CORRECTED professional 2D anime game RUN CYCLE. Use Image 1 for the EXACT character identity and finish; use Image 2 ONLY as the eight poses' JOINT PLACEMENT / REGISTRATION / anatomical scale reference. This is a new carefully registered redraw, not a variation of a single running pose.
+
+OUTPUT: landscape 2048x1024, precisely 2 rows x4 columns, eight equal 512-square invisible cells. One full-body hero per cell, left-to-right row-major chronological order. Pure uniform solid #FF00FF background. No text, labels, numbers, grids, joint markers, guide lines, circles, floor, shadows or detached FX.
+
+EXACT HERO IDENTITY: young adult anime male, navy tousled hair and amber eyes, teal-blue short jacket edged in gold, ivory fitted shirt, coral scarf, brown trousers and belt, silver/gold bracers and armored boots, slim silver sword with gold guard and small teal gem. Same head/face/costume as Image1, human anime proportions, no chibi. Crisp HD anime cel painting, not pixel/3D. Sword always in HIS RIGHT hand, the NEAR hand on viewer-left in this southeast camera, never swap hands. Do not redesign or duplicate sword.
+
+POSE GUIDE CONTRACT: draw an anatomical clothed hero over EACH of the 8 skeletons of Image2, respecting its hips, knees, ankles, shoulder, elbows, wrists and fixed skull width. Orange lines denote RIGHT/NEAR limbs in front; blue denotes LEFT/FAR limbs behind. These guide colours are NOT costume colours. Match pose and depth of each limb, then erase ALL guide markings. Keep near trousers/boot moderately brighter and far leg a consistent deeper shade so the leg identities remain readable. Do not reposition knees to repeat a favoured pose. Frame5 and6 MUST lead with the FAR leg, opposite frame1 and2. Keep distinct leg silhouettes even with overlapping thighs.
+- 1: near right leg extends forward/down-right to contact, far left heel kicked backward upper-left. Free far arm forward, sword arm back.
+- 2: weight compresses on near leg; far heel rises behind.
+- 3: near support moves backward, FAR knee passes FORWARD underneath pelvis.
+- 4: flight, far leg reaches forward, near heel back.
+- 5: FAR LEFT leg extends forward/down-right to contact, NEAR RIGHT thigh extends BACK upper-left and heel curls behind. Right sword arm now forward, free far arm back. Not a copy of frame1.
+- 6: weight on FAR leg, near heel rises behind. Not a copy of2.
+- 7: far support moves backward, NEAR knee passes FORWARD underneath pelvis. Not a copy of3.
+- 8: flight, near leg forward, far heel back, connecting to1. Not a copy of4.
+
+One fixed elevated orthographic35degree southeast camera. Body runs IN PLACE. Same projected ground/root point cell(256,400), same head dimensions and anatomical bone lengths in all8frames. Slight bob follows guide, never camera zoom or head growth. Head height/width in frame8 must match frame1; motion changes limbs and tilt, not skull size. Pelvis stays on same horizontal axis. Spine leans gently forward, shoulders counter-swing. Sword follows right wrist and held close: during back swing blade trails down-left; forward swing hilt near waist with blade angled forward, no overly wide horizontal sword. Scarf follows gently without big size changes.
+Standing-equivalent body height about330px/cell. FULL silhouette including sword/hair/scarf within central70% of each cell with generous margins. Keep feet drawn on the guide's ground plane during support and clearly lifted only in flight, no perpetual hopping. Preserve guide's alternating wide contact, compressed down, passing and airborne phases. A coherent eight-phase full gait with weight transfer and opposite legs, not eight copies, not pingpong.

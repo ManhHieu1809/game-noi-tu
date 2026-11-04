@@ -1,0 +1,166 @@
+{
+  "schema": "generate2dmap.placements.v2",
+  "props": [
+    {
+      "id": "tree-0",
+      "image": "props/tree/clean.png",
+      "x": 150,
+      "y": 380,
+      "scale": 0.28,
+      "anchor": "px",
+      "anchorPx": [
+        386.7479435957697,
+        730.0
+      ],
+      "sortY": 380,
+      "layer": "props",
+      "occlusion_class": "tall",
+      "occupant_policy": "y_sort"
+    },
+    {
+      "id": "tree-1",
+      "image": "props/tree/clean.png",
+      "x": 1100,
+      "y": 220,
+      "scale": 0.28,
+      "anchor": "px",
+      "anchorPx": [
+        386.7479435957697,
+        730.0
+      ],
+      "sortY": 220,
+      "layer": "props",
+      "occlusion_class": "tall",
+      "occupant_policy": "y_sort"
+    },
+    {
+      "id": "tree-2",
+      "image": "props/tree/clean.png",
+      "x": 1180,
+      "y": 350,
+      "scale": 0.25,
+      "anchor": "px",
+      "anchorPx": [
+        386.7479435957697,
+        730.0
+      ],
+      "sortY": 350,
+      "layer": "props",
+      "occlusion_class": "tall",
+      "occupant_policy": "y_sort"
+    },
+    {
+      "id": "pine-3",
+      "image": "props/pine/clean.png",
+      "x": 1300,
+      "y": 230,
+      "scale": 0.25,
+      "anchor": "px",
+      "anchorPx": [
+        388.36993769470405,
+        730.0
+      ],
+      "sortY": 230,
+      "layer": "props",
+      "occlusion_class": "tall",
+      "occupant_policy": "y_sort"
+    },
+    {
+      "id": "pine-4",
+      "image": "props/pine/clean.png",
+      "x": 850,
+      "y": 775,
+      "scale": 0.24,
+      "anchor": "px",
+      "anchorPx": [
+        388.36993769470405,
+        730.0
+      ],
+      "sortY": 775,
+      "layer": "props",
+      "occlusion_class": "tall",
+      "occupant_policy": "y_sort"
+    },
+    {
+      "id": "tree-5",
+      "image": "props/tree/clean.png",
+      "x": 180,
+      "y": 810,
+      "scale": 0.3,
+      "anchor": "px",
+      "anchorPx": [
+        386.7479435957697,
+        730.0
+      ],
+      "sortY": 810,
+      "layer": "props",
+      "occlusion_class": "tall",
+      "occupant_policy": "y_sort"
+    },
+    {
+      "id": "core-6",
+      "image": "props/core/clean.png",
+      "x": 290,
+      "y": 445,
+      "scale": 0.27,
+      "anchor": "px",
+      "anchorPx": [
+        392.83247422680415,
+        730.0
+      ],
+      "sortY": 445,
+      "layer": "props",
+      "occlusion_class": "tall",
+      "occupant_policy": "y_sort"
+    },
+    {
+      "id": "stall-7",
+      "image": "props/stall/clean.png",
+      "x": 1140,
+      "y": 490,
+      "scale": 0.32,
+      "anchor": "px",
+      "anchorPx": [
+        471.80301339285717,
+        730.0
+      ],
+      "sortY": 490,
+      "layer": "props",
+      "occlusion_class": "tall",
+      "occupant_policy": "y_sort"
+    },
+    {
+      "id": "bridge-8",
+      "image": "props/bridge/clean.png",
+      "x": 690,
+      "y": 620,
+      "scale": 0.44,
+      "anchor": "px",
+      "anchorPx": [
+        384,
+        730
+      ],
+      "sortY": 620,
+      "layer": "props",
+      "occlusion_class": "tall",
+      "occupant_policy": "y_sort"
+    }
+  ],
+  "actors": [
+    {
+      "id": "fighter-demo",
+      "image": "../characters/fighter-anime/master/master_rgba.png",
+      "x": 440,
+      "y": 550,
+      "scale": 0.14,
+      "anchor": "px",
+      "anchorPx": [
+        440.0,
+        926.0
+      ],
+      "sortY": 550,
+      "layer": "actors"
+    }
+  ],
+  "foreground": []
+}

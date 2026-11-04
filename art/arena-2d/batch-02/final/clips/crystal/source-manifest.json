@@ -1,0 +1,36 @@
+{
+  "schema": "generate2dsprite.animation_clips.v2",
+  "frames": [
+    "sheet-1.png",
+    "sheet-2.png",
+    "sheet-3.png",
+    "sheet-4.png",
+    "sheet-5.png",
+    "sheet-6.png"
+  ],
+  "anchor_px": [
+    128,
+    128
+  ],
+  "art_source": "host_image",
+  "sampling": "linear",
+  "pixel_art": false,
+  "clips": {
+    "crystal": {
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "ticks": 6,
+      "loop_policy": "cycle",
+      "role": "fx"
+    }
+  },
+  "states": {
+    "active": "crystal"
+  }
+}

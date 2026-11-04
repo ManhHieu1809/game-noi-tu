@@ -1,0 +1,45 @@
+{
+  "source": "../../processed/attack-se",
+  "method": "Forge scale_frames.measure + plan_shifts; integer translation only, no scaling or anatomy editing",
+  "source_anchor_px": [
+    192,
+    365
+  ],
+  "output_anchor_px": [
+    192,
+    365
+  ],
+  "shifts": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "lock_info": {
+    "horizontal": null,
+    "vertical": null,
+    "reason": "preserve attack anticipation and lunge"
+  },
+  "all_visible_pixels_preserved": true,
+  "per_frame_y_lock": false
+}
