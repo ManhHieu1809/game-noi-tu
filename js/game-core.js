@@ -499,7 +499,13 @@ export class GameHost {
     return new ImageQuizRound({
       questions: this.imageQuestionPacks?.[mode] || [],
       seenIds: this.imageSeenHistory?.[mode] || [],
-      onSeen: (id, answerKey) => this.onImageSeen(mode, id, answerKey),
+      onSeen: (id, answerKey) => {
+        // Also update the in-memory pack history. Switching submodes within
+        // an existing room must not resurrect questions already seen.
+        if (!Array.isArray(this.imageSeenHistory?.[mode])) this.imageSeenHistory[mode] = [];
+        this.imageSeenHistory[mode].push(id, answerKey);
+        this.onImageSeen(mode, id, answerKey);
+      },
     });
   }
 
