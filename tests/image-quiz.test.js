@@ -226,3 +226,45 @@ test("switching submodes in the same room does not bring back played objects", (
   assert.equal(game.publicState().imageQuizAvailable, 1);
   game.destroy();
 });
+
+test("group history received from a guest is validated and prevents repeats", () => {
+  const dict = { words: new Set(), syllables: new Set() };
+  const objectBank = [
+    { id: "obj-1", answer: "con mèo", emoji: "🐱" },
+    { id: "obj-2", answer: "con chó", emoji: "🐶" },
+    { id: "obj-3", answer: "con voi", emoji: "🐘" },
+  ];
+  const game = new GameHost({
+    code: "ABCDE", hostName: "Host", dictionary: dict,
+    imageQuestions: { idiom: [], object: objectBank },
+    imageSeenIds: { idiom: [], object: [] },
+  });
+  game.setGameMode("image");
+  game.setImageQuizMode("object");
+  assert.equal(game.publicState().imageQuizAvailable, 3);
+  game.mergeImageSeenHistory({
+    object: ["answer:con meo", "answer:fake answer", "answer:con meo"]
+  });
+  assert.equal(game.publicState().imageQuizAvailable, 2);
+  game.addPlayer({ name: "Guest" });
+  game.start(game.hostPlayerId);
+  assert.notEqual(normalizeGuess(game.imageQuiz.current.answer), "con meo");
+  // A guest cannot use history messages to bypass the host-only end rule.
+  assert.throws(() => game.end("p2"), /chủ phòng/);
+  game.destroy();
+});
+
+test("group histories are ignored after a round has started", () => {
+  const dict = { words: new Set(), syllables: new Set() };
+  const game = new GameHost({
+    code: "ABCDE", hostName: "Host", dictionary: dict,
+    imageQuestions: { idiom: [{ id: "a", answer: "uống nước nhớ nguồn", emoji: "💧" }], object: [] },
+  });
+  game.addPlayer({ name: "G" });
+  game.setGameMode("image");
+  game.start(game.hostPlayerId);
+  game.mergeImageSeenHistory({ idiom: ["answer:uong nuoc nho nguon"] });
+  assert.equal(game.phase, "playing");
+  assert.ok(game.imageQuiz.current);
+  game.destroy();
+});
