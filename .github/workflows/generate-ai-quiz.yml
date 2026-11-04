@@ -1,0 +1,86 @@
+name: Generate and check AI troll artwork
+on:
+  push:
+    branches: [feature/ai-troll-image-bank]
+    paths:
+      - "scripts/generate-ai-quiz.mjs"
+      - "scripts/ai-quiz-lib.mjs"
+      - ".github/workflows/generate-ai-quiz.yml"
+  workflow_dispatch:
+    inputs:
+      object_target:
+        description: "Total auto-approved object images (maximum 240)"
+        default: "240"
+        required: true
+        type: choice
+        options: ["8", "40", "120", "240"]
+      idiom_target:
+        description: "Total auto-approved idiom images (maximum 60)"
+        default: "60"
+        required: true
+        type: choice
+        options: ["0", "8", "30", "60"]
+permissions:
+  contents: write
+concurrency:
+  group: ai-troll-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Check code and tests before API usage
+        run: |
+          node --check scripts/generate-ai-quiz.mjs
+          node --check scripts/ai-quiz-lib.mjs
+          npm test
+      - name: Print configuration without revealing secrets
+        run: |
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "::warning::OPENAI_API_KEY GitHub Actions secret is missing. No paid calls will be made; configure the secret before running generation."
+          else
+            echo "AI image generation credentials are available (value hidden)."
+          fi
+      - name: Generate up to the requested number and commit each completed batch
+        if: env.OPENAI_API_KEY != ''
+        env:
+          OBJECT_TARGET: ${{ inputs.object_target || '240' }}
+          IDIOM_TARGET: ${{ inputs.idiom_target || '60' }}
+        run: |
+          set -euo pipefail
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git checkout "${{ github.ref_name }}"
+          for mode in object idiom; do
+            if [ "$mode" = "object" ]; then target="$OBJECT_TARGET"; else target="$IDIOM_TARGET"; fi
+            # Keep a finite upper limit. The paid image API may reject unsuitable artwork.
+            for batch in $(seq 1 75); do
+              count=$(node -e 'const fs=require("fs");const m=JSON.parse(fs.readFileSync("assets/image-quiz/ai-"+process.argv[1]+"-questions.json"));process.stdout.write(String(m.questions.length))' "$mode")
+              echo "$mode: $count / $target accepted images"
+              if [ "$count" -ge "$target" ]; then break; fi
+              size=$((target - count))
+              if [ "$size" -gt 8 ]; then size=8; fi
+              if [ "$size" -le 0 ]; then break; fi
+              set +e
+              node scripts/generate-ai-quiz.mjs --mode="$mode" --limit="$size" --attempts=2 --style=misdirection
+              status=$?
+              set -e
+              git add assets/image-quiz/
+              if ! git diff --cached --quiet; then
+                git commit -m "art(image-quiz): auto-generate and review $mode batch [skip ci]"
+                git push origin "HEAD:${{ github.ref_name }}"
+              fi
+              if [ "$status" -ne 0 ]; then echo "Generator stopped; saved reviewed batches"; exit "$status"; fi
+            done
+          done
+          node -e 'for(const m of ["object","idiom"]){const p=JSON.parse(require("fs").readFileSync("assets/image-quiz/ai-"+m+"-questions.json"));console.log(m+": "+p.questions.length+" AI images ready")}'

@@ -1,6 +1,6 @@
 import { REBUS_QUESTIONS } from "./rebus.js";
 import { OBJECT_QUESTIONS } from "./objects.js";
-import { prepareQuestions } from "./image-quiz-core.js";
+import { prepareQuestions, normalizeGuess } from "./image-quiz-core.js";
 
 let cache = null;
 
@@ -24,22 +24,42 @@ function combine(online, builtIn) {
   });
 }
 
-// Two independent, curated question banks.
-// Photo bank is optional: the difficult gradual-crop game remains playable
-// with 467 built-in visual fallback prompts without a network connection.
+// AI art takes precedence only after it passes automatic image review.
+// No duplicate answers across AI photos, Wikimedia photos, or emoji fallback.
+function uniqueAnswers(questions) {
+  const seen = new Set();
+  return questions.filter((item) => {
+    const key = normalizeGuess(item.answer);
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function approvedAi(list, mode) {
+  const prefix = "assets/image-quiz/ai/" + mode + "/";
+  return list.filter((item) =>
+    item?.sourceType === "ai" &&
+    item?.reviewStatus === "auto-approved" &&
+    typeof item?.imageUrl === "string" &&
+    item.imageUrl.startsWith(prefix) &&
+    /^assets\/image-quiz\/ai\/(object|idiom)\/ai-[a-z0-9-]+\.webp$/.test(item.imageUrl)
+  );
+}
+
 export async function loadImageQuizQuestions() {
   if (cache) return cache;
-  const [rebusExtra, objectExtra] = await Promise.all([
+  const [rebusExtra, objectExtra, aiIdiom, aiObject] = await Promise.all([
     loadOptionalBank("assets/image-quiz/rebus-questions.json"),
     loadOptionalBank("assets/image-quiz/object-questions.json"),
+    loadOptionalBank("assets/image-quiz/ai-idiom-questions.json"),
+    loadOptionalBank("assets/image-quiz/ai-object-questions.json"),
   ]);
-  // When a substantial real-photo bank is present, use it exclusively.
-  // Unillustrated seed objects remain candidates for future Wikimedia imports
-  // but are intentionally not shown as obvious full emoji hints in this mode.
-  const photoBank = combine(objectExtra, []).filter((q) => Boolean(q.imageUrl));
+  const photoBank = combine(objectExtra, []).filter((item) => Boolean(item.imageUrl));
+  const baseObjects = photoBank.length >= 40 ? photoBank : combine(objectExtra, OBJECT_QUESTIONS);
   cache = {
-    idiom: combine(rebusExtra, REBUS_QUESTIONS),
-    object: photoBank.length >= 40 ? photoBank : combine(objectExtra, OBJECT_QUESTIONS),
+    idiom: uniqueAnswers(combine([...approvedAi(aiIdiom, "idiom"), ...rebusExtra], REBUS_QUESTIONS)),
+    object: uniqueAnswers(combine(approvedAi(aiObject, "object"), baseObjects)),
   };
   return cache;
 }

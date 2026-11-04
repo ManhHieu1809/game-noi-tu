@@ -7,6 +7,9 @@
   "scripts": {
     "start": "node server.js",
     "test": "node --test tests/*.test.js",
-    "build:object-quiz": "node scripts/build-object-quiz.mjs"
+    "build:object-quiz": "node scripts/build-object-quiz.mjs",
+    "ai:dry-run": "node scripts/generate-ai-quiz.mjs --mode=object --limit=8 --dry-run",
+    "ai:object": "node scripts/generate-ai-quiz.mjs --mode=object --limit=8",
+    "ai:idiom": "node scripts/generate-ai-quiz.mjs --mode=idiom --limit=8"
   }
 }
