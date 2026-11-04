@@ -1,0 +1,20 @@
+name: Image Quiz checks
+on:
+  push:
+    branches: [feature/image-quiz]
+  pull_request:
+    branches: [master]
+jobs:
+  node-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify JS syntax
+        run: |
+          find js scripts tests -type f \( -name '*.js' -o -name '*.mjs' \) -exec node --check {} \;
+          node --check server.js
+      - name: Run automated tests
+        run: npm test
