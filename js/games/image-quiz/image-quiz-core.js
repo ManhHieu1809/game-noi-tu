@@ -54,11 +54,13 @@ export function chooseQuestions(questions, count, seenIds = [], random = Math.ra
     }
     return result;
   };
-  const fresh = shuffle(questions.filter((q) => !seen.has(q.id)));
+  // Avoid repeating either the photo ID or the underlying answer in future games.
+  const unseenAnswers = shuffle(questions.filter((q) => !seen.has(q.id) && !seen.has("answer:" + normalizeGuess(q.answer))));
+  const unseenPhotos = shuffle(questions.filter((q) => !seen.has(q.id) && seen.has("answer:" + normalizeGuess(q.answer))));
   const old = shuffle(questions.filter((q) => seen.has(q.id)));
   const chosen = [];
   const answers = new Set();
-  for (const q of [...fresh, ...old]) {
+  for (const q of [...unseenAnswers, ...unseenPhotos, ...old]) {
     const key = normalizeGuess(q.answer);
     if (answers.has(key)) continue;
     chosen.push(q);
@@ -97,7 +99,7 @@ export class ImageQuizRound {
     this.revealed = false;
     if (!this.current) return false;
     this.seenIds.add(this.current.id);
-    this.onSeen(this.current.id);
+    this.onSeen(this.current.id, "answer:" + normalizeGuess(this.current.answer));
     return true;
   }
 
