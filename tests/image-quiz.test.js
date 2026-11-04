@@ -319,7 +319,7 @@ test("object pictures are fully sharp and uncropped from the beginning", () => {
   assert.match(app, /els\.timerText\.textContent = String\(Math\.ceil\(left \/ 1000\)\)/);
 });
 
-test("object answers remain secret until the entire 40-second countdown ends", () => {
+test("object mode reveals immediately when every online player has guessed correctly", () => {
   const dictionary = { words: new Set(), syllables: new Set() };
   const game = new GameHost({
     code: "ABCDE", hostName: "Host", dictionary,
@@ -329,6 +329,7 @@ test("object answers remain secret until the entire 40-second countdown ends", (
     },
   });
   const guest = game.addPlayer({ name: "Guest" });
+  const third = game.addPlayer({ name: "Third" });
   game.setGameMode("image");
   game.setImageQuizMode("object");
   game.start(game.hostPlayerId);
@@ -338,8 +339,34 @@ test("object answers remain secret until the entire 40-second countdown ends", (
   assert.equal(game.submit(guest.id, "con meo").ok, true);
   assert.equal(game.publicState().imageQuiz.revealed, false);
   assert.equal(game.publicState().imageQuiz.answer, null);
+  // Wrong guesses do not count as having answered correctly.
+  assert.equal(game.submit(third.id, "chó").ok, false);
+  assert.equal(game.publicState().imageQuiz.revealed, false);
+  // The final correct answer reveals immediately, regardless of time left.
+  assert.equal(game.submit(third.id, "mèo").ok, true);
+  assert.equal(game.publicState().imageQuiz.revealed, true);
+  assert.equal(game.publicState().imageQuiz.answer, "con mèo");
+  assert.equal(game.publicState().remainingMs, 0);
   assert.equal(game.phase, "playing");
-  // The authoritative timeout (and only timeout) triggers answer reveal.
+  assert.ok(game.publicState().players.every((player) => player.score > 0));
+  game.destroy();
+});
+
+test("object mode still reveals on timeout when some players did not guess correctly", () => {
+  const dictionary = { words: new Set(), syllables: new Set() };
+  const game = new GameHost({
+    code: "ABCDE", hostName: "Host", dictionary,
+    imageQuestions: {
+      idiom: [],
+      object: [{ id: "o", answer: "con mèo", aliases: ["mèo"], emoji: "🐈" }],
+    },
+  });
+  game.addPlayer({ name: "Guest" });
+  game.setGameMode("image");
+  game.setImageQuizMode("object");
+  game.start(game.hostPlayerId);
+  assert.equal(game.submit(game.hostPlayerId, "mèo").ok, true);
+  assert.equal(game.publicState().imageQuiz.revealed, false);
   game._onTimeout();
   assert.equal(game.publicState().imageQuiz.revealed, true);
   assert.equal(game.publicState().imageQuiz.answer, "con mèo");
