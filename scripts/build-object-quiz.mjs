@@ -61,9 +61,19 @@ try {
     q?.id && typeof q.imageUrl === "string" && q.imageUrl.startsWith("https://")
     && typeof q.license === "string" && acceptable(q.license));
 } catch { /* first run has no prior file */ }
-const downloaded = [...existing];
+// One image may illustrate multiple English Wikipedia pages. Reusing it for
+// different Vietnamese answers is not a fresh visual puzzle.
+const downloaded = [];
+const usedImageUrls = new Set();
+const usedFileUrls = new Set();
+for (const item of existing) {
+  if (usedImageUrls.has(item.imageUrl) || usedFileUrls.has(item.sourceUrl)) continue;
+  usedImageUrls.add(item.imageUrl);
+  usedFileUrls.add(item.sourceUrl);
+  downloaded.push(item);
+}
 const alreadyImported = new Set(downloaded.map((q) => q.id));
-const report = { total: OBJECT_QUESTIONS.length, existing: existing.length, added: 0, selected: downloaded.length, noPhoto: 0, noLicense: 0, failures: 0, rateLimited: false, byCategory: {} };
+const report = { total: OBJECT_QUESTIONS.length, existing: downloaded.length, added: 0, selected: downloaded.length, noPhoto: 0, noLicense: 0, failures: 0, rateLimited: false, byCategory: {} };
 let requested = 0;
 for (const item of OBJECT_QUESTIONS.slice(0, max)) {
   if (!item.wiki || alreadyImported.has(item.id)) continue;
@@ -91,6 +101,9 @@ for (const item of OBJECT_QUESTIONS.slice(0, max)) {
     const author = stripMarkup(ext.Artist?.value || ext.Credit?.value || "Wikimedia Commons contributor");
     const licenseUrl = ext?.LicenseUrl?.value || "";
     const fileUrl = "https://commons.wikimedia.org/wiki/File:" + encodeURIComponent(filename.replaceAll(" ", "_"));
+    if (usedImageUrls.has(imageUrl) || usedFileUrls.has(fileUrl)) continue;
+    usedImageUrls.add(imageUrl);
+    usedFileUrls.add(fileUrl);
     downloaded.push({
       id: item.id, answer: item.answer, aliases: item.aliases || [],
       category: item.category, difficulty: "hard",

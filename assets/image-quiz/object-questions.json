@@ -2984,34 +2984,6 @@
       "reviewStatus": "verify subject and attribution before publishing"
     },
     {
-      "id": "object-extra-0251",
-      "answer": "mô tô phân khối lớn",
-      "aliases": [],
-      "category": "Phương tiện",
-      "difficulty": "hard",
-      "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Istockphoto-114285168-612x612.jpg/330px-Istockphoto-114285168-612x612.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "emoji": "🏍️",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Istockphoto-114285168-612x612.jpg",
-      "attribution": "Devanand.j • CC BY-SA 4.0",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "reviewStatus": "verify subject and attribution before publishing"
-    },
-    {
-      "id": "object-extra-0274",
-      "answer": "ô dù gấp",
-      "aliases": [],
-      "category": "Dụng cụ và vật thể",
-      "difficulty": "hard",
-      "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/M0354_000727-005_1.jpg/330px-M0354_000727-005_1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "emoji": "☂️",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:M0354_000727-005_1.jpg",
-      "attribution": "MONNIN Jacques • CC BY-SA 3.0",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-      "reviewStatus": "verify subject and attribution before publishing"
-    },
-    {
       "id": "object-extra-0036",
       "answer": "cái rây",
       "aliases": [],
@@ -3107,20 +3079,6 @@
       "attribution": "Assassas77 • CC BY-SA 4.0",
       "license": "CC BY-SA 4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "reviewStatus": "verify subject and attribution before publishing"
-    },
-    {
-      "id": "object-extra-0045",
-      "answer": "cân nhà bếp",
-      "aliases": [],
-      "category": "Đồ dùng nhà bếp",
-      "difficulty": "hard",
-      "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Balance_%C3%A0_tabac_1850.JPG/330px-Balance_%C3%A0_tabac_1850.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "emoji": "⚖️",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Balance_%C3%A0_tabac_1850.JPG",
-      "attribution": "Photographie personnelle User:Poussin jean • CC BY-SA 3.0",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "",
       "reviewStatus": "verify subject and attribution before publishing"
     },
     {
@@ -3244,20 +3202,6 @@
       "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Projektor_PGD2870W_firmy_Sharp.jpg/330px-Projektor_PGD2870W_firmy_Sharp.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "emoji": "📽️",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Projektor_PGD2870W_firmy_Sharp.jpg",
-      "attribution": "http://muzyczny.pl • CC BY-SA 4.0",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "reviewStatus": "verify subject and attribution before publishing"
-    },
-    {
-      "id": "object-extra-0062",
-      "answer": "tai nghe không dây",
-      "aliases": [],
-      "category": "Công nghệ",
-      "difficulty": "hard",
-      "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/S%C5%82uchawki_referencyjne_K-701_firmy_AKG.jpg/330px-S%C5%82uchawki_referencyjne_K-701_firmy_AKG.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "emoji": "🎧",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:S%C5%82uchawki_referencyjne_K-701_firmy_AKG.jpg",
       "attribution": "http://muzyczny.pl • CC BY-SA 4.0",
       "license": "CC BY-SA 4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
