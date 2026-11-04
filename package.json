@@ -6,6 +6,7 @@
   "description": "Game nối từ tiếng Việt nhiều người chơi, chạy hoàn toàn trên trình duyệt.",
   "scripts": {
     "start": "node server.js",
-    "test": "node --test tests/*.test.js"
+    "test": "node --test tests/*.test.js",
+    "build:object-quiz": "node scripts/build-object-quiz.mjs"
   }
 }

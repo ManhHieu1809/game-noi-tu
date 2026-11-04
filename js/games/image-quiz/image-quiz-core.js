@@ -2,6 +2,8 @@
 // No DOM, PeerJS or network access: this module can be tested in Node.
 export const IMAGE_QUIZ_SECONDS = 40;
 export const IMAGE_QUIZ_REVEAL_MS = 3200;
+export const IMAGE_QUIZ_IDIOM = "idiom";
+export const IMAGE_QUIZ_OBJECT = "object";
 
 export function normalizeGuess(value) {
   return String(value ?? "")
@@ -48,34 +50,29 @@ export function prepareQuestions(raw) {
   return result;
 }
 
+// Never revisit an image OR a normalized answer until explicitly reset.
+// An exhausted pool stays exhausted: the owner must provide new content.
 export function chooseQuestions(questions, count = questions.length, seenIds = [], random = Math.random) {
   const seen = new Set(seenIds);
-  const shuffle = (items) => {
-    const result = [...items];
-    for (let i = result.length - 1; i > 0; i--) {
-      const j = Math.floor(random() * (i + 1));
-      [result[i], result[j]] = [result[j], result[i]];
-    }
-    return result;
-  };
-  // Avoid repeating either the photo ID or the underlying answer in future games.
-  const unseenAnswers = shuffle(questions.filter((q) => !seen.has(q.id) && !seen.has("answer:" + normalizeGuess(q.answer))));
-  const unseenPhotos = shuffle(questions.filter((q) => !seen.has(q.id) && seen.has("answer:" + normalizeGuess(q.answer))));
-  const old = shuffle(questions.filter((q) => seen.has(q.id)));
+  const available = questions.filter((q) => !seen.has(q.id) && !seen.has("answer:" + normalizeGuess(q.answer)));
+  for (let i = available.length - 1; i > 0; i--) {
+    const j = Math.max(0, Math.min(i, Math.floor(random() * (i + 1))));
+    [available[i], available[j]] = [available[j], available[i]];
+  }
   const chosen = [];
-  const answers = new Set();
-  for (const q of [...unseenAnswers, ...unseenPhotos, ...old]) {
+  const seenAnswers = new Set();
+  for (const q of available) {
     const key = normalizeGuess(q.answer);
-    if (answers.has(key)) continue;
+    if (seenAnswers.has(key)) continue;
+    seenAnswers.add(key);
     chosen.push(q);
-    answers.add(key);
     if (chosen.length >= count) break;
   }
   return chosen;
 }
 
-// A match has no fixed round count. After all distinct answers have been
-// played, create a new shuffled deck and keep going until the host ends the match.
+// Continuous play has no round cap, but a finite unique bank is finite.
+// On exhaustion we PAUSE, never silently recycle previous answers.
 export class ImageQuizRound {
   constructor({ questions = [], seenIds = [], onSeen = () => {} } = {}) {
     this.questions = prepareQuestions(questions);
@@ -88,49 +85,45 @@ export class ImageQuizRound {
     this.revealed = false;
     this.answered = new Set();
     this.firstWinnerId = null;
+    this.exhausted = false;
   }
 
   start() {
-    if (!this.questions.length) throw new Error("Chưa có tranh đố mẹo hợp lệ.");
+    if (!this.questions.length) throw new Error("Chế độ này chưa có câu hỏi hợp lệ.");
     this.deck = [];
     this.index = -1;
     this.current = null;
     this.usedAnswers.clear();
+    this.revealed = false;
+    this.exhausted = false;
     return this.next();
   }
 
   _refillDeck() {
-    const newQuestions = this.questions.filter(
-      (q) => !this.usedAnswers.has(normalizeGuess(q.answer))
-    );
-    if (!newQuestions.length) {
-      // A finite curated bank can be replayed, but NEVER ends the match.
-      this.usedAnswers.clear();
-    }
-    const available = this.questions.filter(
-      (q) => !this.usedAnswers.has(normalizeGuess(q.answer))
-    );
-    const deck = chooseQuestions(available, available.length, this.seenIds);
-    // When cycling, do not immediately repeat the previous answer unless
-    // there is only one possible unique answer.
-    if (deck.length > 1 && this.current) {
-      const last = normalizeGuess(this.current.answer);
-      const candidate = deck.findIndex((q) => normalizeGuess(q.answer) !== last);
-      if (candidate > 0) [deck[0], deck[candidate]] = [deck[candidate], deck[0]];
-    }
-    this.deck = deck;
+    const seen = [...this.seenIds, ...[...this.usedAnswers].map((x) => "answer:" + x)];
+    this.deck = chooseQuestions(this.questions, this.questions.length, seen);
+  }
+
+  remainingCount() {
+    const seen = new Set([...this.seenIds, ...[...this.usedAnswers].map((x) => "answer:" + x)]);
+    return chooseQuestions(this.questions, this.questions.length, seen, () => 0).length;
   }
 
   next() {
     if (!this.deck.length) this._refillDeck();
     const question = this.deck.shift();
-    if (!question) return false;
-    this.index += 1;
-    this.current = question;
-    this.usedAnswers.add(normalizeGuess(question.answer));
     this.answered.clear();
     this.firstWinnerId = null;
     this.revealed = false;
+    if (!question) {
+      this.exhausted = true;
+      this.current = null;
+      return false;
+    }
+    this.exhausted = false;
+    this.index += 1;
+    this.current = question;
+    this.usedAnswers.add(normalizeGuess(question.answer));
     const answerKey = "answer:" + normalizeGuess(question.answer);
     this.seenIds.add(question.id);
     this.seenIds.add(answerKey);
@@ -168,8 +161,10 @@ export class ImageQuizRound {
   }
 
   publicState() {
-    if (!this.current) return null;
+    if (!this.current) return { exhausted: true, round: Math.max(0, this.index + 1), answeredIds: [], revealed: false, answer: null, remaining: 0 };
     return {
+      exhausted: false,
+      remaining: this.remainingCount(),
       id: this.current.id,
       imageUrl: this.current.imageUrl,
       emoji: this.current.emoji,

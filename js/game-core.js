@@ -1,4 +1,4 @@
-import { ImageQuizRound, IMAGE_QUIZ_SECONDS, IMAGE_QUIZ_REVEAL_MS } from "./games/image-quiz/image-quiz-core.js";
+import { ImageQuizRound, IMAGE_QUIZ_SECONDS, IMAGE_QUIZ_REVEAL_MS, IMAGE_QUIZ_IDIOM, IMAGE_QUIZ_OBJECT } from "./games/image-quiz/image-quiz-core.js";
 
 export const MIN_SYLLABLES = 2;
 export const MAX_SYLLABLES = 5;
@@ -379,7 +379,11 @@ export class GameHost {
 
     this.code = code;
     this.dictionary = dictionary;
-    this.imageQuiz = new ImageQuizRound({ questions: imageQuestions, seenIds: imageSeenIds, onSeen: onImageSeen });
+    this.imageQuestionPacks = Array.isArray(imageQuestions) ? { idiom: imageQuestions, object: [] } : imageQuestions;
+    this.imageSeenHistory = Array.isArray(imageSeenIds) ? { idiom: imageSeenIds, object: [] } : imageSeenIds;
+    this.onImageSeen = onImageSeen;
+    this.imageQuizMode = IMAGE_QUIZ_IDIOM;
+    this.imageQuiz = this._makeImageQuiz(this.imageQuizMode);
     this.quizTransitionTimer = null;
     this.mode = mode === "strict" ? "strict" : "smart";
     this.gameMode = gameMode === GAME_MODE_LETTERS ? GAME_MODE_LETTERS : GAME_MODE_CHAIN;
@@ -491,6 +495,25 @@ export class GameHost {
     this.onChange();
   }
 
+  _makeImageQuiz(mode) {
+    return new ImageQuizRound({
+      questions: this.imageQuestionPacks?.[mode] || [],
+      seenIds: this.imageSeenHistory?.[mode] || [],
+      onSeen: (id, answerKey) => this.onImageSeen(mode, id, answerKey),
+    });
+  }
+
+  setImageQuizMode(mode) {
+    if (this.phase !== "lobby") throw new Error("Chỉ được chọn kiểu câu hỏi trong phòng chờ.");
+    if (this.gameMode !== GAME_MODE_IMAGE) throw new Error("Vui lòng chọn trò Nhìn hình đoán chữ.");
+    if (![IMAGE_QUIZ_IDIOM, IMAGE_QUIZ_OBJECT].includes(mode)) throw new Error("Kiểu câu hỏi không hợp lệ.");
+    if (this.imageQuizMode === mode) return;
+    this.imageQuizMode = mode;
+    this.imageQuiz = this._makeImageQuiz(mode);
+    this._event("mode", mode === IMAGE_QUIZ_OBJECT ? "Đã chọn Đoán vật thể ảnh khó." : "Đã chọn Thành ngữ / tục ngữ.");
+    this.onChange();
+  }
+
   setPairMode(pairMode) {
     if (this.phase !== "lobby") {
       throw new Error("Chỉ đổi cách chọn cặp chữ khi đang ở phòng chờ.");
@@ -517,6 +540,9 @@ export class GameHost {
     const online = this.players.filter((player) => player.online);
     if (online.length < 2) throw new Error("Cần ít nhất 2 người để bắt đầu.");
 
+    if (this.gameMode === GAME_MODE_IMAGE && !this.imageQuiz.start()) {
+      throw new Error("Không còn câu hỏi mới trong chế độ này trên thiết bị chủ phòng. Hãy bổ sung ngân hàng câu hỏi.");
+    }
     for (const player of this.players) player.score = 0;
 
     this.players = online;
@@ -531,7 +557,6 @@ export class GameHost {
     this.phase = "playing";
     this._clearQuizTransition();
     if (this.gameMode === GAME_MODE_IMAGE) {
-      this.imageQuiz.start();
       this.turnIndex = -1;
       this.turnPlayerId = null;
       this.turnSeconds = IMAGE_QUIZ_SECONDS;
@@ -662,6 +687,9 @@ export class GameHost {
     const online = this.players.filter((player) => player.online);
     if (online.length < 2) throw new Error("Cần ít nhất 2 người để chơi lại.");
 
+    if (this.gameMode === GAME_MODE_IMAGE && !this.imageQuiz.start()) {
+      throw new Error("Không còn câu hỏi mới để chơi lại. Vui lòng bổ sung dữ liệu trước.");
+    }
     this.players = online;
     for (const player of this.players) player.score = 0;
     this._resetPlayerStats();
@@ -675,7 +703,6 @@ export class GameHost {
     this.phase = "playing";
     this._clearQuizTransition();
     if (this.gameMode === GAME_MODE_IMAGE) {
-      this.imageQuiz.start();
       this.turnIndex = -1;
       this.turnPlayerId = null;
       this.turnSeconds = IMAGE_QUIZ_SECONDS;
@@ -789,6 +816,8 @@ export class GameHost {
       mode: this.mode,
       gameMode: this.gameMode,
       pairMode: this.pairMode,
+      imageQuizMode: this.imageQuizMode,
+      imageQuizAvailable: this.gameMode === GAME_MODE_IMAGE && this.phase === "lobby" ? this.imageQuiz.remainingCount() : null,
       imageQuiz: this.gameMode === GAME_MODE_IMAGE && this.phase !== "lobby" ? this.imageQuiz.publicState() : null,
       hostId: this.hostPlayerId,
       players: this.players.map((player) => ({
@@ -1004,11 +1033,15 @@ export class GameHost {
     this.quizTransitionTimer = setTimeout(() => {
       this.quizTransitionTimer = null;
       if (this.phase !== "playing" || this.gameMode !== GAME_MODE_IMAGE) return;
-      // Never end because of question count: exhausted decks are reshuffled.
-      this.imageQuiz.next();
+      const hasNext = this.imageQuiz.next();
       this.turnSeq += 1;
-      this._startTimer();
-      this._event("next", "Câu hỏi tiếp theo đã bắt đầu!");
+      if (hasNext) {
+        this._startTimer();
+        this._event("next", "Câu đố tiếp theo đã bắt đầu!");
+      } else {
+        this.turnDeadline = 0;
+        this._event("exhausted", "Đã hết toàn bộ câu hỏi CHƯA TỪNG CHƠI. Trò chơi tạm dừng, chủ phòng có thể kết thúc và bổ sung dữ liệu.");
+      }
       this.onChange();
     }, IMAGE_QUIZ_REVEAL_MS);
   }

@@ -1,40 +1,38 @@
-# Nhìn hình đoán chữ - Tranh troll / thành ngữ (nhánh review)
+# Nhìn Hình Đoán Chữ — hai chế độ (nhánh feature/image-quiz)
 
-## Lối chơi mới
-- Chủ phòng tạo phòng bình thường, chọn **Nhìn hình đoán chữ** rồi bắt đầu khi có >= 2 người.
-- **112 câu đố tiếng Việt được biên soạn riêng**, mỗi câu có ba cảnh gợi ý kiểu tranh comic/meme, không còn bộ hỏi tên một đồ vật thông thường.
-- Tất cả người chơi giải ý của **cả bức tranh**: thành ngữ, tục ngữ, câu nói vui, không chỉ nhập tên biểu tượng.
-- Mỗi câu có 40 giây. Người đúng nhanh được nhiều điểm hơn. Hết giờ hoặc khi tất cả đoán đúng, đáp án xuất hiện rồi chuyển sang câu tiếp theo.
-- **KHÔNG có giới hạn 8, 10 hay bất cứ số câu nào cho một ván.** Hệ thống tuần tự dùng các đáp án chưa gặp, khi hết ngân hàng thì xáo lại. Số câu vẫn tăng và bảng điểm tiếp tục cộng.
-- Chủ phòng có nút **Kết thúc trò chơi** ngay trên tranh (và ở khu vực điều khiển). Chỉ khi chủ phòng xác nhận, game mới sang kết quả. Người tham gia không có quyền kết thúc.
-- Lịch sử câu hỏi đã gặp được ưu tiên chống lặp ở máy chủ phòng (localStorage). Hết toàn bộ câu khả dụng thì vẫn cần lặp lại, vì số câu độc nhất hữu hạn.
+## Cách chơi
+Chủ phòng tạo phòng, chọn **Nhìn hình đoán chữ**, rồi chọn:
 
-## Tranh và nguồn asset
-- Tranh comic ba ô hiện tại được **vẽ bằng HTML/CSS và biểu tượng Unicode** theo dữ liệu do dự án tự biên soạn, không dùng ảnh meme lấy trộm hoặc phụ thuộc dịch vụ tạo ảnh trực tuyến. Đây là bản làm được ngay; **chưa phải gói ảnh AI vẽ từng bức**.
-- Dữ liệu câu đố nằm trong `js/games/image-quiz/rebus.js`. Nếu sau này có tranh AI đã được kiểm duyệt, hãy bổ sung vào `assets/image-quiz/rebus-questions.json` dưới dạng đối tượng:
-```json
-{
-  "questions": [{
-    "id": "custom-001",
-    "answer": "đầu voi đuôi chuột",
-    "aliases": [],
-    "category": "Thành ngữ",
-    "difficulty": "hard",
-    "scene": ["🐘🎩", "✂️🧵", "🐭🌀"],
-    "imageUrl": "assets/image-quiz/my-custom-comic.webp",
-    "attribution": "Tự vẽ / nguồn + tác giả (nếu cần)"
-  }]
-}
-```
-- `imageUrl` có thể là ảnh WEBP/PNG nằm trong thư mục asset hợp lệ hoặc URL HTTPS có giấy phép. Khi ảnh lỗi, ba cảnh tranh comic là phương án dự phòng.
-- Script `scripts/build-image-quiz.mjs` **là importer ảnh chụp cho game đoán tên đồ vật cũ**; nó KHÔNG được dùng làm nguồn cho chế độ troll mới. Không nên chạy script cũ rồi mong câu đố troll biến thành tranh AI.
-- Câu hỏi mới cần được kiểm duyệt để tránh gợi ý quá hiển nhiên, mơ hồ hoặc đáp án không phù hợp. Những biểu tượng comic là gợi ý, không bảo đảm mọi người hiểu theo cùng một cách.
+- **Ca dao · Tục ngữ · Thành ngữ** (`idiom`): 112 câu hỏi comic 3 khung tranh, giải nghĩa bằng suy luận.
+- **Đoán vật thể ảnh khó** (`object`): 467 đáp án đồ dùng, con vật, món ăn, rau quả, công nghệ... Ảnh bị zoom/crop, che vùng nhìn và mờ rồi rõ dần trong 40 giây. Có ảnh thật nếu nhập được ngân hàng Wikimedia, ngoài ra có hình gợi ý emoji được làm khó để hoạt động offline.
 
-## Khởi chạy và kiểm tra
-```sh
+Mỗi câu có 40 giây. Đúng sớm được nhiều điểm; tất cả cùng đoán. **Không có giới hạn số vòng**. Hết một câu tự chuyển câu kế tiếp, không tự kết thúc game. Chỉ chủ phòng bấm **Kết thúc trò chơi** để chốt điểm.
+
+## Chống lặp nghiêm ngặt
+
+- Mỗi đáp án tiếng Việt sau khi chuẩn hóa (không dấu, chữ thường) chỉ xuất hiện **một lần trên thiết bị chủ phòng** trong toàn bộ lịch sử chơi ở từng chế độ, kể cả có nhiều ảnh cho cùng một đáp án.
+- Lịch sử được lưu ở `localStorage`: `noitu.imageQuiz.seen.v2.idiom` và `noitu.imageQuiz.seen.v2.object`. Bộ thành ngữ còn nhập lịch sử phiên cũ `seen.v1`.
+- Mỗi khi bắt đầu ván mới cũng ưu tiên *chỉ những đáp án chưa gặp*. Game không lặp khi hết ngân hàng. Thay vào đó giữ phòng ở trạng thái chơi, hiển thị **Hết câu mới**, chờ chủ phòng kết thúc hoặc bổ sung dữ liệu và tạo ván mới.
+- Lịch sử chỉ tồn tại ở **trình duyệt thiết bị làm host**: đổi thiết bị chủ phòng, xóa dữ liệu trình duyệt hoặc mở tab riêng tư sẽ mất khả năng bảo đảm xuyên phòng. Muốn đồng bộ với tài khoản cần backend và kho lưu trữ tập trung.
+- Trong dữ liệu hữu hạn, không thể bảo đảm chơi vô hạn *và* không trùng; cơ chế này ưu tiên **không trùng** hơn việc tự lặp câu.
+
+## Nguồn hình và câu hỏi
+
+1. `js/games/image-quiz/rebus.js`: 112 gợi ý tranh comic tự biên soạn.
+2. `js/games/image-quiz/seed.js` + `objects.js`: 467 đáp án vật thể gắn tên bài Wikipedia để truy vấn thumbnail. **Đây là 467 mục dữ liệu và minh họa dự phòng, không phải 467 ảnh chụp đã nhập sẵn.**
+3. Chạy `npm run build:object-quiz` (cần kết nối Internet) để kiểm tra Wikipedia thumbnail + Wikimedia Commons `imageinfo`, chỉ giữ file có metadata giấy phép phù hợp và ghi thông tin tác giả. Kết quả ở `assets/image-quiz/object-questions.json`. Nguồn tham khảo: https://www.mediawiki.org/wiki/API:Imageinfo
+4. `.github/workflows/build-object-quiz.yml` có quy trình tạo ảnh qua GitHub Actions trên nhánh feature. Dữ liệu sinh ra có `reviewStatus`; cần **kiểm tra ảnh có đúng chủ đề, điều kiện giấy phép và ghi công trước khi phát hành**. Dữ liệu đã nhập ghi đè fallback trùng ID; nếu chưa nhập hoặc ảnh hỏng, hình emoji vẫn hoạt động.
+5. Có thể bổ sung tranh của bạn vào `assets/image-quiz/rebus-questions.json` hay `assets/image-quiz/object-questions.json`, mỗi câu có `id`, `answer`, `aliases`, `category`, `difficulty`, `imageUrl` (đường dẫn HTTPS hoặc `assets/image-quiz/...`) và `emoji`/`scene` dự phòng.
+
+## Khởi chạy và thử
+
+```bash
 npm start
 npm test
+# Khi muốn nhập ảnh thật (Internet + kiểm tra quyền ảnh)
+npm run build:object-quiz
 ```
-Mở http://localhost:3000 ở hai trình duyệt (hoặc hai thiết bị), vào cùng mã phòng, chọn game và thử đoán. Trên điện thoại, nút **Kết thúc trò chơi** cũng nằm ngay phía trên tranh với chủ phòng.
 
-Bản này không thêm backend mới, vẫn dùng PeerJS/WebRTC và bộ điều phối phòng hiện tại. Vì câu hỏi là tệp tĩnh trong client, người cố tình xem mã nguồn có thể tìm được đáp án; nếu cần chống gian lận, chuyển kho đáp án vào backend.
+Vào http://localhost:3000 trên hai trình duyệt hoặc hai máy, tạo phòng, chọn mode và bắt đầu. Để kiểm tra có còn câu mới, nhìn dòng bên dưới nút Bắt đầu trong phòng chờ. Nếu gặp lỗi ảnh, kiểm tra Network/Console và thử chạy importer.
+
+**Giới hạn:** Đây vẫn là trò P2P do host điều phối, không có server bảo vệ ngân hàng đáp án. Người biết kỹ thuật có thể kiểm tra các câu được gửi dưới dạng assets JavaScript; muốn chống gian lận nghiêm ngặt cần backend kiểm tra đáp án.

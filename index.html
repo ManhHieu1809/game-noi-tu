@@ -289,6 +289,13 @@
                 <option value="image">Nhìn hình đoán chữ</option>
               </select>
             </label>
+            <label class="field field--compact" id="imageQuizModeField" for="imageQuizModeSelect" hidden>
+              <span class="field__label">Loại câu đố</span>
+              <select id="imageQuizModeSelect">
+                <option value="idiom">Ca dao · Tục ngữ · Thành ngữ</option>
+                <option value="object">Đoán vật thể qua ảnh khó</option>
+              </select>
+            </label>
             <label class="field field--compact" for="modeSelect">
               <span class="field__label">Kiểm tra từ</span>
               <select id="modeSelect">
@@ -303,7 +310,7 @@
                 <option value="manual">Chủ phòng tự nhập</option>
               </select>
             </label>
-            <p class="panel__hint">Thông minh ghép các âm tiết có nghĩa. Khắt khe yêu cầu nguyên cụm từ có trong từ điển.</p>
+            <p class="panel__hint" id="lobbySettingsHint">Thông minh ghép các âm tiết có nghĩa. Khắt khe yêu cầu nguyên cụm từ có trong từ điển.</p>
           </div>
 
           <div class="room-actions" id="lobbyActions" hidden>

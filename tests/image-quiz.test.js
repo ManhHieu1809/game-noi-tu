@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { IMAGE_QUIZ_SEED } from "../js/games/image-quiz/seed.js";
 import { REBUS_QUESTIONS } from "../js/games/image-quiz/rebus.js";
+import { OBJECT_QUESTIONS } from "../js/games/image-quiz/objects.js";
 import { readFileSync } from "node:fs";
 import { GameHost } from "../js/game-core.js";
 import { normalizeGuess, prepareQuestions, chooseQuestions, ImageQuizRound } from "../js/games/image-quiz/image-quiz-core.js";
@@ -88,61 +89,118 @@ test("curated meme comic bank includes 100+ distinct Vietnamese riddles", () => 
   assert.ok(questions.every((q) => q.difficulty === "hard" || q.difficulty === "medium"));
 });
 
-test("continuous game reshuffles and NEVER stops when question bank is exhausted", () => {
-  const quiz = new ImageQuizRound({ questions: [
+test("never reuses a question or normalized answer, including on a later session", () => {
+  const questions = [
     { id: "a", answer: "đầu voi đuôi chuột", scene: ["🐘", "✂️", "🐭"] },
-    { id: "b", answer: "ăn cháo đá bát", scene: ["🥣", "🦶", "🥣"] },
-    { id: "c", answer: "nước đổ đầu vịt", scene: ["🚿", "🦆", "😐"] }
-  ] });
-  assert.equal(quiz.start(), true);
-  const firstThree = [quiz.current.id];
-  for (let i = 0; i < 39; i++) {
-    assert.equal(quiz.next(), true);
-    assert.equal(quiz.publicState().round, i + 2);
-    assert.equal(quiz.publicState().rounds, undefined);
-    assert.equal(quiz.publicState().answer, null);
-    if (i < 2) firstThree.push(quiz.current.id);
-  }
-  assert.equal(new Set(firstThree).size, 3);
-  assert.equal(quiz.publicState().round, 40);
+    { id: "b", answer: "đầu voi đuôi chuột", scene: ["🐘", "🐭"] },
+    { id: "c", answer: "ăn cháo đá bát", scene: ["🥣", "🦶", "🥣"] },
+    { id: "d", answer: "nước đổ đầu vịt", scene: ["🚿", "🦆", "😐"] }
+  ];
+  const persisted = new Set();
+  const onSeen = (id, answerKey) => { persisted.add(id); persisted.add(answerKey); };
+  const first = new ImageQuizRound({ questions, onSeen });
+  assert.equal(first.start(), true);
+  const selected = new Set([normalizeGuess(first.current.answer)]);
+  assert.equal(first.next(), true);
+  assert.equal(selected.has(normalizeGuess(first.current.answer)), false);
+  selected.add(normalizeGuess(first.current.answer));
+  assert.equal(first.next(), true);
+  assert.equal(selected.has(normalizeGuess(first.current.answer)), false);
+  assert.equal(first.next(), false);
+  assert.equal(first.publicState().exhausted, true);
+  assert.equal(first.publicState().answer, null);
+  assert.equal(first.publicState().round, 3);
+  const second = new ImageQuizRound({ questions, seenIds: [...persisted] });
+  assert.equal(second.start(), false);
+  assert.equal(second.remainingCount(), 0);
 });
 
-test("single puzzle pool still advances forever instead of ending", () => {
+test("one-question pool pauses after the first answer instead of recycling", () => {
   const quiz = new ImageQuizRound({ questions: [{ id: "only", answer: "nước chảy đá mòn", scene: ["💧", "🪨"] }] });
-  quiz.start();
-  for (let i = 0; i < 15; i++) assert.equal(quiz.next(), true);
-  assert.equal(quiz.publicState().round, 16);
+  assert.equal(quiz.start(), true);
+  assert.equal(quiz.next(), false);
+  assert.equal(quiz.publicState().round, 1);
+  assert.equal(quiz.publicState().exhausted, true);
 });
 
-test("host must explicitly end endless image game", () => {
+test("host-only end with exhausted image pool, never auto-end", () => {
   const dictionary = { words: new Set(["hoa hồng"]), syllables: new Set(["hoa", "hồng"]) };
   const game = new GameHost({ code: "ABCDE", hostName: "Host", dictionary, imageQuestions: REBUS_QUESTIONS.slice(0, 2) });
   const guest = game.addPlayer({ name: "Guest" });
   game.setGameMode("image");
   game.start(game.hostPlayerId);
-  // Every timeout merely reveals an answer. A timer never ends the match.
-  for (let i = 0; i < 6; i++) {
-    game._revealImageRound();
-    assert.equal(game.phase, "playing");
-    game._clearQuizTransition();
-    assert.equal(game.imageQuiz.next(), true);
-    game.turnSeq += 1;
-    game._startTimer();
-  }
+  assert.equal(game.publicState().imageQuiz.exhausted, false);
+  game._revealImageRound();
+  game._clearQuizTransition();
+  assert.equal(game.imageQuiz.next(), true);
+  game._revealImageRound();
+  game._clearQuizTransition();
+  assert.equal(game.imageQuiz.next(), false);
   assert.equal(game.phase, "playing");
+  assert.equal(game.publicState().imageQuiz.exhausted, true);
   assert.throws(() => game.end(guest.id), /chủ phòng/);
-  assert.equal(game.phase, "playing");
   game.end(game.hostPlayerId);
   assert.equal(game.phase, "ended");
-  assert.equal(game.publicState().imageQuiz.round, 7);
   game.destroy();
+});
+
+test("host switches image submodes in lobby and both banks stay independent", () => {
+  const dict = { words: new Set(["hoa hồng"]), syllables: new Set(["hoa", "hồng"]) };
+  const idiom = { id: "idiom-one", answer: "đầu voi đuôi chuột", scene: ["🐘", "✂️", "🐭"] };
+  const object = { id: "object-one", answer: "con mèo", emoji: "🐈" };
+  const history = [];
+  const game = new GameHost({
+    code: "ABCDE", hostName: "Host", dictionary: dict,
+    imageQuestions: { idiom: [idiom], object: [object] },
+    imageSeenIds: { idiom: [], object: [] },
+    onImageSeen: (...args) => history.push(args),
+  });
+  const guest = game.addPlayer({ name: "Guest" });
+  game.setGameMode("image");
+  assert.equal(game.publicState().imageQuizAvailable, 1);
+  game.setImageQuizMode("object");
+  assert.equal(game.publicState().imageQuizMode, "object");
+  game.start(game.hostPlayerId);
+  assert.equal(game.publicState().imageQuiz.id, object.id);
+  assert.equal(history[0][0], "object");
+  assert.throws(() => game.setImageQuizMode("idiom"), /phòng chờ/);
+  game.end(game.hostPlayerId);
+  game.backToLobby(game.hostPlayerId);
+  game.setImageQuizMode("idiom");
+  game.start(game.hostPlayerId);
+  assert.equal(game.publicState().imageQuiz.id, idiom.id);
+  game.destroy();
+});
+
+test("400+ hard object prompts and 100+ idioms have unique normalized answers", () => {
+  const objects = prepareQuestions(OBJECT_QUESTIONS);
+  const idioms = prepareQuestions(REBUS_QUESTIONS);
+  assert.ok(objects.length >= 400, "Expected 400+ curated object names");
+  assert.ok(idioms.length >= 100);
+  for (const bank of [objects, idioms]) {
+    assert.equal(new Set(bank.map((q) => normalizeGuess(q.answer))).size, bank.length);
+  }
+  assert.ok(OBJECT_QUESTIONS.some((q) => q.wiki));
 });
 
 test("game interface includes an accessible prominent end button", () => {
   const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
   const app = readFileSync(new URL("../js/app.js", import.meta.url), "utf8");
   assert.match(html, /id="imageQuizEndBtn"/);
+  assert.match(html, /id="imageQuizModeSelect"/);
+  assert.match(html, /value="idiom"/);
+  assert.match(html, /value="object"/);
   assert.match(html, /Kết thúc trò chơi/);
   assert.match(app, /imageQuizEndBtn\.addEventListener\("click", requestEndGame\)/);
   assert.match(app, /els\.imageQuizEndBtn\.hidden = app\.role !== "host"/);
+});
+
+test("changing a submode after start is rejected", () => {
+  const dict = { words: new Set(["mèo"]), syllables: new Set(["mèo"]) };
+  const game = new GameHost({ code: "ABCDE", hostName: "H", dictionary: dict, imageQuestions: { idiom: REBUS_QUESTIONS, object: OBJECT_QUESTIONS } });
+  game.addPlayer({ name: "G" });
+  game.setGameMode("image");
+  game.start(game.hostPlayerId);
+  assert.throws(() => game.setImageQuizMode("object"), /phòng chờ/);
+  game.destroy();
 });
