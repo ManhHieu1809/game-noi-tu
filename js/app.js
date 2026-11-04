@@ -1009,7 +1009,13 @@ function renderImageQuiz(state) {
   els.imageQuizPanel.classList.toggle("image-quiz--comic", hasScene && !photoReady);
   els.imageQuizPanel.classList.toggle("image-quiz--object", isObject && !exhausted);
   els.imageQuizPanel.classList.toggle("image-quiz--exhausted", exhausted);
-  els.imageQuizPanel.style.setProperty("--quiz-reveal", quiz?.revealed || exhausted ? "1" : "0");
+  // Set the initial visibility from the host-authoritative remaining time,
+  // not zero: guests receiving mid-round updates must not see the image
+  // snap back to a blurred state on every state broadcast.
+  const durationMs = Math.max(1, (state.turnSeconds || 40) * 1000);
+  const remainingMs = Math.max(0, Math.min(durationMs, state.remainingMs ?? durationMs));
+  const initialReveal = quiz?.revealed || exhausted ? 1 : 1 - remainingMs / durationMs;
+  els.imageQuizPanel.style.setProperty("--quiz-reveal", String(initialReveal));
   const answered = quiz?.answeredIds?.includes(app.playerId);
   els.imageQuizReveal.textContent = exhausted
     ? "Đã hết các đáp án chưa từng chơi. Trò chơi sẽ KHÔNG tự dùng lại câu cũ."
