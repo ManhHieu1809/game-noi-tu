@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/play.css">
   <link rel="stylesheet" href="css/result.css">
   <link rel="stylesheet" href="css/ui.css">
+  <link rel="stylesheet" href="css/image-quiz.css">
 </head>
 <body class="is-home">
   <a class="skip-link" href="#main">Bỏ qua điều hướng, vào nội dung</a>
@@ -285,6 +286,7 @@
               <select id="gameModeSelect">
                 <option value="chain">Nối từ</option>
                 <option value="letters">Đôi chữ cái</option>
+                <option value="image">Nhìn hình đoán chữ</option>
               </select>
             </label>
             <label class="field field--compact" for="modeSelect">
@@ -352,6 +354,20 @@
               </div>
             </div>
 
+            <div class="image-quiz" id="imageQuizPanel" hidden>
+              <div class="image-quiz__heading">
+                <span id="imageQuizCategory">Tổng hợp</span>
+                <strong id="imageQuizProgress">1 / 8</strong>
+              </div>
+              <div class="image-quiz__visual" id="imageQuizVisual">
+                <img id="imageQuizPicture" alt="Hình ảnh gợi ý cần đoán" hidden>
+                <span class="image-quiz__emoji" id="imageQuizEmoji" aria-label="Biểu tượng gợi ý">🧩</span>
+                <div class="image-quiz__tiles" aria-hidden="true"></div>
+              </div>
+              <p class="image-quiz__reveal" id="imageQuizReveal">Nhìn hình và đoán nhanh!</p>
+              <a id="imageQuizAttribution" class="image-quiz__credit" href="#" target="_blank" rel="noopener noreferrer" hidden>Nguồn ảnh và ghi công</a>
+              <p class="image-quiz__hint">Đúng sớm nhận nhiều điểm hơn · Người đầu tiên được thưởng thêm.</p>
+            </div>
             <div class="target-card" id="targetCard">
               <div class="target-card__meta">
                 <p class="target-card__label" id="targetLabel">Từ cần nối</p>

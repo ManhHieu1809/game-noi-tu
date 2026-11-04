@@ -1,3 +1,5 @@
+import { ImageQuizRound, IMAGE_QUIZ_SECONDS, IMAGE_QUIZ_REVEAL_MS } from "./games/image-quiz/image-quiz-core.js";
+
 export const MIN_SYLLABLES = 2;
 export const MAX_SYLLABLES = 5;
 export const MAX_PLAYERS = 10;
@@ -6,6 +8,7 @@ export const DEFAULT_MODE = "smart";
 
 export const GAME_MODE_CHAIN = "chain";
 export const GAME_MODE_LETTERS = "letters";
+export const GAME_MODE_IMAGE = "image";
 export const PAIR_MODE_RANDOM = "random";
 export const PAIR_MODE_MANUAL = "manual";
 
@@ -361,6 +364,9 @@ export class GameHost {
     hostName,
     hostPeerId = null,
     dictionary,
+    imageQuestions = [],
+    onImageSeen = () => {},
+    imageSeenIds = [],
     mode = DEFAULT_MODE,
     gameMode = GAME_MODE_CHAIN,
     pairMode = PAIR_MODE_RANDOM,
@@ -373,10 +379,13 @@ export class GameHost {
 
     this.code = code;
     this.dictionary = dictionary;
+    this.imageQuiz = new ImageQuizRound({ questions: imageQuestions, seenIds: imageSeenIds, onSeen: onImageSeen });
+    this.quizTransitionTimer = null;
     this.mode = mode === "strict" ? "strict" : "smart";
     this.gameMode = gameMode === GAME_MODE_LETTERS ? GAME_MODE_LETTERS : GAME_MODE_CHAIN;
     this.pairMode = pairMode === PAIR_MODE_MANUAL ? PAIR_MODE_MANUAL : PAIR_MODE_RANDOM;
     this.turnSeconds = Math.min(120, Math.max(15, Number(turnSeconds) || TURN_SECONDS));
+    this.wordTurnSeconds = this.turnSeconds;
     this.onChange = typeof onChange === "function" ? onChange : () => {};
     this.initialWeights = buildInitialWeights(dictionary.syllables);
     this.twoSyllableWords = null;
@@ -472,12 +481,12 @@ export class GameHost {
     if (this.phase !== "lobby") {
       throw new Error("Chỉ đổi kiểu chơi khi đang ở phòng chờ.");
     }
-    const next = gameMode === GAME_MODE_LETTERS ? GAME_MODE_LETTERS : GAME_MODE_CHAIN;
+    const next = [GAME_MODE_LETTERS, GAME_MODE_IMAGE].includes(gameMode) ? gameMode : GAME_MODE_CHAIN;
     if (this.gameMode === next) return;
     this.gameMode = next;
     this._event(
       "mode",
-      next === GAME_MODE_LETTERS ? "Đã chọn chế độ Đôi chữ cái." : "Đã chọn chế độ Nối từ."
+      next === GAME_MODE_LETTERS ? "Đã chọn chế độ Đôi chữ cái." : next === GAME_MODE_IMAGE ? "Đã chọn Nhìn hình đoán chữ." : "Đã chọn chế độ Nối từ."
     );
     this.onChange();
   }
@@ -520,8 +529,19 @@ export class GameHost {
     this.awaitingPair = false;
     this.winnerOverride = null;
     this.phase = "playing";
-    this.turnIndex = Math.floor(Math.random() * this.order.length);
-    this._setTurn({ initial: true });
+    this._clearQuizTransition();
+    if (this.gameMode === GAME_MODE_IMAGE) {
+      this.imageQuiz.start();
+      this.turnIndex = -1;
+      this.turnPlayerId = null;
+      this.turnSeconds = IMAGE_QUIZ_SECONDS;
+      this.turnSeq += 1;
+      this._startTimer();
+    } else {
+      this.turnSeconds = this.wordTurnSeconds;
+      this.turnIndex = Math.floor(Math.random() * this.order.length);
+      this._setTurn({ initial: true });
+    }
     this._event(
       "start",
       this.gameMode === GAME_MODE_LETTERS
@@ -538,6 +558,20 @@ export class GameHost {
       return { ok: false, reason: "Ván đấu chưa bắt đầu." };
     }
 
+    if (this.gameMode === GAME_MODE_IMAGE) {
+      const player = this.players.find((p) => p.id === playerId && p.online);
+      if (!player) return { ok: false, reason: "Người chơi không còn trong phòng." };
+      const result = this.imageQuiz.guess(playerId, text, Date.now(), this.turnDeadline, this.turnSeconds * 1000);
+      if (result.ok) {
+        player.score += result.score;
+        this._event("guess", `${player.name} đoán đúng! +${result.score} điểm.`);
+        if (this.imageQuiz.allAnswered(this.players.filter((p) => p.online).map((p) => p.id))) {
+          this._revealImageRound();
+        }
+        this.onChange();
+      }
+      return result;
+    }
     if (this.gameMode === GAME_MODE_LETTERS && (this.awaitingPair || !this.pair)) {
       return { ok: false, reason: "Chờ chủ phòng chọn cặp chữ cái." };
     }
@@ -616,6 +650,7 @@ export class GameHost {
     this.winnerOverride = null;
     this.phase = "ended";
     this._clearTimer();
+    this._clearQuizTransition();
     this._event("end", "Ván đấu đã kết thúc.");
     this.onChange();
   }
@@ -636,8 +671,19 @@ export class GameHost {
     this.awaitingPair = false;
     this.winnerOverride = null;
     this.phase = "playing";
-    this.turnIndex = Math.floor(Math.random() * this.order.length);
-    this._setTurn({ initial: true });
+    this._clearQuizTransition();
+    if (this.gameMode === GAME_MODE_IMAGE) {
+      this.imageQuiz.start();
+      this.turnIndex = -1;
+      this.turnPlayerId = null;
+      this.turnSeconds = IMAGE_QUIZ_SECONDS;
+      this.turnSeq += 1;
+      this._startTimer();
+    } else {
+      this.turnSeconds = this.wordTurnSeconds;
+      this.turnIndex = Math.floor(Math.random() * this.order.length);
+      this._setTurn({ initial: true });
+    }
     this._event("restart", "Chơi lại nào! Điểm số đã được đặt lại.");
     this.onChange();
   }
@@ -645,6 +691,7 @@ export class GameHost {
   backToLobby(byPlayerId) {
     this._assertHost(byPlayerId);
     this._clearTimer();
+    this._clearQuizTransition();
     this.players = this.players.filter((player) => player.online);
     for (const player of this.players) player.score = 0;
     this._resetPlayerStats();
@@ -711,6 +758,7 @@ export class GameHost {
 
   destroy() {
     this._clearTimer();
+    this._clearQuizTransition();
     this.onChange = () => {};
   }
 
@@ -739,6 +787,7 @@ export class GameHost {
       mode: this.mode,
       gameMode: this.gameMode,
       pairMode: this.pairMode,
+      imageQuiz: this.gameMode === GAME_MODE_IMAGE && this.phase !== "lobby" ? this.imageQuiz.publicState() : null,
       hostId: this.hostPlayerId,
       players: this.players.map((player) => ({
         id: player.id,
@@ -928,8 +977,41 @@ export class GameHost {
     }
   }
 
+  _clearQuizTransition() {
+    if (this.quizTransitionTimer) clearTimeout(this.quizTransitionTimer);
+    this.quizTransitionTimer = null;
+  }
+
+  _revealImageRound() {
+    if (this.phase !== "playing" || this.gameMode !== GAME_MODE_IMAGE || this.imageQuiz.revealed) return;
+    this._clearTimer();
+    this.imageQuiz.reveal();
+    this.turnDeadline = 0;
+    this._event("reveal", "Đáp án: " + this.imageQuiz.current.answer);
+    this.onChange();
+    this._clearQuizTransition();
+    this.quizTransitionTimer = setTimeout(() => {
+      this.quizTransitionTimer = null;
+      if (this.phase !== "playing" || this.gameMode !== GAME_MODE_IMAGE) return;
+      if (!this.imageQuiz.next()) {
+        this.phase = "ended";
+        this.turnDeadline = 0;
+        this._event("end", "Đã hoàn thành tất cả câu đố!");
+      } else {
+        this.turnSeq += 1;
+        this._startTimer();
+        this._event("next", "Câu hỏi tiếp theo đã bắt đầu!");
+      }
+      this.onChange();
+    }, IMAGE_QUIZ_REVEAL_MS);
+  }
+
   _onTimeout() {
     if (this.phase !== "playing") return;
+    if (this.gameMode === GAME_MODE_IMAGE) {
+      this._revealImageRound();
+      return;
+    }
     const player = this._currentPlayer();
     if (player?.stats) {
       player.stats.timeouts += 1;

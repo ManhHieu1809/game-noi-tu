@@ -115,7 +115,7 @@ export class LobbyDirectory {
         max: Math.max(2, Math.min(10, Math.round(Number(data.max) || 10))),
         phase: ["lobby", "playing", "ended"].includes(data.phase) ? data.phase : "lobby",
         mode: data.mode === "strict" ? "strict" : "smart",
-        gameMode: data.gameMode === "letters" ? "letters" : "chain",
+        gameMode: ["letters", "image"].includes(data.gameMode) ? data.gameMode : "chain",
         ts: data.ts,
       });
     }
@@ -133,7 +133,7 @@ export class LobbyDirectory {
       max,
       phase,
       mode,
-      gameMode: gameMode === "letters" ? "letters" : "chain",
+      gameMode: ["letters", "image"].includes(gameMode) ? gameMode : "chain",
       ts: Date.now(),
     };
     try {

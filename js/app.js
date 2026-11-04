@@ -8,6 +8,7 @@ import {
   sanitizeName,
 } from "./game-core.js";
 import { loadDictionary } from "./dictionary.js";
+import { loadImageQuizQuestions } from "./games/image-quiz/data.js";
 import { LobbyDirectory } from "./lobby-directory.js";
 import { cleanCode, CODE_LENGTH, createRoomPeer, connectToRoom } from "./net.js";
 
@@ -71,6 +72,13 @@ const els = {
   answerBtn: $("answerBtn"),
   answerError: $("answerError"),
   pairControl: $("pairControl"),
+  imageQuizPanel: $("imageQuizPanel"),
+  imageQuizPicture: $("imageQuizPicture"),
+  imageQuizEmoji: $("imageQuizEmoji"),
+  imageQuizProgress: $("imageQuizProgress"),
+  imageQuizCategory: $("imageQuizCategory"),
+  imageQuizReveal: $("imageQuizReveal"),
+  imageQuizAttribution: $("imageQuizAttribution"),
   pairControlValue: $("pairControlValue"),
   pairForm: $("pairForm"),
   pairInput1: $("pairInput1"),
@@ -109,6 +117,7 @@ const els = {
 
 const app = {
   dictionary: null,
+  imageQuestions: [],
   role: null,
   playerId: null,
   roomCode: null,
@@ -427,7 +436,7 @@ async function createRoom() {
   showLoading("Đang tạo phòng…", "Đang nạp từ điển tiếng Việt…");
 
   try {
-    app.dictionary = await loadDictionary();
+    [app.dictionary, app.imageQuestions] = await Promise.all([loadDictionary(), loadImageQuizQuestions()]);
     updateLoadingText("Đang kết nối tới máy chủ ghép phòng…");
     const { code, peer } = await createRoomPeer();
     createHostSession(code, peer, name);
@@ -452,6 +461,9 @@ function createHostSession(code, peer, name) {
     hostName: name,
     hostPeerId: peer.id,
     dictionary: app.dictionary,
+    imageQuestions: app.imageQuestions,
+    imageSeenIds: getSeenImageQuizIds(),
+    onImageSeen: rememberImageQuizId,
     mode: "smart",
     onChange: handleHostGameChange,
   });
@@ -696,7 +708,7 @@ function consumeState(state, previous) {
 
   const myTurn = state.phase === "playing" && state.turnPlayerId === app.playerId;
   const pairReady = state.gameMode === "letters" && Boolean(state.pair) && !state.awaitingPair;
-  if (myTurn && (turnChanged || (pairReady && pairChanged))) {
+  if (state.gameMode !== "image" && myTurn && (turnChanged || (pairReady && pairChanged))) {
     if (state.gameMode === "letters" && state.awaitingPair) {
       showToast("Lượt của bạn! Đang chờ chủ phòng chọn cặp chữ cái.", "info", 3200);
     } else if (pairReady) {
@@ -720,7 +732,7 @@ function renderRoom() {
 
   els.roomCodeText.textContent = state.code;
   els.lobbyCode.textContent = state.code;
-  const modeLabel = state.gameMode === "letters" ? "Đôi chữ cái" : "Nối từ";
+  const modeLabel = state.gameMode === "letters" ? "Đôi chữ cái" : state.gameMode === "image" ? "Nhìn hình đoán chữ" : "Nối từ";
   const checkLabel = state.mode === "strict" ? "Khắt khe" : "Thông minh";
   els.roomModePill.textContent = `${modeLabel} · ${checkLabel}`;
   els.roomModePill.title = `${modeLabel}, kiểm tra ${checkLabel.toLowerCase()}`;
@@ -781,6 +793,7 @@ function renderLobbyActions(state) {
   els.lobbyActions.hidden = !(host && state.phase === "lobby");
   els.gameActions.hidden = !(host && state.phase === "playing");
   els.pairModeField.hidden = state.gameMode !== "letters";
+  els.modeSelect.closest(".field").hidden = state.gameMode === "image";
 
   if (host && state.phase === "lobby") {
     const enough = online >= 2;
@@ -806,12 +819,12 @@ function renderStageLobby(state) {
   const letters = state.gameMode === "letters";
   const online = state.players.filter((player) => player.online).length;
 
-  els.lobbyTitle.textContent = letters ? "Sẵn sàng thử thách đôi chữ?" : "Sẵn sàng nối từ?";
-  els.lobbySub.textContent = letters
+  els.lobbyTitle.textContent = state.gameMode === "image" ? "Sẵn sàng đoán hình?" : letters ? "Sẵn sàng thử thách đôi chữ?" : "Sẵn sàng nối từ?";
+  els.lobbySub.textContent = state.gameMode === "image" ? "Tất cả cùng đoán ảnh đang mở dần. Đúng càng sớm càng nhiều điểm!" : letters
     ? "Chủ phòng chọn một cặp chữ cho cả ván và cũng trả lời như mọi người. Nhập đúng hai âm tiết bắt đầu tương ứng."
     : "Gửi link mời để bạn bè vào nhanh. Khi đủ ít nhất 2 người, chủ phòng bấm bắt đầu.";
 
-  els.lobbyChain.innerHTML = letters
+  els.lobbyChain.innerHTML = state.gameMode === "image" ? "<span>🧩</span><i>→</i><span>Đoán nhanh</span><i>→</i><span>🏆</span>" : letters
     ? "<span>H · H</span><i>→</i><span>hoa hồng</span><i>→</i><span>hoàng hôn</span>"
     : "<span>bánh mì</span><i>→</i><span>mì gói</span><i>→</i><span>gói quà</span>";
 
@@ -826,6 +839,14 @@ function renderStageLobby(state) {
 }
 
 function renderStageGame(state) {
+  if (state.gameMode === "image") {
+    renderImageQuiz(state);
+    return;
+  }
+  els.imageQuizPanel.hidden = true;
+  els.targetCard.hidden = false;
+  els.chainMini.closest(".chain-mini-wrap").hidden = false;
+  els.waitingTurn.hidden = false;
   const letters = state.gameMode === "letters";
   const awaitingPair = letters && Boolean(state.awaitingPair);
   const myTurn = state.turnPlayerId === app.playerId;
@@ -902,6 +923,67 @@ function renderStageGame(state) {
   }
 
   renderPairControl(state);
+}
+
+function renderImageQuiz(state) {
+  const quiz = state.imageQuiz;
+  if (quiz?.id && els.imageQuizPanel.dataset.questionId !== quiz.id) {
+    els.imageQuizPanel.dataset.questionId = quiz.id;
+    const tiles = els.imageQuizPanel.querySelector(".image-quiz__tiles");
+    tiles.style.animation = "none";
+    void tiles.offsetWidth;
+    tiles.style.animation = "";
+    els.imageQuizPicture.dataset.failed = "";
+  }
+  els.imageQuizPanel.hidden = false;
+  els.targetCard.hidden = true;
+  els.pairControl.hidden = true;
+  els.chainMini.closest(".chain-mini-wrap").hidden = true;
+  els.waitingTurn.hidden = true;
+  els.turnBadge.textContent = quiz ? \`Câu \${quiz.round} / \${quiz.rounds}\` : "Đoán ảnh";
+  els.turnBadge.classList.add("is-me");
+  els.turnSub.textContent = quiz?.revealed ? "Cùng xem đáp án!" : "Tất cả cùng đoán · đúng càng sớm càng nhiều điểm";
+  els.imageQuizProgress.textContent = quiz ? \`\${quiz.round} / \${quiz.rounds}\` : "";
+  els.imageQuizCategory.textContent = quiz?.category || "Tổng hợp";
+  els.imageQuizEmoji.textContent = quiz?.emoji || "🖼️";
+  const src = quiz?.imageUrl || "";
+  if (src && els.imageQuizPicture.dataset.src !== src) {
+    els.imageQuizPicture.dataset.src = src;
+    els.imageQuizPicture.src = src;
+  }
+  const photoReady = Boolean(src && els.imageQuizPicture.dataset.failed !== src);
+  els.imageQuizPicture.hidden = !photoReady;
+  els.imageQuizEmoji.hidden = photoReady;
+  const answered = quiz?.answeredIds?.includes(app.playerId);
+  els.imageQuizReveal.textContent = quiz?.revealed
+    ? \`Đáp án: \${quiz.answer}\`
+    : answered ? "Bạn đã đoán đúng! Đợi mọi người..." : "Nhìn kỹ và nhập đáp án của bạn!";
+  els.imageQuizPanel.classList.toggle("image-quiz--revealed", Boolean(quiz?.revealed));
+  els.imageQuizAttribution.textContent = quiz?.attribution || "";
+  if (quiz?.sourceUrl) {
+    els.imageQuizAttribution.href = quiz.sourceUrl;
+    els.imageQuizAttribution.hidden = false;
+  } else {
+    els.imageQuizAttribution.hidden = true;
+  }
+  els.timer.hidden = false;
+}
+
+const QUIZ_SEEN_KEY = "noitu.imageQuiz.seen.v1";
+function getSeenImageQuizIds() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(QUIZ_SEEN_KEY) || "[]");
+    return Array.isArray(stored) ? stored.filter((id) => typeof id === "string") : [];
+  } catch {
+    return [];
+  }
+}
+function rememberImageQuizId(id) {
+  try {
+    const recent = getSeenImageQuizIds().filter((v) => v !== id);
+    recent.push(id);
+    localStorage.setItem(QUIZ_SEEN_KEY, JSON.stringify(recent.slice(-10000)));
+  } catch { /* localStorage unavailable */ }
 }
 
 function renderPairControl(state) {
@@ -1111,7 +1193,11 @@ function updateAnswerForm(state = app.state) {
   const letters = state?.gameMode === "letters";
   const awaitingPair = Boolean(playing && state.awaitingPair);
   const myTurn = playing && state.turnPlayerId === app.playerId;
-  const disabled = !myTurn || app.answerPending || awaitingPair;
+  const image = state?.gameMode === "image";
+  const alreadyCorrect = image && state?.imageQuiz?.answeredIds?.includes(app.playerId);
+  const disabled = image
+    ? !playing || app.answerPending || Boolean(state?.imageQuiz?.revealed) || alreadyCorrect
+    : !myTurn || app.answerPending || awaitingPair;
   const current = playing ? state.players.find((player) => player.id === state.turnPlayerId) : null;
 
   els.answerInput.disabled = disabled;
@@ -1119,6 +1205,8 @@ function updateAnswerForm(state = app.state) {
 
   if (!playing) {
     els.answerInput.placeholder = "Nhập từ của bạn…";
+  } else if (image) {
+    els.answerInput.placeholder = alreadyCorrect ? "Bạn đã đoán đúng!" : "Nhập đáp án của ảnh...";
   } else if (awaitingPair) {
     els.answerInput.placeholder = "Đang chờ chủ phòng chọn cặp chữ…";
   } else if (app.answerPending) {
@@ -1140,6 +1228,12 @@ function updateTimer() {
   const state = app.state;
   if (!state || state.phase !== "playing") return;
 
+  if (state.gameMode === "image" && state.imageQuiz?.revealed) {
+    els.timerRing.style.setProperty("--p", "0");
+    els.timerText.textContent = "✓";
+    els.timerUnit.textContent = "đúng";
+    return;
+  }
   if (state.awaitingPair) {
     els.timerRing.style.setProperty("--p", "0");
     els.timerText.textContent = "—";
@@ -1161,7 +1255,7 @@ function submitAnswer(event) {
   event?.preventDefault();
   const state = app.state;
   if (!state || state.phase !== "playing" || app.answerPending) return;
-  if (state.turnPlayerId !== app.playerId) return;
+  if (state.gameMode !== "image" && state.turnPlayerId !== app.playerId) return;
 
   const text = els.answerInput.value;
   if (!text.trim()) {
@@ -1611,6 +1705,11 @@ function bindEvents() {
 
   els.answerForm.addEventListener("submit", submitAnswer);
   els.answerInput.addEventListener("input", clearAnswerError);
+  els.imageQuizPicture.addEventListener("error", () => {
+    els.imageQuizPicture.dataset.failed = els.imageQuizPicture.dataset.src || "";
+    els.imageQuizPicture.hidden = true;
+    els.imageQuizEmoji.hidden = false;
+  });
 
   els.leaveBtn.addEventListener("click", requestLeave);
   els.brandHome.addEventListener("click", () => {
