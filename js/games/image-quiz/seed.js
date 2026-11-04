@@ -42,7 +42,6 @@ const rows = [
   ["quả dâu tây","🍓","Trái cây","Strawberry",["dâu tây"]],
   ["quả đào","🍑","Trái cây","Peach",["đào"]],
   ["quả xoài","🥭","Trái cây","Mango",["xoài"]],
-  ["quả dừa","🥥","Trái cây","Coconut",["dừa"]],
   ["quả bơ","🥑","Trái cây","Avocado",["bơ"]],
   ["quả lê","🍐","Trái cây","Pear",["lê"]],
   ["quả kiwi","🥝","Trái cây","Kiwifruit",["kiwi"]],
