@@ -634,10 +634,10 @@ export class GameHost {
       if (result.ok) {
         player.score += result.score;
         this._event("guess", `${player.name} đoán đúng! +${result.score} điểm.`);
-        // Preserve the full countdown in object mode even if everyone
-        // answers correctly. Idiom mode retains its prior early reveal.
-        if (this.imageQuizMode !== IMAGE_QUIZ_OBJECT &&
-            this.imageQuiz.allAnswered(this.players.filter((p) => p.online).map((p) => p.id))) {
+        // As soon as every online player has guessed correctly, reveal
+        // the answer now (in BOTH image quiz submodes); otherwise keep
+        // counting down as usual. _revealImageRound clears the timer.
+        if (this.imageQuiz.allAnswered(this.players.filter((p) => p.online).map((p) => p.id))) {
           this._revealImageRound();
         }
         this.onChange();
