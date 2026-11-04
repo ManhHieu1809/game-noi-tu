@@ -268,3 +268,25 @@ test("group histories are ignored after a round has started", () => {
   assert.ok(game.imageQuiz.current);
   game.destroy();
 });
+
+test("guests' previously seen picture IDs exclude alternate photos of the answer", () => {
+  const dict = { words: new Set(), syllables: new Set() };
+  const photoBank = [
+    { id: "photo-a", answer: "mèo", emoji: "🐱" },
+    { id: "photo-b", answer: "mèo", emoji: "🐈" },
+    { id: "photo-c", answer: "chó", emoji: "🐶" }
+  ];
+  const game = new GameHost({
+    code: "ABCDE", hostName: "Host", dictionary: dict,
+    imageQuestions: { idiom: [], object: photoBank },
+    imageSeenIds: { idiom: [], object: [] }
+  });
+  game.setGameMode("image");
+  game.setImageQuizMode("object");
+  game.mergeImageSeenHistory({ object: ["photo-b", "fake-photo"] });
+  assert.equal(game.publicState().imageQuizAvailable, 1);
+  game.addPlayer({ name: "Guest" });
+  game.start(game.hostPlayerId);
+  assert.equal(game.imageQuiz.current.answer, "chó");
+  game.destroy();
+});
