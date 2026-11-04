@@ -1,12 +1,12 @@
-# Nhìn Hình Đoán Chữ — hai chế độ (nhánh feature/image-quiz)
+# Nhìn Hình Đoán Chữ — hai chế độ (bản sửa ảnh hiển thị rõ)
 
 ## Cách chơi
 Chủ phòng tạo phòng, chọn **Nhìn hình đoán chữ**, rồi chọn:
 
 - **Ca dao · Tục ngữ · Thành ngữ** (`idiom`): 112 câu hỏi comic 3 khung tranh, giải nghĩa bằng suy luận.
-- **Đoán vật thể ảnh khó** (`object`): 467 đáp án đồ dùng, con vật, món ăn, rau quả, công nghệ... Ảnh bị zoom/crop, che vùng nhìn và mờ rồi rõ dần trong 40 giây. Có ảnh thật nếu nhập được ngân hàng Wikimedia, ngoài ra có hình gợi ý emoji được làm khó để hoạt động offline.
+- **Đoán vật thể ảnh khó** (`object`): 467 đáp án đồ dùng, con vật, món ăn, rau quả, công nghệ... **Ảnh hiển thị đầy đủ và rõ nét ngay từ giây đầu**, không zoom, crop hay làm mờ. Mọi người có 40 giây để trả lời; **hết giờ mới công bố đáp án**, kể cả nếu tất cả đã đoán đúng sớm. Có ảnh thật từ Wikimedia, emoji là hình dự phòng khi tải ảnh lỗi.
 
-Mỗi câu có 40 giây. Đúng sớm được nhiều điểm; tất cả cùng đoán. **Không có giới hạn số vòng**. Hết một câu tự chuyển câu kế tiếp, không tự kết thúc game. Chỉ chủ phòng bấm **Kết thúc trò chơi** để chốt điểm.
+Mỗi câu có 40 giây đếm ngược. Đúng sớm được nhiều điểm; tất cả cùng đoán. Ở chế độ **Đoán vật thể**, đáp án chỉ công bố khi đồng hồ về 0. Chế độ **Thành ngữ** giữ nguyên cơ chế hiện sớm đáp án nếu tất cả người chơi đã đoán đúng. **Không có giới hạn số vòng**. Hết một câu tự chuyển câu kế tiếp, không tự kết thúc game. Chỉ chủ phòng bấm **Kết thúc trò chơi** để chốt điểm.
 
 ## Chống lặp nghiêm ngặt
 
